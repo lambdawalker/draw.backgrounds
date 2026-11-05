@@ -1,0 +1,203 @@
+{
+  "country": "ca",
+  "seed": 42,
+  "width": 1400,
+  "height": 880,
+  "items": [
+    {
+      "country": "ca",
+      "jurisdiction": "alberta",
+      "state": "alberta",
+      "files": [
+        {
+          "filename": "alberta.svg",
+          "sha256": "5b0cc966d217c524130934ecc08f14d5f9191e769261dd0ce17b6a9ee8636396"
+        },
+        {
+          "filename": "alberta.png",
+          "sha256": "e6c85f86ae6f8367240dea9bf5eae6845e645bc6fcb15dc308e7f8607550ab4e"
+        }
+      ]
+    },
+    {
+      "country": "ca",
+      "jurisdiction": "british-columbia",
+      "state": "british-columbia",
+      "files": [
+        {
+          "filename": "british-columbia.svg",
+          "sha256": "13bc51c9188f16c6c969de673a122a39ce0e24ab275830ffd82b6a2caac146da"
+        },
+        {
+          "filename": "british-columbia.png",
+          "sha256": "4f657235571aafb39277af35bcc5a0788d494f5a75db29cc61a346d437869c90"
+        }
+      ]
+    },
+    {
+      "country": "ca",
+      "jurisdiction": "manitoba",
+      "state": "manitoba",
+      "files": [
+        {
+          "filename": "manitoba.svg",
+          "sha256": "2fb7e10d57b8883c4dc5a5771b97b34132d3147bc5d5d231532742a1ae0dfa1d"
+        },
+        {
+          "filename": "manitoba.png",
+          "sha256": "f57b6acb7006ebc6a17ba5a3bd1da6656034639b07d429ba2a2483048c39b43c"
+        }
+      ]
+    },
+    {
+      "country": "ca",
+      "jurisdiction": "new-brunswick",
+      "state": "new-brunswick",
+      "files": [
+        {
+          "filename": "new-brunswick.svg",
+          "sha256": "86b09f7b124dd8c092f5d3cbfe4f1e529a4aec501d6b422133c6a6e9b1ceca4a"
+        },
+        {
+          "filename": "new-brunswick.png",
+          "sha256": "068833948f212c14a0fbd8178e7f1d9b9e5542ef9322a436d7ec664c14f9e5ae"
+        }
+      ]
+    },
+    {
+      "country": "ca",
+      "jurisdiction": "newfoundland-and-labrador",
+      "state": "newfoundland-and-labrador",
+      "files": [
+        {
+          "filename": "newfoundland-and-labrador.svg",
+          "sha256": "1613f0ec7a489c505fa70dbfab52e959595006edd33ca1625f8193cd89fa69e4"
+        },
+        {
+          "filename": "newfoundland-and-labrador.png",
+          "sha256": "ff894870e209baaa01d1dac08999bba6400cc49ad1d409dbffcef643ef30852f"
+        }
+      ]
+    },
+    {
+      "country": "ca",
+      "jurisdiction": "northwest-territories",
+      "state": "northwest-territories",
+      "files": [
+        {
+          "filename": "northwest-territories.svg",
+          "sha256": "42be6e647ea2cdc4085ea476bb43853d36378b0c79d0f1861f97479cc82b5f57"
+        },
+        {
+          "filename": "northwest-territories.png",
+          "sha256": "8f322718c3a3847650c6929a5ceedb4433af980b487ed265bc5517d23e1cb10e"
+        }
+      ]
+    },
+    {
+      "country": "ca",
+      "jurisdiction": "nova-scotia",
+      "state": "nova-scotia",
+      "files": [
+        {
+          "filename": "nova-scotia.svg",
+          "sha256": "8d374f40a4d1f758c0a416b6d4ccc6c8183d622181bf72b8280ae0e3814174ab"
+        },
+        {
+          "filename": "nova-scotia.png",
+          "sha256": "c51d3427a8f9098b4ffbf2fcffc36277147f1ce66e77797c00d9f29c72886895"
+        }
+      ]
+    },
+    {
+      "country": "ca",
+      "jurisdiction": "nunavut",
+      "state": "nunavut",
+      "files": [
+        {
+          "filename": "nunavut.svg",
+          "sha256": "2f5725388e94ecf450d9abef7d1286d2a7d14495d7f33dfbad00b08995158fc1"
+        },
+        {
+          "filename": "nunavut.png",
+          "sha256": "94784fd31ba2d0741d0a0656cba6b582d0589ab97dde8ac7b7175027fccc1ba3"
+        }
+      ]
+    },
+    {
+      "country": "ca",
+      "jurisdiction": "ontario",
+      "state": "ontario",
+      "files": [
+        {
+          "filename": "ontario.svg",
+          "sha256": "0b5778292856fc5409004f796090450d93b1decf98c2044c4b3aa1ea8f42ad62"
+        },
+        {
+          "filename": "ontario.png",
+          "sha256": "f2d70d9985b15bfaf87613429c48eab2f432723ffee6694139743829a13d8086"
+        }
+      ]
+    },
+    {
+      "country": "ca",
+      "jurisdiction": "prince-edward-island",
+      "state": "prince-edward-island",
+      "files": [
+        {
+          "filename": "prince-edward-island.svg",
+          "sha256": "d1bbcfc9fd689c5588c4c17a03ea65f819a4663f00c1be46ffacaa50ec13b5fb"
+        },
+        {
+          "filename": "prince-edward-island.png",
+          "sha256": "c9ac653edb5493b0e5d915ce0f3620d2328b421d9d88c22b3e6d68a9399cc866"
+        }
+      ]
+    },
+    {
+      "country": "ca",
+      "jurisdiction": "quebec",
+      "state": "quebec",
+      "files": [
+        {
+          "filename": "quebec.svg",
+          "sha256": "c86633eba37b858edbe26b7da39ca3be043c91f42fa156c39ef593bf720b0aff"
+        },
+        {
+          "filename": "quebec.png",
+          "sha256": "47179b9540c8abb2d3d759de61661c195472e9c5704302eb733e3b77c6549db5"
+        }
+      ]
+    },
+    {
+      "country": "ca",
+      "jurisdiction": "saskatchewan",
+      "state": "saskatchewan",
+      "files": [
+        {
+          "filename": "saskatchewan.svg",
+          "sha256": "357fbebe5e90c5243665bf84ba2f42a2d29f6b251286dd8c2a0ffb5932e643f6"
+        },
+        {
+          "filename": "saskatchewan.png",
+          "sha256": "97712dceb16b004a3d93213447be5968134194e8efdd345ac4d98dbc595668fd"
+        }
+      ]
+    },
+    {
+      "country": "ca",
+      "jurisdiction": "yukon",
+      "state": "yukon",
+      "files": [
+        {
+          "filename": "yukon.svg",
+          "sha256": "6258de3143e57ae5a081f88bc8e2f93e55ea095e98cbb2beee3fd37c15bfcf90"
+        },
+        {
+          "filename": "yukon.png",
+          "sha256": "9ed165de1671fc35d12bf12edc45061765b29ad8ac6348cd1fe74d6a28be2f1a"
+        }
+      ]
+    }
+  ]
+}

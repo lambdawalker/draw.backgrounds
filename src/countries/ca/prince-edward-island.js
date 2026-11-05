@@ -1,0 +1,57 @@
+import {
+  base,
+  fireweed,
+  trillium,
+  iris,
+  path,
+  line,
+  polygon,
+  ellipse,
+  samples,
+  waves,
+  ridge,
+  snowOnRidge,
+  pine,
+  flower,
+  shore,
+  branch,
+  lily,
+  grasses,
+  iceberg,
+} from "./helpers.js";
+export default function (c, p) {
+  base(c, p + 5.4, "#e2ede2", "#e9e4d4", "#85aaa8");
+  shore(c, "#76a6b6", 610, 16);
+  ridge(
+    c,
+    [
+      [0, 840],
+      [440, 800],
+      [690, 720],
+      [860, 700],
+      [1110, 790],
+      [1400, 750],
+    ],
+    { fill: "#d1af9d", ink: "#ac9b8f", opacity: 0.26 },
+  );
+  grasses(c, 1040, 870, 1.3, "#a8ab83");
+  for (let j = 0; j < 3; j++)
+    flower(c, 1190 + j * 80, 540 + j * 55, 26, "#c5a4b4", 0.32);
+  for (let j = 0; j < 15; j++)
+    c.add(
+      line(
+        samples(
+          (t) => [
+            1350 - 160 * Math.sin(t) + j * 4,
+            240 + 180 * Math.cos(t) + j * 2,
+          ],
+          0,
+          6.3,
+          0.04,
+        ),
+        "#9baaa0",
+        0.7,
+        0.19,
+      ),
+    );
+}

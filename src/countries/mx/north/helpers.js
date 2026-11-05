@@ -1,0 +1,238 @@
+import {
+  rect,
+  line,
+  path,
+  polygon,
+  ellipse,
+  samples,
+  grid,
+  ridge as baseRidge,
+  pine,
+  flower,
+  rosette,
+} from "../../../geometry.js";
+export {
+  rect,
+  line,
+  path,
+  polygon,
+  ellipse,
+  samples,
+  grid,
+  ridge as baseRidge,
+  pine,
+  flower,
+  rosette,
+};
+export const quality = { pass: 4 };
+export function paper(c, phase, colors, ink) {
+  c.add(
+    rect(
+      0,
+      0,
+      1400,
+      880,
+      c.gradient(colors.map((v, i) => [(i * 100) / (colors.length - 1), v])),
+    ),
+  );
+  c.glow(950, 180, 650, 420, "#ffffff", 0.7);
+  let tone = parseInt(ink.slice(1, 3), 16);
+  grid(c, {
+    color: ink,
+    opacity: 0.19,
+    spacing: 12 + (tone % 7),
+    amplitude: 28 + (tone % 23),
+    phase: phase + tone * 0.03,
+  });
+}
+export function contours(c, ink, offset = 0, amp = 45) {
+  for (let k = 0; k < 34; k++) {
+    let y = 570 + k * 8 + offset;
+    c.add(
+      line(
+        samples(
+          (x) => [
+            x,
+            y +
+              amp * Math.sin(x / 260 + k * 0.033) +
+              14 * Math.sin(x / 87 + k * 0.08),
+          ],
+          -30,
+          1440,
+          8,
+        ),
+        ink,
+        0.8,
+        0.27,
+      ),
+    );
+  }
+}
+export function leaf(c, x, y, size, angle, ink) {
+  let s = "";
+  for (let k = -7; k <= 7; k++)
+    s += path(
+      `M0 0 Q${size * 0.55} ${k * size * 0.06} ${size} 0`,
+      ink,
+      0.8,
+      0.42,
+    );
+  for (let k = 1; k < 10; k++)
+    s += path(
+      `M${(k * size) / 10} 0 l${size * 0.08} ${size * 0.17 * Math.sin((k / 10) * Math.PI)} M${(k * size) / 10} 0 l${size * 0.08} ${-size * 0.17 * Math.sin((k / 10) * Math.PI)}`,
+      ink,
+      0.7,
+      0.4,
+    );
+  c.add(`<g transform="translate(${x} ${y}) rotate(${angle})">${s}</g>`);
+}
+export function agave(c, x, y, s, ink) {
+  for (let j = -6; j <= 6; j++) {
+    let xx = x + j * s * 0.14,
+      yy = y - s * (0.4 + 0.6 * Math.cos(j / 7));
+    c.add(
+      path(
+        `M${x} ${y} Q${x + j * s * 0.035} ${y - s * 0.5} ${xx} ${yy} Q${x + j * s * 0.13} ${y - s * 0.19} ${x} ${y}`,
+        ink,
+        0.9,
+        0.4,
+        ink,
+      ),
+    );
+    for (let k = 0; k < 3; k++)
+      c.add(
+        path(
+          `M${x + k} ${y} Q${x + j * s * 0.06 + k} ${y - s * 0.4} ${xx} ${yy}`,
+          ink,
+          0.7,
+          0.5,
+        ),
+      );
+  }
+}
+export function cactus(c, x, y, s, ink) {
+  let d = `M${x - 12 * s} ${y} V${y - 140 * s} Q${x} ${y - 165 * s} ${x + 12 * s} ${y - 140 * s} V${y} Z M${x - 12 * s} ${y - 67 * s} Q${x - 70 * s} ${y - 62 * s} ${x - 62 * s} ${y - 122 * s} Q${x - 53 * s} ${y - 139 * s} ${x - 45 * s} ${y - 122 * s} V${y - 92 * s} L${x - 12 * s} ${y - 92 * s} M${x + 12 * s} ${y - 100 * s} H${x + 39 * s} V${y - 154 * s} Q${x + 49 * s} ${y - 174 * s} ${x + 58 * s} ${y - 154 * s} V${y - 89 * s} Q${x + 50 * s} ${y - 75 * s} ${x + 12 * s} ${y - 77 * s}`;
+  c.add(path(d, ink, 1, 0.36, ink));
+  for (let j = -2; j <= 2; j++)
+    c.add(path(`M${x + j * 4 * s} ${y} V${y - 138 * s}`, ink, 0.7, 0.7));
+}
+export function palm(c, x, y, s, ink) {
+  let top = y - 220 * s;
+  c.add(
+    path(
+      `M${x} ${y} Q${x - 35 * s} ${y - 120 * s} ${x} ${top}`,
+      ink,
+      3 * s,
+      0.4,
+    ),
+  );
+  for (let j = -4; j <= 4; j++) {
+    let dx = j * 35 * s,
+      dy = (Math.abs(j) * 15 - 40) * s;
+    c.add(
+      path(
+        `M${x} ${top} Q${x + dx * 0.55} ${top - 70 * s} ${x + dx} ${top + dy}`,
+        ink,
+        1,
+        0.55,
+      ),
+    );
+    for (let k = 1; k < 11; k++) {
+      let t = k / 11,
+        xx = x + dx * t,
+        yy = top - 140 * s * t * (1 - t) + dy * t;
+      for (let side of [-1, 1])
+        c.add(
+          path(
+            `M${xx} ${yy} Q${xx + side * 14 * s} ${yy + 12 * s} ${xx + side * (32 - 20 * t) * s} ${yy + (20 + 25 * t) * s}`,
+            ink,
+            0.8,
+            0.42,
+          ),
+        );
+    }
+  }
+}
+export function ridge(c, v, opts) {
+  const r = baseRidge(c, v, opts);
+  let a = "";
+  for (let j = 0; j < 140; j++) {
+    let x = j * 11;
+    a += line(
+      samples(
+        (t) => [x + 25 * Math.sin(t * 4 + j * 0.3) + t * 50, 240 + t * 650],
+        0,
+        1,
+        0.03,
+      ),
+      opts.ink,
+      0.65,
+      0.17,
+    );
+  }
+  c.clip(r.silhouette, a);
+  return r;
+}
+export function seaArch(c) {
+  const d =
+    "M730 690 L764 610 800 575 832 490 880 464 907 425 958 445 1008 420 1040 467 1082 490 1120 590 1210 662 1250 690 1110 690 Q1100 560 1020 555 Q950 545 927 690 Z";
+  c.add(path(d, "#a89781", 1, 0.27, "#b6a18b"));
+  let h = "";
+  for (let j = 0; j < 55; j++)
+    h += path(
+      `M720 ${425 + j * 5} Q960 ${445 + j * 5} 1260 ${410 + j * 5}`,
+      "#978773",
+      0.7,
+      0.4,
+    );
+  c.clip(path(d, "none", 0, 1, "white"), h);
+}
+export function arch(c, x, y, w, h, ink) {
+  c.add(
+    path(
+      `M${x - w} ${y} Q${x - w * 0.8} ${y - h} ${x} ${y - h} Q${x + w * 0.8} ${y - h} ${x + w} ${y} L${x + w * 0.5} ${y} Q${x + w * 0.45} ${y - h * 0.65} ${x} ${y - h * 0.6} Q${x - w * 0.45} ${y - h * 0.65} ${x - w * 0.5} ${y}Z`,
+      ink,
+      1,
+      0.32,
+      ink,
+    ),
+  );
+  for (let j = 0; j < 24; j++) {
+    let t = (Math.PI * j) / 23;
+    c.add(
+      line(
+        [
+          [x + Math.cos(t) * w * 0.59, y - Math.sin(t) * h * 0.62],
+          [x + Math.cos(t) * w * 0.95, y - Math.sin(t) * h * 0.95],
+        ],
+        ink,
+        0.7,
+        0.4,
+      ),
+    );
+  }
+}
+export function vine(c, x, y, ink) {
+  for (let k = 0; k < 6; k++) {
+    leaf(c, x + k * 40, y - k * 20, 70, 210 + k * 8, ink);
+    for (let j = 0; j < 4; j++)
+      c.add(
+        ellipse(
+          x + k * 40 + (j % 2) * 10,
+          y - k * 20 + 20 + Math.floor(j / 2) * 10,
+          8,
+          9,
+          ink,
+          0.18,
+        ),
+      );
+  }
+  c.add(
+    path(
+      `M${x - 40} ${y + 60} Q${x + 100} ${y - 80} ${x + 250} ${y - 100}`,
+      ink,
+      1.3,
+      0.4,
+    ),
+  );
+}

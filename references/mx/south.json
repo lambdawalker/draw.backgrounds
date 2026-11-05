@@ -1,0 +1,111 @@
+{
+  "country": "MX",
+  "reviewed": "2026-11-05",
+  "scope": "Public-source research informs broad visual context, not reproductions. No identity text, seal, barcode, emblem or portrait is generated.",
+  "entities": [
+    {
+      "slug": "campeche",
+      "urls": [
+        "https://www.spsc.campeche.gob.mx/licencias-de-conducir/",
+        "https://renovar.licencia-conducir.com/wp-content/uploads/Campeche.jpg"
+      ],
+      "observations": "Downloaded and visually inspected public renewal-page screenshot containing SEAFI banner and small sample card: white field, green/cyan loop ornament at right and green lower flourishes; dark burgundy footer.",
+      "limitations": "Indirect third-party screenshot, small card and issue year unclear. No fine-pattern accuracy asserted. Pass04 adds original green loop ornament and whitens field; arcade remains geographic invention."
+    },
+    {
+      "slug": "chiapas",
+      "urls": [
+        "https://oem.com.mx/elheraldodechiapas/local/presentan-nueva-imagen-de-licencias-para-conducir-en-chiapas-diseno-automovilista-chofer-16749183"
+      ],
+      "observations": "2019 news report establishes a redesign; not a resolved physical-card image. Image searches returned promotional requirements and digital-phone artwork.",
+      "limitations": "Canyon and river original geographic invention; no claim of specimen match. Follow-up physical-card article download returned HTTP 403; official security-release page supplied text only. Digital promotion not treated as physical specimen."
+    },
+    {
+      "slug": "guerrero",
+      "urls": [
+        "https://licencias.guerrero.gob.mx/"
+      ],
+      "observations": "Official validation page search result contains image placeholders; direct open timed out.",
+      "limitations": "Pacific palms and coast are geographic invention; municipal and temporal variants unresolved. Follow-up official validation fetch returned HTTP 503; other reachable news supplied administrative text or staff photography, not a resolved card."
+    },
+    {
+      "slug": "oaxaca",
+      "urls": [
+        "https://www.oaxaca.gob.mx/administracion/wp-content/uploads/sites/66/2024/05/Apartado-N-Diseno-de-licencia-conducir-licencias.pdf"
+      ],
+      "observations": "Directly inspected PDF page 1 screenshot: pale gray patterned field, rose/lilac/green decorative region, broad light center and lower foliage/ornamental shapes.",
+      "limitations": "2024 procurement specimen; original flowers and stepped fretwork reinterpret broad color and decoration only."
+    },
+    {
+      "slug": "quintana-roo",
+      "urls": [
+        "https://cgc.qroo.gob.mx/renuevan-diseno-de-licencias-de-conducir-y-agilizan-tramites-a-la-ciudadania-en-seguridad-publica/",
+        "https://cgc.qroo.gob.mx/cjg/wp-content/uploads/2017/02/SSP-licencia-de-conducir-cancun-2017_01.jpg"
+      ],
+      "observations": "Downloaded and visually inspected full official 2017 chofer sample: golden sky, turquoise lower stripe and a yellow angular decorative corner; dark cultural sculpture silhouettes at right.",
+      "limitations": "Historic 2017 version only. Pass04 uses pale gold/turquoise and original stepped linework; coral remains geographic invention, no source sculpture copied."
+    },
+    {
+      "slug": "tabasco",
+      "urls": [
+        "https://swebrepo.tabasco.gob.mx/licitaciones/adquisiciones/administracion/admon2015/56097001-020-15-SA/56097001-020-15-Bases-SA.pdf"
+      ],
+      "observations": "Directly inspected page 54 screenshot: muted gray field with fine pale diagonal curves; white central space, restrained green/orange accent strips.",
+      "limitations": "2015 historic specimen only; water plants and green botanical field are geographic invention."
+    },
+    {
+      "slug": "tamaulipas",
+      "urls": [
+        "https://www.milenio.com/politica/comunidad/licencia-conducir-tamaulipas-imagen-gobierno-4t",
+        "https://cdn.milenio.com/uploads/media/2022/12/09/americo-villarreal-presenta-licencia-conducir.jpg"
+      ],
+      "observations": "Downloaded and visually inspected Milenio launch photograph: card is small but visibly white/lilac with burgundy curved lower-right accent.",
+      "limitations": "Card is about 100 pixels wide in press photograph; only broad color placement reliable. Pass04 adds original pale burgundy corner ribbons; hill and grasses remain invented."
+    },
+    {
+      "slug": "veracruz",
+      "urls": [
+        "https://imagendeveracruz.mx/veracruz/Asi-lucen-las-licencias-de-conducir-permanentes-en-Veracruz-este-2025-20250307-0036.html",
+        "https://sistemas.cgever.gob.mx/2017/manual_identidad/Veracruz-Gu%C3%ADa-de-Identidad-Institucional.pdf"
+      ],
+      "observations": "Downloaded official manual and rendered page 36: vertical demonstration card uses broad white-to-gray field, light gray bars and restrained gray header.",
+      "limitations": "Historic 2017 identity-guideline mock-up, not current card or resolved fine linework. Pass04 makes background more neutral gray; maritime tower remains geographic invention."
+    },
+    {
+      "slug": "yucatan",
+      "urls": [
+        "https://www.posta.com.mx/yucatan/licencias-en-yucatan-2026-descuentos-y-tramites-gratis/vl2206245"
+      ],
+      "observations": "Image search returned green-tinted card photograph, hand-held; search image metadata describes green field.",
+      "limitations": "Low-resolution thumbnail evidence only; no microscopic pattern claim. Stepped structure and foliage invented. Direct image download and alternative base URL returned HTTP403/XML. Web image metadata alone not counted as inspection."
+    },
+    {
+      "slug": "zacatecas",
+      "urls": [
+        "https://bienestaravisos.com/licencia-de-conducir/licencia-de-conducir-zacatecas/",
+        "https://bienestaravisos.com/wp-content/uploads/2023/03/buscan-brindar-licencia-de-manejo-a-migrantes-261144.jpeg"
+      ],
+      "observations": "Downloaded and visually inspected: cartoon person, generic gray placeholder bars, tricolor blocks. Rejected as meaningful specimen evidence.",
+      "limitations": "Public article illustration is not a genuine specimen; original rose architecture retained; current specimen unresolved."
+    }
+  ],
+  "visual_coverage": {
+    "inspected_usable_samples": [
+      "campeche",
+      "oaxaca",
+      "quintana-roo",
+      "tabasco",
+      "tamaulipas",
+      "veracruz"
+    ],
+    "inspected_rejected_illustration": [
+      "zacatecas"
+    ],
+    "unresolved_physical_specimen": [
+      "chiapas",
+      "guerrero",
+      "yucatan"
+    ],
+    "note": "Six usable visual references; dated, small-photo and mock-up limitations remain explicit per entity. No assertion of current licence replication."
+  }
+}

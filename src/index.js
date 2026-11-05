@@ -1,60 +1,35 @@
-import expansionA from "./expansion/a/index.js";
-import expansionB from "./expansion/b/index.js";
-import expansionC from "./expansion/c/index.js";
-import expansionD from "./expansion/d/index.js";
-import { finish } from "./finishing.js";
+import { states, render as renderUS } from "./countries/us/index.js";
+import mexicoNorth from "./countries/mx/north/index.js";
+import mexicoCentral from "./countries/mx/central/index.js";
+import mexicoSouth from "./countries/mx/south/index.js";
+import canada from "./countries/ca/index.js";
 import { Canvas, rng, mixSeed } from "./geometry.js";
-import washington from "./designs/washington.js";
-import arkansas from "./designs/arkansas.js";
-import illinois from "./designs/illinois.js";
-import tennessee from "./designs/tennessee.js";
-import alaska from "./designs/alaska.js";
-import wyoming from "./designs/wyoming.js";
-import louisiana from "./designs/louisiana.js";
-import utah from "./designs/utah.js";
-import colorado from "./designs/colorado.js";
-import idaho from "./designs/idaho.js";
-const originalStates = Object.freeze([
-  "washington",
-  "arkansas",
-  "illinois",
-  "tennessee",
-  "alaska",
-  "wyoming",
-  "louisiana",
-  "utah",
-  "colorado",
-  "idaho",
-]);
-export const states = Object.freeze([
-  ...originalStates,
-  ...Object.keys({
-    ...expansionA,
-    ...expansionB,
-    ...expansionC,
-    ...expansionD,
-  }).sort(),
-]);
+export { states };
+export const countries = Object.freeze(["us", "mx", "ca"]);
 const designs = {
-  ...expansionA,
-  ...expansionB,
-  ...expansionC,
-  ...expansionD,
-  washington,
-  arkansas,
-  illinois,
-  tennessee,
-  alaska,
-  wyoming,
-  louisiana,
-  utah,
-  colorado,
-  idaho,
+  mx: { ...mexicoNorth, ...mexicoCentral, ...mexicoSouth },
+  ca: canada,
 };
-export function render(state, { seed = 42, width = 1400, height = 880 } = {}) {
-  if (!states.includes(state))
+export const jurisdictionsByCountry = Object.freeze({
+  us: states,
+  mx: Object.freeze(Object.keys(designs.mx).sort()),
+  ca: Object.freeze(Object.keys(designs.ca).sort()),
+});
+export const countryNames = Object.freeze({
+  us: "United States",
+  mx: "Mexico",
+  ca: "Canada",
+});
+export function render(
+  jurisdiction,
+  { country = "us", seed = 42, width = 1400, height = 880 } = {},
+) {
+  if (!countries.includes(country))
+    throw new RangeError("Unknown country: " + country);
+  if (country === "us") return renderUS(jurisdiction, { seed, width, height });
+  if (!jurisdictionsByCountry[country].includes(jurisdiction))
     throw new RangeError(
-      `Unknown state: ${state}. Choose ${states.join(", ")}.`,
+      "Unknown jurisdiction for " + country + ": " + jurisdiction,
     );
   if (!Number.isInteger(seed) || seed < 0 || seed > 0xffffffff)
     throw new RangeError("seed must be a uint32 integer");
@@ -71,8 +46,17 @@ export function render(state, { seed = 42, width = 1400, height = 880 } = {}) {
       "dimensions must be positive integers <=8192 and <=40 million pixels",
     );
   const random = rng(mixSeed(seed)),
-    c = new Canvas(random, `${state}-${seed}-`);
-  designs[state](c, random() * Math.PI * 2);
-  if (originalStates.includes(state)) finish(c, state);
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 1400 880" preserveAspectRatio="none"><defs>${c.defs.join("")}</defs><g>${c.body.join("")}</g></svg>`;
+    c = new Canvas(random, country + "-" + jurisdiction + "-" + seed + "-");
+  designs[country][jurisdiction](c, random() * Math.PI * 2);
+  return (
+    '<svg xmlns="http://www.w3.org/2000/svg" width="' +
+    width +
+    '" height="' +
+    height +
+    '" viewBox="0 0 1400 880" preserveAspectRatio="none"><defs>' +
+    c.defs.join("") +
+    "</defs><g>" +
+    c.body.join("") +
+    "</g></svg>"
+  );
 }

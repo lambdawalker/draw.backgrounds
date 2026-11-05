@@ -1,0 +1,227 @@
+import {
+  rect,
+  path,
+  line,
+  polygon,
+  ellipse,
+  samples,
+  grid,
+  waves,
+  ridge,
+  snowOnRidge,
+  pine,
+  flower,
+} from "../../geometry.js";
+export {
+  path,
+  line,
+  polygon,
+  ellipse,
+  samples,
+  waves,
+  ridge,
+  snowOnRidge,
+  pine,
+  flower,
+};
+export function base(c, p, a, b, ink) {
+  c.add(
+    rect(
+      0,
+      0,
+      1400,
+      880,
+      c.gradient([
+        [0, a],
+        [48, "#fafaf3"],
+        [100, b],
+      ]),
+    ),
+  );
+  grid(c, { phase: p, color: ink, spacing: 13, amplitude: 38, opacity: 0.2 });
+  c.glow(450, 340, 650, 500, "#ffffff", 0.6);
+}
+export function shore(c, ink, y = 650, amp = 50) {
+  for (let j = 0; j < 26; j++)
+    c.add(
+      line(
+        samples(
+          (x) => [
+            x,
+            y +
+              j * 7 +
+              amp * Math.sin(x / 270 + j * 0.025) +
+              12 * Math.sin(x / 95),
+          ],
+          -50,
+          1450,
+          10,
+        ),
+        ink,
+        0.8,
+        0.26,
+      ),
+    );
+}
+export function branch(c, x, y, s, ink, petals = 5) {
+  c.add(
+    path(
+      `M${x} ${y}q${-45 * s} ${-170 * s} ${40 * s} ${-300 * s}`,
+      ink,
+      1.4,
+      0.4,
+    ),
+  );
+  for (let j = 0; j < 5; j++) {
+    let xx = x + (j % 2 ? 32 : -16) * s,
+      yy = y - (60 + j * 49) * s;
+    flower(c, xx, yy, (20 + (j % 2) * 8) * s, ink, 0.3);
+    c.add(
+      path(
+        `M${xx} ${yy + 10 * s}q${-65 * s} ${10 * s} ${-48 * s} ${45 * s}q${45 * s} ${-5 * s} ${48 * s} ${-45 * s}`,
+        ink,
+        0.9,
+        0.32,
+      ),
+    );
+  }
+}
+export function lily(c, x, y, s, ink) {
+  for (let j = 0; j < 6; j++) {
+    const a = (j * Math.PI) / 3;
+    let pts = samples(
+      (t) => {
+        let r = 95 * s * Math.sin(t * Math.PI);
+        return [
+          x +
+            Math.cos(a) * r +
+            Math.sin(a) * 22 * s * Math.sin(t * 2 * Math.PI),
+          y +
+            Math.sin(a) * r -
+            Math.cos(a) * 22 * s * Math.sin(t * 2 * Math.PI),
+        ];
+      },
+      0,
+      1,
+      0.03,
+    );
+    c.add(polygon(pts, ink, 0.25));
+    for (let k = -2; k <= 2; k++)
+      c.add(
+        line(
+          samples(
+            (t) => {
+              let r = 80 * s * t;
+              return [
+                x +
+                  Math.cos(a) * r +
+                  Math.sin(a) * k * 3 * s * Math.sin(t * Math.PI),
+                y +
+                  Math.sin(a) * r -
+                  Math.cos(a) * k * 3 * s * Math.sin(t * Math.PI),
+              ];
+            },
+            0,
+            1,
+            0.08,
+          ),
+          ink,
+          0.6,
+          0.24,
+        ),
+      );
+    c.add(
+      line(
+        [
+          [x, y],
+          [x + Math.cos(a) * 80 * s, y + Math.sin(a) * 80 * s],
+        ],
+        ink,
+        0.8,
+        0.45,
+      ),
+    );
+  }
+  c.add(ellipse(x, y, 8 * s, 8 * s, "#bfa870", 0.4));
+}
+export function grasses(c, x, y, s, ink) {
+  for (let j = 0; j < 12; j++) {
+    let xx = x + j * 13 * s,
+      h = (90 + 55 * c.random()) * s;
+    c.add(
+      path(`M${xx} ${y}q${-20 * s} ${-h * 0.7} ${10 * s} ${-h}`, ink, 1, 0.4),
+    );
+    for (let k = 0; k < 5; k++)
+      c.add(
+        path(
+          `M${xx + 4 * s} ${y - h + k * 9 * s}q${-30 * s} ${-25 * s} ${-18 * s} ${-4 * s} M${xx + 4 * s} ${y - h + k * 9 * s}q${30 * s} ${-20 * s} ${18 * s} ${-2 * s}`,
+          ink,
+          0.8,
+          0.36,
+        ),
+      );
+  }
+}
+export function iceberg(c, x, y, s, ink) {
+  c.add(
+    polygon(
+      [
+        [x - 160 * s, y],
+        [x - 100 * s, y - 40 * s],
+        [x - 55 * s, y - 130 * s],
+        [x, y - 88 * s],
+        [x + 35 * s, y - 150 * s],
+        [x + 110 * s, y - 25 * s],
+        [x + 170 * s, y],
+      ],
+      "#f7fcfa",
+      0.75,
+    ),
+  );
+  c.add(
+    path(
+      `M${x - 160 * s} ${y}l${60 * s} ${-40 * s} ${45 * s} ${-90 * s} ${55 * s} ${42 * s} ${35 * s} ${-62 * s} ${75 * s} ${125 * s} ${60 * s} ${25 * s} M${x} ${y - 88 * s}l${-20 * s} ${88 * s} M${x + 35 * s} ${y - 150 * s}l${20 * s} ${150 * s}`,
+      ink,
+      1.3,
+      0.4,
+    ),
+  );
+}
+export function fireweed(c, x, y, s, ink) {
+  c.add(
+    path(
+      `M${x} ${y}Q${x - 20 * s} ${y - 170 * s} ${x + 15 * s} ${y - 360 * s}`,
+      ink,
+      1.6,
+      0.45,
+    ),
+  );
+  for (let j = 0; j < 11; j++) {
+    let yy = y - (100 + j * 22) * s,
+      xx = x + (j % 2 ? 14 : -10) * s;
+    flower(c, xx, yy, (20 - j) * s, ink, 0.36);
+    if (j < 6)
+      c.add(
+        path(
+          `M${x} ${yy + 40 * s}q${-70 * s} ${-8 * s} ${-58 * s} ${-35 * s}q${25 * s} ${8 * s} ${58 * s} ${35 * s} M${x} ${yy + 40 * s}q${55 * s} ${-15 * s} ${60 * s} ${-43 * s}q${-30 * s} ${9 * s} ${-60 * s} ${43 * s}`,
+          ink,
+          0.8,
+          0.38,
+        ),
+      );
+  }
+}
+export function trillium(c, x, y, s, ink) {
+  for (let j = 0; j < 3; j++) {
+    let a = j * 120;
+    c.add(
+      `<g transform="translate(${x} ${y}) rotate(${a}) scale(${s})">${path("M0 0Q-64 -35 0 -110Q64 -35 0 0Z", ink, 1, 0.5, "#f6f8ec")}${path("M0 -8V-96 M-5 -15Q-32 -50 -5 -88 M5 -15Q32 -50 5 -88", ink, 0.65, 0.4)}</g>`,
+    );
+  }
+  c.add(ellipse(x, y, 10 * s, 10 * s, "#c9b973", 0.45));
+}
+export function iris(c, x, y, s, ink) {
+  c.add(
+    `<g transform="translate(${x} ${y}) scale(${s})">${path("M0 110Q15 35 0 -15 M0 20Q-100 -5 -80 -70Q-25 -62 0 0Q-25 -100 0 -120Q48 -90 15 -5Q65 -80 96 -65Q95 -5 20 20Q85 30 70 75Q25 85 5 30Q-25 85 -70 73Q-85 30 0 20", ink, 1.3, 0.45, "#d5ccdf")}${path("M2 110Q-30 65 -35 35 M7 80Q45 55 54 15 M0 -12L0 -95 M18 5L75 -45 M-12 1L-60 -47", ink, 0.9, 0.45)}</g>`,
+  );
+}

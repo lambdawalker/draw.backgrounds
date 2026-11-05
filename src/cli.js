@@ -3,10 +3,11 @@ import { parseArgs } from "node:util";
 import { mkdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { createHash } from "node:crypto";
-import { render, states } from "./index.js";
+import { render, states, countries, jurisdictionsByCountry } from "./index.js";
 const help = `Generate original state-inspired backgrounds.
 Usage: npm run generate -- --state all --format both --out output --seed 42 --count 1
-  --state   all or ${states.join(", ")}
+  --country us | mx | ca | all (omitted: legacy US output layout)
+  --state   all or a jurisdiction slug within the selected country (default all)
   --format  svg | png | both (default both)
   --out     output directory (default output)
   --seed    uint32 seed, incremented for each variation (default 42)
@@ -19,6 +20,7 @@ Existing matching files in --out are replaced. Use a new directory for each batc
 try {
   const { values: v } = parseArgs({
     options: {
+      country: { type: "string" },
       state: { type: "string", default: "all" },
       format: { type: "string", default: "both" },
       out: { type: "string", default: "output" },
@@ -42,21 +44,33 @@ try {
       throw Error("format must be svg, png or both");
     if (!Number.isInteger(seed) || seed < 0 || seed + count - 1 > 0xffffffff)
       throw Error("seed range must fit uint32");
-    const selected = v.state === "all" ? states : [v.state];
+    const selectedCountries =
+      v.country === "all" ? countries : [v.country ?? "us"];
+    for (const country of selectedCountries)
+      if (!countries.includes(country))
+        throw Error(`Unknown country: ${country}`);
+    if (v.country === "all" && v.state !== "all")
+      throw Error("--country all requires --state all");
+    const selected = selectedCountries.flatMap((country) =>
+      (v.state === "all" ? jurisdictionsByCountry[country] : [v.state]).map(
+        (state) => ({ country, state }),
+      ),
+    );
     // Validate before writing output or loading the optional raster dependency.
-    render(selected[0], { seed, width, height });
+    for (const { country, state } of selected)
+      render(state, { country, seed, width, height });
     const sharp = v.format === "svg" ? null : (await import("sharp")).default;
     await mkdir(v.out, { recursive: true });
     const manifest = {
       generator: "draw.backgrounds",
-      version: 1,
+      version: v.country ? 2 : 1,
       width,
       height,
       items: [],
     };
-    for (const state of selected)
+    for (const { country, state } of selected)
       for (let i = 0; i < count; i++) {
-        const svg = render(state, { seed: seed + i, width, height }),
+        const svg = render(state, { country, seed: seed + i, width, height }),
           stem = `${state}_${seed + i}`,
           files = [];
         for (const ext of v.format === "both" ? ["svg", "png"] : [v.format]) {
@@ -64,15 +78,23 @@ try {
             ext === "svg"
               ? Buffer.from(svg)
               : await sharp(Buffer.from(svg)).png().toBuffer();
-          const filename = `${stem}.${ext}`;
+          const filename = v.country
+            ? `${country}/${stem}.${ext}`
+            : `${stem}.${ext}`;
+          if (v.country) await mkdir(join(v.out, country), { recursive: true });
           await writeFile(join(v.out, filename), bytes);
           files.push({
             filename,
             sha256: createHash("sha256").update(bytes).digest("hex"),
           });
         }
-        manifest.items.push({ state, seed: seed + i, files });
-        console.log(stem);
+        manifest.items.push({
+          ...(v.country ? { country, jurisdiction: state } : {}),
+          state,
+          seed: seed + i,
+          files,
+        });
+        console.log(v.country ? `${country}/${stem}` : stem);
       }
     await writeFile(
       join(v.out, "manifest.json"),

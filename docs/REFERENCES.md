@@ -1,6 +1,6 @@
 # Reference study
 
-Ten specimen images were downloaded for visual inspection on 2026-11-05, then viewed together at 600 pixels per card. Exact source pages, image URLs, edition labels and observed design cues are recorded in [sources.json](../references/sources.json). Edition labels from the third-party USID catalog are source labels, not independently verified issuance dates. Some references are historical. No claim is made that these are the newest cards.
+Ten specimen images were downloaded for visual inspection on 2026-11-05, then viewed together at 600 pixels per card. Exact source pages, image URLs, edition labels and observed design cues are recorded in [sources.json](../references/us/sources.json). Edition labels from the third-party USID catalog are source labels, not independently verified issuance dates. Some references are historical. No claim is made that these are the newest cards.
 
 Original compositions use the reference palette and broad graphic language; they are not pixel reconstructions. References remain external: generated SVGs contain only mathematical paths, fills and strokes. Specimen photographs, typography, official emblems, state silhouettes and encoded data are omitted. Illustrative mountains, architectural ornaments, a bird and flowers are newly drawn geometry.
 
