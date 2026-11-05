@@ -1,3 +1,4 @@
+import { finish } from "./finishing.js";
 import { Canvas, rng, mixSeed } from "./geometry.js";
 import washington from "./designs/washington.js";
 import arkansas from "./designs/arkansas.js";
@@ -55,5 +56,6 @@ export function render(state, { seed = 42, width = 1400, height = 880 } = {}) {
   const random = rng(mixSeed(seed)),
     c = new Canvas(random, `${state}-${seed}-`);
   designs[state](c, random() * Math.PI * 2);
+  finish(c, state);
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 1400 880" preserveAspectRatio="none"><defs>${c.defs.join("")}</defs><g>${c.body.join("")}</g></svg>`;
 }
