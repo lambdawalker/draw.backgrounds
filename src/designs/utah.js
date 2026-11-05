@@ -1,4 +1,4 @@
-import {rect,waves,ridge,line,samples,ellipse,polygon} from '../geometry.js';
+import {rect,waves,ridge,line,samples,ellipse,polygon,rockEtching} from '../geometry.js';
 export default function(c,p){
   c.add(rect(0,0,1400,880,c.gradient([[0,'#fbefeb'],[48,'#f8f7f3'],[100,'#eaf1f4']])));
   waves(c,{color:'#8aa5bf',opacity:.2,spacing:7,amplitude:20,phase:p});
@@ -6,6 +6,7 @@ export default function(c,p){
   ridge(c,edge,{fill:'#efc7b4',ink:'#cb927f',opacity:.3,hatch:false});
   c.add(polygon([[830,310],[900,330],[935,410],[1010,440],[940,650],[885,790],[850,600]],'#c28f7f',.12));
   c.add(polygon([[750,380],[810,350],[830,310],[800,560],[750,710],[710,590]],'#dfa58e',.14));
+  rockEtching(c,edge,{color:'#b78679',opacity:.18});
   for(let j=0;j<16;j++)c.add(line([[770+j*8,420+j*2],[750+j*7,510],[800+j*5,600],[765+j*8,750]],'#be8573',.7,.22));
   for(let j=0;j<21;j++)c.add(line(edge.map(([x,y])=>[900+(x-900)*(1+j*.013),y+j*7]),'#c38679',.8,.25));
   for(let j=0;j<22;j++)c.add(line(samples(y=>[870+j*9+10*Math.sin(y/80+p+j*.14),y],410,880,8),'#bd8b83',.8,.28));

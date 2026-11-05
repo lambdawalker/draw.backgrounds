@@ -39,3 +39,22 @@ No design accepted after pass 1. All ten move to pass 2.
 | Idaho | Two wings now read correctly; feathers look like narrow rays and body is sparse. | Add layered covert feathers and shorten the tail; improve the wing/body join. |
 
 The generator validation suite passed all 13 tests: every design rasterizes, repeated seeds match, alternate seeds change pixels, batches have correct hashes and invalid CLI inputs fail.
+
+## Pass 3 — finishing detail
+
+[Contact sheet](pass-3.jpg). Full-size Washington, Arkansas, Alaska, Wyoming, Louisiana, Utah and Colorado renders were additionally inspected; Idaho, Illinois and Tennessee detail changes were compared against their full-size pass-2 views.
+
+| State | Result | Decision |
+|---|---|---|
+| Washington | Snow is attached to consistent ridge points; slope etching adds depth; fine horizontal field remains calm. | Accepted, 3 passes. |
+| Arkansas | Blue warped mesh and gold panels stay distinct; diamonds sit within margins; small rosettes add detail. | Accepted, 3 passes. |
+| Illinois | Inner medallion balances the now softer interlaced rosette; coral ribbons remain legible but subtle. | Accepted, 3 passes. |
+| Tennessee | Rebuilt pavilion has arched windows, layered cornices, roof hatching and consistent column geometry. | Accepted, 3 passes. |
+| Alaska | Pale two-color header weave, mountain engraving and flowering edge read as a coherent composition. | Accepted, 3 passes. |
+| Wyoming | Unchanged since pass 2; confirmed smooth variation and clean band transitions. | Accepted, 2 passes. |
+| Louisiana | Rosette no longer overpowers tower; warm base remains light; tower is deliberately understated. | Accepted, 3 passes. |
+| Utah | Sandstone planes and clipped fractures provide texture without dark broad fills. | Accepted, 3 passes. |
+| Colorado | Peak engraving and snow facets give depth; muted foothills preserve contrast for later overlays. | Accepted, 3 passes. |
+| Idaho | Layered covert feathers improve wing roots; shortened tail improves proportions; background remains pale. | Accepted, 3 passes. |
+
+All ten meet the visual brief for original procedural dataset backgrounds. None reached the six-pass limit. These are stylized illustrations; photographic landscape realism and reproduction of state security features are not goals. No downstream OCR or detector accuracy claim is made.

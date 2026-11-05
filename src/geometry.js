@@ -79,3 +79,51 @@ export function tower(c,x,y,s,color){
   for(let j=-8;j<=8;j++)g+=line([[x+j*12*s,y],[x+j*12*s,y-40*s]],color,1,.4);
   c.add(g);
 }
+export function rockEtching(c,verts,{color='#7895aa',opacity=.18}={}){
+  const shape=polygon([...verts,[1600,950],[-100,950]],'#fff');let g='';
+  for(let j=0;j<65;j++){
+    const x=300+j*14;
+    g+=line(samples(t=>[x+95*t+10*Math.sin(t*9+j*.4),240+t*550+22*Math.sin(j*.8)],0,1,.025),color,.65,opacity);
+  }
+  c.clip(shape,g);
+}
+/** Original neoclassical pavilion elevation; outlines and shading share dimensions. */
+export function engravedPavilion(c,x,y,s,color){
+  let g='';const P=(d,w=1,o=.6,fill='none')=>{g+=path(d,color,w,o,fill);};
+  const R=(a,b,w,h,o=.07)=>{g+=rect(a,b,w,h,color,o);};
+  // Coordinates are local to the pavilion baseline.
+  R(-175,-145,350,145,.07);
+  P('M-185 -150 L0 -225 L185 -150Z',1.1,.5,'#d6e2e7');
+  for(let j=0;j<14;j++){const yy=-153-j*4.6,ww=180-j*11.3;P(`M${-ww} ${yy} H${ww}`,.6,.4);}
+  P('M-192 -148 H192 M-185 -140 H185 M-181 -136 H181',1,.6);
+  // Pediment relief, original circular ornament.
+  g+=ellipse(0,-176,18,12,'#95b0be',.15);
+  for(let j=0;j<4;j++)P(`M${-20-j*2} -175 Q0 ${-200-j} ${20+j*2} -175 Q0 ${-153+j} ${-20-j*2} -175`,.55,.35);
+  // Masonry bed joints and alternating vertical joints.
+  for(let yy=-128,row=0;yy<0;yy+=7,row++){
+    P(`M-172 ${yy} H172`,.55,.25);
+    for(let xx=-170+(row%2)*18;xx<170;xx+=36)P(`M${xx} ${yy} v7`,.45,.2);
+  }
+  for(let i=-4;i<=4;i++){
+    const xx=i*35;
+    P(`M${xx-7} -8 V-126 H${xx+7} V-8Z`,.8,.7,'#eef2ed');
+    for(let k=-2;k<=2;k++)P(`M${xx+k*2} -13 V-121`,.6,.45);
+    P(`M${xx-11} -128 H${xx+11} M${xx-10} -123 H${xx+10} M${xx-10} -9 H${xx+10} M${xx-12} -4 H${xx+12}`,1,.6);
+    if(i<4)P(`M${xx+14} -22 V-84 Q${xx+17.5} -94 ${xx+21} -84 V-22Z`,.75,.4,'#b7c9d1');
+  }
+  for(let j=0;j<6;j++)P(`M${-180-j*3} ${j*4} H${180+j*3}`,.8,.65);
+  // Layered tower: base, window arcade, cornices, small lantern and roof.
+  R(-41,-335,82,128,.09);
+  P('M-42 -209 V-335 H42 V-209 M-50 -335 H50 M-48 -328 H48 M-43 -320 H43',1,.6);
+  for(let i=-1;i<=1;i++){
+    const xx=i*25;
+    P(`M${xx-7} -236 V-297 Q${xx} -313 ${xx+7} -297 V-236Z`,.8,.65,'#d1dfe4');
+    P(`M${xx} -300 V-238 M${xx-7} -272 H${xx+7}`,.7,.5);
+  }
+  for(let j=0;j<4;j++)P(`M-46 ${-224+j*4} H46`,.7,.6);
+  P('M-52 -340 L0 -363 L52 -340Z',1,.6,'#cedde4');
+  for(let j=0;j<5;j++)P(`M${-47+j*8} ${-342-j*3.7} H${47-j*8}`,.7,.45);
+  P('M-16 -356 V-391 H16 V-356 M-22 -392 H22 L0 -412 L-22 -392 M0 -412 V-430',.9,.65);
+  P('M-8 -361 V-386 M0 -361 V-386 M8 -361 V-386',.8,.55);
+  c.add(`<g transform="translate(${x} ${y}) scale(${s})">${g}</g>`);
+}

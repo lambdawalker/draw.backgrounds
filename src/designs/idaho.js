@@ -19,7 +19,15 @@ export default function(c,p){
     const a=-.93+j*.061,len=175+50*Math.sin(j/20*Math.PI);
     feather(934,438,934+Math.cos(a)*len,438+Math.sin(a)*len,12);
   }
-  for(let j=0;j<6;j++)feather(885,520,810+j*10,685-j*4,11);
+  // Three rows of overlapping covert feathers cover the radial quill roots.
+  for(let row=0;row<3;row++)for(let j=0;j<13;j++){
+    const a=-2.85+j*.1,len=48+row*24;
+    const x=902+Math.cos(a)*len,y=432+Math.sin(a)*len;
+    feather(x,y,x+Math.cos(a)*42,y+Math.sin(a)*42,10);
+    const b=-.9+j*.1,xx=934+Math.cos(b)*len,yy=438+Math.sin(b)*len;
+    feather(xx,yy,xx+Math.cos(b)*38,yy+Math.sin(b)*38,9);
+  }
+  for(let j=0;j<6;j++)feather(885,520,810+j*10,642-j*3,11);
   c.add(path('M883 425 C877 390 902 365 934 371 C962 376 979 409 959 438 C943 472 930 523 886 564 C852 555 858 512 870 480Z','#7494ac',1,.7,'#c3d4df'));
   c.add(path('M897 446 Q913 425 939 443 Q943 488 887 546 Q872 520 897 446Z','none',0,.45,'#eff1e6'));
   c.add(path('M963 402 L990 412 L962 420Z','#668a9e',.8,.7,'#a7becb'));
