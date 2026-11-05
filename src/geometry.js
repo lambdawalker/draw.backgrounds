@@ -1,0 +1,55 @@
+/** Geometry uses one 1400 x 880 coordinate system. No external artwork. */
+export const W = 1400, H = 880, TAU = Math.PI * 2;
+export const n = v => Number(v.toFixed(2));
+export const points = a => a.map(p => p.map(n).join(',')).join(' ');
+export const path = (d, color, width = 1, opacity = 1, fill = 'none') => `<path d="${d}" fill="${fill}" stroke="${color}" stroke-width="${width}" opacity="${opacity}" stroke-linejoin="round" stroke-linecap="round"/>`;
+export const line = (a, color, width = 1, opacity = 1) => `<polyline points="${points(a)}" fill="none" stroke="${color}" stroke-width="${width}" opacity="${opacity}" stroke-linejoin="round"/>`;
+export const polygon = (a, fill, opacity = 1) => `<polygon points="${points(a)}" fill="${fill}" opacity="${opacity}"/>`;
+export const rect = (x,y,w,h,fill,opacity=1) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${fill}" opacity="${opacity}"/>`;
+export const ellipse = (x,y,rx,ry,color,opacity=1) => `<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" fill="${color}" opacity="${opacity}"/>`;
+export function rng(seed) { let s=seed>>>0; return () => ((s=(Math.imul(s,1664525)+1013904223)>>>0)/4294967296); }
+export function samples(fn, start, end, step=8) { const a=[]; for(let t=start;t<=end;t+=step)a.push(fn(t));return a; }
+export class Canvas {
+  constructor(random) { this.random=random; this.defs=[]; this.body=[]; this.serial=0; }
+  add(s){this.body.push(s);}
+  id(){return `g${this.serial++}`;}
+  gradient(stops, x1='0%',y1='0%',x2='100%',y2='100%') {
+    const id=this.id();this.defs.push(`<linearGradient id="${id}" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}">${stops.map(([offset,color])=>`<stop offset="${offset}%" stop-color="${color}"/>`).join('')}</linearGradient>`);return `url(#${id})`;
+  }
+  glow(x,y,rx,ry,color,opacity=.3){const id=this.id();this.defs.push(`<radialGradient id="${id}"><stop stop-color="${color}" stop-opacity="${opacity}"/><stop offset="100%" stop-color="${color}" stop-opacity="0"/></radialGradient>`);this.add(ellipse(x,y,rx,ry,`url(#${id})`));}
+  clip(shape, content){const id=this.id();this.defs.push(`<clipPath id="${id}">${shape}</clipPath>`);this.add(`<g clip-path="url(#${id})">${content}</g>`);}
+}
+/** Shared smooth coordinate warp: spacing changes within and between curves. */
+export function grid(c,{color='#639eb4',opacity=.2,spacing=12,amplitude=24,phase=0,vertical=true,horizontal=true}={}){
+  const warp=(u,v)=>[u+amplitude*(Math.sin(v/140+phase)+.6*Math.sin(u/210+v/190)),v+amplitude*(Math.sin(u/185+phase)+.6*Math.sin(v/150+u/260))];
+  if(horizontal)for(let y=-100;y<1000;y+=spacing)c.add(line(samples(x=>warp(x,y),-100,1500,12),color,.8,opacity));
+  if(vertical)for(let x=-100;x<1500;x+=spacing)c.add(line(samples(y=>warp(x,y),-100,1000,12),color,.8,opacity));
+}
+export function waves(c,{color='#639eb4',opacity=.25,from=0,to=900,spacing=8,amplitude=35,period=240,phase=0,slope=0}={}){
+  for(let y=from;y<=to;y+=spacing)c.add(line(samples(x=>[x,y+amplitude*Math.sin(x/period+phase+y/520)+12*Math.sin(x/95+y/180)+slope*x],-40,1440,9),color,.8,opacity));
+}
+export function rosette(c,x,y,r,color,{rings=22,lobes=24,amplitude=12,opacity=.3,width=.8}={}){
+  for(let j=0;j<rings;j++){const rr=r+j*2.4;c.add(line(samples(t=>{const a=t/180*Math.PI,rad=rr+amplitude*Math.sin(lobes*a+j*.15);return [x+rad*Math.cos(a),y+rad*Math.sin(a)];},0,360,1),color,width,opacity));}
+}
+export function ridge(c,verts,{fill='#b1c6cf',ink='#7b9eae',opacity=.4,hatch=true}={}){
+  const bottom=1000, shape=polygon([...verts,[1600,bottom],[-200,bottom]],fill);
+  c.add(`<g opacity="${opacity}">${shape}</g>`);
+  if(hatch){let lines='';for(let y=-100;y<1000;y+=7)lines+=line(samples(x=>[x,y+20*Math.sin(x/120+y/140)],-100,1500,12),ink,.75,.25);c.clip(shape,lines);}
+  c.add(line(verts,ink,1.1,opacity*.7));
+}
+export function pine(c,x,y,size,color,opacity=.4){
+  const a=[[x,y-size]];for(let j=1;j<=8;j++){const yy=y-size+j*size/9,ww=size*.25*j/8;a.push([x-ww*.65,yy-size*.09],[x-ww,yy]);}a.push([x-size*.025,y],[x+size*.025,y]);for(let j=8;j>=1;j--){const yy=y-size+j*size/9,ww=size*.25*j/8;a.push([x+ww,yy],[x+ww*.65,yy-size*.09]);}c.add(polygon(a,color,opacity));}
+export function flower(c,x,y,r,color,opacity=.35){
+  for(let j=0;j<5;j++){const a=j*TAU/5;const p=(u,v)=>[x+Math.cos(a)*u-Math.sin(a)*v,y+Math.sin(a)*u+Math.cos(a)*v];const a1=p(r*.15,0),a2=p(r*.55,-r*.55),a3=p(r*1.15,-r*.25),a4=p(r,0),a5=p(r*1.15,r*.25),a6=p(r*.55,r*.55);c.add(path(`M${points([a1])} C${points([a2,a3,a4])} C${points([a5,a6,a1])}Z`,color,.8,opacity,color));for(let k=-2;k<=2;k++)c.add(line([p(r*.2,0),p(r*.8,k*r*.065)],'#fffaf5',.8,.45));}c.add(ellipse(x,y,r*.14,r*.14,'#d7b46a',.7));
+}
+export function pavilion(c,x,y,s,color,opacity=.4,tower=false){
+  let b='';const L=(p,w=1)=>{b+=line(p,color,w);};
+  L([[x-180*s,y],[x+180*s,y]],3);L([[x-170*s,y-12*s],[x+170*s,y-12*s]],2);
+  for(const side of [-1,1])L([[x+side*150*s,y-15*s],[x+side*150*s,y-135*s]],2);
+  L([[x-180*s,y-140*s],[x,y-215*s],[x+180*s,y-140*s],[x-180*s,y-140*s]],2);
+  for(let i=-5;i<=5;i++){const xx=x+i*25*s;L([[xx,y-20*s],[xx,y-128*s]],4);L([[xx-5*s,y-20*s],[xx-5*s,y-128*s]],.7);L([[xx-8*s,y-130*s],[xx+8*s,y-130*s]],2);}
+  for(let j=0;j<5;j++)L([[x-175*s,y+j*6*s],[x+175*s,y+j*6*s]],.8);
+  if(tower){L([[x-40*s,y-199*s],[x-40*s,y-330*s],[x+40*s,y-330*s],[x+40*s,y-199*s]],2);L([[x-53*s,y-330*s],[x,y-385*s],[x+53*s,y-330*s],[x-53*s,y-330*s]],2);L([[x,y-385*s],[x,y-430*s]],2);for(let i=-2;i<=2;i++)L([[x+i*13*s,y-215*s],[x+i*13*s,y-320*s]],2);}
+  for(let yy=30;yy<140;yy+=5)L([[x-148*s,y-yy*s],[x+148*s,y-yy*s]],.45);
+  c.add(`<g opacity="${opacity}">${b}</g>`);
+}

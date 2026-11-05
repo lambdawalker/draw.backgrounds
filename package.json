@@ -1,0 +1,16 @@
+{
+  "name": "@lambdawalker/draw-backgrounds",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Seeded procedural SVG backgrounds for synthetic card datasets",
+  "engines": { "node": ">=22" },
+  "exports": "./src/index.js",
+  "scripts": {
+    "generate": "node src/cli.js",
+    "previews": "node scripts/previews.js",
+    "test": "node --test",
+    "select-states": "node scripts/select-states.js"
+  },
+  "dependencies": { "sharp": "0.34.5" }
+}
