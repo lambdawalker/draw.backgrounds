@@ -3,4 +3,5 @@ export default function(c,phase){
 paper(c,'#d2e6ec','#efdbbf'); waves(c,{phase,color:'#ba8f8c',opacity:.23,amplitude:65,period:350}); c.add(polygon([[750,270],[990,270],[990,460],[1230,460],[1230,590],[1130,640],[1040,820],[930,735],[820,600],[690,550],[610,420],[750,420]],'#92b7bd',.11));
 dome(c,1050,710,.8,"#84a6b4");
 for(let j=0;j<22;j++)c.add(path(`M${720+j*22} 765V${695+Math.sin(j)*10}`,"#8aadb7",.8,.24));
+grid(c,{phase,color:"#72a2b5",opacity:.2,spacing:9,amplitude:20});
 }
