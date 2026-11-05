@@ -1,2 +1,32 @@
-import {paper,field,border,quality,dome,path,flourish,ellipse} from './helpers.js';
-export default function(c,p){paper(c,['#e8ede4','#e9e5d6','#dce6e3']);field(c,'#91aba4',p);dome(c,1020,690,1.4,'#8a9e8e','indiana');flourish(c,790,770,760,'#aaa58c');if(quality.pass>=5){c.add(path('M750 790 l40 -30 h135 l40 20 h70 l25 30 H730Z','#859c94',1,.4,'#c2cdc4'));c.add(ellipse(795,813,28,18,'#879d94',.3));c.add(ellipse(1000,813,28,18,'#879d94',.3));for(let j=0;j<11;j++)c.add(path(`M${770+j*20} 785 l20 -18`,'#859c94',.7,.35));}border(c,'#a1ad95');}
+import {
+  paper,
+  field,
+  border,
+  quality,
+  dome,
+  path,
+  flourish,
+  ellipse,
+} from "./helpers.js";
+export default function (c, p) {
+  paper(c, ["#e8ede4", "#e9e5d6", "#dce6e3"]);
+  field(c, "#91aba4", p);
+  dome(c, 1020, 690, 1.4, "#6d9185", "indiana");
+  flourish(c, 790, 770, 760, "#aaa58c");
+  if (quality.pass >= 5) {
+    c.add(
+      path(
+        "M750 790 l40 -30 h135 l40 20 h70 l25 30 H730Z",
+        "#728f84",
+        1,
+        0.4,
+        "#c2cdc4",
+      ),
+    );
+    c.add(ellipse(795, 813, 28, 18, "#879d94", 0.3));
+    c.add(ellipse(1000, 813, 28, 18, "#879d94", 0.3));
+    for (let j = 0; j < 11; j++)
+      c.add(path(`M${770 + j * 20} 785 l20 -18`, "#728f84", 0.7, 0.35));
+  }
+  border(c, "#a1ad95");
+}
