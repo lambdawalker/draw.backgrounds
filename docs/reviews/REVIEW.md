@@ -58,3 +58,24 @@ The generator validation suite passed all 13 tests: every design rasterizes, rep
 | Idaho | Layered covert feathers improve wing roots; shortened tail improves proportions; background remains pale. | Accepted, 3 passes. |
 
 All ten meet the visual brief for original procedural dataset backgrounds. None reached the six-pass limit. These are stylized illustrations; photographic landscape realism and reproduction of state security features are not goals. No downstream OCR or detector accuracy claim is made.
+
+## Final seed-variation check — pass 4 (Wyoming pass 3)
+
+The independent code review found no blocking issues, but identified weak variation between adjacent LCG seeds. Rendering now hashes each uint32 seed before starting the LCG. State selection retains its original algorithm and therefore the same ten states. Final seed-42 previews were regenerated and viewed; the [42/43/44 comparison](seed-variations.jpg) was inspected across all ten rows.
+
+| State | Final check |
+|---|---|
+| Washington | Horizontal waves and ridge microdetail vary; snow and tree alignment stay intact. |
+| Arkansas | Grid warp and diamond row vary within the established margins. |
+| Illinois | Ribbons shift visibly; central filigree remains centered and low contrast. |
+| Tennessee | Fine field and lower waves vary; architecture remains stable. |
+| Alaska | Mesh and ridge microdetail vary; flowers and snow remain attached. |
+| Wyoming | Contour spacing changes visibly; border transitions remain smooth. |
+| Louisiana | Curved vertical band moves noticeably; rosette and tower retain balance. |
+| Utah | Fine waves vary; the canyon and clipped hatching remain coherent. |
+| Colorado | Sky lines and ridge microdetail vary without moving the snow anchors. |
+| Idaho | Mesh warp changes; wing/body alignment stays fixed. |
+
+All accepted. Final counts: 4 rendered evaluations for nine designs, 3 for Wyoming, below the six-pass maximum. The additional check is for the seed-mixing change, not an extra motif revision. Variation is intentionally controlled; major motif layouts and palette families stay stable.
+
+Review follow-ups also namespace SVG definitions by state and seed, and assert that invalid CLI inputs create no output directory. Final suite: 15 passing tests, including average per-channel raster differences across five adjacent seeds for every state. That numerical diversity check does not measure training usefulness.

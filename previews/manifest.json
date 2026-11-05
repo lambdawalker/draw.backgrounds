@@ -1,0 +1,137 @@
+{
+  "seed": 42,
+  "width": 1400,
+  "height": 880,
+  "items": [
+    {
+      "state": "washington",
+      "files": [
+        {
+          "filename": "washington.svg",
+          "sha256": "8f2ac078cb93ee7c6f271dac41bfd6a681e7e1865d4d41fdf53c0566f3c91acd"
+        },
+        {
+          "filename": "washington.png",
+          "sha256": "aa59fabcde09e44cc22224af46f214f1748864acce0715e2b7694662be89845e"
+        }
+      ]
+    },
+    {
+      "state": "arkansas",
+      "files": [
+        {
+          "filename": "arkansas.svg",
+          "sha256": "cd631144d05d0384896139177bdf7fbfbad5bc2dc60f9753dda12e5f1ae63f68"
+        },
+        {
+          "filename": "arkansas.png",
+          "sha256": "10b5a045c47d6569aef01745b2d90c03c90fa8897e6285fe43635e8513374095"
+        }
+      ]
+    },
+    {
+      "state": "illinois",
+      "files": [
+        {
+          "filename": "illinois.svg",
+          "sha256": "6f127c3c6bcd81eea4bd1cf579b09c4ae79070ad08faae1d7f71cbafc13b46e2"
+        },
+        {
+          "filename": "illinois.png",
+          "sha256": "38592dc32a76955489f2cd711e48175fac3766c080f6f8f37b1d0ed6e989c515"
+        }
+      ]
+    },
+    {
+      "state": "tennessee",
+      "files": [
+        {
+          "filename": "tennessee.svg",
+          "sha256": "b2c3b2ebebfa8273c951d4dcb877f20cee37d99670cca8c5b59ca68552a4643e"
+        },
+        {
+          "filename": "tennessee.png",
+          "sha256": "7d7a7222c731bcb39691153e4fa72cce4c453132261bf2eac364e4dc6e1d3453"
+        }
+      ]
+    },
+    {
+      "state": "alaska",
+      "files": [
+        {
+          "filename": "alaska.svg",
+          "sha256": "cdb47d65288bb9a97d7ac3763e21e46280bc64be80e77adf36aeb24b6fb17d9d"
+        },
+        {
+          "filename": "alaska.png",
+          "sha256": "e0fc1de7588923eb6cbc9a462d76caad7a9abf42023b69438b97a1e2cfb602cf"
+        }
+      ]
+    },
+    {
+      "state": "wyoming",
+      "files": [
+        {
+          "filename": "wyoming.svg",
+          "sha256": "b528da9b75efad8a760b3f28737b5b531ab140a38d031dd76d4155819a5334f5"
+        },
+        {
+          "filename": "wyoming.png",
+          "sha256": "3845e3bd430619b2bb691da405d78383724763b9447f6abd51b24eb19c0b00a6"
+        }
+      ]
+    },
+    {
+      "state": "louisiana",
+      "files": [
+        {
+          "filename": "louisiana.svg",
+          "sha256": "b7947a53cdfdb45b40a7c07217b160c72bee09fcfccbd0aecf6ef66e4d3a361d"
+        },
+        {
+          "filename": "louisiana.png",
+          "sha256": "886ef9c07da103cd90e0e66639844dd3ac48d396030d7a8fe575a015369742e2"
+        }
+      ]
+    },
+    {
+      "state": "utah",
+      "files": [
+        {
+          "filename": "utah.svg",
+          "sha256": "3b61290d2a4b56f39977f8f2012ef111b30b66acb4101f673d0f2d4491b0be72"
+        },
+        {
+          "filename": "utah.png",
+          "sha256": "8ffe4180fb1e81b7fae6650d4de7fd90f3020ae997887956d981db06f44b90dd"
+        }
+      ]
+    },
+    {
+      "state": "colorado",
+      "files": [
+        {
+          "filename": "colorado.svg",
+          "sha256": "de875781524d1bea2ad54a278e054fe0c6bbf8a3265567b778c82930d21e8d66"
+        },
+        {
+          "filename": "colorado.png",
+          "sha256": "65ff48b6066a04003cf367a01f03e2dac90ad366e99cb4f7f3f9438df0874bae"
+        }
+      ]
+    },
+    {
+      "state": "idaho",
+      "files": [
+        {
+          "filename": "idaho.svg",
+          "sha256": "4333aed300dead532e82f0b175bddd21301cafc988b8c66f232211f1d9c6f99a"
+        },
+        {
+          "filename": "idaho.png",
+          "sha256": "2a8bd960925e77067b2f48dd28db13e82451ee7e41672bd2af1907d8010bf7a3"
+        }
+      ]
+    }
+  ]
+}
