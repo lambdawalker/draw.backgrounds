@@ -28,16 +28,16 @@ Default dimensions are 1400 × 880. Geometry scales to the requested dimensions;
 
 | State | Composition | SVG | PNG | Visual passes |
 |---|---|---|---|---|
-| Washington | Ice-blue engraving, alpine ridge, evergreen | [SVG](previews/washington.svg) | [PNG](previews/washington.png) | 4 |
-| Arkansas | Warped blue grid, gold panels and diamonds | [SVG](previews/arkansas.svg) | [PNG](previews/arkansas.png) | 4 |
-| Illinois | Blue circular filigree and coral ribbons | [SVG](previews/illinois.svg) | [PNG](previews/illinois.png) | 4 |
-| Tennessee | Coral field and engraved architectural pavilion | [SVG](previews/tennessee.svg) | [PNG](previews/tennessee.png) | 4 |
-| Alaska | Mint peaks, pink flowers and interwoven header | [SVG](previews/alaska.svg) | [PNG](previews/alaska.png) | 4 |
-| Wyoming | Green/cyan contour field and zigzag borders | [SVG](previews/wyoming.svg) | [PNG](previews/wyoming.png) | 3 |
-| Louisiana | Warm yellow waves, blue rosette and stepped tower | [SVG](previews/louisiana.svg) | [PNG](previews/louisiana.png) | 4 |
-| Utah | Coral canyon faces, etched strata and dotted edge | [SVG](previews/utah.svg) | [PNG](previews/utah.png) | 4 |
-| Colorado | Lavender sky, blue peaks, sage/gold foothills | [SVG](previews/colorado.svg) | [PNG](previews/colorado.png) | 4 |
-| Idaho | Cyan mesh, pale mountain and engraved bluebird | [SVG](previews/idaho.svg) | [PNG](previews/idaho.png) | 4 |
+| Washington | Ice-blue engraving, alpine ridge, evergreen | [SVG](previews/washington.svg) | [PNG](previews/washington.png) | 8 |
+| Arkansas | Warped blue grid, gold panels and diamonds | [SVG](previews/arkansas.svg) | [PNG](previews/arkansas.png) | 8 |
+| Illinois | Blue circular filigree and coral ribbons | [SVG](previews/illinois.svg) | [PNG](previews/illinois.png) | 8 |
+| Tennessee | Coral field and engraved architectural pavilion | [SVG](previews/tennessee.svg) | [PNG](previews/tennessee.png) | 8 |
+| Alaska | Mint peaks, pink flowers and interwoven header | [SVG](previews/alaska.svg) | [PNG](previews/alaska.png) | 8 |
+| Wyoming | Green/cyan contour field and zigzag borders | [SVG](previews/wyoming.svg) | [PNG](previews/wyoming.png) | 7 |
+| Louisiana | Warm yellow waves, blue rosette and stepped tower | [SVG](previews/louisiana.svg) | [PNG](previews/louisiana.png) | 8 |
+| Utah | Coral canyon faces, etched strata and dotted edge | [SVG](previews/utah.svg) | [PNG](previews/utah.png) | 8 |
+| Colorado | Lavender sky, blue peaks, sage/gold foothills | [SVG](previews/colorado.svg) | [PNG](previews/colorado.png) | 8 |
+| Idaho | Cyan mesh, pale mountain and engraved bluebird | [SVG](previews/idaho.svg) | [PNG](previews/idaho.png) | 8 |
 
 Pass counts include the final seed-variation regression check. Previews use seed 42. Seeds vary wave phases and, in landscape designs, ridge detail. An avalanche mix decorrelates consecutive seeds before the rendering PRNG runs. The principal motifs and palettes remain stable; seeds do not simulate different physical print processes or radically rearrange the composition.
 
@@ -79,3 +79,5 @@ npm run select-states
 Tests check all ten renders, deterministic SVG output, different-seed pixel variation, image dimensions, self-contained SVG content, batch seed assignment, file hashes and invalid CLI options. Regenerate previews after changing geometry. The selected states come from a reproducible seeded shuffle of all 50 states; the selection algorithm is in `scripts/select-states.js`.
 
 The samples are visual references, including historical designs, not a claim about current credential formats. Reference images are linked but not redistributed or embedded. Generated artwork is deliberately stylized. Visual acceptance does not establish OCR/detector training accuracy; evaluate the generated dataset against your own held-out real images.
+
+Four further finishing passes are documented in [the additional review log](docs/reviews/EXTRA.md), each with its own commit and contact sheet.
