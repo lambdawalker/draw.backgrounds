@@ -40,4 +40,5 @@ export default function (c, phase) {
     ),
   );
   c.add(path("M990 282v-27 M975 315h30 M980 306h20", "#9a9b71", 1.3, 0.45));
+c.add(path('M775 634H1205 M775 642H1205 M967 401H1013 M967 407H1013','#9a9b71',1,.35));
 }

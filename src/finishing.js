@@ -60,40 +60,66 @@ export function finish(c, state) {
     colorado: [1220, 790],
     idaho: [1230, 740],
   };
-  const [bx, by] = placements[state];
-  c.add(
-    path(
-      `M${bx - 45} ${by + 100} Q${bx + 10} ${by} ${bx - 10} ${by - 110}`,
-      ink,
-      1,
-      0.28,
-    ),
-  );
-  for (let j = 0; j < 9; j++)
-    for (const side of [-1, 1]) {
-      const x = bx - 15 + 15 * Math.sin(j * 0.35),
-        y = by + 75 - j * 21,
-        tip = x + side * (24 + (j % 3) * 5);
+  if (state === "illinois") {
+    // Tangential leaves sit on one continuous circular stem.
+    const cx = 900,
+      cy = 420,
+      radius = 232;
+    c.add(
+      path(
+        `M${cx + radius} ${cy} A${radius} ${radius} 0 1 1 ${cx - radius} ${cy} A${radius} ${radius} 0 1 1 ${cx + radius} ${cy}`,
+        ink,
+        0.7,
+        0.23,
+      ),
+    );
+    for (let j = 0; j < 32; j++) {
+      const a = (j * Math.PI) / 16,
+        x = cx + radius * Math.cos(a),
+        y = cy + radius * Math.sin(a);
       c.add(
-        path(
-          `M${x} ${y} Q${tip} ${y - 3} ${tip} ${y - 26} Q${x} ${y - 23} ${x} ${y}Z`,
-          ink,
-          0.65,
-          0.25,
-        ),
-      );
-      c.add(
-        line(
-          [
-            [x, y],
-            [tip, y - 26],
-          ],
-          ink,
-          0.5,
-          0.24,
-        ),
+        `<g transform="translate(${x} ${y}) rotate(${(a * 180) / Math.PI + 90})">` +
+          path("M0 0 Q18 -19 42 -8 Q25 9 0 0Z", ink, 0.6, 0.28) +
+          path("M0 0 Q21 -7 42 -8", ink, 0.55, 0.3) +
+          "</g>",
       );
     }
+  } else {
+    const [bx, by] = placements[state];
+    c.add(
+      path(
+        `M${bx - 45} ${by + 100} Q${bx + 10} ${by} ${bx - 10} ${by - 110}`,
+        ink,
+        1,
+        0.28,
+      ),
+    );
+    for (let j = 0; j < 9; j++)
+      for (const side of [-1, 1]) {
+        const x = bx - 15 + 15 * Math.sin(j * 0.35),
+          y = by + 75 - j * 21,
+          tip = x + side * (24 + (j % 3) * 5);
+        c.add(
+          path(
+            `M${x} ${y} Q${tip} ${y - 3} ${tip} ${y - 26} Q${x} ${y - 23} ${x} ${y}Z`,
+            ink,
+            0.65,
+            0.25,
+          ),
+        );
+        c.add(
+          line(
+            [
+              [x, y],
+              [tip, y - 26],
+            ],
+            ink,
+            0.5,
+            0.24,
+          ),
+        );
+      }
+  }
   // Sparse seeded ink stipple creates scale-dependent texture without raster filters.
   for (let j = 0; j < 1600; j++) {
     const x = c.random() * 1400,

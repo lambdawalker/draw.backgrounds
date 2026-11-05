@@ -108,5 +108,12 @@ export default function (c, p) {
     { fill: "#d5c18e", ink: "#b3a773", opacity: 0.65 },
   );
   for (let j = 0; j < 18; j++)
-    pine(c, 60 + j * 75, 870, 35 + (j % 4) * 9, "#6f8b76", 0.3);
+    pine(
+      c,
+      60 + j * 75,
+      870,
+      33 + (j % 4) * 9 + 5 * Math.sin(j * 1.8),
+      "#6f8b76",
+      0.3,
+    );
 }

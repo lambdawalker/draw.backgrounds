@@ -55,4 +55,5 @@ export default function (c, phase) {
       ),
     );
   }
+for(let j=0;j<18;j++){const a=j*Math.PI/9; c.add(path(`M${930+360*Math.cos(a)} ${390+360*Math.sin(a)}Q${930+380*Math.cos(a+.04)} ${390+380*Math.sin(a+.04)} ${930+360*Math.cos(a+.08)} ${390+360*Math.sin(a+.08)}`,'#b4a684',1,.35));}
 }

@@ -13,7 +13,7 @@ import {
   tower,
   engravedPavilion,
 } from "../../geometry.js";
-export const revision = 8;
+export const revision = 9;
 function paper(c, a, b, phase) {
   c.add(
     rect(
@@ -70,7 +70,8 @@ function nebraska(c, p) {
       [780, 410],
       [850, 355],
       [905, 350],
-      [925, 170],
+      [922, 220],
+      [930, 172],
       [955, 162],
       [978, 345],
       [1070, 370],
@@ -105,7 +106,7 @@ function nevada(c, p) {
   rosette(c, 1080, 425, 175, "#719a9d", {
     rings: 24,
     lobes: 30,
-    amplitude: 14,
+    amplitude: 10,
     opacity: 0.26,
   });
   curve(c, "#9da889", 660, 55, 0.23);
@@ -119,7 +120,7 @@ function newHampshire(c, p) {
         samples(
           (t) => [
             700 + Math.cos(t) * (300 + i * 5),
-            450 + Math.sin(t) * (180 + i * 3),
+            430 + Math.sin(t) * (160 + i * 3),
           ],
           0,
           Math.PI * 2,
@@ -158,7 +159,7 @@ function newJersey(c, p) {
       0.24,
     ),
   );
-  engravedPavilion(c, 1060, 835, 0.86, "#899b92");
+  engravedPavilion(c, 1080, 835, 0.86, "#899b92");
   for (let j = 0; j < 45; j++)
     c.add(
       path(
@@ -179,8 +180,10 @@ function newMexico(c, p) {
       [400, 580],
       [630, 610],
       [770, 570],
-      [865, 565],
-      [865, 390],
+      [830, 540],
+      [850, 460],
+      [875, 450],
+      [890, 390],
       [1090, 365],
       [1200, 330],
       [1400, 350],
@@ -212,8 +215,8 @@ function newMexico(c, p) {
 function newYork(c, p) {
   paper(c, "#e4eeee", "#d2c9c5", p);
   rosette(c, 820, 505, 265, "#9aa8a4", {
-    rings: 27,
-    lobes: 48,
+    rings: 24,
+    lobes: 40,
     amplitude: 8,
     opacity: 0.33,
   });
@@ -251,7 +254,7 @@ function northCarolina(c, p) {
     ],
     { fill: "#b8cbb8", ink: "#92a7a9", opacity: 0.23 },
   );
-  engravedPavilion(c, 995, 810, 0.78, "#8f9e81");
+  engravedPavilion(c, 1015, 810, 0.78, "#8f9e81");
   c.add(
     path(
       "M50 205 Q165 175 290 205 L170 214Z M170 195 V228 M90 215 H240",
@@ -280,7 +283,7 @@ function northDakota(c, p) {
     ],
     { fill: "#c9b89d", ink: "#b3987c", opacity: 0.34 },
   );
-  curve(c, "#b09e7f", 590, 35, 0.24);
+  curve(c, "#b09e7f", 620, 46, 0.24);
   for (let i = 0; i < 19; i++) {
     let x = 1040 + i * 17 + c.random() * 9;
     c.add(path(`M${x} 900 Q${x - 35} 750 ${x - 20} 560`, "#9f9e69", 1, 0.36));
@@ -300,7 +303,7 @@ function ohio(c, p) {
   rosette(c, 930, 400, 220, "#9caec2", {
     rings: 24,
     lobes: 42,
-    amplitude: 10,
+    amplitude: 7,
     opacity: 0.3,
   });
   for (let i = 0; i < 55; i++)
@@ -324,7 +327,7 @@ function ohio(c, p) {
 }
 function oklahoma(c, p) {
   paper(c, "#e0edf0", "#d1d1bd", p);
-  dome(c, 1000, 850);
+  dome(c, 1030, 850);
   curve(c, "#b1b59e", 710, 20, 0.16);
   for (let i = 0; i < 17; i++)
     c.add(

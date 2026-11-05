@@ -9,7 +9,7 @@ import {
   waves,
 } from "../../geometry.js";
 export { path, line, rect, ellipse, polygon, samples, grid, waves };
-export const quality = { pass: 8 };
+export const quality = { pass: 9 };
 export function paper(c, colors) {
   c.add(
     rect(
@@ -36,6 +36,7 @@ export function leaf(c, x, y, s, angle, color) {
   let a = quality.pass >= 3 ? path(`M0 0 L${s} 0`, color, 0.9, 0.55) : "";
   for (let k = -6; k <= 6; k++)
     a += path(`M0 0 Q${s * 0.5} ${k * s * 0.065} ${s} 0`, color, 0.65, 0.38);
+  for(let j=1;j<9;j++){let t=j/10;for(const side of [-1,1])a+=path(`M${s*t} 0 Q${s*(t+.08)} ${side*s*.06} ${s*(t+.12)} ${side*s*.19*Math.sin(t*Math.PI)}`,color,.65,.42);}
   c.add(
     `<g transform="translate(${x} ${y}) rotate(${angle})">${path(`M0 0 Q${s * 0.45} ${-s * 0.45} ${s} 0 Q${s * 0.45} ${s * 0.45} 0 0Z`, color, 0.9, 0.28, color)}${a}</g>`,
   );
@@ -45,6 +46,8 @@ export function dome(c, x, y, s, color, kind = "round") {
   const P = (d, w = 0.9, o = 0.6, f = "none") => (a += path(d, color, w, o, f));
   const R = (x, y, w, h, o = 0.1) => (a += rect(x, y, w, h, color, o));
   R(-240, -140, 480, 140);
+  R(-235,-120,45,115,.055);R(190,-120,45,115,.055);
+  for(let j=-7;j<=7;j++)R(j*30+5,-115,3,107,.12);
   P("M-255 -145 H255 M-245 -135 H245 M-240 -128 H240");
   for (let j = -7; j <= 7; j++) {
     let xx = j * 30;

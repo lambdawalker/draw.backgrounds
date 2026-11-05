@@ -39,6 +39,6 @@ export default function (c, p) {
   flower(c, 700, 285, 110, "#b7b89d", 0.22);
   flower(c, 530, 420, 77, "#bfc0a8", 0.22);
   contours(c, "#a3af9c", p, "vertical", 0.13);
-  c.add("</g>");
   c.add(path("M490 500 Q610 410 700 285 Q740 220 815 180", "#8f9e7b", 1, 0.3));
+  c.add("</g>");
 }

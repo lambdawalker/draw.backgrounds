@@ -53,8 +53,8 @@ export default function (c, p) {
     { opacity: 0.13 },
   );
   for (let j = 0; j < 15; j++)
-    pine(c, 1050 + j * 25, 850, 50 + Math.sin(j * 1.7) * 18, "#658c89", 0.2);
-  pine(c, 1130, 859, 170, "#98a559", 0.65);
+    pine(c, 1050 + j * 25, 850, 48 + Math.sin(j * 1.7) * 21, "#658c89", 0.2);
+  pine(c, 1130, 859, 170, "#98a559", 0.56);
   for (let j = 0; j < 14; j++)
     c.add(
       line(

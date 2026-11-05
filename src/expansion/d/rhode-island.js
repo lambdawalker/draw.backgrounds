@@ -31,4 +31,5 @@ export default function (c, phase) {
       "#e7eeee",
     ),
   );
+c.add(path('M470 288H1400 M620 385H650 M1210 385H1240 M858 772Q935 786 1015 767','#7d9ca7',1.1,.35));
 }

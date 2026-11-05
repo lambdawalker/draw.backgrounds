@@ -73,9 +73,9 @@ export default function (c, p) {
   });
   for (let j = 0; j < 100; j++)
     c.add(path(`M${j * 15 - 90} 0 l90 95`, "#b3a185", 0.8, 0.2));
-  c.add("</g>");
   for (let j = 0; j < 12; j++)
     c.add(
       path(`M-50 ${270 + j * 5} L1450 ${600 + j * 5}`, "#c6b896", 0.65, 0.17),
     );
+  c.add("</g>");
 }

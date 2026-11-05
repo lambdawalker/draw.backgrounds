@@ -80,7 +80,7 @@ export default function (c, p) {
   for (let j = 0; j < 12; j++) {
     let y = 370 + j * 41,
       x = 53 + 35 * Math.sin(j * 2.2);
-    flower(c, x, y, 17 + (j % 3) * 5, "#bd7c99", 0.43);
+    flower(c, x, y, 16 + (j % 3) * 5 + Math.sin(j * 1.7) * 2, "#bd7c99", 0.43);
   }
   waves(c, {
     color: "#7faca4",

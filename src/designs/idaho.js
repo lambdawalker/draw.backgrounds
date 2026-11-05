@@ -33,8 +33,8 @@ export default function (c, p) {
       path(
         `M${x} ${y} Q${tx + nx} ${ty + ny} ${tx} ${ty} Q${tx - nx * 0.35} ${ty - ny * 0.35} ${x} ${y}Z`,
         "#7498b6",
-        0.8,
-        0.54,
+        0.7,
+        0.48,
         "#d0dce6",
       ),
     );

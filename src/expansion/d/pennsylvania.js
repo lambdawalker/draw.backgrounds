@@ -52,4 +52,5 @@ export default function (c, phase) {
     amplitude: 10,
     opacity: 0.14,
   });
+for(let j=0;j<15;j++)c.add(path(`M0 ${690+j*6}Q430 ${610+j*8} 760 ${730+j*3}T1400 ${650+j*9}`,'#9c9cba',.65,.16));
 }

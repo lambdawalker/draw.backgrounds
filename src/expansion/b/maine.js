@@ -40,6 +40,6 @@ export default function (c, p) {
         0.22,
       ),
     );
-  c.add("</g>");
   orbit(c, 250, 80, 190, 90, "#b0b48b", p);
+  c.add("</g>");
 }

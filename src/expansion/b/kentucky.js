@@ -54,6 +54,6 @@ export default function (c, p) {
         0.09,
       ),
     );
-  c.add("</g>");
   c.add(path("M430 810 Q850 760 1280 810", "#92a797", 0.8, 0.24));
+  c.add("</g>");
 }

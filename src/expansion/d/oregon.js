@@ -50,4 +50,5 @@ export default function (c, phase) {
   c.glow(1120, 270, 320, 400, "#d7b8ba", 0.32);
   for (let j = 0; j < 8; j++)
     flower(c, 600 + j * 88, 760 + (j % 3) * 32, 18, "#d6b994", 0.3);
+c.add(path('M742 733H1160 M870 573H1030 M870 579H1030 M884 467H1016','#71949b',1.2,.4));
 }

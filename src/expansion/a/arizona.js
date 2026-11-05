@@ -53,5 +53,6 @@ export default function (c, p) {
         0.23,
       ),
     );
+  for(let j=0;j<32;j++){let x=640+c.random()*510,y=440+c.random()*210;c.add(path(`M${x} ${y} q35 -10 73 1 l28 -3`,"#a77e70",.7,.23));}
   border(c, "#bd9c7d", 1);
 }

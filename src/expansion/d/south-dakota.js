@@ -67,4 +67,5 @@ export default function (c, phase) {
   c.glow(1000, 650, 400, 300, "#b8a69b", 0.18);
   for (let j = 0; j < 23; j++)
     c.add(path(`M${430 + j * 41} 880q-20 -55 -10 -95`, "#9ca68d", 0.9, 0.2));
+for(let j=0;j<13;j++)c.add(path(`M${700+j*40} ${650+30*Math.sin(j)}l26 22l-9 17`,'#87959f',.8,.22));
 }

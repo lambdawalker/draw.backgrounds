@@ -61,7 +61,6 @@ export default function (c, p) {
         0.17,
       ),
     );
-  c.add("</g>");
   for (let j = 0; j < 45; j++)
     c.add(
       line(
@@ -76,4 +75,5 @@ export default function (c, p) {
         0.15,
       ),
     );
+  c.add("</g>");
 }

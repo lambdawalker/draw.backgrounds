@@ -16,7 +16,7 @@ export default function (c, p) {
   grid(c, {
     phase: p,
     spacing: 13,
-    amplitude: 28,
+    amplitude: 31,
     color: "#6198b4",
     opacity: 0.18,
   });

@@ -73,7 +73,6 @@ export default function (c, p) {
         0.25,
       ),
     );
-  c.add("</g>");
   for (let j = 0; j < 15; j++)
     c.add(
       path(
@@ -92,4 +91,5 @@ export default function (c, p) {
         0.15,
       ),
     );
+  c.add("</g>");
 }

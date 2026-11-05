@@ -39,4 +39,5 @@ export default function (c, phase) {
   c.add(path("M0 780Q400 670 760 770T1400 720", "#8d9f7a", 2, 0.25));
   leaf(c, 1230, 650, 0.7, "#a2a06c");
   dome(c, 940, 800, 0.75, "#8c9c76");
+c.add(path('M809 805H1071 M809 810H1071 M850 686H1030','#8c9c76',1,.35));
 }
