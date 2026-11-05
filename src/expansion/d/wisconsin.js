@@ -4,4 +4,5 @@ paper(c,'#eeeecf','#dce4e6'); waves(c,{phase,color:'#8193a5',opacity:.22,amplitu
 grid(c,{phase,color:"#a2a67a",opacity:.1,spacing:17,amplitude:42});
 for(let j=0;j<12;j++)c.add(path(`M${150+j*18} 800q400 -55 700 10`,"#96a491",.65,.16));
 leaf(c,70,180,.9,"#a1ab7d");
+for(let j=0;j<6;j++)leaf(c,1180+j*19,400+j*32,.32,"#9aa77b");
 }

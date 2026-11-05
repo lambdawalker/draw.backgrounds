@@ -4,4 +4,5 @@ paper(c,'#f5e9e4','#e4e9e5'); grid(c,{phase,color:'#9b9a97',amplitude:6,opacity:
 waves(c,{phase,color:"#a98694",opacity:.2,amplitude:110,period:250,from:560,to:850});
 for(let j=0;j<16;j++)c.add(path(`M${980+j*.8} ${780-j*13}l27 -6`,"#8d8ba0",1,.25));
 for(let j=0;j<7;j++)c.add(path(`M${1020-j*20} ${464-j*6}q-40 -35 -90 -10`,"#9294ac",1,.3));
+c.add(path("M830 810Q1050 775 1260 820","#9faaa0",1,.25));
 }

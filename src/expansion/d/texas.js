@@ -4,4 +4,5 @@ paper(c,'#d2e6ec','#efdbbf'); waves(c,{phase,color:'#ba8f8c',opacity:.23,amplitu
 dome(c,1050,710,.8,"#84a6b4");
 for(let j=0;j<22;j++)c.add(path(`M${720+j*22} 765V${695+Math.sin(j)*10}`,"#8aadb7",.8,.24));
 grid(c,{phase,color:"#72a2b5",opacity:.2,spacing:9,amplitude:20});
+c.add(path("M970 690v-80h22v80 M1038 690v-80h22v80 M1106 690v-80h22v80","#7c9caa",1,.25));
 }

@@ -4,4 +4,5 @@ paper(c,'#e1eff2','#dce7b9'); grid(c,{phase,opacity:.16,color:'#668e98'}); ridge
 c.add(path("M740 730V570H1160V730 M880 570V470H1020V570 M860 470H1040 M950 470V410", "#739e9f",1.6,.45)); for(let j=0;j<17;j++)c.add(path(`M${760+j*23} 720V590`,"#739e9f",1,.4)); for(let j=0;j<9;j++)flower(c,450+j*95,810,28,"#d7bda1",.35);
 for(let j=0;j<18;j++)c.add(path(`M${820+j*11} 560V490`,"#739e9f",.7,.3));
 c.glow(1120,270,320,400,"#d7b8ba",.32);
+for(let j=0;j<8;j++)flower(c,600+j*88,760+(j%3)*32,18,"#d6b994",.3);
 }

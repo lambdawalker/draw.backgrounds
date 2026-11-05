@@ -1,7 +1,7 @@
-import {paper,grid,waves,rosette,pine,ridge,flower,dome,leaf,fan,palm,rect,path,line,polygon,ellipse,samples} from './helpers.js';
+import {paper,waves,path,line} from './helpers.js';
 export default function(c,phase){
-paper(c,'#e8f1f1','#e6ded0'); waves(c,{phase,color:'#83abb6',opacity:.26,amplitude:28,from:440}); c.add(path('M1090 650L1125 250L1165 250L1210 650Z M1110 480H1184 M1120 415H1172 M1128 345H1160', '#8b9ba2',1.5,.6,'#d4e0e0')); c.add(path('M1125 250V220H1165V250 M1118 219H1172L1145 195Z','#758d99',1.3,.5));
-c.add(path("M0 710 Q400 640 800 750T1400 720","#8ba5ac",2,.3));
-for(let j=0;j<30;j++)c.add(path(`M${1040+j*8} 670q15 -9 35 0`,"#84a6b1",.8,.25));
-c.add(path("M1144 255V647 M1132 270H1157 M1110 540H1190", "#81959e",1.2,.4));
+paper(c,'#e4eef0','#dce1de');waves(c,{phase,color:'#789eac',opacity:.26,amplitude:20,from:380});
+c.add(path('M470 280H1400 M620 390V125H650V390 M1210 390V100H1240V390 M470 170Q635 125 635 125Q920 420 1225 100L1400 210','#7d9ca7',1.8,.45));
+for(let j=0;j<30;j++){let x=650+j*18,y=130+180*Math.sin((x-650)/570*Math.PI);c.add(path(`M${x} ${y}V280`,'#8da7b1',.8,.35));}
+c.add(path('M850 740L1010 740L980 760H875Z M935 730V505L860 725Z M943 530L995 725H943Z','#7999a4',1.3,.4,'#e7eeee'));
 }

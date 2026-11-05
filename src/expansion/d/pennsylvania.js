@@ -4,4 +4,5 @@ paper(c,'#ccece7','#f7dfb9'); fan(c,720,500,'#879baf'); waves(c,{phase,color:'#b
 grid(c,{phase,vertical:false,amplitude:28,color:"#7aafb0",opacity:.12,spacing:6});
 c.glow(1000,380,440,340,"#f5df9e",.28);
 for(let j=0;j<40;j++)c.add(path(`M0 ${40+j*18}Q650 ${200+j*12} 1400 ${-30+j*22}`,"#ba9aaa",.7,.16));
+rosette(c,980,480,132,"#b1ab8d",{rings:9,lobes:12,amplitude:10,opacity:.14});
 }

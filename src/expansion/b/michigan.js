@@ -8,4 +8,5 @@ orbit(c,990,390,170,110,'#9d91a5',p+.5);grid(c,{color:'#9c9aaa',opacity:.13,spac
 for(let j=0;j<14;j++)c.add(line(samples(a=>[930+(245+j*9)*Math.cos(a),440+(180+j*6)*Math.sin(a)],0,Math.PI*2,.02),'#a18d9d',.9,.25));
 for(let j=0;j<20;j++)c.add(path(`M0 ${300+j*8} C450 ${100+j*7} 820 ${760-j*3} 1400 ${530+j*6}`,'#afa28c',.75,.17));
 c.add('</g>');
+for(let j=0;j<45;j++)c.add(line(samples(a=>[j*34+18*Math.cos(a),835+8*Math.sin(a)],0,Math.PI*2,.15),'#9e93a7',.6,.15));
 }

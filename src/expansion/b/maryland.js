@@ -7,4 +7,5 @@ c.glow(200+1000*c.random(),140+600*c.random(),700,600,'#c39790',.18);c.add(`<g t
 c.add(path('M-100 400 L1500 810 L1500 950 L-100 540Z','#eee8de',.5,.55,'#eee8de'));waves(c,{from:440,to:640,slope:.12,spacing:7,amplitude:8,color:'#b6a49a',opacity:.26,phase:p});
 for(let j=0;j<100;j++)c.add(path(`M${j*15-90} 0 l90 95`,'#b3a185',.8,.2));
 c.add('</g>');
+for(let j=0;j<12;j++)c.add(path(`M-50 ${270+j*5} L1450 ${600+j*5}`,'#c6b896',.65,.17));
 }
