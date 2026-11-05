@@ -65,7 +65,7 @@ export default function (c, p) {
     c.add(
       line(
         samples(
-          (a) => [j * 34 + 18 * Math.cos(a), 835 + 8 * Math.sin(a)],
+          (a) => [j * 34 + 18 * Math.cos(a), 835 + (7 + (j % 2) * 3) * Math.sin(a)],
           0,
           Math.PI * 2,
           0.15,

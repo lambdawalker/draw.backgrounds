@@ -26,5 +26,6 @@ export default function (c, p) {
       c.add(
         path(`M${980 + j * 9} 830 l95 -44 95 44 -95 44Z`, "#a39f7b", 0.8, 0.3),
       );
+  for(const x of [744,1239]){c.add(path(`M${x-14} 423 v-22 l14 -12 14 12 v22Z M${x-5} 418 v-13 h10 v13`,"#6d896e",.8,.45,"#dce3d4"));}
   border(c, "#96a890");
 }

@@ -9,7 +9,7 @@ import {
   waves,
 } from "../../geometry.js";
 export { path, line, rect, ellipse, polygon, samples, grid, waves };
-export const quality = { pass: 11 };
+export const quality = { pass: 12 };
 export function paper(c, colors) {
   c.add(
     rect(

@@ -55,4 +55,5 @@ export default function (c, phase) {
 for(let j=0;j<15;j++)c.add(path(`M0 ${690+j*6}Q430 ${610+j*8} 760 ${730+j*3}T1400 ${650+j*9}`,'#9c9cba',.65,.16));
 c.glow(340,620,600,300,'#c2d5dd',.16);
 for(let j=0;j<20;j++)c.add(path(`M${910+j*7} 585q35 30 70 0`,'#b1ab8d',.6,.15));
+for(let j=0;j<9;j++)c.add(path(`M${715+j*10} 443q-22 38 0 75`,'#82a6a3',.65,.12));
 }

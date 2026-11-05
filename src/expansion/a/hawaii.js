@@ -55,5 +55,6 @@ export default function (c, p) {
         0.24,
       ),
     );
+  for(let j=0;j<5;j++){let x=560+j*82+Math.sin(j*3)*18,y=685-j*21+Math.cos(j*2)*14;c.add(path(`M${x-7} ${y+12} q${13+j*4} -4 ${35+j*4} 0`,"#8daaa4",.8,.4));}
   border(c, "#9ebabb", 1);
 }

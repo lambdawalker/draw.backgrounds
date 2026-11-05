@@ -13,7 +13,7 @@ import {
   tower,
   engravedPavilion,
 } from "../../geometry.js";
-export const revision = 11;
+export const revision = 12;
 function paper(c, a, b, phase) {
   c.add(
     rect(
@@ -80,7 +80,7 @@ function nebraska(c, p) {
     ],
     { fill: "#d8c0a0", ink: "#a68777", opacity: 0.55 },
   );
-  curve(c, "#98a379", 590, 50, 0.28);
+  curve(c, "#98a379", 610, 45, 0.25);
   tower(c, 1120, 840, 0.95, "#7e936f");
   for (let i = 0; i < 12; i++) {
     let x = 70 + i * 18 + c.random() * 8;
@@ -109,7 +109,7 @@ function nevada(c, p) {
     amplitude: 10,
     opacity: 0.26,
   });
-  curve(c, "#9da889", 660, 55, 0.23);
+  curve(c, "#9da889", 680, 48, 0.22);
   leaves(c, 1120, 780, "#7f9f86");
   leaves(c, 1190, 830, "#7f9f86");
 }
@@ -147,7 +147,7 @@ function newHampshire(c, p) {
     { fill: "#b8c7ce", ink: "#98a7b8", opacity: 0.28 },
   );
   for (let i = 0; i < 11; i++)
-    pine(c, 1030 + i * 34, 870, 70 + c.random() * 125, "#819e9e", 0.17);
+    pine(c, 1040 + i * 32, 870, 70 + c.random() * 125, "#819e9e", 0.17);
 }
 function newJersey(c, p) {
   paper(c, "#f2dbe3", "#c5ddcd", p);
@@ -161,7 +161,7 @@ function newJersey(c, p) {
     ),
   );
   engravedPavilion(c, 1080, 835, 0.86, "#81958a");
-  for (let j = 0; j < 45; j++)
+  for (let j = 0; j < 38; j++)
     c.add(
       path(
         `M${15 + j * 5} 900 C${-80 + j * 9} 650 ${370 + j * 4} 420 ${290 + j * 5} 150`,
@@ -200,7 +200,7 @@ function newMexico(c, p) {
         0.27,
       ),
     );
-  curve(c, "#adbb9e", 710, 35, 0.24);
+  curve(c, "#adbb9e", 730, 42, 0.25);
   for (let j = 0; j < 9; j++) {
     let x = 1240 + j * 12;
     c.add(
@@ -236,7 +236,7 @@ function newYork(c, p) {
         0.17,
       ),
     );
-  curve(c, "#8aa6ae", 780, 12, 0.22);
+  curve(c, "#8aa6ae", 800, 16, 0.20);
 }
 function northCarolina(c, p) {
   paper(c, "#efdfe5", "#b9d4c8", p);
@@ -264,7 +264,7 @@ function northCarolina(c, p) {
       0.35,
     ),
   );
-  curve(c, "#b3a1bd", 730, 30, 0.22);
+  curve(c, "#b3a1bd", 750, 26, 0.20);
 }
 function northDakota(c, p) {
   paper(c, "#e9e5d7", "#ced8b7", p);
@@ -284,7 +284,7 @@ function northDakota(c, p) {
     ],
     { fill: "#c9b89d", ink: "#b3987c", opacity: 0.30 },
   );
-  curve(c, "#b09e7f", 620, 46, 0.24);
+  curve(c, "#b09e7f", 635, 42, 0.22);
   for (let i = 0; i < 19; i++) {
     let x = 1025 + i * 18 + c.random() * 14;
     c.add(path(`M${x} 900 Q${x - 35} 750 ${x - 20} 560`, "#9f9e69", 1, 0.36));
@@ -307,7 +307,7 @@ function ohio(c, p) {
     amplitude: 7,
     opacity: 0.3,
   });
-  for (let i = 0; i < 55; i++)
+  for (let i = 0; i < 50; i++)
     c.add(
       path(
         `M-20 ${650 + i * 5} C420 ${480 + i * 5} 800 ${970 + i * 3} 1450 ${600 + i * 5}`,
@@ -330,7 +330,7 @@ function oklahoma(c, p) {
   paper(c, "#e0edf0", "#d1d1bd", p);
   dome(c, 1030, 850);
   curve(c, "#b1b59e", 740, 17, 0.14);
-  for (let i = 0; i < 17; i++)
+  for (let i = 0; i < 14; i++)
     c.add(
       path(
         `M${160 + i * 12} 880 L${240 + i * 7} ${470 + i * 3} L${380 + i * 8} 880`,

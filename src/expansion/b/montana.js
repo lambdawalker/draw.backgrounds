@@ -73,7 +73,7 @@ export default function (c, p) {
       ),
     );
   for (let j = 0; j < 14; j++)
-    pine(c, 900 + j * 40, 890, 45 + (j % 4) * 15, "#8f9c82", 0.2);
+    pine(c, 900 + j * 40, 890, 35 + c.random() * 65, "#8f9c82", 0.2);
   c.add(path("M-20 800 Q450 680 690 760 T1440 660", "#7c958a", 1, 0.25));
   for (let j = 0; j < 12; j++)
     c.add(

@@ -55,5 +55,6 @@ export default function (c, p) {
     );
   for(let j=0;j<32;j++){let x=640+c.random()*510,y=440+c.random()*210;c.add(path(`M${x} ${y} q35 -10 73 1 l28 -3`,"#a77e70",.7,.23));}
   for(let j=0;j<20;j++){let x=710+j*20;c.add(path(`M${x} ${430+Math.sin(j)*24} q-10 24 8 50 t-12 65`,"#947868",.8,.24));}
+  for(let j=0;j<3;j++){c.add(path(`M${1095+j*4} 600 V663 Q1110 674 1135 675`,"#618675",.65,.35));c.add(path(`M${1193+j*4} 638 V691 Q1180 701 1160 701`,"#618675",.65,.35));}
   border(c, "#bd9c7d", 1);
 }

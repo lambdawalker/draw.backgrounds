@@ -77,5 +77,6 @@ export default function (c, p) {
     opacity: 0.09,
   });
 for(let j=0;j<10;j++)c.add(path(`M-20 ${120+j*4} Q700 ${180+j*3} 1420 ${115+j*5}`,'#ad9990',.45,.18));
+for(let j=0;j<7;j++)c.add(line(samples(a=>[940+(118+j*3)*Math.cos(a),450+(118+j*3)*Math.sin(a)],0,Math.PI*2,.025),'#99aaa9',.55,.13));
   c.add("</g>");
 }

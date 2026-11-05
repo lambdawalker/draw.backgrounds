@@ -52,5 +52,6 @@ export default function (c, p) {
         0.2,
       ),
     );
+  for(let j=0;j<26;j++){let x=1055+Math.cos(j*2.4)*(45-j),y=550+j*3.5;c.add(path(`M${x-3} ${y-5} q3 -3 6 0`,"#faf8eb",.9,.65));}
   border(c, "#8daca6", 1);
 }

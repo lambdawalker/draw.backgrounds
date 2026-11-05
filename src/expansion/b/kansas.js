@@ -92,5 +92,6 @@ export default function (c, p) {
       ),
     );
 for(let j=0;j<6;j++){const x=975+j*50;c.add(path(`M${x} 855 Q${x-35} 820 ${x-48} 780 Q${x-9} 800 ${x} 855`,'#8e986b',.7,.2,'#a5ad84'));}
+c.add(path('M880 858 Q842 817 842 788 Q875 810 880 858','#929f72',.65,.18,'#a6ae88'));
   c.add("</g>");
 }

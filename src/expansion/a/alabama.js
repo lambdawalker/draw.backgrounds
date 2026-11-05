@@ -1,3 +1,4 @@
+import {path} from "../../geometry.js";
 import {
   paper,
   field,
@@ -16,5 +17,6 @@ export default function (c, p) {
     leaf(c, 1260, 800, 180, -105, "#6c9385");
     leaf(c, 1250, 800, 150, -155, "#6c9385");
   }
+  c.add(path("M1256 814 Q1220 730 1190 680","#759587",1,.4));leaf(c,1215,745,105,-170,"#7e9e8b");
   border(c, "#b2919d");
 }

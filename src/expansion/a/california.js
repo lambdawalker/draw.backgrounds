@@ -58,5 +58,6 @@ export default function (c, p) {
         0.2,
       ),
     );
+  for(let j=0;j<5;j++){let x=1120+j*57+Math.sin(j*2)*17,y=695-j*112+Math.cos(j*1.8)*13;for(let k=0;k<9;k++){let a=k*Math.PI*2/9;c.add(path(`M${x} ${y} l${Math.cos(a)*13} ${Math.sin(a)*13}`,"#b89767",.8,.4));}}
   border(c, "#9b9db5");
 }

@@ -58,4 +58,5 @@ export default function (c, phase) {
 for(let j=0;j<18;j++){const a=j*Math.PI/9; c.add(path(`M${930+360*Math.cos(a)} ${390+360*Math.sin(a)}Q${930+380*Math.cos(a+.04)} ${390+380*Math.sin(a+.04)} ${930+360*Math.cos(a+.08)} ${390+360*Math.sin(a+.08)}`,'#b4a684',1,.35));}
 for(let j=0;j<20;j++){const a=j*Math.PI/10;c.add(path(`M${930+260*Math.cos(a)} ${390+260*Math.sin(a)}Q${930+270*Math.cos(a+.07)} ${390+270*Math.sin(a+.07)} ${930+260*Math.cos(a+.14)} ${390+260*Math.sin(a+.14)}`,'#b4a684',.7,.22));}
 c.add(path('M1075 742Q1110 665 1175 595 M1110 690q-30 -25 -48 -9 M1141 645q28 -14 43 -6','#a3a68f',.9,.24));
+for(let j=0;j<8;j++)c.add(path(`M${1040+j*23} ${740-Math.sin(j/7*Math.PI)*35}q8 -16 17 -9`,'#a3a68f',.65,.2));
 }

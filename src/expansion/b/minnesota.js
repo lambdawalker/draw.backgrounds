@@ -46,7 +46,7 @@ export default function (c, p) {
     ),
   );
   for (let j = 0; j < 21; j++)
-    pine(c, 360 + j * 48, 570, 60 + c.random() * 100, "#829b99", 0.13);
+    pine(c, 360 + j * 48 + (c.random() - .5) * 22, 570, 60 + c.random() * 100, "#829b99", 0.13);
   for (let j = 0; j < 18; j++)
     c.add(
       path(

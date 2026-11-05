@@ -29,5 +29,6 @@ export default function (c, p) {
     }
   }
   flourish(c, 700, 830, 690, "#aaa58a");
+  for(let j=0;j<8;j++){let y=515+j*9;c.add(path(`M${740+j*.6} ${y} q-18 -13 -23 -28 q20 6 23 28 M${740+j*.6} ${y} q18 -13 23 -28 q-20 6 -23 28`,"#97a074",.7,.35,"#c4cba7"));}
   border(c, "#a6a186", 1);
 }

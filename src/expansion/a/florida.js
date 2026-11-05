@@ -1,3 +1,4 @@
+import {ellipse} from "../../geometry.js";
 import {
   paper,
   field,
@@ -60,5 +61,6 @@ export default function (c, p) {
         0.22,
       ),
     );
+  for(let j=0;j<3;j++)c.add(ellipse(1255+j*7,568+Math.sin(j)*8,7,9,"#8aa28b",.35));
   border(c, "#93b2b5", 1);
 }

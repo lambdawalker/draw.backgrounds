@@ -54,4 +54,5 @@ export default function (c, phase) {
 for(let j=0;j<18;j++)c.add(path(`M${850+j*20} 832q15 -14 30 -8`,'#91a19f',.7,.2));
 c.add(path('M1020 464q-80 -58 -150 -12 M1020 464q90 -45 162 12','#9294ac',1.3,.3));
 for(let j=0;j<10;j++)c.add(path(`M${905+j*23} ${434-Math.sin(j/9*Math.PI)*56}l-12 26`,'#9294ac',.9,.2));
+c.add(path('M1001 786Q985 630 1018 476','#9294ac',1,.35));
 }

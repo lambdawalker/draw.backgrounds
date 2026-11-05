@@ -25,7 +25,7 @@ export default function (c, p) {
     0.18,
   );
   c.add(`<g transform="translate(${28 * Math.sin(p)} ${15 * Math.cos(p)})">`);
-  orbit(c, 825, 445, 180, 150, "#7a9298", p);
+  orbit(c, 825, 445, 180, 150, "#97aaa9", p);
   engravedPavilion(c, 850, 740, 0.94, "#829391");
   for (let j = 0; j < 5; j++)
     c.add(

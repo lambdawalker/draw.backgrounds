@@ -73,4 +73,5 @@ export default function (c, phase) {
   );
 c.add(path('M908 720H1192 M908 727H1192 M970 586H1130 M970 590H1130','#7c9caa',1,.35));
 c.add(path('M950 574H1150V590H950Z M950 581H1150','#7c9caa',.8,.3));
+c.add(path('M1034 421H1066 M1040 413H1060 M1050 406V389','#7c9caa',1,.4));
 }

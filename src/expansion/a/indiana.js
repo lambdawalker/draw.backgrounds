@@ -30,5 +30,6 @@ export default function (c, p) {
   }
   c.add(path("M831 777 l20 -18 h51 l22 18Z M788 804 h15 M992 804 h16 M750 793 H1042","#718e83",.8,.48));
   for(const x of [795,1000])for(let j=0;j<9;j++)c.add(path(`M${x-18+j*4} 808 v10`,"#718e83",.6,.4));
+  for(const x of [795,1000]){c.add(`<ellipse cx="${x}" cy="813" rx="22" ry="12" fill="none" stroke="#728e83" stroke-width=".8" opacity=".4"/>`);}c.add(path("M690 494 H1354 M695 500 H1349","#7e9d8e",.7,.4));
   border(c, "#a1ad95");
 }
