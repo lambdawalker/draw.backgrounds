@@ -1,5 +1,5 @@
 import {rect,path,line,polygon,ellipse,samples,grid,waves,rosette,ridge,pine,tower,engravedPavilion} from '../../geometry.js';
-export const revision=3;
+export const revision=4;
 function paper(c,a,b,phase){c.add(rect(0,0,1400,880,c.gradient([[0,a],[55,'#f8f7ee'],[100,b]])));grid(c,{color:b,opacity:.22,spacing:12,amplitude:20,phase});}
 function curve(c,color,y,amp=45,opacity=.3){for(let i=0;i<46;i++)c.add(line(samples(x=>[x,y+i*6+amp*Math.sin(x/245+i*.035)],-20,1420,9),color,.7,opacity));}
 function leaves(c,x,y,col){for(let i=0;i<10;i++){let a=i*.53;c.add(path(`M${x} ${y} Q${x+Math.cos(a)*80} ${y-70-i*15} ${x+Math.sin(a)*120} ${y-130-i*14}`,col,.8,.3));}}
@@ -18,6 +18,17 @@ const designs = {'nebraska':nebraska,'nevada':nevada,'new-hampshire':newHampshir
 function detail(c,name){
  const colors={nebraska:'#a18b66',nevada:'#75959b','new-hampshire':'#8a9ab1','new-jersey':'#ad8f9e','new-mexico':'#b18b76','new-york':'#90a1a2','north-carolina':'#92a698','north-dakota':'#aa997d',ohio:'#90ada7',oklahoma:'#9b9d8c'};
  const col=colors[name];
+ if(name==='nebraska')for(let i=0;i<24;i++)c.add(path(`M${920+i*2} ${180+i*2} L${900+i*4} 365 L${1000+i*5} 470`,col,.65,.22));
+ if(name==='nevada')for(let i=0;i<18;i++)c.add(path(`M${820+i*12} 880 Q${950+i*7} 640 ${1280+i*6} 700`,col,.7,.19));
+ if(name==='new-hampshire')curve(c,col,70,26,.11);
+ if(name==='new-jersey')for(let i=0;i<15;i++)c.add(path(`M${835+i*3} 0 C${690+i*3} 190 ${1090+i*3} 300 ${905+i*3} 460 S${730+i*3} 750 ${950+i*3} 900`,col,.7,.15));
+ if(name==='new-mexico')for(let i=0;i<21;i++)c.add(path(`M${900+i*22} ${390-i*1.8} l-9 90 l19 80 l-8 120`,col,.6,.19));
+ if(name==='new-york')for(let i=0;i<26;i++)c.add(line(samples(t=>[820+Math.cos(t)*(75+i*3),505+Math.sin(t)*(75+i*3)],0,Math.PI*2,.025),col,.6,.16));
+ if(name==='north-carolina')for(let i=0;i<8;i++)pine(c,1160+i*26,850,80+i*9,col,.16);
+ if(name==='north-dakota')for(let i=0;i<27;i++)c.add(path(`M0 ${550+i*5} Q500 ${490+i*5} 1000 ${590+i*4} T1450 ${560+i*4}`,col,.6,.15));
+ if(name==='ohio')for(let i=0;i<27;i++)c.add(path(`M${730+i*5} 0 Q${580+i*9} 420 ${1000+i*7} 880`,col,.6,.12));
+ if(name==='oklahoma')for(let i=0;i<19;i++)c.add(path(`M690 ${690+i*7} H1310`,col,.6,.17));
+
  for(let i=0;i<20;i++)c.add(path(`M-20 ${810+i*4} Q430 ${730+i*4} 720 ${820+i*3} T1420 ${780+i*4}`,col,.6,.17));
 }
 export default Object.fromEntries(Object.entries(designs).map(([name,fn])=>[name,(c,p)=>{fn(c,p);detail(c,name);} ]));
