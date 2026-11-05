@@ -4,13 +4,22 @@
   "private": true,
   "type": "module",
   "description": "Seeded procedural SVG backgrounds for synthetic card datasets",
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": ">=22"
+  },
   "exports": "./src/index.js",
   "scripts": {
     "generate": "node src/cli.js",
     "previews": "node scripts/previews.js",
     "test": "node --test",
-    "select-states": "node scripts/select-states.js"
+    "select-states": "node scripts/select-states.js",
+    "format": "prettier --write src scripts test",
+    "format:check": "prettier --check src scripts test"
   },
-  "dependencies": { "sharp": "0.34.5" }
+  "dependencies": {
+    "sharp": "0.34.5"
+  },
+  "devDependencies": {
+    "prettier": "^3.6.2"
+  }
 }
