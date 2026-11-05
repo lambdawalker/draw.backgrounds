@@ -66,5 +66,6 @@ export default function (c, p) {
         0.35,
       ),
     );
+for(const x of [625,1255]){c.add(path(`M${x} 770 V584 h12 V770`,'#7899a9',1,.28));}
   c.add("</g>");
 }

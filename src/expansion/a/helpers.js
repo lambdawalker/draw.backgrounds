@@ -9,7 +9,7 @@ import {
   waves,
 } from "../../geometry.js";
 export { path, line, rect, ellipse, polygon, samples, grid, waves };
-export const quality = { pass: 9 };
+export const quality = { pass: 10 };
 export function paper(c, colors) {
   c.add(
     rect(
@@ -49,6 +49,8 @@ export function dome(c, x, y, s, color, kind = "round") {
   R(-235,-120,45,115,.055);R(190,-120,45,115,.055);
   for(let j=-7;j<=7;j++)R(j*30+5,-115,3,107,.12);
   P("M-255 -145 H255 M-245 -135 H245 M-240 -128 H240");
+  P("M-17 -4 V-60 Q0 -83 17 -60 V-4Z",.9,.6,"#c4d3c9");P("M0 -5 V-72 M-17 -48 H17",.7,.6);
+  for(let row=0;row<12;row++)for(let col=0;col<12;col++)P(`M${-230+col*39+(row%2)*18} ${-118+row*9} v8`,.4,.16);
   for (let j = -7; j <= 7; j++) {
     let xx = j * 30;
     P(`M${xx - 7} -8 V-116 H${xx + 7} V-8`, 1, 0.65);

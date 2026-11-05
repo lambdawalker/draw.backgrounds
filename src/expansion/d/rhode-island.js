@@ -32,4 +32,5 @@ export default function (c, phase) {
     ),
   );
 c.add(path('M470 288H1400 M620 385H650 M1210 385H1240 M858 772Q935 786 1015 767','#7d9ca7',1.1,.35));
+for(let j=0;j<13;j++)c.add(path(`M${1100+j*14} ${495+(j%3)*6}l34 -4`,'#8aa5a8',.75,.3));
 }

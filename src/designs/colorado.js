@@ -105,7 +105,7 @@ export default function (c, p) {
       [1180, 795],
       [1440, 740],
     ],
-    { fill: "#d5c18e", ink: "#b3a773", opacity: 0.65 },
+    { fill: "#d5c18e", ink: "#b3a773", opacity: 0.59 },
   );
   for (let j = 0; j < 18; j++)
     pine(

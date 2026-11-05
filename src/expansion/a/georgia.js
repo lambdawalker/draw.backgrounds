@@ -64,5 +64,6 @@ export default function (c, p) {
     ),
     dots,
   );
+  c.add(path("M995 548 Q1008 493 1050 472 Q1078 458 1100 460 M1023 488 l-14 -23","#8c997a",1.5,.35));
   border(c, "#95a9ae");
 }

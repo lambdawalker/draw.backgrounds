@@ -41,5 +41,6 @@ export default function (c, p) {
       ),
     );
   orbit(c, 250, 80, 190, 90, "#b0b48b", p);
+for(let j=0;j<12;j++)c.add(path(`M${80+j*14} ${790+j*4} Q430 ${710+j*7} ${760+j*12} ${810+j*3}`,'#8fa181',.65,.2));
   c.add("</g>");
 }

@@ -42,4 +42,5 @@ export default function (c, phase) {
   for (let j = 0; j < 6; j++)
     leaf(c, 1180 + j * 17, 400 + j * 35, 0.28, "#9aa77b");
 c.add(path('M299 754H581 M299 761H581 M340 614H540','#95a09a',1,.3));
+c.add(path('M340 614H540V630H340Z M340 622H540','#95a09a',.8,.3));
 }

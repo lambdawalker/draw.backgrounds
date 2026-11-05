@@ -68,4 +68,5 @@ export default function (c, phase) {
   for (let j = 0; j < 23; j++)
     c.add(path(`M${430 + j * 41} 880q-20 -55 -10 -95`, "#9ca68d", 0.9, 0.2));
 for(let j=0;j<13;j++)c.add(path(`M${700+j*40} ${650+30*Math.sin(j)}l26 22l-9 17`,'#87959f',.8,.22));
+for(let j=0;j<10;j++)c.add(path(`M${780+j*36} ${720+j%3*8}l45 13l23 -9`,'#8e9ba5',.75,.2));
 }

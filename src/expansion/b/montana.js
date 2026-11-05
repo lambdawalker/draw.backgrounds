@@ -96,5 +96,6 @@ export default function (c, p) {
       0.08,
     ),
   );
+for(let j=0;j<12;j++)c.add(path(`M-20 ${850+j*4} Q420 ${760+j*4} 680 ${810+j*4} T1450 ${750+j*4}`,'#aab393',.65,.23));
   c.add("</g>");
 }

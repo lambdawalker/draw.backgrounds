@@ -28,9 +28,9 @@ export default function (c, p) {
     leaf(c, 1260, 760 - j * 85, 155, 190 + j * 15, "#79a593");
     flower(
       c,
-      1300 - j * 54,
+      1300 - j * 54+Math.sin(j*2)*14,
       700 - j * 95,
-      quality.pass >= 3 ? 58 : 43,
+      quality.pass >= 3 ? 51+j*5 : 43,
       "#ba8f9c",
       0.33,
     );

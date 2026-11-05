@@ -65,5 +65,6 @@ export default function (c, p) {
         0.16,
       ),
     );
+for(let j=0;j<14;j++)c.add(path(`M${760+j*5} ${690+j*8} Q900 ${684+j*8} ${1110-j*8} ${692+j*8}`,'#90abb0',.75,.2));
   c.add("</g>");
 }

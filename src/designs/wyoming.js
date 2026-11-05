@@ -61,7 +61,7 @@ export default function (c, p) {
         ),
         "#397c9e",
         1,
-        0.5,
+        0.43,
       ),
     );
   for (let j = 0; j < 18; j++)

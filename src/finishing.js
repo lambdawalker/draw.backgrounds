@@ -79,7 +79,7 @@ export function finish(c, state) {
         y = cy + radius * Math.sin(a);
       c.add(
         `<g transform="translate(${x} ${y}) rotate(${(a * 180) / Math.PI + 90})">` +
-          path("M0 0 Q18 -19 42 -8 Q25 9 0 0Z", ink, 0.6, 0.28) +
+          path("M0 0 Q18 -19 42 -8 Q25 9 0 0Z", ink, 0.9, 0.48, "#cbd9cc") +
           path("M0 0 Q21 -7 42 -8", ink, 0.55, 0.3) +
           "</g>",
       );

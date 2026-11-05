@@ -25,7 +25,7 @@ export default function (c, p) {
   }
   flourish(c, 1040, 720, 600, "#8faebd");
   if (quality.pass >= 5) {
-    c.add(path("M1270 870 Q1230 690 1260 560", "#90a5a0", 5, 0.35));
+    c.add(path("M1265 870 Q1232 690 1258 560 L1263 560 Q1245 690 1277 870Z", "#90a5a0", .8, .3,"#aec3b6"));for(let j=0;j<28;j++){let t=j/28;c.add(path(`M${1256-12*Math.sin(t*3)} ${570+t*290} l${5+t*6} -3`,"#759a86",.65,.35));}
     for (let j = 0; j < 9; j++) {
       let a = j * 0.7;
       let dx = Math.cos(a) * 190,

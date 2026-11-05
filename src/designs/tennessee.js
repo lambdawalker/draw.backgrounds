@@ -36,7 +36,7 @@ export default function (c, p) {
   });
   waves(c, {
     color: "#648fa8",
-    opacity: 0.23,
+    opacity: 0.2,
     from: 660,
     to: 970,
     spacing: 5,

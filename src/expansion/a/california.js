@@ -22,8 +22,8 @@ export default function (c, p) {
     opacity: 0.19,
   });
   for (let j = 0; j < 5; j++) {
-    let x = 1120 + j * 57,
-      y = 830 - j * 112;
+    let x = 1120 + j * 57 + Math.sin(j*2)*17,
+      y = 830 - j * 112 + Math.cos(j*1.8)*13;
     c.add(
       path(
         `M${x - 90} 920 Q${x + 30} ${y + 50} ${x} ${y - 130}`,

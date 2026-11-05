@@ -54,5 +54,6 @@ export default function (c, p) {
       ),
     );
   for(let j=0;j<32;j++){let x=640+c.random()*510,y=440+c.random()*210;c.add(path(`M${x} ${y} q35 -10 73 1 l28 -3`,"#a77e70",.7,.23));}
+  for(let j=0;j<20;j++){let x=710+j*20;c.add(path(`M${x} ${430+Math.sin(j)*24} q-10 24 8 50 t-12 65`,"#947868",.8,.24));}
   border(c, "#bd9c7d", 1);
 }

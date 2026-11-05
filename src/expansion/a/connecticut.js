@@ -27,7 +27,7 @@ export default function (c, p) {
       path(`M${x} 820 Q${x - 30} 630 ${x} ${y - 180}`, "#748d8a", 1.1, 0.3),
     );
     for (let k = 0; k < 6; k++)
-      leaf(c, x, y - k * 25, 70 + (k % 2) * 20, k % 2 ? 205 : -20, "#7c9a81");
+      leaf(c, x, y - k * 25, 64 + (k % 2) * 20 + c.random()*16, (k % 2 ? 205 : -20) + c.random()*14-7, "#7c9a81");
   }
   flourish(c, 1050, 240, 410, "#b6a790");
   if (quality.pass >= 5) {

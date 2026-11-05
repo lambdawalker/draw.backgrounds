@@ -74,7 +74,7 @@ export default function (c, p) {
       [1120, 620],
       [1430, 675],
     ],
-    { fill: "#96c3af", ink: "#719e93", opacity: 0.35 },
+    { fill: "#96c3af", ink: "#719e93", opacity: 0.32 },
   );
   c.add(path("M30 900 Q100 690 55 520 T70 340", "#829e83", 1.2, 0.4));
   for (let j = 0; j < 12; j++) {
