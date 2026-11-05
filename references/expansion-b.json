@@ -1,0 +1,84 @@
+[
+  {
+    "state": "kansas",
+    "sourceUrl": "https://www.ksrevenue.gov/img/license.jpg",
+    "sourceTitle": "Public specimen visual reference",
+    "inspection": "Downloaded and visually inspected with view_image on 2026-11-05. Historical examples are inspiration, not a claim of current credential design.",
+    "observedMotifs": "Official Kansas Revenue ID-family sample, agricultural vignette at right, pale blue upper region and yellow-green lower field. Supplemental driver-license press release specimen inspected separately.",
+    "adaptation": "Open wheat and prairie contours reinterpret the agricultural palette; no vehicles, portrait, or skyline copied. Generated SVG contains no text, portraits, source pixels, official seals or certification marks.",
+    "additionalSourceUrl": "https://www.ksrevenue.gov/pdf/pressreleases/08-03-2017-FederallyCompliantID.pdf"
+  },
+  {
+    "state": "kentucky",
+    "sourceUrl": "https://www.govinfo.gov/content/pkg/CRPT-118hrpt964/pdf/CRPT-118hrpt964.pdf#page=160",
+    "sourceTitle": "Public specimen visual reference",
+    "inspection": "Downloaded and visually inspected with view_image on 2026-11-05. Historical examples are inspiration, not a claim of current credential design.",
+    "observedMotifs": "Historical grayscale driver-license sample: small central domed architecture, fine curling background curves and subtle foliage.",
+    "adaptation": "Original pediment pavilion with crossing curved line fans; muted green-grey colors are invented. Generated SVG contains no text, portraits, source pixels, official seals or certification marks."
+  },
+  {
+    "state": "maine",
+    "sourceUrl": "https://www1.maine.gov/sos/sites/maine.gov.sos/files/styles/large/public/images/2025-06/RealID_061025.jpg?itok=hzB3tfwz",
+    "sourceTitle": "Public specimen visual reference",
+    "inspection": "Downloaded and visually inspected with view_image on 2026-11-05. Historical examples are inspiration, not a claim of current credential design.",
+    "observedMotifs": "Public BMV promotional specimen: warm cream-green surface, fine foliage/floral lines near bottom and broad pale curved background. Small promotional image limits fine-detail interpretation.",
+    "adaptation": "Original pine bank, botanical spray and coastal line contours; no source line tracing. Generated SVG contains no text, portraits, source pixels, official seals or certification marks."
+  },
+  {
+    "state": "maryland",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Maryland_Driver%27s_License.webp",
+    "sourceTitle": "Public specimen visual reference",
+    "inspection": "Downloaded and visually inspected with view_image on 2026-11-05. Historical examples are inspiration, not a claim of current credential design.",
+    "observedMotifs": "Public sample: large pale yellow-black diagonal quartering and pink cross-shaped quartering with fine vertical/curved security threads.",
+    "adaptation": "Original alternating diagonal cells and crossing sashes; avoids actual flag geometry, crosses, emblems and official seals. Generated SVG contains no text, portraits, source pixels, official seals or certification marks."
+  },
+  {
+    "state": "massachusetts",
+    "sourceUrl": "https://www.mass.gov/files/styles/embedded_full_width/public/documents/2025/04/15/RealID-License_Comparison_New-ID.jpg?itok=UyV-vs6R",
+    "sourceTitle": "Public specimen visual reference",
+    "inspection": "Downloaded and visually inspected with view_image on 2026-11-05. Historical examples are inspiration, not a claim of current credential design.",
+    "observedMotifs": "Official comparison specimens: large gold dome and blue classical building in lower/right field with pale blue-green warp threads.",
+    "adaptation": "Original domed facade, shared drum geometry and window grid; no seal or state silhouette. Generated SVG contains no text, portraits, source pixels, official seals or certification marks."
+  },
+  {
+    "state": "michigan",
+    "sourceUrl": "https://usid.fyi/uploads/4f6aec1dbff9f770af7372e7b2431026.webp?v=1787849933",
+    "sourceTitle": "Public specimen visual reference",
+    "inspection": "Downloaded and visually inspected with view_image on 2026-11-05. Historical examples are inspiration, not a claim of current credential design.",
+    "observedMotifs": "Public sample with rose-grey fine curved security lines, concentric oval structure and faint central emblem.",
+    "adaptation": "Abstract nested elliptic threads and crossing waves only; emblem omitted entirely. Generated SVG contains no text, portraits, source pixels, official seals or certification marks."
+  },
+  {
+    "state": "minnesota",
+    "sourceUrl": "https://www.govinfo.gov/content/pkg/CRPT-118hrpt964/pdf/CRPT-118hrpt964.pdf#page=163",
+    "sourceTitle": "Public specimen visual reference",
+    "inspection": "Downloaded and visually inspected with view_image on 2026-11-05. Historical examples are inspiration, not a claim of current credential design.",
+    "observedMotifs": "Historical grayscale public driver-license specimen: pine forest and horizontal lake/shoreline scene across middle-right. Also inspected older blue enhanced specimen in Fermilab PDF page2.",
+    "adaptation": "Original two-depth forest, curving shore, reflection strokes and blue-green sky threads; no source landscape traced. Generated SVG contains no text, portraits, source pixels, official seals or certification marks.",
+    "additionalSourceUrl": "https://get-connected.fnal.gov/wp-content/uploads/2023/11/REAL-ID-Compliant-DL-or-State-ID-Samples.pdf#page=2"
+  },
+  {
+    "state": "mississippi",
+    "sourceUrl": "https://www.govinfo.gov/content/pkg/CRPT-118hrpt964/pdf/CRPT-118hrpt964.pdf#page=164",
+    "sourceTitle": "Public specimen visual reference",
+    "inspection": "Downloaded and visually inspected with view_image on 2026-11-05. Historical examples are inspiration, not a claim of current credential design.",
+    "observedMotifs": "Historical grayscale public driver-license specimen: large botanical petal forms across upper background and small domed architecture at lower right, with curved fine lines.",
+    "adaptation": "Original magnolia-like flowers, pointed leaves, sweeping stem and small pediment pavilion; original green palette. Generated SVG contains no text, portraits, source pixels, official seals or certification marks."
+  },
+  {
+    "state": "missouri",
+    "sourceUrl": "https://usid.fyi/uploads/1d83476049ed4a2583833e3c1c9907ea.webp?v=1782943827",
+    "sourceTitle": "Public specimen visual reference",
+    "inspection": "Downloaded and visually inspected with view_image on 2026-11-05. Historical examples are inspiration, not a claim of current credential design.",
+    "observedMotifs": "Public 2020 sample: auburn ornamental header, broad pale rosette background, blue-green mesh and horizontal wave footer.",
+    "adaptation": "Two original open rosettes with different lobes, woven header and mesh; central official emblem omitted. Generated SVG contains no text, portraits, source pixels, official seals or certification marks."
+  },
+  {
+    "state": "montana",
+    "sourceUrl": "https://www.govinfo.gov/content/pkg/CRPT-118hrpt964/pdf/CRPT-118hrpt964.pdf#page=165",
+    "sourceTitle": "Public specimen visual reference",
+    "inspection": "Downloaded and visually inspected with view_image on 2026-11-05. Historical examples are inspiration, not a claim of current credential design.",
+    "observedMotifs": "Historical grayscale driver-license specimen: wide mountain valley, low center horizon and tall mountain face at upper right, dense foreground engraving.",
+    "adaptation": "Original asymmetric valley with shared crest vertices, contained face facet, layered foothills and pines; no snow used. Generated SVG contains no text, portraits, source pixels, official seals or certification marks."
+  }
+]

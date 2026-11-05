@@ -31,7 +31,7 @@ for (let i = 0; i < states.length; i++) {
   });
   pages[Math.floor(i / 10)].push({
     input: Buffer.from(
-      `<svg width="700" height="32"><text x="0" y="24" font-family="sans-serif" font-size="21" fill="#254254">${String(i + 1).padStart(2, "0")} / ${state.toUpperCase()}</text></svg>`,
+      `<svg width="700" height="32"><text x="0" y="24" font-family="DejaVu Sans" font-size="21" fill="#254254">${String(i + 1).padStart(2, "0")} / ${state.toUpperCase()}</text></svg>`,
     ),
     left: (i % 2) * 740 + 20,
     top: Math.floor((i % 10) / 2) * 500 + 10,

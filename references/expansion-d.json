@@ -1,0 +1,66 @@
+{
+  "Pennsylvania": {
+    "url": "https://usid.fyi/uploads/17d887d8645977c4b3097bceeaafa904.webp?v=1782323198",
+    "observedCues": "Pastel mint/rose/yellow radial guilloche field. Seal is intentionally replaced with an original empty rosette.",
+    "visuallyInspected": true,
+    "referenceOnly": true
+  },
+  "South Carolina": {
+    "url": "https://usid.fyi/uploads/06c3c847ad4fc5f2824a48814e5bec01.webp?v=1782852770",
+    "observedCues": "Historical 2008 specimen: pale squared field, large palmetto and crescent, sweeping rose guilloche.",
+    "visuallyInspected": true,
+    "referenceOnly": true
+  },
+  "West Virginia": {
+    "url": "https://usid.fyi/uploads/23c5d6e306c0bb358b3963aa66b7c909.webp?v=1782852281",
+    "observedCues": "Large pale gold capitol dome at right with radiating light field.",
+    "visuallyInspected": true,
+    "referenceOnly": true
+  },
+  "Wisconsin": {
+    "url": "https://usid.fyi/uploads/c57c63bf13b0d7ba4b8d387ae4d128a7.webp?v=1782413905",
+    "observedCues": "Pale blue diagonal curved line bank, capitol lower left, maple leaves and pale green accents.",
+    "visuallyInspected": true,
+    "referenceOnly": true
+  },
+  "Oregon": {
+    "url": "https://www.oregon.gov/odot/DMV/PublishingImages/driverid/sampledl19.jpg",
+    "observedCues": "Blue/pink micro-patterned field, flat stepped capitol at right, yellow lower floral band. Original composition also introduces pale mountain/forest geometry.",
+    "visuallyInspected": true,
+    "referenceOnly": true
+  },
+  "Texas": {
+    "url": "https://www.txdot.gov/content/dam/images/vehicles/offical-documents/drivers-license.webp",
+    "observedCues": "Pale blue fine crosshatch, warm upper gradient, capitol elevation and state outline.",
+    "visuallyInspected": true,
+    "referenceOnly": true
+  },
+  "Virginia": {
+    "url": "https://www.dmv.virginia.gov/sites/default/files/images/over21-dl.jpg",
+    "observedCues": "Pale gold radial ceiling panels and lobed concentric ceiling ornament; original flower cluster replaces personal-data region.",
+    "visuallyInspected": true,
+    "referenceOnly": true
+  },
+  "Rhode Island": {
+    "url": "https://www.govinfo.gov/content/pkg/CRPT-118hrpt964/pdf/CRPT-118hrpt964.pdf",
+    "pdfPage": 171,
+    "printedPage": 167,
+    "observedCues": "Grayscale public specimen shows suspension bridge across upper right, water lines, and sailboat lower center; palette is an original muted blue interpretation.",
+    "visuallyInspected": true,
+    "referenceOnly": true
+  },
+  "South Dakota": {
+    "url": "https://www.sd.gov/sys_attachment.do?sys_id=9f254a244700e210a497127ba26d4378",
+    "observedCues": "Historical official sample has blue-lavender field and Mount Rushmore rock imagery; original abstract rock strata omit carved faces.",
+    "visuallyInspected": true,
+    "referenceOnly": true
+  },
+  "Vermont": {
+    "url": "https://www.govinfo.gov/content/pkg/CRPT-118hrpt964/pdf/CRPT-118hrpt964.pdf",
+    "pdfPage": 174,
+    "printedPage": 170,
+    "observedCues": "Public grayscale specimen shows upper hill band and capitol architecture; green palette and maple leaves are original supporting regional motifs.",
+    "visuallyInspected": true,
+    "referenceOnly": true
+  }
+}
