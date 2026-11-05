@@ -1,19 +1,28 @@
-import {rect,grid,ridge,path,line,ellipse,TAU} from '../geometry.js';
+import {rect,grid,ridge,path,line,ellipse,polygon} from '../geometry.js';
 export default function(c,p){
   c.add(rect(0,0,1400,880,'#f5f7f2'));
   c.glow(300,500,700,700,'#bee2e6',.45);
-  grid(c,{phase:p,spacing:9,amplitude:23,color:'#65a4b9',opacity:.23});
-  ridge(c,[[470,350],[585,245],[650,190],[735,290],[830,340],[990,460],[1450,580]],{fill:'#d8dde5',ink:'#929fb4',opacity:.32});
-  // Original bluebird silhouette: shared wing pivot, tapered feather fans.
-  const bx=920,by=450;
-  for(const side of [-1,1])for(let j=0;j<18;j++){
-    const a=(-2.8+j*.062)*side, length=140+j*4;
-    const tx=bx+Math.cos(a)*length,ty=by+Math.sin(a)*length;
-    c.add(path(`M${bx} ${by} Q${tx-20} ${ty-30} ${tx} ${ty} Q${tx+15} ${ty+15} ${bx} ${by}Z`,'#789ab9',.9,.48,'#c8d7e4'));
-    c.add(line([[bx,by],[tx,ty]],'#6d90b2',.7,.4));
+  grid(c,{phase:p,spacing:9,amplitude:23,color:'#65a4b9',opacity:.16});
+  ridge(c,[[470,350],[585,245],[650,190],[735,290],[830,340],[990,460],[1450,580]],{fill:'#d8dde5',ink:'#929fb4',opacity:.26});
+  // Wings spread in different planes. Every feather starts at its wing shoulder.
+  const feather=(x,y,tx,ty,w)=>{
+    const dx=tx-x,dy=ty-y,len=Math.hypot(dx,dy),nx=-dy/len*w,ny=dx/len*w;
+    c.add(path(`M${x} ${y} Q${tx+nx} ${ty+ny} ${tx} ${ty} Q${tx-nx*.35} ${ty-ny*.35} ${x} ${y}Z`,'#7498b6',.8,.54,'#d0dce6'));
+    c.add(line([[x,y],[tx,ty]],'#7498b6',.6,.42));
+    for(let j=3;j<8;j++){const t=j/9;c.add(line([[x+dx*t,y+dy*t],[x+dx*(t+.05)+nx*.22,y+dy*(t+.05)+ny*.22]],'#7391ac',.5,.4));}
+  };
+  for(let j=0;j<21;j++){
+    const a=-2.9+j*.066,len=195+40*Math.sin(j/21*Math.PI);
+    feather(900,430,900+Math.cos(a)*len,430+Math.sin(a)*len,12);
   }
-  c.add(path('M875 422 C865 385 900 355 938 374 C963 384 972 417 957 445 C935 493 892 541 850 570 L832 620 L816 610 L822 551 C829 500 854 451 875 422Z','#7494ac',1,.6,'#c3d4df'));
-  c.add(path('M957 402 L991 414 L960 422Z','#668a9e',1,.6,'#a7becb'));
-  c.add(ellipse(943,398,3.5,3.5,'#55758a',.8));
-  for(let j=0;j<25;j++)c.add(path(`M${862+j*2} ${441+j*.7} Q${885+j*2} 480 ${832+j*1.3} ${570+j}`,'#6687a2',.7,.32));
+  for(let j=0;j<20;j++){
+    const a=-.93+j*.061,len=175+50*Math.sin(j/20*Math.PI);
+    feather(934,438,934+Math.cos(a)*len,438+Math.sin(a)*len,12);
+  }
+  for(let j=0;j<6;j++)feather(885,520,810+j*10,685-j*4,11);
+  c.add(path('M883 425 C877 390 902 365 934 371 C962 376 979 409 959 438 C943 472 930 523 886 564 C852 555 858 512 870 480Z','#7494ac',1,.7,'#c3d4df'));
+  c.add(path('M897 446 Q913 425 939 443 Q943 488 887 546 Q872 520 897 446Z','none',0,.45,'#eff1e6'));
+  c.add(path('M963 402 L990 412 L962 420Z','#668a9e',.8,.7,'#a7becb'));
+  c.add(ellipse(947,397,4,4,'#55758a',.9));
+  for(let j=0;j<22;j++)c.add(path(`M${878+j*2} ${448+j*.7} Q${904+j} 480 ${877+j*.5} ${536-j*.5}`,'#6687a2',.65,.32));
 }

@@ -20,3 +20,22 @@ All designs use seed 42 at 1400 × 880. Passes count rendered evaluations, not i
 | Idaho | Bird recognizable but wings are one-sided and diagrammatic; mesh overwhelms subject. | Redraw two asymmetric wings with tapered feather contours and feather hatching; soften the central grid. |
 
 No design accepted after pass 1. All ten move to pass 2.
+
+## Pass 2 — geometry and engraving revisions
+
+[Contact sheet](pass-2.jpg). Also inspected Tennessee, Idaho and Illinois individually at full size.
+
+| State | Observation | Next action / decision |
+|---|---|---|
+| Washington | Snow is now an attached shape rather than a thick line; tree reaches baseline. | Add subtle etched slopes to the mountain; final full-size inspection. |
+| Arkansas | Diamonds fit the top margin; arch panels add detail without dominating. | Add small engraved corner ornaments and a few inset medallions for depth. |
+| Illinois | Rosette is symmetric and interlaced; dense inner edges still too dark. | Reduce rosette contrast and add a fine inner ring to balance its center. |
+| Tennessee | More masonry is visible, but tower and roof still feel schematic at full size. | Replace tower geometry with layered cornices, window arches and tiled roof engraving. |
+| Alaska | Flower grouping and snow facets are better; top mesh needs more distinct rainbow interlace. | Add a pale complementary weave and rock hatching. |
+| Wyoming | Header/main-field transition is smooth; lower band does not dominate; line spacing varies clearly. | Accepted after 2 passes; keep geometry unchanged. |
+| Louisiana | New stepped tower is distinct, but too faint; rosette contrast is strong relative to tower. | Strengthen tower linework and reduce rosette density/contrast. |
+| Utah | Canyon planes now read as rock walls; bottom outlines still relatively parallel. | Add short clipped diagonal striations and inspect at full size. |
+| Colorado | Snowfields and jagged silhouettes improve depth; broad rock slopes remain flat. | Add clipped slope etching and soften green saturation slightly. |
+| Idaho | Two wings now read correctly; feathers look like narrow rays and body is sparse. | Add layered covert feathers and shorten the tail; improve the wing/body join. |
+
+The generator validation suite passed all 13 tests: every design rasterizes, repeated seeds match, alternate seeds change pixels, batches have correct hashes and invalid CLI inputs fail.

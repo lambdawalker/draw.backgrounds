@@ -29,13 +29,25 @@ export function waves(c,{color='#639eb4',opacity=.25,from=0,to=900,spacing=8,amp
   for(let y=from;y<=to;y+=spacing)c.add(line(samples(x=>[x,y+amplitude*Math.sin(x/period+phase+y/520)+12*Math.sin(x/95+y/180)+slope*x],-40,1440,9),color,.8,opacity));
 }
 export function rosette(c,x,y,r,color,{rings=22,lobes=24,amplitude=12,opacity=.3,width=.8}={}){
-  for(let j=0;j<rings;j++){const rr=r+j*2.4;c.add(line(samples(t=>{const a=t/180*Math.PI,rad=rr+amplitude*Math.sin(lobes*a+j*.15);return [x+rad*Math.cos(a),y+rad*Math.sin(a)];},0,360,1),color,width,opacity));}
+  for(let j=0;j<rings;j++)for(const direction of [-1,1]){
+    const rr=r+j*1.6;
+    c.add(line(samples(t=>{const a=t/180*Math.PI,rad=rr+amplitude*Math.cos(lobes*a+direction*j*.06);return [x+rad*Math.cos(a),y+rad*Math.sin(a)];},0,360,.75),color,width,opacity*.72));
+  }
+  for(const rr of [r-amplitude-4,r-amplitude-7,r+(rings-1)*1.6+amplitude+4])c.add(line(samples(t=>[x+rr*Math.cos(t/180*Math.PI),y+rr*Math.sin(t/180*Math.PI)],0,360,1),color,.7,opacity));
 }
 export function ridge(c,verts,{fill='#b1c6cf',ink='#7b9eae',opacity=.4,hatch=true}={}){
-  const bottom=1000, shape=polygon([...verts,[1600,bottom],[-200,bottom]],fill);
+  // Subdivide slopes into irregular rock edges while retaining shared peak vertices.
+  const detailed=[];
+  for(let i=0;i<verts.length-1;i++){
+    const [x,y]=verts[i],[xx,yy]=verts[i+1];
+    const steps=Math.max(2,Math.ceil(Math.abs(xx-x)/15));
+    for(let j=0;j<steps;j++){const t=j/steps;detailed.push([x+(xx-x)*t,y+(yy-y)*t+Math.sin(t*Math.PI)*(c.random()-.5)*14]);}
+  }
+  detailed.push(verts.at(-1));
+  const bottom=1000, shape=polygon([...detailed,[1600,bottom],[-200,bottom]],fill);
   c.add(`<g opacity="${opacity}">${shape}</g>`);
   if(hatch){let lines='';for(let y=-100;y<1000;y+=7)lines+=line(samples(x=>[x,y+20*Math.sin(x/120+y/140)],-100,1500,12),ink,.75,.25);c.clip(shape,lines);}
-  c.add(line(verts,ink,1.1,opacity*.7));
+  c.add(line(detailed,ink,.8,opacity*.7));
 }
 export function pine(c,x,y,size,color,opacity=.4){
   const a=[[x,y-size]];for(let j=1;j<=8;j++){const yy=y-size+j*size/9,ww=size*.25*j/8;a.push([x-ww*.65,yy-size*.09],[x-ww,yy]);}a.push([x-size*.025,y],[x+size*.025,y]);for(let j=8;j>=1;j--){const yy=y-size+j*size/9,ww=size*.25*j/8;a.push([x+ww,yy],[x+ww*.65,yy-size*.09]);}c.add(polygon(a,color,opacity));}
@@ -52,4 +64,18 @@ export function pavilion(c,x,y,s,color,opacity=.4,tower=false){
   if(tower){L([[x-40*s,y-199*s],[x-40*s,y-330*s],[x+40*s,y-330*s],[x+40*s,y-199*s]],2);L([[x-53*s,y-330*s],[x,y-385*s],[x+53*s,y-330*s],[x-53*s,y-330*s]],2);L([[x,y-385*s],[x,y-430*s]],2);for(let i=-2;i<=2;i++)L([[x+i*13*s,y-215*s],[x+i*13*s,y-320*s]],2);}
   for(let yy=30;yy<140;yy+=5)L([[x-148*s,y-yy*s],[x+148*s,y-yy*s]],.45);
   c.add(`<g opacity="${opacity}">${b}</g>`);
+}
+/** Etched rock faces and snow patches share their peak vertex. */
+export function snow(c,x,y,w,h,color='#f8faf6',opacity=.7){
+  const left=[[x,y],[x-w*.48,y+h*.62],[x-w*.34,y+h*.55],[x-w*.25,y+h*.65],[x-w*.18,y+h*.45],[x-w*.08,y+h*.6],[x+w*.04,y+h*.3],[x+w*.14,y+h*.47],[x+w*.3,y+h*.52],[x+w*.18,y+h*.27]];
+  c.add(polygon(left,color,opacity));
+  for(let j=0;j<14;j++)c.add(line([[x+j*.8,y+12+j*3],[x+w*(.4+j*.035),y+h*(.8+j*.03)],[x+w*(.22+j*.05),y+h*1.5]],'#6f91aa',.7,.18));
+}
+export function tower(c,x,y,s,color){
+  let g='';for(let j=0;j<7;j++){const w=(74-j*7)*s,top=y-(75+j*29)*s;g+=rect(x-w/2,top,w,(75+j*29)*s,color,.035);g+=path(`M${x-w/2} ${y} V${top} H${x+w/2} V${y}`,color,.8,.5);}
+  for(let j=-4;j<=4;j++)g+=line([[x+j*6*s,y-12*s],[x+j*6*s,y-200*s]],color,.7,.5);
+  for(let j=0;j<32;j++)g+=line([[x-25*s,y-j*6*s],[x+25*s,y-j*6*s]],color,.6,.25);
+  g+=path(`M${x-110*s} ${y} V${y-45*s} H${x+110*s} V${y} M${x-120*s} ${y+6*s} H${x+120*s}`,color,1.3,.5);
+  for(let j=-8;j<=8;j++)g+=line([[x+j*12*s,y],[x+j*12*s,y-40*s]],color,1,.4);
+  c.add(g);
 }
