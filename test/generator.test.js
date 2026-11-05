@@ -31,7 +31,7 @@ for (const state of states) {
   });
 }
 test("reject invalid inputs and prototype names", () => {
-  for (const state of ["texas", "constructor", "__proto__"])
+  for (const state of ["atlantis", "constructor", "__proto__"])
     assert.throws(() => render(state), /Unknown state/);
   for (const seed of [-1, 1.5, NaN, Infinity, 2 ** 32])
     assert.throws(() => render("utah", { seed }), /seed/);
@@ -44,7 +44,7 @@ test("reject invalid inputs and prototype names", () => {
   ])
     assert.throws(() => render("utah", { width, height }), /dimensions/);
 });
-test("batch CLI writes 20 matched seed/state records and valid file hashes", async () => {
+test("batch CLI writes matched seed/state records and valid file hashes", async () => {
   const dir = await mkdtemp(join(tmpdir(), "backgrounds-"));
   try {
     execFileSync(process.execPath, [
@@ -65,7 +65,7 @@ test("batch CLI writes 20 matched seed/state records and valid file hashes", asy
       dir,
     ]);
     const m = JSON.parse(await readFile(join(dir, "manifest.json"), "utf8"));
-    assert.equal(m.items.length, 20);
+    assert.equal(m.items.length, states.length * 2);
     for (const state of states)
       assert.deepEqual(
         m.items.filter((i) => i.state === state).map((i) => i.seed),
@@ -76,7 +76,7 @@ test("batch CLI writes 20 matched seed/state records and valid file hashes", asy
         const b = await readFile(join(dir, file.filename));
         assert.equal(createHash("sha256").update(b).digest("hex"), file.sha256);
       }
-    assert.equal((await readdir(dir)).length, 41);
+    assert.equal((await readdir(dir)).length, states.length * 4 + 1);
   } finally {
     await rm(dir, { recursive: true, force: true });
   }
