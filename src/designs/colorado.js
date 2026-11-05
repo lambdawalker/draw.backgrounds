@@ -4,7 +4,7 @@ import {
   ridge,
   line,
   pine,
-  snow,
+  snowOnRidge,
   polygon,
   rockEtching,
 } from "../geometry.js";
@@ -31,7 +31,7 @@ export default function (c, p) {
     period: 95,
     phase: p,
   });
-  ridge(
+  const mountain = ridge(
     c,
     [
       [-40, 650],
@@ -50,6 +50,7 @@ export default function (c, p) {
     ],
     { fill: "#9fb5ce", ink: "#718da5", opacity: 0.72 },
   );
+  snowOnRidge(c, mountain, { lineY: 410 });
   rockEtching(
     c,
     [
@@ -64,8 +65,6 @@ export default function (c, p) {
     ],
     { opacity: 0.2 },
   );
-  snow(c, 650, 280, 215, 185, "#f8f7f3", 0.8);
-  snow(c, 740, 330, 140, 140, "#f8f7f3", 0.6);
   c.add(
     polygon(
       [
@@ -106,8 +105,15 @@ export default function (c, p) {
       [1180, 795],
       [1440, 740],
     ],
-    { fill: "#d5c18e", ink: "#b3a773", opacity: 0.65 },
+    { fill: "#d5c18e", ink: "#b3a773", opacity: 0.59 },
   );
   for (let j = 0; j < 18; j++)
-    pine(c, 60 + j * 75, 870, 35 + (j % 4) * 9, "#6f8b76", 0.3);
+    pine(
+      c,
+      60 + j * 75,
+      870,
+      33 + (j % 4) * 9 + 5 * Math.sin(j * 1.8),
+      "#6f8b76",
+      0.3,
+    );
 }

@@ -90,8 +90,8 @@ export default function (c, p) {
           [765 + j * 8, 750],
         ],
         "#be8573",
-        0.7,
-        0.22,
+        0.65,
+        0.18,
       ),
     );
   for (let j = 0; j < 21; j++)

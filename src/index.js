@@ -1,3 +1,7 @@
+import expansionA from "./expansion/a/index.js";
+import expansionB from "./expansion/b/index.js";
+import expansionC from "./expansion/c/index.js";
+import expansionD from "./expansion/d/index.js";
 import { finish } from "./finishing.js";
 import { Canvas, rng, mixSeed } from "./geometry.js";
 import washington from "./designs/washington.js";
@@ -10,7 +14,7 @@ import louisiana from "./designs/louisiana.js";
 import utah from "./designs/utah.js";
 import colorado from "./designs/colorado.js";
 import idaho from "./designs/idaho.js";
-export const states = Object.freeze([
+const originalStates = Object.freeze([
   "washington",
   "arkansas",
   "illinois",
@@ -22,7 +26,20 @@ export const states = Object.freeze([
   "colorado",
   "idaho",
 ]);
+export const states = Object.freeze([
+  ...originalStates,
+  ...Object.keys({
+    ...expansionA,
+    ...expansionB,
+    ...expansionC,
+    ...expansionD,
+  }).sort(),
+]);
 const designs = {
+  ...expansionA,
+  ...expansionB,
+  ...expansionC,
+  ...expansionD,
   washington,
   arkansas,
   illinois,
@@ -56,6 +73,6 @@ export function render(state, { seed = 42, width = 1400, height = 880 } = {}) {
   const random = rng(mixSeed(seed)),
     c = new Canvas(random, `${state}-${seed}-`);
   designs[state](c, random() * Math.PI * 2);
-  finish(c, state);
+  if (originalStates.includes(state)) finish(c, state);
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 1400 880" preserveAspectRatio="none"><defs>${c.defs.join("")}</defs><g>${c.body.join("")}</g></svg>`;
 }

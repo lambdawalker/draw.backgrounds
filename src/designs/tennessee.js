@@ -22,7 +22,7 @@ export default function (c, p) {
   );
   grid(c, {
     color: "#b37d79",
-    opacity: 0.16,
+    opacity: 0.14,
     spacing: 8,
     amplitude: 8,
     phase: p,
@@ -36,7 +36,7 @@ export default function (c, p) {
   });
   waves(c, {
     color: "#648fa8",
-    opacity: 0.23,
+    opacity: 0.2,
     from: 660,
     to: 970,
     spacing: 5,

@@ -233,6 +233,7 @@ export function ridge(
     c.clip(shape, lines);
   }
   c.add(line(detailed, ink, 0.8, opacity * 0.7));
+  return { vertices: detailed, silhouette: shape };
 }
 export function pine(c, x, y, size, color, opacity = 0.4) {
   const a = [[x, y - size]];
@@ -463,4 +464,28 @@ export function engravedPavilion(c, x, y, s, color) {
   );
   P("M-8 -361 V-386 M0 -361 V-386 M8 -361 V-386", 0.8, 0.55);
   c.add(`<g transform="translate(${x} ${y}) scale(${s})">${g}</g>`);
+}
+
+/** Snow shares the exact jagged outline drawn by ridge(), including seeded detail. */
+export function snowOnRidge(
+  c,
+  mountain,
+  { lineY = 410, color = "#f8faf6", opacity = 0.7 } = {},
+) {
+  if (!mountain?.silhouette)
+    throw new TypeError("snowOnRidge requires geometry returned by ridge");
+  const boundary = samples(
+    (x) => [x, lineY + 16 * Math.sin(x / 22) + 9 * Math.sin(x / 9)],
+    -200,
+    1600,
+    8,
+  );
+  c.clip(
+    mountain.silhouette,
+    polygon(
+      [[-200, -100], [1600, -100], ...boundary.reverse()],
+      color,
+      opacity,
+    ),
+  );
 }

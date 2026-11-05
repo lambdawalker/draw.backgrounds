@@ -28,7 +28,12 @@ for (let row = 0; row < states.length; row++)
     });
   }
 await sharp({
-  create: { width: 1110, height: 2500, channels: 3, background: "#e5e9eb" },
+  create: {
+    width: 1110,
+    height: states.length * 250,
+    channels: 3,
+    background: "#e5e9eb",
+  },
 })
   .composite(layers)
   .jpeg({ quality: 87 })

@@ -16,7 +16,7 @@ export default function (c, p) {
   grid(c, {
     phase: p,
     spacing: 13,
-    amplitude: 28,
+    amplitude: 31,
     color: "#6198b4",
     opacity: 0.18,
   });
@@ -28,7 +28,7 @@ export default function (c, p) {
       `M${x} 900 V65 H${x + 100} V900 M${x + 9} 900 V76 H${x + 91} V900`,
       "#b39352",
       1.2,
-      0.5,
+      0.54,
     );
     for (let y = 120; y < 880; y += 130)
       panels += path(

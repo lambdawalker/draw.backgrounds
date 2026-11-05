@@ -40,7 +40,7 @@ export default function (c, p) {
     rings: 26,
     lobes: 17,
     amplitude: 18,
-    opacity: 0.3,
+    opacity: 0.27,
   });
   tower(c, 795, 820, 1.4, "#537f98");
   for (let j = 0; j < 14; j++)

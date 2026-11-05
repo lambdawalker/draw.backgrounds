@@ -19,7 +19,7 @@ export default function (c, p) {
     [100, "#4c9abc"],
   ]);
   const field = c.body.length;
-  for (let x = -120; x < 1500; x += 9)
+  for (let x = -120; x < 1500; x += 9 + 1.3 * Math.sin(x / 180))
     c.add(
       line(
         samples(
@@ -61,7 +61,7 @@ export default function (c, p) {
         ),
         "#397c9e",
         1,
-        0.5,
+        0.43,
       ),
     );
   for (let j = 0; j < 18; j++)

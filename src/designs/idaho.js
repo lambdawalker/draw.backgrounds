@@ -33,8 +33,8 @@ export default function (c, p) {
       path(
         `M${x} ${y} Q${tx + nx} ${ty + ny} ${tx} ${ty} Q${tx - nx * 0.35} ${ty - ny * 0.35} ${x} ${y}Z`,
         "#7498b6",
-        0.8,
-        0.54,
+        0.7,
+        0.48,
         "#d0dce6",
       ),
     );
@@ -107,7 +107,7 @@ export default function (c, p) {
     ),
   );
   c.add(path("M963 402 L990 412 L962 420Z", "#668a9e", 0.8, 0.7, "#a7becb"));
-  c.add(ellipse(947, 397, 4, 4, "#55758a", 0.9));
+  c.add(ellipse(947, 397, 4, 4, "#55758a", 0.8));
   for (let j = 0; j < 22; j++)
     c.add(
       path(
