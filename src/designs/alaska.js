@@ -5,7 +5,7 @@ import {
   flower,
   pine,
   line,
-  snow,
+  snowOnRidge,
   path,
   waves,
   rockEtching,
@@ -32,7 +32,7 @@ export default function (c, p) {
     opacity: 0.24,
   });
   c.glow(1000, 70, 650, 210, "#e0a1b9", 0.32);
-  ridge(
+  const mountain = ridge(
     c,
     [
       [-80, 680],
@@ -49,6 +49,7 @@ export default function (c, p) {
     ],
     { fill: "#b2cddc", ink: "#6698ac", opacity: 0.6 },
   );
+  snowOnRidge(c, mountain, { lineY: 405 });
   rockEtching(
     c,
     [
@@ -62,8 +63,6 @@ export default function (c, p) {
     ],
     { opacity: 0.15 },
   );
-  snow(c, 580, 310, 150, 190);
-  snow(c, 820, 235, 230, 230);
   ridge(
     c,
     [
