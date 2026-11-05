@@ -1,27 +1,10 @@
 import { paper, field, border, quality } from "./helpers.js";
 import { ridge, rockEtching, waves } from "../../geometry.js";
-export default function (c, p) {
-  paper(c, ["#f2e9da", "#ecd9d2", "#d9e8e2"]);
-  field(c, "#bd967c", p);
+function drawSunDisc(c) {
   c.add(c.ellipse(1080, 220, 170, 170, "#edd6a0", 0.25));
-  const v = [
-    [-100, 590],
-    [180, 520],
-    [360, 550],
-    [530, 470],
-    [620, 500],
-    [710, 360],
-    [850, 350],
-    [900, 410],
-    [1100, 390],
-    [1250, 520],
-    [1500, 470],
-  ];
-  ridge(c, v, { fill: "#b98b81", ink: "#a06d69", opacity: 0.25 });
-  rockEtching(c, v, {
-    color: "#8c5f59",
-    opacity: quality.pass >= 3 ? 0.25 : 0.15,
-  });
+}
+
+function drawMidgroundContours(c) {
   for (let j = 0; j < 24; j++)
     c.add(
       c.path(
@@ -31,6 +14,9 @@ export default function (c, p) {
         0.3,
       ),
     );
+}
+
+function drawCactusSilhouette(c) {
   if (quality.pass >= 5) {
     c.add(
       c.path(
@@ -42,8 +28,14 @@ export default function (c, p) {
       ),
     );
   }
+}
+
+function drawCactusTrunkRibs(c) {
   for (let j = 0; j < 5; j++)
     c.add(c.path(`M${1138 + j * 4} 830 V565`, "#54796c", 0.7, 0.4));
+}
+
+function drawForegroundContours(c) {
   for (let j = 0; j < 25; j++)
     c.add(
       c.path(
@@ -53,11 +45,17 @@ export default function (c, p) {
         0.23,
       ),
     );
+}
+
+function drawDesertStipple(c) {
   for (let j = 0; j < 32; j++) {
     let x = 640 + c.random() * 510,
       y = 440 + c.random() * 210;
     c.add(c.path(`M${x} ${y} q35 -10 73 1 l28 -3`, "#a77e70", 0.7, 0.23));
   }
+}
+
+function drawRockFissures(c) {
   for (let j = 0; j < 20; j++) {
     let x = 710 + j * 20;
     c.add(
@@ -69,6 +67,9 @@ export default function (c, p) {
       ),
     );
   }
+}
+
+function drawCactusArmRibs(c) {
   for (let j = 0; j < 3; j++) {
     c.add(
       c.path(
@@ -87,6 +88,9 @@ export default function (c, p) {
       ),
     );
   }
+}
+
+function drawSunEngraving(c) {
   const sunlight = [];
   for (let j = 0; j < 35; j++)
     sunlight.push(
@@ -98,5 +102,37 @@ export default function (c, p) {
       ),
     );
   c.clip(c.ellipse(1080, 220, 170, 170, "white"), sunlight);
+}
+
+export default function (c, p) {
+  paper(c, ["#f2e9da", "#ecd9d2", "#d9e8e2"]);
+  field(c, "#bd967c", p);
+  drawSunDisc(c);
+  const v = [
+    [-100, 590],
+    [180, 520],
+    [360, 550],
+    [530, 470],
+    [620, 500],
+    [710, 360],
+    [850, 350],
+    [900, 410],
+    [1100, 390],
+    [1250, 520],
+    [1500, 470],
+  ];
+  ridge(c, v, { fill: "#b98b81", ink: "#a06d69", opacity: 0.25 });
+  rockEtching(c, v, {
+    color: "#8c5f59",
+    opacity: quality.pass >= 3 ? 0.25 : 0.15,
+  });
+  drawMidgroundContours(c);
+  drawCactusSilhouette(c);
+  drawCactusTrunkRibs(c);
+  drawForegroundContours(c);
+  drawDesertStipple(c);
+  drawRockFissures(c);
+  drawCactusArmRibs(c);
+  drawSunEngraving(c);
   border(c, "#bd9c7d", 1);
 }

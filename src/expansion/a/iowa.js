@@ -7,10 +7,7 @@ import {
   leaf,
   flourish,
 } from "./helpers.js";
-export default function (c, p) {
-  paper(c, ["#ece8dc", "#eee6d7", "#dfe6d9"]);
-  field(c, "#a79e86", p);
-  dome(c, 1085, 790, 1.65, "#8f8969", "iowa");
+function drawCurvedEngraving(c) {
   for (let j = 0; j < 24; j++)
     c.add(
       c.path(
@@ -20,6 +17,9 @@ export default function (c, p) {
         0.18,
       ),
     );
+}
+
+function drawGrainStalk(c) {
   if (quality.pass >= 5) {
     c.add(c.path("M780 880 Q760 680 740 500", "#8c9466", 1.1, 0.4));
     for (let j = 0; j < 9; j++) {
@@ -27,7 +27,9 @@ export default function (c, p) {
       leaf(c, 755, 610 + j * 25, 75, -35, "#a5ad86");
     }
   }
-  flourish(c, 700, 830, 690, "#aaa58a");
+}
+
+function drawGrainKernels(c) {
   for (let j = 0; j < 8; j++) {
     let y = 515 + j * 9;
     c.add(
@@ -40,5 +42,15 @@ export default function (c, p) {
       ),
     );
   }
+}
+
+export default function (c, p) {
+  paper(c, ["#ece8dc", "#eee6d7", "#dfe6d9"]);
+  field(c, "#a79e86", p);
+  dome(c, 1085, 790, 1.65, "#8f8969", "iowa");
+  drawCurvedEngraving(c);
+  drawGrainStalk(c);
+  flourish(c, 700, 830, 690, "#aaa58a");
+  drawGrainKernels(c);
   border(c, "#a6a186", 1);
 }

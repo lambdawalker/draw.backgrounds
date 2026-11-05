@@ -7,7 +7,7 @@ import {
   waves,
   rockEtching,
 } from "../geometry.js";
-export default function (c, p) {
+function drawPaper(c) {
   c.add(
     c.rect(
       0,
@@ -21,6 +21,14 @@ export default function (c, p) {
       ]),
     ),
   );
+}
+
+function drawForegroundStem(c) {
+  c.add(c.path("M30 900 Q100 690 55 520 T70 340", "#829e83", 1.2, 0.4));
+}
+
+export default function (c, p) {
+  drawPaper(c);
   grid(c, {
     phase: p,
     spacing: 12,
@@ -73,7 +81,7 @@ export default function (c, p) {
     ],
     { fill: "#96c3af", ink: "#719e93", opacity: 0.32 },
   );
-  c.add(c.path("M30 900 Q100 690 55 520 T70 340", "#829e83", 1.2, 0.4));
+  drawForegroundStem(c);
   for (let j = 0; j < 12; j++) {
     let y = 370 + j * 41,
       x = 53 + 35 * Math.sin(j * 2.2);

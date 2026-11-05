@@ -1,5 +1,5 @@
 import { grid, engravedPavilion, rosette, waves } from "../geometry.js";
-export default function (c, p) {
+function drawPaper(c) {
   c.add(
     c.rect(
       0,
@@ -13,6 +13,14 @@ export default function (c, p) {
       ]),
     ),
   );
+}
+
+function drawPavilionHalo(c) {
+  c.add(c.ellipse(950, 425, 285, 285, "#faf8f1", 0.28));
+}
+
+export default function (c, p) {
+  drawPaper(c);
   grid(c, {
     color: "#b37d79",
     opacity: 0.14,
@@ -20,7 +28,7 @@ export default function (c, p) {
     amplitude: 8,
     phase: p,
   });
-  c.add(c.ellipse(950, 425, 285, 285, "#faf8f1", 0.28));
+  drawPavilionHalo(c);
   rosette(c, 950, 425, 245, "#729cad", {
     rings: 10,
     lobes: 3,

@@ -54,6 +54,15 @@ function leaves(c, x, y, col) {
     );
   }
 }
+function drawPrairieStems(c) {
+  for (let i = 0; i < 12; i++) {
+    let x = 70 + i * 18 + c.random() * 8;
+    c.add(
+      c.path(`M${x} 880 Q${x + 35} 760 ${x + 24} 650`, "#ae9a61", 0.8, 0.3),
+    );
+  }
+}
+
 function nebraska(c, p) {
   paper(c, "#ede8db", "#c4d39f", p);
   c.glow(1050, 185, 390, 230, "#e8b560", 0.45);
@@ -77,12 +86,7 @@ function nebraska(c, p) {
   );
   curve(c, "#98a379", 610, 45, 0.25);
   tower(c, 1120, 840, 0.95, "#7e936f");
-  for (let i = 0; i < 12; i++) {
-    let x = 70 + i * 18 + c.random() * 8;
-    c.add(
-      c.path(`M${x} 880 Q${x + 35} 760 ${x + 24} 650`, "#ae9a61", 0.8, 0.3),
-    );
-  }
+  drawPrairieStems(c);
 }
 function nevada(c, p) {
   paper(c, "#e6f0f1", "#b9d1c9", p);
@@ -110,8 +114,7 @@ function nevada(c, p) {
   leaves(c, 1120, 780, "#7f9f86");
   leaves(c, 1190, 830, "#7f9f86");
 }
-function newHampshire(c, p) {
-  paper(c, "#e8eef5", "#cfbfd3", p);
+function drawOvalEngraving(c) {
   for (let i = 0; i < 60; i++)
     c.add(
       c.line(
@@ -129,6 +132,11 @@ function newHampshire(c, p) {
         0.15,
       ),
     );
+}
+
+function newHampshire(c, p) {
+  paper(c, "#e8eef5", "#cfbfd3", p);
+  drawOvalEngraving(c);
   ridge(
     c,
     [
@@ -146,9 +154,7 @@ function newHampshire(c, p) {
   for (let i = 0; i < 11; i++)
     pine(c, 1040 + i * 32, 870, 70 + c.random() * 125, "#819e9e", 0.17);
 }
-function newJersey(c, p) {
-  paper(c, "#f2dbe3", "#c5ddcd", p);
-  curve(c, "#c48d9c", -40, 45, 0.26);
+function drawRiverSilhouette(c) {
   c.add(
     c.path(
       "M845 0 C700 190 1100 300 915 460 S740 750 960 900",
@@ -157,7 +163,9 @@ function newJersey(c, p) {
       0.24,
     ),
   );
-  engravedPavilion(c, 1080, 835, 0.86, "#81958a");
+}
+
+function drawRiverbankContours(c) {
   for (let j = 0; j < 38; j++)
     c.add(
       c.path(
@@ -168,6 +176,40 @@ function newJersey(c, p) {
       ),
     );
 }
+
+function newJersey(c, p) {
+  paper(c, "#f2dbe3", "#c5ddcd", p);
+  curve(c, "#c48d9c", -40, 45, 0.26);
+  drawRiverSilhouette(c);
+  engravedPavilion(c, 1080, 835, 0.86, "#81958a");
+  drawRiverbankContours(c);
+}
+function drawMesaContours(c) {
+  for (let i = 0; i < 32; i++)
+    c.add(
+      c.path(
+        `M890 ${410 + i * 8} Q1130 ${360 + i * 10} 1420 ${380 + i * 10}`,
+        "#ac8874",
+        0.7,
+        0.27,
+      ),
+    );
+}
+
+function drawDesertStems(c) {
+  for (let j = 0; j < 9; j++) {
+    let x = 1240 + j * 12;
+    c.add(
+      c.path(
+        `M1280 900 Q${x - 30} 770 ${x - 85} 710 M1280 900 Q${x + 30} 770 ${x + 30} 700`,
+        "#8ba594",
+        1,
+        0.36,
+      ),
+    );
+  }
+}
+
 function newMexico(c, p) {
   paper(c, "#dbeef0", "#ddcaa2", p);
   c.glow(550, 270, 650, 240, "#fffdf0", 0.9);
@@ -188,28 +230,22 @@ function newMexico(c, p) {
     ],
     { fill: "#dcb3a2", ink: "#bc927e", opacity: 0.52 },
   );
-  for (let i = 0; i < 32; i++)
-    c.add(
-      c.path(
-        `M890 ${410 + i * 8} Q1130 ${360 + i * 10} 1420 ${380 + i * 10}`,
-        "#ac8874",
-        0.7,
-        0.27,
-      ),
-    );
+  drawMesaContours(c);
   curve(c, "#adbb9e", 730, 42, 0.25);
-  for (let j = 0; j < 9; j++) {
-    let x = 1240 + j * 12;
+  drawDesertStems(c);
+}
+function drawDiagonalEngraving(c) {
+  for (let i = 0; i < 65; i++)
     c.add(
       c.path(
-        `M1280 900 Q${x - 30} 770 ${x - 85} 710 M1280 900 Q${x + 30} 770 ${x + 30} 700`,
-        "#8ba594",
-        1,
-        0.36,
+        `M${i * 22} 880 Q${300 + i * 15} 420 ${1100 + i * 6} -80`,
+        "#789a9d",
+        0.65,
+        0.17,
       ),
     );
-  }
 }
+
 function newYork(c, p) {
   paper(c, "#e4eeee", "#d2c9c5", p);
   rosette(c, 820, 505, 265, "#9aa8a4", {
@@ -224,17 +260,20 @@ function newYork(c, p) {
     amplitude: 13,
     opacity: 0.25,
   });
-  for (let i = 0; i < 65; i++)
-    c.add(
-      c.path(
-        `M${i * 22} 880 Q${300 + i * 15} 420 ${1100 + i * 6} -80`,
-        "#789a9d",
-        0.65,
-        0.17,
-      ),
-    );
+  drawDiagonalEngraving(c);
   curve(c, "#8aa6ae", 800, 16, 0.2);
 }
+function drawAirplane(c) {
+  c.add(
+    c.path(
+      "M50 205 Q165 175 290 205 L170 214Z M170 195 V228 M90 215 H240",
+      "#789ba8",
+      1,
+      0.35,
+    ),
+  );
+}
+
 function northCarolina(c, p) {
   paper(c, "#efdfe5", "#b9d4c8", p);
   curve(c, "#9dbacf", 155, 32, 0.22);
@@ -253,16 +292,25 @@ function northCarolina(c, p) {
     { fill: "#b8cbb8", ink: "#92a7a9", opacity: 0.23 },
   );
   engravedPavilion(c, 1015, 810, 0.78, "#7e967c");
-  c.add(
-    c.path(
-      "M50 205 Q165 175 290 205 L170 214Z M170 195 V228 M90 215 H240",
-      "#789ba8",
-      1,
-      0.35,
-    ),
-  );
+  drawAirplane(c);
   curve(c, "#b3a1bd", 750, 26, 0.2);
 }
+function drawPrairieGrasses(c) {
+  for (let i = 0; i < 19; i++) {
+    let x = 1025 + i * 18 + c.random() * 14;
+    c.add(c.path(`M${x} 900 Q${x - 35} 750 ${x - 20} 560`, "#9f9e69", 1, 0.36));
+    for (let j = 0; j < 6; j++)
+      c.add(
+        c.path(
+          `M${x - 20} ${570 + j * 15} l-14 -13 M${x - 20} ${570 + j * 15} l14 -13`,
+          "#9f9e69",
+          1,
+          0.33,
+        ),
+      );
+  }
+}
+
 function northDakota(c, p) {
   paper(c, "#e9e5d7", "#ced8b7", p);
   ridge(
@@ -282,28 +330,9 @@ function northDakota(c, p) {
     { fill: "#c9b89d", ink: "#b3987c", opacity: 0.3 },
   );
   curve(c, "#b09e7f", 635, 42, 0.22);
-  for (let i = 0; i < 19; i++) {
-    let x = 1025 + i * 18 + c.random() * 14;
-    c.add(c.path(`M${x} 900 Q${x - 35} 750 ${x - 20} 560`, "#9f9e69", 1, 0.36));
-    for (let j = 0; j < 6; j++)
-      c.add(
-        c.path(
-          `M${x - 20} ${570 + j * 15} l-14 -13 M${x - 20} ${570 + j * 15} l14 -13`,
-          "#9f9e69",
-          1,
-          0.33,
-        ),
-      );
-  }
+  drawPrairieGrasses(c);
 }
-function ohio(c, p) {
-  paper(c, "#dcefed", "#d0dfa8", p);
-  rosette(c, 950, 390, 220, "#9caec2", {
-    rings: 24,
-    lobes: 42,
-    amplitude: 7,
-    opacity: 0.3,
-  });
+function drawHorizontalContours(c) {
   for (let i = 0; i < 50; i++)
     c.add(
       c.path(
@@ -313,6 +342,9 @@ function ohio(c, p) {
         0.23,
       ),
     );
+}
+
+function drawVerticalContours(c) {
   for (let i = 0; i < 30; i++)
     c.add(
       c.path(
@@ -323,10 +355,19 @@ function ohio(c, p) {
       ),
     );
 }
-function oklahoma(c, p) {
-  paper(c, "#e0edf0", "#d1d1bd", p);
-  dome(c, 1030, 850);
-  curve(c, "#b1b59e", 740, 17, 0.14);
+
+function ohio(c, p) {
+  paper(c, "#dcefed", "#d0dfa8", p);
+  rosette(c, 950, 390, 220, "#9caec2", {
+    rings: 24,
+    lobes: 42,
+    amplitude: 7,
+    opacity: 0.3,
+  });
+  drawHorizontalContours(c);
+  drawVerticalContours(c);
+}
+function drawAngularEngraving(c) {
   for (let i = 0; i < 14; i++)
     c.add(
       c.path(
@@ -336,6 +377,13 @@ function oklahoma(c, p) {
         0.18,
       ),
     );
+}
+
+function oklahoma(c, p) {
+  paper(c, "#e0edf0", "#d1d1bd", p);
+  dome(c, 1030, 850);
+  curve(c, "#b1b59e", 740, 17, 0.14);
+  drawAngularEngraving(c);
 }
 const designs = {
   nebraska: nebraska,
@@ -350,20 +398,7 @@ const designs = {
   oklahoma: oklahoma,
 };
 
-function detail(c, name) {
-  const colors = {
-    nebraska: "#a18b66",
-    nevada: "#75959b",
-    "new-hampshire": "#8a9ab1",
-    "new-jersey": "#ad8f9e",
-    "new-mexico": "#b18b76",
-    "new-york": "#90a1a2",
-    "north-carolina": "#92a698",
-    "north-dakota": "#aa997d",
-    ohio: "#90ada7",
-    oklahoma: "#9b9d8c",
-  };
-  const col = colors[name];
+function drawNebraskaEngraving(c, name, col) {
   if (name === "nebraska")
     for (let i = 0; i < 24; i++)
       c.add(
@@ -374,6 +409,9 @@ function detail(c, name) {
           0.22,
         ),
       );
+}
+
+function drawNevadaEngraving(c, name, col) {
   if (name === "nevada")
     for (let i = 0; i < 18; i++)
       c.add(
@@ -384,7 +422,9 @@ function detail(c, name) {
           0.19,
         ),
       );
-  if (name === "new-hampshire") curve(c, col, 70, 26, 0.11);
+}
+
+function drawNewJerseyEngraving(c, name, col) {
   if (name === "new-jersey")
     for (let i = 0; i < 15; i++)
       c.add(
@@ -395,6 +435,9 @@ function detail(c, name) {
           0.15,
         ),
       );
+}
+
+function drawNewMexicoEngraving(c, name, col) {
   if (name === "new-mexico")
     for (let i = 0; i < 21; i++)
       c.add(
@@ -405,6 +448,9 @@ function detail(c, name) {
           0.19,
         ),
       );
+}
+
+function drawNewYorkEngraving(c, name, col) {
   if (name === "new-york")
     for (let i = 0; i < 26; i++)
       c.add(
@@ -423,9 +469,9 @@ function detail(c, name) {
           0.16,
         ),
       );
-  if (name === "north-carolina")
-    for (let i = 0; i < 8; i++)
-      pine(c, 1160 + i * 26, 850, 70 + i * 9 + c.random() * 30, col, 0.16);
+}
+
+function drawNorthDakotaEngraving(c, name, col) {
   if (name === "north-dakota")
     for (let i = 0; i < 27; i++)
       c.add(
@@ -436,6 +482,9 @@ function detail(c, name) {
           0.15,
         ),
       );
+}
+
+function drawOhioEngraving(c, name, col) {
   if (name === "ohio")
     for (let i = 0; i < 27; i++)
       c.add(
@@ -446,10 +495,15 @@ function detail(c, name) {
           0.12,
         ),
       );
+}
+
+function drawOklahomaEngraving(c, name, col) {
   if (name === "oklahoma")
     for (let i = 0; i < 19; i++)
       c.add(c.path(`M690 ${690 + i * 7} H1310`, col, 0.6, 0.17));
+}
 
+function drawLowerEngraving(c, col) {
   for (let i = 0; i < 20; i++)
     c.add(
       c.path(
@@ -459,6 +513,36 @@ function detail(c, name) {
         0.17,
       ),
     );
+}
+
+function detail(c, name) {
+  const colors = {
+    nebraska: "#a18b66",
+    nevada: "#75959b",
+    "new-hampshire": "#8a9ab1",
+    "new-jersey": "#ad8f9e",
+    "new-mexico": "#b18b76",
+    "new-york": "#90a1a2",
+    "north-carolina": "#92a698",
+    "north-dakota": "#aa997d",
+    ohio: "#90ada7",
+    oklahoma: "#9b9d8c",
+  };
+  const col = colors[name];
+  drawNebraskaEngraving(c, name, col);
+  drawNevadaEngraving(c, name, col);
+  if (name === "new-hampshire") curve(c, col, 70, 26, 0.11);
+  drawNewJerseyEngraving(c, name, col);
+  drawNewMexicoEngraving(c, name, col);
+  drawNewYorkEngraving(c, name, col);
+  if (name === "north-carolina")
+    for (let i = 0; i < 8; i++)
+      pine(c, 1160 + i * 26, 850, 70 + i * 9 + c.random() * 30, col, 0.16);
+  drawNorthDakotaEngraving(c, name, col);
+  drawOhioEngraving(c, name, col);
+  drawOklahomaEngraving(c, name, col);
+
+  drawLowerEngraving(c, col);
 }
 export default Object.fromEntries(
   Object.entries(designs).map(([name, fn]) => [

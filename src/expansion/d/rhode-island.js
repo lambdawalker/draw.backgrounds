@@ -1,13 +1,5 @@
 import { paper, waves } from "./helpers.js";
-export default function (c, phase) {
-  paper(c, "#e4eef0", "#dce1de");
-  waves(c, {
-    phase,
-    color: "#789eac",
-    opacity: 0.26,
-    amplitude: 20,
-    from: 380,
-  });
+function drawBridgeOutline(c) {
   c.add(
     c.path(
       "M470 280H1400 M620 390V125H650V390 M1210 390V100H1240V390 M470 170L635 125Q930 420 1225 100L1400 210",
@@ -16,12 +8,18 @@ export default function (c, phase) {
       0.45,
     ),
   );
+}
+
+function drawBridgeSuspenders(c) {
   for (let j = 0; j < 30; j++) {
     let t = (j + 1) / 31,
       x = 635 + 590 * t,
       y = 125 * (1 - t) * (1 - t) + 840 * (1 - t) * t + 100 * t * t;
     c.add(c.path(`M${x} ${y}V280`, "#8da7b1", 0.8, 0.35));
   }
+}
+
+function drawSailboat(c) {
   c.add(
     c.path(
       "M850 740L1010 740L980 760H875Z M935 730V505L860 725Z M943 530L995 725H943Z",
@@ -31,6 +29,9 @@ export default function (c, phase) {
       "#e7eeee",
     ),
   );
+}
+
+function drawBridgeDeckAndBoatWake(c) {
   c.add(
     c.path(
       "M470 288H1400 M620 385H650 M1210 385H1240 M858 772Q935 786 1015 767",
@@ -39,6 +40,9 @@ export default function (c, phase) {
       0.35,
     ),
   );
+}
+
+function drawWaterStrokes(c) {
   for (let j = 0; j < 13; j++)
     c.add(
       c.path(
@@ -48,6 +52,9 @@ export default function (c, phase) {
         0.3,
       ),
     );
+}
+
+function drawSailboatRigging(c) {
   c.add(
     c.path(
       "M945 550L980 710 M931 535L876 711 M875 747H985",
@@ -56,6 +63,9 @@ export default function (c, phase) {
       0.3,
     ),
   );
+}
+
+function drawTowerCrossbars(c) {
   c.add(
     c.path(
       "M622 149H648 M1212 124H1238 M622 166H648 M1212 141H1238",
@@ -64,5 +74,27 @@ export default function (c, phase) {
       0.35,
     ),
   );
+}
+
+function drawShoreline(c) {
   c.add(c.path("M470 402Q700 386 882 408T1400 395", "#8aa5a8", 0.7, 0.23));
+}
+
+export default function (c, phase) {
+  paper(c, "#e4eef0", "#dce1de");
+  waves(c, {
+    phase,
+    color: "#789eac",
+    opacity: 0.26,
+    amplitude: 20,
+    from: 380,
+  });
+  drawBridgeOutline(c);
+  drawBridgeSuspenders(c);
+  drawSailboat(c);
+  drawBridgeDeckAndBoatWake(c);
+  drawWaterStrokes(c);
+  drawSailboatRigging(c);
+  drawTowerCrossbars(c);
+  drawShoreline(c);
 }

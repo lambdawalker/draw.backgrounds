@@ -1,5 +1,5 @@
 import { samples } from "../geometry.js";
-export default function (c, p) {
+function drawPaper(c) {
   c.add(
     c.rect(
       0,
@@ -13,11 +13,9 @@ export default function (c, p) {
       ]),
     ),
   );
-  const ink = c.gradient([
-    [0, "#3b8dad"],
-    [45, "#83a865"],
-    [100, "#4c9abc"],
-  ]);
+}
+
+function drawFadedEngraving(c, p, ink) {
   const field = [];
   for (let x = -120; x < 1500; x += 9 + 1.3 * Math.sin(x / 180))
     field.push(
@@ -39,6 +37,9 @@ export default function (c, p) {
       ),
     );
   c.verticalFade(field);
+}
+
+function drawUpperChevronBand(c, p) {
   for (let j = 0; j < 20; j++)
     c.add(
       c.line(
@@ -59,6 +60,9 @@ export default function (c, p) {
         0.43,
       ),
     );
+}
+
+function drawLowerWaveBand(c) {
   for (let j = 0; j < 18; j++)
     c.add(
       c.line(
@@ -73,4 +77,16 @@ export default function (c, p) {
         0.32,
       ),
     );
+}
+
+export default function (c, p) {
+  drawPaper(c);
+  const ink = c.gradient([
+    [0, "#3b8dad"],
+    [45, "#83a865"],
+    [100, "#4c9abc"],
+  ]);
+  drawFadedEngraving(c, p, ink);
+  drawUpperChevronBand(c, p);
+  drawLowerWaveBand(c);
 }

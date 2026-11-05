@@ -1,5 +1,5 @@
 import { waves, ridge, pine, snowOnRidge, rockEtching } from "../geometry.js";
-export default function (c, p) {
+function drawPaper(c) {
   c.add(
     c.rect(
       0,
@@ -14,6 +14,26 @@ export default function (c, p) {
       ]),
     ),
   );
+}
+
+function drawMountainShadow(c) {
+  c.add(
+    c.polygon(
+      [
+        [650, 280],
+        [800, 410],
+        [900, 450],
+        [1030, 630],
+        [820, 560],
+      ],
+      "#738da8",
+      0.09,
+    ),
+  );
+}
+
+export default function (c, p) {
+  drawPaper(c);
   waves(c, {
     color: "#a799bd",
     opacity: 0.23,
@@ -56,19 +76,7 @@ export default function (c, p) {
     ],
     { opacity: 0.2 },
   );
-  c.add(
-    c.polygon(
-      [
-        [650, 280],
-        [800, 410],
-        [900, 450],
-        [1030, 630],
-        [820, 560],
-      ],
-      "#738da8",
-      0.09,
-    ),
-  );
+  drawMountainShadow(c);
   ridge(
     c,
     [

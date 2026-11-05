@@ -6,8 +6,29 @@ import {
   snowOnRidge,
   rockEtching,
 } from "../geometry.js";
-export default function (c, p) {
+function drawPaper(c) {
   c.add(c.rect(0, 0, 1400, 880, "#eef5f3"));
+}
+
+function drawLowerWaves(c, p) {
+  for (let j = 0; j < 14; j++)
+    c.add(
+      c.line(
+        samples(
+          (x) => [x, 810 + j * 4 + 9 * Math.sin(x / 90 + p + j * 0.05)],
+          -20,
+          1420,
+          10,
+        ),
+        "#639baa",
+        0.8,
+        0.26,
+      ),
+    );
+}
+
+export default function (c, p) {
+  drawPaper(c);
   c.glow(440, 220, 1000, 680, "#b8dce7", 0.55);
   waves(c, {
     color: "#468ea6",
@@ -53,18 +74,5 @@ export default function (c, p) {
   for (let j = 0; j < 15; j++)
     pine(c, 1050 + j * 25, 850, 48 + Math.sin(j * 1.7) * 21, "#658c89", 0.2);
   pine(c, 1130, 859, 170, "#98a559", 0.56);
-  for (let j = 0; j < 14; j++)
-    c.add(
-      c.line(
-        samples(
-          (x) => [x, 810 + j * 4 + 9 * Math.sin(x / 90 + p + j * 0.05)],
-          -20,
-          1420,
-          10,
-        ),
-        "#639baa",
-        0.8,
-        0.26,
-      ),
-    );
+  drawLowerWaves(c, p);
 }

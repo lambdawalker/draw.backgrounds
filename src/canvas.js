@@ -1,5 +1,5 @@
 import { createCanvas, Path2D } from "@napi-rs/canvas";
-import { drawState } from "./countries/us/index.js";
+import { drawJurisdiction } from "./index.js";
 import { H, W } from "./geometry.js";
 
 function pointPath(points, closed) {
@@ -155,7 +155,9 @@ class CanvasTarget {
     ctx.scale(rx, ry);
     const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, 1);
     gradient.addColorStop(0, color);
-    gradient.addColorStop(1, `${color}00`);
+    const hex =
+      color.length === 4 ? color.replace(/#(.)(.)(.)/, "#$1$1$2$2$3$3") : color;
+    gradient.addColorStop(1, `${hex}00`);
     ctx.globalAlpha = opacity;
     ctx.fillStyle = gradient;
     ctx.fillRect(-1, -1, 2, 2);
@@ -217,9 +219,9 @@ class CanvasTarget {
   }
 }
 
-/** Draw a US background directly to a Node Canvas 2D surface. */
+/** Draw a jurisdiction background directly to a Node Canvas 2D surface. */
 export function renderCanvas(state, options = {}) {
-  return drawState(
+  return drawJurisdiction(
     state,
     options,
     (random, width, height) => new CanvasTarget(random, width, height),

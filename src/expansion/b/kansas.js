@@ -1,17 +1,6 @@
 import { samples } from "../../geometry.js";
 import { base, contours, wheat } from "./motifs.js";
-export default function (c, p) {
-  base(c, ["#e6eff2", "#f4f3d5", "#e7e6c8"]);
-  c.glow(
-    200 + 1000 * c.random(),
-    140 + 600 * c.random(),
-    700,
-    600,
-    "#ccb96c",
-    0.18,
-  );
-  c.add(c.openGroup(`translate(${28 * Math.sin(p)} ${15 * Math.cos(p)})`));
-  contours(c, "#aab1a2", p);
+function drawRollingFieldContours(c) {
   for (let j = 0; j < 10; j++)
     c.add(
       c.path(
@@ -21,8 +10,9 @@ export default function (c, p) {
         0.23,
       ),
     );
-  for (let j = 0; j < 6; j++)
-    wheat(c, 965 + j * 54, 890, 0.62 + c.random() * 0.46, "#919761");
+}
+
+function drawFieldSilhouette(c) {
   c.add(
     c.path(
       "M-20 770 Q280 640 580 710 T1450 755 L1450 900 H-20Z",
@@ -32,7 +22,9 @@ export default function (c, p) {
       "#a6b28a",
     ),
   );
-  wheat(c, 880, 885, 0.62, "#8f986c");
+}
+
+function drawEngravedOrbit(c) {
   for (let j = 0; j < 35; j++)
     c.add(
       c.line(
@@ -50,6 +42,9 @@ export default function (c, p) {
         0.16,
       ),
     );
+}
+
+function drawWheatStems(c) {
   for (let j = 0; j < 6; j++)
     c.add(
       c.path(
@@ -59,6 +54,9 @@ export default function (c, p) {
         0.25,
       ),
     );
+}
+
+function drawLowerContours(c) {
   for (let j = 0; j < 15; j++)
     c.add(
       c.path(
@@ -68,6 +66,9 @@ export default function (c, p) {
         0.24,
       ),
     );
+}
+
+function drawUpperContours(c) {
   for (let j = 0; j < 15; j++)
     c.add(
       c.path(
@@ -77,6 +78,9 @@ export default function (c, p) {
         0.15,
       ),
     );
+}
+
+function drawWheatLeaves(c) {
   for (let j = 0; j < 6; j++) {
     const x = 965 + j * 54;
     c.add(
@@ -89,6 +93,9 @@ export default function (c, p) {
       ),
     );
   }
+}
+
+function drawForegroundLeaf(c) {
   c.add(
     c.path(
       "M880 858 Q842 817 842 788 Q875 810 880 858",
@@ -98,5 +105,30 @@ export default function (c, p) {
       "#a6ae88",
     ),
   );
+}
+
+export default function (c, p) {
+  base(c, ["#e6eff2", "#f4f3d5", "#e7e6c8"]);
+  c.glow(
+    200 + 1000 * c.random(),
+    140 + 600 * c.random(),
+    700,
+    600,
+    "#ccb96c",
+    0.18,
+  );
+  c.add(c.openGroup(`translate(${28 * Math.sin(p)} ${15 * Math.cos(p)})`));
+  contours(c, "#aab1a2", p);
+  drawRollingFieldContours(c);
+  for (let j = 0; j < 6; j++)
+    wheat(c, 965 + j * 54, 890, 0.62 + c.random() * 0.46, "#919761");
+  drawFieldSilhouette(c);
+  wheat(c, 880, 885, 0.62, "#8f986c");
+  drawEngravedOrbit(c);
+  drawWheatStems(c);
+  drawLowerContours(c);
+  drawUpperContours(c);
+  drawWheatLeaves(c);
+  drawForegroundLeaf(c);
   c.add(c.closeGroup());
 }

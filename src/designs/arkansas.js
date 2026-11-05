@@ -1,5 +1,5 @@
 import { grid, rosette } from "../geometry.js";
-export default function (c, p) {
+function drawPaper(c) {
   c.add(
     c.rect(
       0,
@@ -13,13 +13,9 @@ export default function (c, p) {
       ]),
     ),
   );
-  grid(c, {
-    phase: p,
-    spacing: 13,
-    amplitude: 31,
-    color: "#6198b4",
-    opacity: 0.18,
-  });
+}
+
+function drawEngravedPanels(c) {
   const panels = [];
   for (let j = 0; j < 5; j++) {
     let x = 850 + j * 112;
@@ -43,6 +39,9 @@ export default function (c, p) {
       );
   }
   c.add(panels);
+}
+
+function drawArcade(c) {
   for (let j = 0; j < 4; j++) {
     const x = 890 + j * 135;
     c.add(
@@ -66,13 +65,9 @@ export default function (c, p) {
         ),
       );
   }
-  for (let j = 0; j < 3; j++)
-    rosette(c, 940 + j * 165, 725, 18, "#b39352", {
-      rings: 5,
-      lobes: 8,
-      amplitude: 3,
-      opacity: 0.3,
-    });
+}
+
+function drawCeilingOrnaments(c, p) {
   for (let j = 0; j < 10; j++) {
     const x = 80 + j * 125,
       y = 115 + 40 * Math.sin(j * 0.8 + p),
@@ -88,4 +83,25 @@ export default function (c, p) {
     c.add(c.line([...a, a[0]], "#ad8653", 1, 0.5));
     c.add(c.line([a[4], a[1], a[3], a[0], a[2], a[3]], "#ad8653", 0.7, 0.45));
   }
+}
+
+export default function (c, p) {
+  drawPaper(c);
+  grid(c, {
+    phase: p,
+    spacing: 13,
+    amplitude: 31,
+    color: "#6198b4",
+    opacity: 0.18,
+  });
+  drawEngravedPanels(c);
+  drawArcade(c);
+  for (let j = 0; j < 3; j++)
+    rosette(c, 940 + j * 165, 725, 18, "#b39352", {
+      rings: 5,
+      lobes: 8,
+      amplitude: 3,
+      opacity: 0.3,
+    });
+  drawCeilingOrnaments(c, p);
 }

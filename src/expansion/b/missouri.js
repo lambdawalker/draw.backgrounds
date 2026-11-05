@@ -1,5 +1,54 @@
 import { samples, waves, grid, rosette } from "../../geometry.js";
 import { base } from "./motifs.js";
+function drawUpperWaves(c) {
+  for (let j = 0; j < 16; j++)
+    c.add(
+      c.line(
+        samples(
+          (x) => [x, 35 + j * 4 + 14 * Math.sin(x / 22 + j * 0.4)],
+          -20,
+          1420,
+          4,
+        ),
+        "#ad8e81",
+        0.65,
+        0.22,
+      ),
+    );
+}
+
+function drawUpperContours(c) {
+  for (let j = 0; j < 10; j++)
+    c.add(
+      c.path(
+        `M-20 ${120 + j * 4} Q700 ${180 + j * 3} 1420 ${115 + j * 5}`,
+        "#ad9990",
+        0.45,
+        0.18,
+      ),
+    );
+}
+
+function drawMedallionRings(c) {
+  for (let j = 0; j < 5; j++)
+    c.add(
+      c.line(
+        samples(
+          (a) => [
+            940 + (118 + j * 3) * Math.cos(a),
+            450 + (118 + j * 3) * Math.sin(a),
+          ],
+          0,
+          Math.PI * 2,
+          0.025,
+        ),
+        "#99aaa9",
+        0.55,
+        0.13,
+      ),
+    );
+}
+
 export default function (c, p) {
   base(c, ["#f1e9df", "#e9eee8", "#e4e7e9"]);
   c.glow(
@@ -42,51 +91,14 @@ export default function (c, p) {
     amplitude: 45,
     phase: p,
   });
-  for (let j = 0; j < 16; j++)
-    c.add(
-      c.line(
-        samples(
-          (x) => [x, 35 + j * 4 + 14 * Math.sin(x / 22 + j * 0.4)],
-          -20,
-          1420,
-          4,
-        ),
-        "#ad8e81",
-        0.65,
-        0.22,
-      ),
-    );
+  drawUpperWaves(c);
   rosette(c, 720, 410, 230, "#a0aaa1", {
     rings: 10,
     lobes: 11,
     amplitude: 18,
     opacity: 0.09,
   });
-  for (let j = 0; j < 10; j++)
-    c.add(
-      c.path(
-        `M-20 ${120 + j * 4} Q700 ${180 + j * 3} 1420 ${115 + j * 5}`,
-        "#ad9990",
-        0.45,
-        0.18,
-      ),
-    );
-  for (let j = 0; j < 5; j++)
-    c.add(
-      c.line(
-        samples(
-          (a) => [
-            940 + (118 + j * 3) * Math.cos(a),
-            450 + (118 + j * 3) * Math.sin(a),
-          ],
-          0,
-          Math.PI * 2,
-          0.025,
-        ),
-        "#99aaa9",
-        0.55,
-        0.13,
-      ),
-    );
+  drawUpperContours(c);
+  drawMedallionRings(c);
   c.add(c.closeGroup());
 }

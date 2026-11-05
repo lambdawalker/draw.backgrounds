@@ -1,8 +1,5 @@
 import { paper, field, border, quality, dome, flourish } from "./helpers.js";
-export default function (c, p) {
-  paper(c, ["#e7e8dc", "#e6e4d7", "#d5e5dc"]);
-  field(c, "#9aa989", p);
-  dome(c, 990, 650, 1.45, "#6d896e", "tower");
+function drawDiagonalEngraving(c) {
   for (let j = 0; j < 18; j++)
     c.add(
       c.path(
@@ -12,7 +9,9 @@ export default function (c, p) {
         0.18,
       ),
     );
-  flourish(c, 900, 770, 620, "#93a6a1");
+}
+
+function drawDiamondBands(c) {
   if (quality.pass >= 5)
     for (let j = 0; j < 8; j++)
       c.add(
@@ -23,6 +22,9 @@ export default function (c, p) {
           0.3,
         ),
       );
+}
+
+function drawTowerWindows(c) {
   for (const x of [744, 1239]) {
     c.add(
       c.path(
@@ -34,6 +36,20 @@ export default function (c, p) {
       ),
     );
   }
+}
+
+function drawForegroundDiamond(c) {
   c.add(c.path("M997 830 l78 -35 79 35 -79 35Z", "#9a9b7a", 0.7, 0.23));
+}
+
+export default function (c, p) {
+  paper(c, ["#e7e8dc", "#e6e4d7", "#d5e5dc"]);
+  field(c, "#9aa989", p);
+  dome(c, 990, 650, 1.45, "#6d896e", "tower");
+  drawDiagonalEngraving(c);
+  flourish(c, 900, 770, 620, "#93a6a1");
+  drawDiamondBands(c);
+  drawTowerWindows(c);
+  drawForegroundDiamond(c);
   border(c, "#96a890");
 }

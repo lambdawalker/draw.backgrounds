@@ -12,18 +12,7 @@ import {
   palm,
   samples,
 } from "./helpers.js";
-export default function (c, phase) {
-  paper(c, "#dfe9f0", "#ebe0dc");
-  fan(c, 930, 390, "#9b8caa");
-  for (let j = 0; j < 4; j++)
-    flower(c, 1080 + j * 52, 630 + Math.sin(j) * 100, 55, "#baa6b6", 0.2);
-  rosette(c, 1110, 650, 180, "#ab9c74", {
-    rings: 16,
-    lobes: 14,
-    amplitude: 18,
-    opacity: 0.24,
-  });
-  c.glow(940, 390, 350, 350, "#fffaf0", 0.55);
+function drawRadialWedges(c) {
   for (let j = 0; j < 24; j++) {
     const a = (j * Math.PI) / 12,
       b = a + 0.075;
@@ -39,6 +28,9 @@ export default function (c, phase) {
       ),
     );
   }
+}
+
+function drawInnerMedallionStrokes(c) {
   for (let j = 0; j < 18; j++) {
     const a = (j * Math.PI) / 9;
     c.add(
@@ -50,6 +42,9 @@ export default function (c, phase) {
       ),
     );
   }
+}
+
+function drawOuterMedallionStrokes(c) {
   for (let j = 0; j < 18; j++) {
     const a = (j * Math.PI) / 9;
     c.add(
@@ -61,6 +56,9 @@ export default function (c, phase) {
       ),
     );
   }
+}
+
+function drawMedallionArcs(c) {
   for (let j = 0; j < 20; j++) {
     const a = (j * Math.PI) / 10;
     c.add(
@@ -72,6 +70,9 @@ export default function (c, phase) {
       ),
     );
   }
+}
+
+function drawBotanicalStem(c) {
   c.add(
     c.path(
       "M1075 742Q1110 665 1175 595 M1110 690q-30 -25 -48 -9 M1141 645q28 -14 43 -6",
@@ -80,6 +81,9 @@ export default function (c, phase) {
       0.24,
     ),
   );
+}
+
+function drawBotanicalLeaves(c) {
   for (let j = 0; j < 8; j++)
     c.add(
       c.path(
@@ -89,6 +93,9 @@ export default function (c, phase) {
         0.2,
       ),
     );
+}
+
+function drawBotanicalFlourishes(c) {
   c.add(
     c.path(
       "M1078 733Q1114 752 1141 735 M1128 714Q1150 727 1170 712",
@@ -97,4 +104,25 @@ export default function (c, phase) {
       0.2,
     ),
   );
+}
+
+export default function (c, phase) {
+  paper(c, "#dfe9f0", "#ebe0dc");
+  fan(c, 930, 390, "#9b8caa");
+  for (let j = 0; j < 4; j++)
+    flower(c, 1080 + j * 52, 630 + Math.sin(j) * 100, 55, "#baa6b6", 0.2);
+  rosette(c, 1110, 650, 180, "#ab9c74", {
+    rings: 16,
+    lobes: 14,
+    amplitude: 18,
+    opacity: 0.24,
+  });
+  c.glow(940, 390, 350, 350, "#fffaf0", 0.55);
+  drawRadialWedges(c);
+  drawInnerMedallionStrokes(c);
+  drawOuterMedallionStrokes(c);
+  drawMedallionArcs(c);
+  drawBotanicalStem(c);
+  drawBotanicalLeaves(c);
+  drawBotanicalFlourishes(c);
 }

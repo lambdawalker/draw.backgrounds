@@ -124,17 +124,19 @@ console.log(countries, jurisdictionsByCountry);
 
 Only CLI PNG export and preview generation require Sharp. `node src/cli.js --format svg` can run without installing dependencies.
 
-## US Canvas renderer and benchmark
+## Canvas renderer
 
-The Node Canvas 2D renderer shares the state geometry and seed handling with the SVG renderer. It returns a raster surface drawn with Skia through `@napi-rs/canvas`.
+The Node Canvas 2D renderer supports all 95 US, Mexican, and Canadian jurisdictions. Each design assembles named motif functions in layer order. Canvas and SVG share the motif geometry and seed handling. Canvas draws directly to a raster surface through `@napi-rs/canvas`.
 
 ```js
 import { renderCanvas } from './src/canvas.js';
 import { writeFile } from 'node:fs/promises';
 
-const canvas = renderCanvas('wyoming', { seed: 123, width: 1400, height: 880 });
-await writeFile('wyoming.png', await canvas.encode('png'));
+const canvas = renderCanvas('quebec', { country: 'ca', seed: 123, width: 1400, height: 880 });
+await writeFile('quebec.png', await canvas.encode('png'));
 ```
+
+## US rendering benchmark
 
 ```sh
 npm ci

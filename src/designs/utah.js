@@ -1,5 +1,5 @@
 import { waves, ridge, samples, rockEtching } from "../geometry.js";
-export default function (c, p) {
+function drawPaper(c) {
   c.add(
     c.rect(
       0,
@@ -13,34 +13,9 @@ export default function (c, p) {
       ]),
     ),
   );
-  waves(c, {
-    color: "#8aa5bf",
-    opacity: 0.2,
-    spacing: 7,
-    amplitude: 20,
-    phase: p,
-  });
-  const edge = [
-    [580, 780],
-    [650, 600],
-    [710, 590],
-    [750, 380],
-    [810, 350],
-    [830, 310],
-    [900, 330],
-    [935, 410],
-    [1010, 440],
-    [1040, 550],
-    [1120, 580],
-    [1200, 730],
-    [1450, 780],
-  ];
-  ridge(c, edge, {
-    fill: "#efc7b4",
-    ink: "#cb927f",
-    opacity: 0.3,
-    hatch: false,
-  });
+}
+
+function drawRockFaces(c) {
   c.add(
     c.polygon(
       [
@@ -70,7 +45,9 @@ export default function (c, p) {
       0.14,
     ),
   );
-  rockEtching(c, edge, { color: "#b78679", opacity: 0.18 });
+}
+
+function drawRockStrata(c) {
   for (let j = 0; j < 16; j++)
     c.add(
       c.line(
@@ -85,6 +62,9 @@ export default function (c, p) {
         0.18,
       ),
     );
+}
+
+function drawLedgeContours(c, edge) {
   for (let j = 0; j < 21; j++)
     c.add(
       c.line(
@@ -94,6 +74,9 @@ export default function (c, p) {
         0.25,
       ),
     );
+}
+
+function drawRightContours(c, p) {
   for (let j = 0; j < 22; j++)
     c.add(
       c.line(
@@ -108,9 +91,50 @@ export default function (c, p) {
         0.28,
       ),
     );
+}
+
+function drawDotField(c, p) {
   for (let y = 20; y < 880; y += 14)
     for (let x = 1190; x < 1400; x += 14)
       c.add(
         c.ellipse(x + 3 * Math.sin(y / 40 + p), y, 1.1, 1.1, "#bd968f", 0.23),
       );
+}
+
+export default function (c, p) {
+  drawPaper(c);
+  waves(c, {
+    color: "#8aa5bf",
+    opacity: 0.2,
+    spacing: 7,
+    amplitude: 20,
+    phase: p,
+  });
+  const edge = [
+    [580, 780],
+    [650, 600],
+    [710, 590],
+    [750, 380],
+    [810, 350],
+    [830, 310],
+    [900, 330],
+    [935, 410],
+    [1010, 440],
+    [1040, 550],
+    [1120, 580],
+    [1200, 730],
+    [1450, 780],
+  ];
+  ridge(c, edge, {
+    fill: "#efc7b4",
+    ink: "#cb927f",
+    opacity: 0.3,
+    hatch: false,
+  });
+  drawRockFaces(c);
+  rockEtching(c, edge, { color: "#b78679", opacity: 0.18 });
+  drawRockStrata(c);
+  drawLedgeContours(c, edge);
+  drawRightContours(c, p);
+  drawDotField(c, p);
 }

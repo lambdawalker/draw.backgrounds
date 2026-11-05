@@ -1,28 +1,9 @@
 import { grid, ridge } from "../geometry.js";
-export default function (c, p) {
+function drawPaper(c) {
   c.add(c.rect(0, 0, 1400, 880, "#f5f7f2"));
-  c.glow(300, 500, 700, 700, "#bee2e6", 0.45);
-  grid(c, {
-    phase: p,
-    spacing: 9,
-    amplitude: 23,
-    color: "#65a4b9",
-    opacity: 0.16,
-  });
-  ridge(
-    c,
-    [
-      [470, 350],
-      [585, 245],
-      [650, 190],
-      [735, 290],
-      [830, 340],
-      [990, 460],
-      [1450, 580],
-    ],
-    { fill: "#d8dde5", ink: "#929fb4", opacity: 0.26 },
-  );
-  // Wings spread in different planes. Every feather starts at its wing shoulder.
+}
+
+function drawEagleWings(c) {
   const feather = (x, y, tx, ty, w) => {
     const dx = tx - x,
       dy = ty - y,
@@ -88,6 +69,9 @@ export default function (c, p) {
       feather(xx, yy, xx + Math.cos(b) * 38, yy + Math.sin(b) * 38, 9);
     }
   for (let j = 0; j < 6; j++) feather(885, 520, 810 + j * 10, 642 - j * 3, 11);
+}
+
+function drawEagleBody(c) {
   c.add(
     c.path(
       "M883 425 C877 390 902 365 934 371 C962 376 979 409 959 438 C943 472 930 523 886 564 C852 555 858 512 870 480Z",
@@ -106,8 +90,17 @@ export default function (c, p) {
       "#eff1e6",
     ),
   );
+}
+
+function drawEagleBeak(c) {
   c.add(c.path("M963 402 L990 412 L962 420Z", "#668a9e", 0.8, 0.7, "#a7becb"));
+}
+
+function drawEagleEye(c) {
   c.add(c.ellipse(947, 397, 4, 4, "#55758a", 0.8));
+}
+
+function drawEaglePlumage(c) {
   for (let j = 0; j < 22; j++)
     c.add(
       c.path(
@@ -117,4 +110,35 @@ export default function (c, p) {
         0.32,
       ),
     );
+}
+
+export default function (c, p) {
+  drawPaper(c);
+  c.glow(300, 500, 700, 700, "#bee2e6", 0.45);
+  grid(c, {
+    phase: p,
+    spacing: 9,
+    amplitude: 23,
+    color: "#65a4b9",
+    opacity: 0.16,
+  });
+  ridge(
+    c,
+    [
+      [470, 350],
+      [585, 245],
+      [650, 190],
+      [735, 290],
+      [830, 340],
+      [990, 460],
+      [1450, 580],
+    ],
+    { fill: "#d8dde5", ink: "#929fb4", opacity: 0.26 },
+  );
+  // Wings spread in different planes. Every feather starts at its wing shoulder.
+  drawEagleWings(c);
+  drawEagleBody(c);
+  drawEagleBeak(c);
+  drawEagleEye(c);
+  drawEaglePlumage(c);
 }

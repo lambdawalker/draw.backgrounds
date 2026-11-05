@@ -1,7 +1,5 @@
 import { paper, field, border, quality, leaf, flourish } from "./helpers.js";
-export default function (c, p) {
-  paper(c, ["#e5eee7", "#eee5dd", "#dbe9e6"]);
-  field(c, "#7d9d9a", p);
+function drawRollingContours(c) {
   for (let j = 0; j < 30; j++)
     c.add(
       c.path(
@@ -11,6 +9,9 @@ export default function (c, p) {
         0.22,
       ),
     );
+}
+
+function drawVineStems(c) {
   for (let j = 0; j < 8; j++) {
     let x = 960 + j * 53,
       y = 680 - Math.sin(j * 0.6) * 180;
@@ -27,7 +28,9 @@ export default function (c, p) {
         "#7c9a81",
       );
   }
-  flourish(c, 1050, 240, 410, "#b6a790");
+}
+
+function drawGrapeCluster(c) {
   if (quality.pass >= 5) {
     for (let j = 0; j < 32; j++)
       c.add(
@@ -41,6 +44,9 @@ export default function (c, p) {
         ),
       );
   }
+}
+
+function drawVineScrolls(c) {
   for (let j = 0; j < 7; j++)
     c.add(
       c.path(
@@ -50,11 +56,17 @@ export default function (c, p) {
         0.2,
       ),
     );
+}
+
+function drawGrapeHighlights(c) {
   for (let j = 0; j < 26; j++) {
     let x = 1055 + Math.cos(j * 2.4) * (45 - j),
       y = 550 + j * 3.5;
     c.add(c.path(`M${x - 3} ${y - 5} q3 -3 6 0`, "#faf8eb", 0.9, 0.65));
   }
+}
+
+function drawGrapeStem(c) {
   c.add(
     c.path(
       "M1055 553 Q1048 528 1062 512 M1050 535 l-18 -9",
@@ -63,5 +75,17 @@ export default function (c, p) {
       0.4,
     ),
   );
+}
+
+export default function (c, p) {
+  paper(c, ["#e5eee7", "#eee5dd", "#dbe9e6"]);
+  field(c, "#7d9d9a", p);
+  drawRollingContours(c);
+  drawVineStems(c);
+  flourish(c, 1050, 240, 410, "#b6a790");
+  drawGrapeCluster(c);
+  drawVineScrolls(c);
+  drawGrapeHighlights(c);
+  drawGrapeStem(c);
   border(c, "#8daca6", 1);
 }

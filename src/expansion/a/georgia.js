@@ -1,7 +1,5 @@
 import { paper, field, border, quality, leaf } from "./helpers.js";
-export default function (c, p) {
-  paper(c, ["#e3eceb", "#eee2d4", "#e2e5cc"]);
-  field(c, "#88a7b1", p);
+function drawContourField(c) {
   for (let j = 0; j < 50; j++)
     c.add(
       c.path(
@@ -11,6 +9,9 @@ export default function (c, p) {
         0.25,
       ),
     );
+}
+
+function drawPeachSilhouette(c) {
   c.add(
     c.path(
       "M790 700 C660 530 880 430 1000 540 C1120 415 1300 560 1160 750 C1090 870 895 865 790 700Z",
@@ -20,6 +21,9 @@ export default function (c, p) {
       "#e2c5a0",
     ),
   );
+}
+
+function drawPeachHatching(c) {
   if (quality.pass >= 3)
     for (let j = 0; j < 21; j++)
       c.add(
@@ -30,8 +34,9 @@ export default function (c, p) {
           0.22,
         ),
       );
-  leaf(c, 1000, 540, 175, -160, "#8eaa8b");
-  if (quality.pass >= 5) leaf(c, 1000, 540, 135, -40, "#92ad90");
+}
+
+function drawPeachCreaseAndStem(c) {
   c.add(
     c.path(
       "M1000 548 Q980 680 1002 790 M1000 542 q-5 -45 25 -65",
@@ -40,6 +45,9 @@ export default function (c, p) {
       0.35,
     ),
   );
+}
+
+function drawPeachStipple(c) {
   const dots = [];
   for (let j = 0; j < 520; j++) {
     let x = 720 + c.random() * 520,
@@ -56,6 +64,9 @@ export default function (c, p) {
     ),
     dots,
   );
+}
+
+function drawLeafVein(c) {
   c.add(
     c.path(
       "M995 548 Q1008 493 1050 472 Q1078 458 1100 460 M1023 488 l-14 -23",
@@ -64,6 +75,9 @@ export default function (c, p) {
       0.35,
     ),
   );
+}
+
+function drawPeachHighlights(c) {
   for (let j = 0; j < 14; j++)
     c.add(
       c.path(
@@ -73,5 +87,19 @@ export default function (c, p) {
         0.14,
       ),
     );
+}
+
+export default function (c, p) {
+  paper(c, ["#e3eceb", "#eee2d4", "#e2e5cc"]);
+  field(c, "#88a7b1", p);
+  drawContourField(c);
+  drawPeachSilhouette(c);
+  drawPeachHatching(c);
+  leaf(c, 1000, 540, 175, -160, "#8eaa8b");
+  if (quality.pass >= 5) leaf(c, 1000, 540, 135, -40, "#92ad90");
+  drawPeachCreaseAndStem(c);
+  drawPeachStipple(c);
+  drawLeafVein(c);
+  drawPeachHighlights(c);
   border(c, "#95a9ae");
 }

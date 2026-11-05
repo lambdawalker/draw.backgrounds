@@ -1,18 +1,6 @@
 import { paper, field, border, quality, leaf, flourish } from "./helpers.js";
 import { flower, waves } from "../../geometry.js";
-export default function (c, p) {
-  paper(c, ["#e9eeee", "#e8e2d8", "#f0e8df"]);
-  field(c, "#99a1ac", p);
-  waves(c, {
-    color: "#b59ca7",
-    from: 130,
-    to: 880,
-    spacing: 12,
-    amplitude: 55,
-    period: 340,
-    phase: p,
-    opacity: 0.19,
-  });
+function drawPoppyStems(c) {
   for (let j = 0; j < 5; j++) {
     let x = 1120 + j * 57 + Math.sin(j * 2) * 17,
       y = 830 - j * 112 + Math.cos(j * 1.8) * 13;
@@ -28,10 +16,9 @@ export default function (c, p) {
     leaf(c, x, y - 75, 120, -45, "#789c91");
     flower(c, x, y - 135, quality.pass >= 3 ? 50 : 40, "#cba978", 0.3);
   }
-  flourish(c, 1000, 450, 380, "#7b949f");
-  if (quality.pass >= 5)
-    for (let j = 0; j < 5; j++)
-      flower(c, 100 + j * 95, 850 - j * 16, 29 + (j % 3) * 5, "#c4a486", 0.23);
+}
+
+function drawCurvedHatching(c) {
   for (let j = 0; j < 16; j++)
     c.add(
       c.path(
@@ -41,6 +28,9 @@ export default function (c, p) {
         0.18,
       ),
     );
+}
+
+function drawOrnamentalSwirls(c) {
   for (let j = 0; j < 12; j++)
     c.add(
       c.path(
@@ -50,6 +40,9 @@ export default function (c, p) {
         0.2,
       ),
     );
+}
+
+function drawPoppyPetalDetails(c) {
   for (let j = 0; j < 5; j++) {
     let x = 1120 + j * 57 + Math.sin(j * 2) * 17,
       y = 695 - j * 112 + Math.cos(j * 1.8) * 13;
@@ -65,5 +58,28 @@ export default function (c, p) {
       );
     }
   }
+}
+
+export default function (c, p) {
+  paper(c, ["#e9eeee", "#e8e2d8", "#f0e8df"]);
+  field(c, "#99a1ac", p);
+  waves(c, {
+    color: "#b59ca7",
+    from: 130,
+    to: 880,
+    spacing: 12,
+    amplitude: 55,
+    period: 340,
+    phase: p,
+    opacity: 0.19,
+  });
+  drawPoppyStems(c);
+  flourish(c, 1000, 450, 380, "#7b949f");
+  if (quality.pass >= 5)
+    for (let j = 0; j < 5; j++)
+      flower(c, 100 + j * 95, 850 - j * 16, 29 + (j % 3) * 5, "#c4a486", 0.23);
+  drawCurvedHatching(c);
+  drawOrnamentalSwirls(c);
+  drawPoppyPetalDetails(c);
   border(c, "#9b9db5");
 }
