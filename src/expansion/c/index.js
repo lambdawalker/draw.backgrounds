@@ -1,5 +1,5 @@
 import {rect,path,line,polygon,ellipse,samples,grid,waves,rosette,ridge,pine,tower,engravedPavilion} from '../../geometry.js';
-export const revision=2;
+export const revision=3;
 function paper(c,a,b,phase){c.add(rect(0,0,1400,880,c.gradient([[0,a],[55,'#f8f7ee'],[100,b]])));grid(c,{color:b,opacity:.22,spacing:12,amplitude:20,phase});}
 function curve(c,color,y,amp=45,opacity=.3){for(let i=0;i<46;i++)c.add(line(samples(x=>[x,y+i*6+amp*Math.sin(x/245+i*.035)],-20,1420,9),color,.7,opacity));}
 function leaves(c,x,y,col){for(let i=0;i<10;i++){let a=i*.53;c.add(path(`M${x} ${y} Q${x+Math.cos(a)*80} ${y-70-i*15} ${x+Math.sin(a)*120} ${y-130-i*14}`,col,.8,.3));}}
@@ -12,5 +12,19 @@ function newYork(c,p){paper(c,'#e4eeee','#d9d3ce',p);rosette(c,820,505,265,'#9aa
 function northCarolina(c,p){paper(c,'#efdfe5','#caddd4',p);curve(c,'#9dbacf',160,25,.18);ridge(c,[[0,490],[180,430],[320,470],[480,380],[630,450],[800,410],[940,490],[1400,510]],{fill:'#b8cbb8',ink:'#92a7a9',opacity:.23});engravedPavilion(c,995,790,.82,'#8f9e81');c.add(path('M50 205 Q165 175 290 205 L170 214Z M170 195 V228 M90 215 H240','#789ba8',1,.35));curve(c,'#b3a1bd',730,30,.22);}
 function northDakota(c,p){paper(c,'#e9e5d7','#d4dfc9',p);ridge(c,[[0,510],[160,480],[260,525],[430,470],[610,510],[730,430],[910,465],[1030,410],[1200,490],[1400,460]],{fill:'#c9b89d',ink:'#b3987c',opacity:.34});curve(c,'#b09e7f',590,35,.24);for(let i=0;i<19;i++){let x=1030+i*19;c.add(path(`M${x} 900 Q${x-35} 750 ${x-20} 560`,'#9f9e69',1,.36));for(let j=0;j<6;j++)c.add(path(`M${x-20} ${570+j*15} l-14 -13 M${x-20} ${570+j*15} l14 -13`,'#9f9e69',1,.33));}}
 function ohio(c,p){paper(c,'#dcefed','#dce6ba',p);rosette(c,870,420,210,'#9caec2',{rings:21,lobes:40,amplitude:10,opacity:.30});for(let i=0;i<55;i++)c.add(path(`M-20 ${650+i*5} C420 ${480+i*5} 800 ${970+i*3} 1450 ${600+i*5}`,'#84aaa1',.8,.27));for(let i=0;i<30;i++)c.add(path(`M${120+i*7} 0 Q${530+i*8} 300 ${500+i*11} 880`,'#adc58b',.7,.2));}
-function oklahoma(c,p){paper(c,'#e0edf0','#ddd9c7',p);engravedPavilion(c,1000,835,1.28,'#89988e');curve(c,'#b1b59e',710,20,.16);for(let i=0;i<17;i++)c.add(path(`M${160+i*12} 880 L${240+i*7} ${470+i*3} L${380+i*8} 880`,'#bfa585',.7,.24));}
-export default {'nebraska':nebraska,'nevada':nevada,'new-hampshire':newHampshire,'new-jersey':newJersey,'new-mexico':newMexico,'new-york':newYork,'north-carolina':northCarolina,'north-dakota':northDakota,'ohio':ohio,'oklahoma':oklahoma};
+function oklahoma(c,p){paper(c,'#e0edf0','#ddd9c7',p);dome(c,1000,835);curve(c,'#b1b59e',710,20,.16);for(let i=0;i<17;i++)c.add(path(`M${160+i*12} 880 L${240+i*7} ${470+i*3} L${380+i*8} 880`,'#bfa585',.7,.24));}
+const designs = {'nebraska':nebraska,'nevada':nevada,'new-hampshire':newHampshire,'new-jersey':newJersey,'new-mexico':newMexico,'new-york':newYork,'north-carolina':northCarolina,'north-dakota':northDakota,'ohio':ohio,'oklahoma':oklahoma};
+
+function detail(c,name){
+ const colors={nebraska:'#a18b66',nevada:'#75959b','new-hampshire':'#8a9ab1','new-jersey':'#ad8f9e','new-mexico':'#b18b76','new-york':'#90a1a2','north-carolina':'#92a698','north-dakota':'#aa997d',ohio:'#90ada7',oklahoma:'#9b9d8c'};
+ const col=colors[name];
+ for(let i=0;i<20;i++)c.add(path(`M-20 ${810+i*4} Q430 ${730+i*4} 720 ${820+i*3} T1420 ${780+i*4}`,col,.6,.17));
+}
+export default Object.fromEntries(Object.entries(designs).map(([name,fn])=>[name,(c,p)=>{fn(c,p);detail(c,name);} ]));
+
+function dome(c,x,y){let g='';const add=(d,w=1,o=.45,fill='none')=>g+=path(d,'#89988e',w,o,fill);
+add('M-310 0 V-165 H310 V0 Z',1,.35,'#e8e9df');for(let j=-11;j<=11;j++){let xx=j*25;add(`M${xx-7} 0 V-145 H${xx+7} V0`,.9,.5);for(let k=-1;k<=1;k++)add(`M${xx+k*3} -8 V-138`,.6,.3);}
+add('M-325 -168 H325 M-320 -177 H320 M-310 -185 H310');
+add('M-130 -188 V-300 H130 V-188Z',.9,.4,'#e1e5dd');for(let i=-5;i<=5;i++)add(`M${i*22-6} -196 V-285 Q${i*22} -299 ${i*22+6} -285 V-196`,.8,.45);
+add('M-145 -305 Q-128 -430 0 -451 Q128 -430 145 -305Z',1,.5,'#e2e8e1');for(let i=-5;i<=5;i++)add(`M${i*27} -305 Q${i*22} -408 0 -451`,.8,.4);for(let i=0;i<13;i++){let yy=-310-i*10,ww=Math.sqrt(Math.max(0,1-((yy+305)/150)**2))*140;add(`M${-ww} ${yy} H${ww}`,.6,.32);}
+add('M-22 -449 V-490 H22 V-449 M-28 -490 L0 -520 L28 -490Z M0 -520 V-540');for(let i=0;i<6;i++)add(`M${-325-i*3} ${i*5} H${325+i*3}`,.8,.4);c.add(`<g transform="translate(${x} ${y})">${g}</g>`);}

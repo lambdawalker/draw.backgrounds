@@ -1,9 +1,9 @@
 import {path,line,rect,ellipse,polygon,samples,grid,waves} from '../../geometry.js';
 export {path,line,rect,ellipse,polygon,samples,grid,waves};
-export const quality={pass:2};
+export const quality={pass:3};
 export function paper(c,colors){c.add(rect(0,0,1400,880,c.gradient(colors.map((v,i)=>[i*100/(colors.length-1),v]))));}
 export function etch(c,shape,color,spacing=7){let a='';for(let y=0;y<1000;y+=spacing)a+=line(samples(x=>[x,y+8*Math.sin(x/130+y/150)],-20,1420,9),color,.65,.19);c.clip(shape,a);}
-export function leaf(c,x,y,s,angle,color){let a='';for(let k=-6;k<=6;k++)a+=path(`M0 0 Q${s*.5} ${k*s*.065} ${s} 0`,color,.65,.38);c.add(`<g transform="translate(${x} ${y}) rotate(${angle})">${path(`M0 0 Q${s*.45} ${-s*.45} ${s} 0 Q${s*.45} ${s*.45} 0 0Z`,color,.9,.28,color)}${a}</g>`);}
+export function leaf(c,x,y,s,angle,color){let a=quality.pass>=3?path(`M0 0 L${s} 0`,color,.9,.55):'';for(let k=-6;k<=6;k++)a+=path(`M0 0 Q${s*.5} ${k*s*.065} ${s} 0`,color,.65,.38);c.add(`<g transform="translate(${x} ${y}) rotate(${angle})">${path(`M0 0 Q${s*.45} ${-s*.45} ${s} 0 Q${s*.45} ${s*.45} 0 0Z`,color,.9,.28,color)}${a}</g>`);}
 export function dome(c,x,y,s,color,kind='round'){
  let a='';const P=(d,w=.9,o=.6,f='none')=>a+=path(d,color,w,o,f);const R=(x,y,w,h,o=.1)=>a+=rect(x,y,w,h,color,o);
  R(-240,-140,480,140);P('M-255 -145 H255 M-245 -135 H245 M-240 -128 H240');
