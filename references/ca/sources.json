@@ -1,0 +1,128 @@
+{
+  "country": "ca",
+  "reviewedAt": "2026-11-05",
+  "policy": "Public sources inform palette and broad rhythm only. Original procedural illustrations; no copied seals, text, identity fields, barcodes or security features. Public availability is not a licence to redistribute source images. All thirteen jurisdictions now have directly visually inspected public specimens. Newfoundland and Labrador, Nova Scotia and Nunavut use explicitly identified third-party reproductions; several examples are historic and no current-edition coverage claim is made.",
+  "jurisdictions": [
+    {
+      "slug": "alberta",
+      "url": "https://www.alberta.ca/drivers-licence-security-features",
+      "edition": "Government public specimen with 2018 issue field; not asserted latest",
+      "evidence": "image-inspected",
+      "observations": "Direct government image inspected after retry with desktop User-Agent. Cyan fine-line upper and lower fields, cream/ochre mountain engraving through the centre, pale green forest and warm accents. Exact fine lines and official symbols are excluded from the original artwork.",
+      "adaptation": "Pale blue/ochre field, original mountain and river contours, wild rose spray; no exact Castle Mountain tracing.",
+      "specimenUrl": "https://www.alberta.ca/system/files/styles/responsive_1040/private/custom_downloaded_images/DL-Sam-Sample-AB-DL-Face-V8b-Sam-Sample.jpg?itok=e2K-06QC",
+      "retrievalNote": "Initial endpoint failures were resolved by a desktop User-Agent or a public secondary specimen source. Inspected locally on 2026-11-05."
+    },
+    {
+      "slug": "british-columbia",
+      "url": "https://images.ctfassets.net/nnc41duedoho/7za52YKEvPiRnuoArZz07B/d76195920ba339c03c2be814f5442090/DL-sample.jpg",
+      "edition": "Public specimen issue field 2021; retrieved 2026-11-05",
+      "evidence": "image-inspected",
+      "observations": "Blue dominant fine interwoven curves, cream center and slight pink edge; small public sample limits line analysis. Hosting CDN discovered through public specimen index.",
+      "adaptation": "Blue/green coastal mountains, water and conifers; original botanical ornaments."
+    },
+    {
+      "slug": "manitoba",
+      "url": "https://apps.mpi.mb.ca/comms/drivershandbook/img/driver-license-1.jpg",
+      "edition": "MPI public handbook sample; issue field 2016, current edition unverified",
+      "evidence": "image-inspected",
+      "observations": "Lemon/green intricate field, pale blue curved band, warm lower field. Low resolution does not support microdetail.",
+      "adaptation": "Lemon/sage paper, wetland ripples, sedges and original flowering wetland plants."
+    },
+    {
+      "slug": "new-brunswick",
+      "url": "https://www2.gnb.ca/content/gnb/en/departments/public-safety/community_safety/content/drivers_vehicles/content/drivers-licence-and-photo-id/frequently-asked-questions.html",
+      "edition": "2017 government public sample",
+      "evidence": "image-inspected",
+      "observations": "Government image inspected after desktop User-Agent retry. Pale cyan outer field, green upper/central field, violet flower with green leaves centre-right and narrow cyan lower band. Small specimen limits inspection of individual lines. Original tidal rocks remain a regional invention rather than an observed licence motif.",
+      "adaptation": "Original tidal rock silhouettes, violets and sea curves in pale sage.",
+      "specimenUrl": "https://www2.gnb.ca/content/dam/gnb/Departments/ps-sp/images/Promos/NewDriverLicence2017.jpg",
+      "retrievalNote": "Initial endpoint failures were resolved by a desktop User-Agent or a public secondary specimen source. Inspected locally on 2026-11-05."
+    },
+    {
+      "slug": "newfoundland-and-labrador",
+      "url": "https://www.releases.gov.nl.ca/releases/2017/servicenl/1010n04.aspx",
+      "edition": "2017 example, historic; current edition not verified",
+      "evidence": "image-inspected",
+      "observations": "Third-party public example inspected. Pale yellow-green upper and middle area, lavender-blue left area and rippled lower band; large green/blue botanical drawing centre-right. Government announcement verifies 2017 release separately. Iceberg/shore are original regional motifs and were not observed on this sample.",
+      "adaptation": "Original faceted iceberg, cold water lines, low rock shore and flowers.",
+      "specimenUrl": "https://s.tests.ca/img/licence/newfoundland-drivers-licence.jpg",
+      "specimenPublisher": "Tests.ca, third-party reproduction of 2017 public licence example",
+      "retrievalNote": "Initial endpoint failures were resolved by a desktop User-Agent or a public secondary specimen source. Inspected locally on 2026-11-05."
+    },
+    {
+      "slug": "northwest-territories",
+      "url": "https://www.gov.nt.ca/sites/flagship/files/documents/launch_dl-gic_backgrounder.pdf",
+      "edition": "2020 specimen issue field; redesign backgrounder",
+      "evidence": "image-inspected",
+      "observations": "PDF page 2 rendered and inspected. Very light cream/blue waves with a pink upright botanical accent on right. Official text identifies fireweed and midnight sun.",
+      "adaptation": "Original pale aurora bands, warm sun glow, low mountain ridge and upright fireweed."
+    },
+    {
+      "slug": "nova-scotia",
+      "url": "https://news.novascotia.ca/en/2017/10/10/new-secure-drivers-licence-and-photo-id-cards",
+      "edition": "2017 public sample in contemporaneous news coverage",
+      "evidence": "image-inspected",
+      "observations": "Government-credited sample reproduced by Global News inspected. Pale green spiralling field, blue left portion, blue floral cluster right and alternating green/blue waves at bottom. Original lighthouse is a regional addition, not an observed card graphic. Earlier CBC response was a 195-byte denial page, not an image, and was not treated as successful.",
+      "adaptation": "Original engraved coastal lighthouse, muted rock shelf, water and flowering stems.",
+      "specimenUrl": "https://globalnews.ca/wp-content/uploads/2017/10/card-samples.jpg",
+      "specimenPublisher": "Global News; article credits Government of Nova Scotia",
+      "supportingUrl": "https://globalnews.ca/news/3794421/atlantic-provinces-new-licence/",
+      "retrievalNote": "Initial endpoint failures were resolved by a desktop User-Agent or a public secondary specimen source. Inspected locally on 2026-11-05."
+    },
+    {
+      "slug": "nunavut",
+      "url": "https://www.gov.nu.ca/en/newsroom/nunavuts-new-drivers-licence-wins-international-award-2009-04-23",
+      "edition": "Historic sample with 2007 issue field, predates 2009 announcement; not current-design evidence",
+      "evidence": "image-inspected",
+      "observations": "Vendor composite image visually inspected. Licence has warm cream/yellow field, rose upper band and cool pale blue lower edge, delicate northern landscape/dogsled drawing. Small blurred reproduction limits detail. Official 2009 source separately describes saxifrage on the reverse; those observations must not be conflated with the older front specimen. Blue/lilac tundra design is original interpretation.",
+      "adaptation": "Original blue/lilac tundra terrace with saxifrage-like flowers. No inuksuk or official graphic reproduced.",
+      "specimenUrl": "https://idscan.net/wp-content/uploads/Nunavut-ID-png.webp?lm=68DD9CC1",
+      "specimenPublisher": "IDScan.net commercial ID-verification vendor; third-party historic specimen reproduction",
+      "supportingUrl": "https://idscan.net/blog/how-to-verify-canadian-drivers-licences/",
+      "retrievalNote": "Initial endpoint failures were resolved by a desktop User-Agent or a public secondary specimen source. Inspected locally on 2026-11-05."
+    },
+    {
+      "slug": "ontario",
+      "url": "https://designsystem.ontario.ca/markdown-assets/hint-text/DS-hint-expander_img.png",
+      "edition": "Ontario Design System public help specimen; edition unknown",
+      "evidence": "image-inspected",
+      "observations": "Direct government-hosted help image inspected: blue outer field, green middle, magenta three-petal floral accent upper right; visibly old specimen dates. Not asserted current.",
+      "adaptation": "Light sage lake landscape and original three-petal veined trillium forms."
+    },
+    {
+      "slug": "prince-edward-island",
+      "url": "https://www.princeedwardisland.ca/sites/default/files/embedded_images/pei-new-id-scans-woman-front.jpg",
+      "edition": "2017 public annotated sample",
+      "evidence": "image-inspected",
+      "observations": "Government sample inspected. Cool mint/blue background and green upper area; annotated low-resolution specimen limits pattern analysis.",
+      "adaptation": "Original red-sand shore, dune grasses, soft ocean contours and small pink flowers."
+    },
+    {
+      "slug": "quebec",
+      "url": "https://saaq.gouv.qc.ca/fileadmin/documents/publications/presentation-quebec-driver-licences.pdf",
+      "edition": "Public guide: cards produced from 2023-07-13; prior design also shown",
+      "evidence": "image-inspected",
+      "observations": "Page 1 rendered and inspected: fine blue flowing lines over cream/yellow field; botanical heraldic symbol upper right excluded from artwork.",
+      "adaptation": "Original iris botanical stems, blue/lilac river waves and distant forest."
+    },
+    {
+      "slug": "saskatchewan",
+      "url": "https://sgi.sk.ca/documents/37148/138184/NewDrvrLic_OldDrvrLic.png/84163586-fd89-467b-bb24-dd8d6d1da816?t=1517434682000",
+      "edition": "SGI old/new comparison; 2016 family per public index, exact date not independently established",
+      "evidence": "image-inspected",
+      "observations": "Direct SGI comparison inspected. Sage upper area, cream curved lower band, peach floral accent at upper right. Both examples show closely related backgrounds.",
+      "adaptation": "Original ochre prairie contour lines, etched wheat-like grasses and peach lily forms."
+    },
+    {
+      "slug": "yukon",
+      "url": "https://yukon.ca/en/news/yukons-identification-cards-are-getting-fresh-new-look",
+      "edition": "2024 government new-design sample",
+      "evidence": "image-inspected",
+      "observations": "Government PNG inspected after desktop User-Agent retry. Fine pale salmon mountain and tree drawing crosses a cream field; pale blue lower/right fine-line area. Small public image limits detailed pattern reading. Original slate mountain/flower design intentionally varies palette and composition; no official symbols or windows copied.",
+      "adaptation": "Original clipped snowy peaks and fireweed in pale slate and pink.",
+      "specimenUrl": "https://yukon.ca/sites/yukon.ca/files/new_dl_-_for_nr.png",
+      "retrievalNote": "Initial endpoint failures were resolved by a desktop User-Agent or a public secondary specimen source. Inspected locally on 2026-11-05."
+    }
+  ]
+}

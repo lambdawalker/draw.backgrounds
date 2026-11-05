@@ -65,6 +65,12 @@ test("batch CLI writes matched seed/state records and valid file hashes", async 
       dir,
     ]);
     const m = JSON.parse(await readFile(join(dir, "manifest.json"), "utf8"));
+    assert.equal(m.version, 1);
+    assert.ok(
+      m.items.every(
+        (item) => !("country" in item) && !("jurisdiction" in item),
+      ),
+    );
     assert.equal(m.items.length, states.length * 2);
     for (const state of states)
       assert.deepEqual(

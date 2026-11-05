@@ -1,0 +1,488 @@
+{
+  "country": "mx",
+  "seed": 42,
+  "width": 1400,
+  "height": 880,
+  "items": [
+    {
+      "country": "mx",
+      "jurisdiction": "aguascalientes",
+      "state": "aguascalientes",
+      "files": [
+        {
+          "filename": "aguascalientes.svg",
+          "sha256": "9eee51c11b04a280ea279f80a2c52514ae18e75742d45afe5b057c59ae6c2c67"
+        },
+        {
+          "filename": "aguascalientes.png",
+          "sha256": "77faae76172c0d72ef8e4e442b64c397a48db58e4ca96206ced114333a147f15"
+        }
+      ]
+    },
+    {
+      "country": "mx",
+      "jurisdiction": "baja-california",
+      "state": "baja-california",
+      "files": [
+        {
+          "filename": "baja-california.svg",
+          "sha256": "d450d8c18f9414153a77f20eb9133b7fff8e5075c6bae38e04880dff652a8f9f"
+        },
+        {
+          "filename": "baja-california.png",
+          "sha256": "014bf477bd94be90c99b8e81feadd41ec6db638900797761639737068d7bd6e0"
+        }
+      ]
+    },
+    {
+      "country": "mx",
+      "jurisdiction": "baja-california-sur",
+      "state": "baja-california-sur",
+      "files": [
+        {
+          "filename": "baja-california-sur.svg",
+          "sha256": "3f4e8164202a5cbdc3409261beb751eaec5f93a996cf5238e3d8d9519e508d07"
+        },
+        {
+          "filename": "baja-california-sur.png",
+          "sha256": "0c87be3ade29371fa8893a975758bbb2b31c272c2cc79d62a2edde7e069e54af"
+        }
+      ]
+    },
+    {
+      "country": "mx",
+      "jurisdiction": "campeche",
+      "state": "campeche",
+      "files": [
+        {
+          "filename": "campeche.svg",
+          "sha256": "2e76108efea74c916f9d28458b6cdaeb2264dec36be9550084887f408a4213d4"
+        },
+        {
+          "filename": "campeche.png",
+          "sha256": "2c437fa247c1e9b801132f2ef017f780ae036908da2de2f9875aa3e6b38495cc"
+        }
+      ]
+    },
+    {
+      "country": "mx",
+      "jurisdiction": "chiapas",
+      "state": "chiapas",
+      "files": [
+        {
+          "filename": "chiapas.svg",
+          "sha256": "e0458df56d21a2a9f0d8944aa9e40d5935c6ca4d1a1df1592974a36276d42dff"
+        },
+        {
+          "filename": "chiapas.png",
+          "sha256": "f376a50b595d22e0b6aea5aecf45de970856cc6b0a03d7a82314853e12e64223"
+        }
+      ]
+    },
+    {
+      "country": "mx",
+      "jurisdiction": "chihuahua",
+      "state": "chihuahua",
+      "files": [
+        {
+          "filename": "chihuahua.svg",
+          "sha256": "141480ebd22d5a164629e582f1ab5bdda2075cd0ca1791b516c43ff6d021c0be"
+        },
+        {
+          "filename": "chihuahua.png",
+          "sha256": "2945c81e8feb5ba1058e346e440f6f6cacf84f33a29665c558aa1161c702ba84"
+        }
+      ]
+    },
+    {
+      "country": "mx",
+      "jurisdiction": "ciudad-de-mexico",
+      "state": "ciudad-de-mexico",
+      "files": [
+        {
+          "filename": "ciudad-de-mexico.svg",
+          "sha256": "9e5c63fd1aa31af5b5bb48a23488c7066f712427a7a3198cb4e221e8cb36ed30"
+        },
+        {
+          "filename": "ciudad-de-mexico.png",
+          "sha256": "76c1ead443c0f427cedaba9b48e9478b8823121d6fa558960e15dc177cf04193"
+        }
+      ]
+    },
+    {
+      "country": "mx",
+      "jurisdiction": "coahuila",
+      "state": "coahuila",
+      "files": [
+        {
+          "filename": "coahuila.svg",
+          "sha256": "9007eca0ce9268802ee2b002f6d0fd4931afced30be187aa437b496a8d0e30fd"
+        },
+        {
+          "filename": "coahuila.png",
+          "sha256": "1049d8fa0e6bcf459668bdb977092c0e18e16911aca9293c0342d3fa3d23d505"
+        }
+      ]
+    },
+    {
+      "country": "mx",
+      "jurisdiction": "colima",
+      "state": "colima",
+      "files": [
+        {
+          "filename": "colima.svg",
+          "sha256": "ab69873d62a5e8ab584000850212c95a0631a420743dcd211225e5e1540bf813"
+        },
+        {
+          "filename": "colima.png",
+          "sha256": "82ba8d049b344c6e9ff4cef42810bbd9d7381867c7643d8fd6cd539a914750fe"
+        }
+      ]
+    },
+    {
+      "country": "mx",
+      "jurisdiction": "durango",
+      "state": "durango",
+      "files": [
+        {
+          "filename": "durango.svg",
+          "sha256": "e479607ab7d4ca3e293b9d2a3b4a61f045d9428e8295a23078ab624a50501eca"
+        },
+        {
+          "filename": "durango.png",
+          "sha256": "dbf7dcff3a1308d8c50cf34bae0866848a8debab4d6af9a50b000c2bdcf91fe4"
+        }
+      ]
+    },
+    {
+      "country": "mx",
+      "jurisdiction": "estado-de-mexico",
+      "state": "estado-de-mexico",
+      "files": [
+        {
+          "filename": "estado-de-mexico.svg",
+          "sha256": "abd6dddd9ead7580814dee33ba9acf3216cdc21fb1afd6e6228dac74d71dfa98"
+        },
+        {
+          "filename": "estado-de-mexico.png",
+          "sha256": "625ae55e083d8c2cbefb077e04262620cc1ec99d5862b4c2fbf16ca6f4cafd95"
+        }
+      ]
+    },
+    {
+      "country": "mx",
+      "jurisdiction": "guanajuato",
+      "state": "guanajuato",
+      "files": [
+        {
+          "filename": "guanajuato.svg",
+          "sha256": "1e2e9e4acf1e5c9f0dc130a9ce6973c154eb044f353c058444d592249340f2a2"
+        },
+        {
+          "filename": "guanajuato.png",
+          "sha256": "1e9b922fca8ed9f2446b9ef8a0fdb0326baf8f334efc29dfa2d7ef0975613c54"
+        }
+      ]
+    },
+    {
+      "country": "mx",
+      "jurisdiction": "guerrero",
+      "state": "guerrero",
+      "files": [
+        {
+          "filename": "guerrero.svg",
+          "sha256": "5344ad2da4d995fb0d423bfe38fa99a528dc48c9e1a720f3f338c0b2361c26d2"
+        },
+        {
+          "filename": "guerrero.png",
+          "sha256": "597c3827afc6853d86108e9540be420b632c9d7fea30c060992d170b55ef9a07"
+        }
+      ]
+    },
+    {
+      "country": "mx",
+      "jurisdiction": "hidalgo",
+      "state": "hidalgo",
+      "files": [
+        {
+          "filename": "hidalgo.svg",
+          "sha256": "eb593fd40911395d54729194c70d70e17607c62f2b71714a5b75d707e9e126cc"
+        },
+        {
+          "filename": "hidalgo.png",
+          "sha256": "dd81a146efcecad04f022933c64720cdfde974431fcd43c137ce5b2e9cf2eea9"
+        }
+      ]
+    },
+    {
+      "country": "mx",
+      "jurisdiction": "jalisco",
+      "state": "jalisco",
+      "files": [
+        {
+          "filename": "jalisco.svg",
+          "sha256": "cadd35dd2bb722aa10d3fd29e9ee16e134430682d62c3346755bff518240e475"
+        },
+        {
+          "filename": "jalisco.png",
+          "sha256": "d71c7eb5671b92f8d0bcec557428bbeb0a8a69d3903601e2457045fc633f3ba8"
+        }
+      ]
+    },
+    {
+      "country": "mx",
+      "jurisdiction": "michoacan",
+      "state": "michoacan",
+      "files": [
+        {
+          "filename": "michoacan.svg",
+          "sha256": "03d868b530a3eb03e19c33fe80042758d1fa512e55858c3edce3ff3216326b78"
+        },
+        {
+          "filename": "michoacan.png",
+          "sha256": "281cd4e0edbf9d19c257920ee20b72ff7a116214ebf0067adc3b80525d2ddf22"
+        }
+      ]
+    },
+    {
+      "country": "mx",
+      "jurisdiction": "morelos",
+      "state": "morelos",
+      "files": [
+        {
+          "filename": "morelos.svg",
+          "sha256": "367dd323c859c295700ec4b43d6119e37381c688ec02be4419baa5b986c022e7"
+        },
+        {
+          "filename": "morelos.png",
+          "sha256": "911a8fc4e5db8c5a08e821f4a23232ac745eed0d93392de9b9a6ca08e99640bb"
+        }
+      ]
+    },
+    {
+      "country": "mx",
+      "jurisdiction": "nayarit",
+      "state": "nayarit",
+      "files": [
+        {
+          "filename": "nayarit.svg",
+          "sha256": "6acf5463a527e0fec10f376f7d7b028e5f1e7a8e6235a358d620b8a275b7d2a6"
+        },
+        {
+          "filename": "nayarit.png",
+          "sha256": "dd37b676bedbdaa69045bb5b9107a4b82dec7835a3c9e1ce892dcf30aa45d3d6"
+        }
+      ]
+    },
+    {
+      "country": "mx",
+      "jurisdiction": "nuevo-leon",
+      "state": "nuevo-leon",
+      "files": [
+        {
+          "filename": "nuevo-leon.svg",
+          "sha256": "f79c1fa473cb30d716cfaf59848620d8ae52ab18a3a72dd21a899695a2ede22e"
+        },
+        {
+          "filename": "nuevo-leon.png",
+          "sha256": "8974da2b8ad92d7296729e12eda5f54642a902e57b40c4ddc25f17e0e12c746a"
+        }
+      ]
+    },
+    {
+      "country": "mx",
+      "jurisdiction": "oaxaca",
+      "state": "oaxaca",
+      "files": [
+        {
+          "filename": "oaxaca.svg",
+          "sha256": "a152385e583ab8260be2b1d1fa8342ed61507dd2bbe3ec3bbe9b9cf37b949a73"
+        },
+        {
+          "filename": "oaxaca.png",
+          "sha256": "b172cea98af6abe5b86915765884f207be92f28c4df63b594adc1d511917f010"
+        }
+      ]
+    },
+    {
+      "country": "mx",
+      "jurisdiction": "puebla",
+      "state": "puebla",
+      "files": [
+        {
+          "filename": "puebla.svg",
+          "sha256": "2032157632fecd2599bb7cc6d75ce7db3c67a8bb0430d8165abaf60cb6c7fcb4"
+        },
+        {
+          "filename": "puebla.png",
+          "sha256": "18b78aae2df9ae35e06aac135eae060b5e6662583467f2f312d9be7a6624d5d2"
+        }
+      ]
+    },
+    {
+      "country": "mx",
+      "jurisdiction": "queretaro",
+      "state": "queretaro",
+      "files": [
+        {
+          "filename": "queretaro.svg",
+          "sha256": "7992b867578b2afb4966f5b2016fd73d829dad8821f080b9a2262a050022fe38"
+        },
+        {
+          "filename": "queretaro.png",
+          "sha256": "454db05d16756d4077c3c03b933715498597a38dff796e8862c2df0b36879131"
+        }
+      ]
+    },
+    {
+      "country": "mx",
+      "jurisdiction": "quintana-roo",
+      "state": "quintana-roo",
+      "files": [
+        {
+          "filename": "quintana-roo.svg",
+          "sha256": "480d5122d2b1801d263997097c509e3ce94bb37a30299c502f5977a57fb1b438"
+        },
+        {
+          "filename": "quintana-roo.png",
+          "sha256": "12ca6a1219f8e2ed242b8a8b217dbc45a1383cd142f1a3746d46eaf8bec62a73"
+        }
+      ]
+    },
+    {
+      "country": "mx",
+      "jurisdiction": "san-luis-potosi",
+      "state": "san-luis-potosi",
+      "files": [
+        {
+          "filename": "san-luis-potosi.svg",
+          "sha256": "a78100e7efc8677b1758a61ece82dbf3e8dda7e10d8618db4efd9235edaa29a1"
+        },
+        {
+          "filename": "san-luis-potosi.png",
+          "sha256": "2507e0ff04aada39b88157c1bddfff37e12cef2b53ef22b730cffd13feb483e5"
+        }
+      ]
+    },
+    {
+      "country": "mx",
+      "jurisdiction": "sinaloa",
+      "state": "sinaloa",
+      "files": [
+        {
+          "filename": "sinaloa.svg",
+          "sha256": "f323babe187ceda31923c1b9f90ecae61bc929e4b8de35d4cce03758a0df8f9f"
+        },
+        {
+          "filename": "sinaloa.png",
+          "sha256": "63e73aa538823a459684ea0a43f9eeee7e3e23d764b4e9684874245977a21c2a"
+        }
+      ]
+    },
+    {
+      "country": "mx",
+      "jurisdiction": "sonora",
+      "state": "sonora",
+      "files": [
+        {
+          "filename": "sonora.svg",
+          "sha256": "b92c6d63ab085ad168346577c9c6beabe75f0d0ddd63c8f19c206b099fe04915"
+        },
+        {
+          "filename": "sonora.png",
+          "sha256": "89d140a624fc1035fa358c9f7d26aed86d163c3941fceb2604cc2c5eff62e98c"
+        }
+      ]
+    },
+    {
+      "country": "mx",
+      "jurisdiction": "tabasco",
+      "state": "tabasco",
+      "files": [
+        {
+          "filename": "tabasco.svg",
+          "sha256": "caa8fb6285722c44edad8ea937c68f33b0909022ba719f9e9b8d8cf0c630f3bd"
+        },
+        {
+          "filename": "tabasco.png",
+          "sha256": "6492ced134c03d80ac008ec0f6228b9c0f4ebe064b0df59732097f831902e920"
+        }
+      ]
+    },
+    {
+      "country": "mx",
+      "jurisdiction": "tamaulipas",
+      "state": "tamaulipas",
+      "files": [
+        {
+          "filename": "tamaulipas.svg",
+          "sha256": "1da1b4ffd8d663123f4dc1b30991448597be642486517e7bc161cc1de97d6036"
+        },
+        {
+          "filename": "tamaulipas.png",
+          "sha256": "eb17c5987c51d5bd2966d586e04549cdba031d4738c2543b1caad298f1bc713c"
+        }
+      ]
+    },
+    {
+      "country": "mx",
+      "jurisdiction": "tlaxcala",
+      "state": "tlaxcala",
+      "files": [
+        {
+          "filename": "tlaxcala.svg",
+          "sha256": "53485275ab3ed388e59e8c8e43f997d4b81df5531e31fdeea838500adb7a6437"
+        },
+        {
+          "filename": "tlaxcala.png",
+          "sha256": "d3acd9aea6e5f45a947c509af0af633521526d6a3eebf6c66004164064e8745e"
+        }
+      ]
+    },
+    {
+      "country": "mx",
+      "jurisdiction": "veracruz",
+      "state": "veracruz",
+      "files": [
+        {
+          "filename": "veracruz.svg",
+          "sha256": "99160507cd1bddd331f9291ed50c6a42cd7018a9cd279daded8797cedf3ba9b5"
+        },
+        {
+          "filename": "veracruz.png",
+          "sha256": "cce6b48ad132b6f6046b6c0b2790c6dcab367f7274a4b52a875bc2e8c21acf81"
+        }
+      ]
+    },
+    {
+      "country": "mx",
+      "jurisdiction": "yucatan",
+      "state": "yucatan",
+      "files": [
+        {
+          "filename": "yucatan.svg",
+          "sha256": "f6752aba0bc50a2b8ef4db3b0cd3d4a0f1a420754850c72ff9ad31e14e6fc75a"
+        },
+        {
+          "filename": "yucatan.png",
+          "sha256": "950516d0c5af69875b7a1ef140ec9d9ee7667e2d4a7124fdf1f60817f06ffd26"
+        }
+      ]
+    },
+    {
+      "country": "mx",
+      "jurisdiction": "zacatecas",
+      "state": "zacatecas",
+      "files": [
+        {
+          "filename": "zacatecas.svg",
+          "sha256": "6bb4edfde802137abbcd9895d80f00986a5fe2fe96d4d325749caf58afb689fa"
+        },
+        {
+          "filename": "zacatecas.png",
+          "sha256": "bc7461491ac2b847bb1538d91ec7cbcb0000cd34d217c6aa4375bc5b642bba9f"
+        }
+      ]
+    }
+  ]
+}

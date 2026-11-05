@@ -1,9 +1,12 @@
 {
+  "country": "us",
   "seed": 42,
   "width": 1400,
   "height": 880,
   "items": [
     {
+      "country": "us",
+      "jurisdiction": "washington",
       "state": "washington",
       "files": [
         {
@@ -17,6 +20,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "arkansas",
       "state": "arkansas",
       "files": [
         {
@@ -30,6 +35,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "illinois",
       "state": "illinois",
       "files": [
         {
@@ -43,6 +50,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "tennessee",
       "state": "tennessee",
       "files": [
         {
@@ -56,6 +65,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "alaska",
       "state": "alaska",
       "files": [
         {
@@ -69,6 +80,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "wyoming",
       "state": "wyoming",
       "files": [
         {
@@ -82,6 +95,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "louisiana",
       "state": "louisiana",
       "files": [
         {
@@ -95,6 +110,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "utah",
       "state": "utah",
       "files": [
         {
@@ -108,6 +125,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "colorado",
       "state": "colorado",
       "files": [
         {
@@ -121,6 +140,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "idaho",
       "state": "idaho",
       "files": [
         {
@@ -134,6 +155,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "alabama",
       "state": "alabama",
       "files": [
         {
@@ -147,6 +170,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "arizona",
       "state": "arizona",
       "files": [
         {
@@ -160,6 +185,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "california",
       "state": "california",
       "files": [
         {
@@ -173,6 +200,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "connecticut",
       "state": "connecticut",
       "files": [
         {
@@ -186,6 +215,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "delaware",
       "state": "delaware",
       "files": [
         {
@@ -199,6 +230,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "florida",
       "state": "florida",
       "files": [
         {
@@ -212,6 +245,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "georgia",
       "state": "georgia",
       "files": [
         {
@@ -225,6 +260,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "hawaii",
       "state": "hawaii",
       "files": [
         {
@@ -238,6 +275,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "indiana",
       "state": "indiana",
       "files": [
         {
@@ -251,6 +290,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "iowa",
       "state": "iowa",
       "files": [
         {
@@ -264,6 +305,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "kansas",
       "state": "kansas",
       "files": [
         {
@@ -277,6 +320,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "kentucky",
       "state": "kentucky",
       "files": [
         {
@@ -290,6 +335,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "maine",
       "state": "maine",
       "files": [
         {
@@ -303,6 +350,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "maryland",
       "state": "maryland",
       "files": [
         {
@@ -316,6 +365,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "massachusetts",
       "state": "massachusetts",
       "files": [
         {
@@ -329,6 +380,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "michigan",
       "state": "michigan",
       "files": [
         {
@@ -342,6 +395,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "minnesota",
       "state": "minnesota",
       "files": [
         {
@@ -355,6 +410,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "mississippi",
       "state": "mississippi",
       "files": [
         {
@@ -368,6 +425,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "missouri",
       "state": "missouri",
       "files": [
         {
@@ -381,6 +440,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "montana",
       "state": "montana",
       "files": [
         {
@@ -394,6 +455,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "nebraska",
       "state": "nebraska",
       "files": [
         {
@@ -407,6 +470,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "nevada",
       "state": "nevada",
       "files": [
         {
@@ -420,6 +485,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "new-hampshire",
       "state": "new-hampshire",
       "files": [
         {
@@ -433,6 +500,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "new-jersey",
       "state": "new-jersey",
       "files": [
         {
@@ -446,6 +515,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "new-mexico",
       "state": "new-mexico",
       "files": [
         {
@@ -459,6 +530,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "new-york",
       "state": "new-york",
       "files": [
         {
@@ -472,6 +545,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "north-carolina",
       "state": "north-carolina",
       "files": [
         {
@@ -485,6 +560,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "north-dakota",
       "state": "north-dakota",
       "files": [
         {
@@ -498,6 +575,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "ohio",
       "state": "ohio",
       "files": [
         {
@@ -511,6 +590,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "oklahoma",
       "state": "oklahoma",
       "files": [
         {
@@ -524,6 +605,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "oregon",
       "state": "oregon",
       "files": [
         {
@@ -537,6 +620,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "pennsylvania",
       "state": "pennsylvania",
       "files": [
         {
@@ -550,6 +635,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "rhode-island",
       "state": "rhode-island",
       "files": [
         {
@@ -563,6 +650,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "south-carolina",
       "state": "south-carolina",
       "files": [
         {
@@ -576,6 +665,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "south-dakota",
       "state": "south-dakota",
       "files": [
         {
@@ -589,6 +680,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "texas",
       "state": "texas",
       "files": [
         {
@@ -602,6 +695,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "vermont",
       "state": "vermont",
       "files": [
         {
@@ -615,6 +710,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "virginia",
       "state": "virginia",
       "files": [
         {
@@ -628,6 +725,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "west-virginia",
       "state": "west-virginia",
       "files": [
         {
@@ -641,6 +740,8 @@
       ]
     },
     {
+      "country": "us",
+      "jurisdiction": "wisconsin",
       "state": "wisconsin",
       "files": [
         {

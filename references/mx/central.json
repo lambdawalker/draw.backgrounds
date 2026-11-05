@@ -1,0 +1,85 @@
+{
+  "country": "MX",
+  "group": "central",
+  "reviewed": "2026-11-05",
+  "policy": "Public reference imagery inspected only as noted. Original decorative procedural artwork; no official seals, legends, holder fields or machine-readable codes. No downloaded reference imagery embedded in output.",
+  "entities": [
+    {
+      "slug": "ciudad-de-mexico",
+      "sourceURL": "https://www.masclaro.mx/posts/1904",
+      "observations": "Visually inspected two illustrated sample cards: pale pink and olive line networks, pale center and burgundy header.",
+      "limitations": "Medium: sample artwork, not a dated authoritative physical specimen.",
+      "interpretation": "Rose and sage network; original stepped-plaza relief and canal lines."
+    },
+    {
+      "slug": "estado-de-mexico",
+      "sourceURL": "https://mexico.as.com/actualidad/precio-licencia-de-conducir-edomex-cuanto-cuesta-como-sacarla-y-requisitos-n/",
+      "observations": "Image search returned a pricing poster, not a usable card specimen.",
+      "limitations": "Low: no card specimen visually inspected. No claimed match to licence artwork.",
+      "interpretation": "Original highland ridge and agave, warm mint paper; invented geographic interpretation."
+    },
+    {
+      "slug": "guanajuato",
+      "sourceURL": "https://boletines.guanajuato.gob.mx/2023/09/20/presentan-la-nueva-licencia-para-conducir-documento-que-se-posiciona-como-uno-de-los-mas-seguros-del-pais/",
+      "observations": "Official release describes numismatic-style design. Search provided a digital-card mockup but its download returned HTTP 403.",
+      "limitations": "Low: text evidence only; no claimed visual match.",
+      "interpretation": "Original warm sandstone town terraces and arcade."
+    },
+    {
+      "slug": "hidalgo",
+      "sourceURL": "https://www.tusbuenasnoticias.com/noticias/mexico/2025/06/14/46553-licencia-de-manejo-en-hidalgo-como-tramitar-tipo-b-y-documentos",
+      "observations": "Visually inspected inset card: pale cream field and warm burgundy upper edge; specimen too small for fine pattern analysis.",
+      "limitations": "Low: tiny editorial inset, details unresolved.",
+      "interpretation": "Original basalt-column engraving, muted mauve and sage field."
+    },
+    {
+      "slug": "jalisco",
+      "sourceURL": "https://www.debate.com.mx/guadalajara/precios-2026-para-sacar-o-renovar-licencia-de-conducir-en-jalisco-requisitos-20260107-0197.html",
+      "observations": "Visually inspected unpersonalized white card with very pale patterned field; green/orange accents confined to edge.",
+      "limitations": "Medium: news photo, glare and small decorative features.",
+      "interpretation": "Light green network and original agave rows; no reproduction of edge branding."
+    },
+    {
+      "slug": "michoacan",
+      "sourceURL": "https://www.contramuro.com/cuanto-cuesta-la-licencia-de-conducir-permanente-en-michoacan/",
+      "observations": "Visually inspected promotional sample: gray pale line field, burgundy header and tiny colored butterfly-like lower-right decoration.",
+      "limitations": "Medium-low: stylized sample in a poster, not authoritative current specification.",
+      "interpretation": "Original butterfly wing geometry over warm cream line network."
+    },
+    {
+      "slug": "morelos",
+      "sourceURL": "https://www.morelos.gob.mx/morv3-design-system/home-morv2",
+      "observations": "Visually inspected official promotional banner phone mockup: cream field with restrained warm accents.",
+      "limitations": "Low: partial phone mockup, fine background not resolved.",
+      "interpretation": "Original mesa silhouette and flowers over yellow-green field."
+    },
+    {
+      "slug": "puebla",
+      "sourceURL": "https://www.eluniversalpuebla.com.mx/estado/que-deberias-estudiar-para-el-examen-teorico-y-practico-de-manejo-en-puebla/",
+      "observations": "Visually inspected card held inside vehicle: pale field and red upper band visible, details obscured by angle and fingers.",
+      "limitations": "Low: cannot establish original landscape/tile motifs from this photo.",
+      "interpretation": "Original snowy volcano and tile geometry in pale blue; geographic invention."
+    },
+    {
+      "slug": "queretaro",
+      "sourceURL": "https://www.telediario.mx/comunidad/licencia-de-conducir-queretaro-2026-cuanto-cuesta-y-como-tramitarla",
+      "observations": "Visually inspected small card in editorial photo: pale cool field, restrained colored edge. Fine background unresolved.",
+      "limitations": "Low: card small and illustrative photo may not establish current issuance design.",
+      "interpretation": "Original extended aqueduct arcade on warm pale field; geographic invention."
+    },
+    {
+      "slug": "san-luis-potosi",
+      "sourceURL": "https://www.launion.com.mx/morelos/nacional/noticias/191448-en-san-luis-potosi-licencias-de-conducir-seran-gratuitas-y-permanentes.html",
+      "observations": "Visually inspected large photographed sample: pale blue-green paper, strongly warped olive grid, green lower interlaced band.",
+      "limitations": "Medium: older news specimen; not a claim about every current card.",
+      "interpretation": "Muted green warped network and bottom linework, original waterfall and hills replacing official marks."
+    },
+    {
+      "slug": "tlaxcala",
+      "sourceURL": "https://heraldodemexico.com.mx/nacional/2025/2/17/cuanto-cuesta-la-licencia-de-conducir-en-tlaxcala-en-2025-precio-requisitos-676386.html",
+      "observations": "Visually inspected editorial mockup: violet top band, very pale gray folded/radiating field.",
+      "limitations": "Medium-low: stylized mockup. Warm mountain/maize interpretation is original.",
+      "interpretation": "Original maize, earth-toned mountain and variable grid."
+    }
+  ]
+}
