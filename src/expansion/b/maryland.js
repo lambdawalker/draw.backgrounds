@@ -2,4 +2,5 @@ import {rect,path,line,ellipse,polygon,samples,waves,grid,rosette,ridge,pine,flo
 import {base,contours,wheat,dome,leaves,orbit} from './motifs.js';
 export default function(c,p){
 base(c,['#f7efcc','#eee7e6','#ece1cf']); for(let j=0;j<5;j++){c.add(polygon([[j*280,0],[j*280+130,0],[j*280+130,440],[j*280+280,440]],'#b6a895',.15));c.add(polygon([[j*280,440],[j*280+140,440],[j*280+140,880],[j*280+280,880]],'#d49b9c',.2));} contours(c,'#a99aa0',p,'vertical',.15);
+c.add(path('M-100 400 L1500 810 L1500 950 L-100 540Z','#eee8de',.5,.55,'#eee8de'));waves(c,{from:440,to:640,slope:.12,spacing:7,amplitude:8,color:'#b6a49a',opacity:.26,phase:p});
 }
