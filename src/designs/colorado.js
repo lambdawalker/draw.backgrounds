@@ -1,16 +1,7 @@
-import {
-  rect,
-  waves,
-  ridge,
-  line,
-  pine,
-  snowOnRidge,
-  polygon,
-  rockEtching,
-} from "../geometry.js";
+import { waves, ridge, pine, snowOnRidge, rockEtching } from "../geometry.js";
 export default function (c, p) {
   c.add(
-    rect(
+    c.rect(
       0,
       0,
       1400,
@@ -66,7 +57,7 @@ export default function (c, p) {
     { opacity: 0.2 },
   );
   c.add(
-    polygon(
+    c.polygon(
       [
         [650, 280],
         [800, 410],

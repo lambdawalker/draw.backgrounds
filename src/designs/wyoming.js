@@ -1,7 +1,7 @@
-import { rect, line, samples } from "../geometry.js";
+import { samples } from "../geometry.js";
 export default function (c, p) {
   c.add(
-    rect(
+    c.rect(
       0,
       0,
       1400,
@@ -18,10 +18,10 @@ export default function (c, p) {
     [45, "#83a865"],
     [100, "#4c9abc"],
   ]);
-  const field = c.body.length;
+  const field = [];
   for (let x = -120; x < 1500; x += 9 + 1.3 * Math.sin(x / 180))
-    c.add(
-      line(
+    field.push(
+      c.line(
         samples(
           (y) => [
             x +
@@ -38,15 +38,10 @@ export default function (c, p) {
         0.42,
       ),
     );
-  const fieldPaths = c.body.splice(field).join("");
-  const mask = c.id();
-  c.defs.push(
-    `<linearGradient id="${mask}" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="white" stop-opacity=".12"/><stop offset=".2" stop-color="white"/><stop offset=".82" stop-color="white"/><stop offset="1" stop-color="white" stop-opacity=".1"/></linearGradient><mask id="${mask}m"><rect width="1400" height="880" fill="url(#${mask})"/></mask>`,
-  );
-  c.add(`<g mask="url(#${mask}m)">${fieldPaths}</g>`);
+  c.verticalFade(field);
   for (let j = 0; j < 20; j++)
     c.add(
-      line(
+      c.line(
         samples(
           (x) => [
             x,
@@ -66,7 +61,7 @@ export default function (c, p) {
     );
   for (let j = 0; j < 18; j++)
     c.add(
-      line(
+      c.line(
         samples(
           (x) => [x, 810 + j * 4 + 16 * Math.sin(x / 20 + j * 0.16)],
           -20,

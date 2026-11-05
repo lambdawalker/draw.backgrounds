@@ -1,7 +1,7 @@
-import { rect, waves, rosette, tower, line, samples } from "../geometry.js";
+import { waves, rosette, tower, samples } from "../geometry.js";
 export default function (c, p) {
   c.add(
-    rect(
+    c.rect(
       0,
       0,
       1400,
@@ -24,7 +24,7 @@ export default function (c, p) {
   });
   for (let j = 0; j < 25; j++)
     c.add(
-      line(
+      c.line(
         samples(
           (y) => [520 + j * 3 + 35 * Math.sin(y / 60 + p), y],
           -20,
@@ -45,7 +45,7 @@ export default function (c, p) {
   tower(c, 795, 820, 1.4, "#537f98");
   for (let j = 0; j < 14; j++)
     c.add(
-      line(
+      c.line(
         samples(
           (x) => [x, 850 + j * 3 + 22 * Math.sin(x / 130 + p)],
           -20,

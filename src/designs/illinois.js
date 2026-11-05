@@ -1,6 +1,6 @@
-import { rect, waves, rosette, line, samples } from "../geometry.js";
+import { waves, rosette, samples } from "../geometry.js";
 export default function (c, p) {
-  c.add(rect(0, 0, 1400, 880, "#f6f5f1"));
+  c.add(c.rect(0, 0, 1400, 880, "#f6f5f1"));
   c.glow(820, 450, 740, 530, "#b5d7ed", 0.45);
   waves(c, {
     color: "#74a7c1",
@@ -23,7 +23,7 @@ export default function (c, p) {
   });
   for (let j = 0; j < 28; j++) {
     c.add(
-      line(
+      c.line(
         samples(
           (t) => {
             const a = (t / 180) * Math.PI,
@@ -42,7 +42,7 @@ export default function (c, p) {
   }
   for (let j = 0; j < 18; j++)
     c.add(
-      line(
+      c.line(
         samples(
           (y) => [
             650 + 160 * Math.sin(y / 160 + p) + j * 6 + 23 * Math.sin(y / 65),
@@ -59,7 +59,7 @@ export default function (c, p) {
     );
   for (let j = 0; j < 12; j++)
     c.add(
-      line(
+      c.line(
         samples(
           (y) => [1020 + 95 * Math.sin(y / 210 + p) + j * 5, y],
           -30,
@@ -73,7 +73,7 @@ export default function (c, p) {
     );
   for (let j = 0; j < 14; j++)
     c.add(
-      line(
+      c.line(
         samples(
           (x) => [x, 790 + j * 4 + 48 * Math.sin(x / 220 + p)],
           -20,

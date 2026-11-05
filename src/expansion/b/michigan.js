@@ -1,4 +1,4 @@
-import { path, line, samples, grid } from "../../geometry.js";
+import { samples, grid } from "../../geometry.js";
 import { base, contours, orbit } from "./motifs.js";
 export default function (c, p) {
   base(c, ["#f0e9ed", "#f5f2e8", "#e5eaed"]);
@@ -10,7 +10,7 @@ export default function (c, p) {
     "#b798b5",
     0.18,
   );
-  c.add(`<g transform="translate(${28 * Math.sin(p)} ${15 * Math.cos(p)})">`);
+  c.add(c.openGroup(`translate(${28 * Math.sin(p)} ${15 * Math.cos(p)})`));
   orbit(c, 850, 450, 100, 95, "#aa8d9a", p);
   contours(c, "#9c99a6", p, "horizontal", 0.13);
   orbit(c, 990, 390, 170, 110, "#9d91a5", p + 0.5);
@@ -23,7 +23,7 @@ export default function (c, p) {
   });
   for (let j = 0; j < 14; j++)
     c.add(
-      line(
+      c.line(
         samples(
           (a) => [
             930 + (245 + j * 9) * Math.cos(a),
@@ -40,7 +40,7 @@ export default function (c, p) {
     );
   for (let j = 0; j < 20; j++)
     c.add(
-      path(
+      c.path(
         `M0 ${300 + j * 8} C450 ${100 + j * 7} 820 ${760 - j * 3} 1400 ${530 + j * 6}`,
         "#afa28c",
         0.75,
@@ -49,7 +49,7 @@ export default function (c, p) {
     );
   for (let j = 0; j < 45; j++)
     c.add(
-      line(
+      c.line(
         samples(
           (a) => [
             j * 34 + 18 * Math.cos(a),
@@ -66,7 +66,7 @@ export default function (c, p) {
     );
   for (let j = 0; j < 12; j++)
     c.add(
-      path(
+      c.path(
         `M-20 ${50 + j * 6} Q690 ${200 + j * 5} 1430 ${35 + j * 6}`,
         "#b0a5b2",
         0.65,
@@ -75,7 +75,7 @@ export default function (c, p) {
     );
   for (let j = 0; j < 5; j++)
     c.add(
-      line(
+      c.line(
         samples(
           (a) => [
             930 + (320 + j * 4) * Math.cos(a),
@@ -90,5 +90,5 @@ export default function (c, p) {
         0.12,
       ),
     );
-  c.add("</g>");
+  c.add(c.closeGroup());
 }

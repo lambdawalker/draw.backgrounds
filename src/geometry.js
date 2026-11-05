@@ -30,7 +30,34 @@ export function samples(fn, start, end, step = 8) {
   for (let t = start; t <= end; t += step) a.push(fn(t));
   return a;
 }
+function svgFragment(content) {
+  return Array.isArray(content) ? content.map(svgFragment).join("") : content;
+}
 export class Canvas {
+  path = path;
+  line = line;
+  polygon = polygon;
+  rect = rect;
+  ellipse = ellipse;
+  outlinedEllipse(x, y, rx, ry, stroke, width, opacity) {
+    return `<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" fill="none" stroke="${stroke}" stroke-width="${width}" opacity="${opacity}"/>`;
+  }
+  openGroup(transform) {
+    return `<g transform="${transform}">`;
+  }
+  closeGroup() {
+    return "</g>";
+  }
+  withOpacity(shape, opacity) {
+    return `<g opacity="${opacity}">${shape}</g>`;
+  }
+  verticalFade(content) {
+    const mask = this.id();
+    this.defs.push(
+      `<linearGradient id="${mask}" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="white" stop-opacity=".12"/><stop offset=".2" stop-color="white"/><stop offset=".82" stop-color="white"/><stop offset="1" stop-color="white" stop-opacity=".1"/></linearGradient><mask id="${mask}m"><rect width="1400" height="880" fill="url(#${mask})"/></mask>`,
+    );
+    this.add(`<g mask="url(#${mask}m)">${svgFragment(content)}</g>`);
+  }
   constructor(random, prefix = "g") {
     this.prefix = prefix;
     this.random = random;
@@ -39,7 +66,7 @@ export class Canvas {
     this.serial = 0;
   }
   add(s) {
-    this.body.push(s);
+    this.body.push(svgFragment(s));
   }
   id() {
     return `${this.prefix}${this.serial++}`;
@@ -56,12 +83,12 @@ export class Canvas {
     this.defs.push(
       `<radialGradient id="${id}"><stop stop-color="${color}" stop-opacity="${opacity}"/><stop offset="100%" stop-color="${color}" stop-opacity="0"/></radialGradient>`,
     );
-    this.add(ellipse(x, y, rx, ry, `url(#${id})`));
+    this.add(this.ellipse(x, y, rx, ry, `url(#${id})`));
   }
   clip(shape, content) {
     const id = this.id();
     this.defs.push(`<clipPath id="${id}">${shape}</clipPath>`);
-    this.add(`<g clip-path="url(#${id})">${content}</g>`);
+    this.add(`<g clip-path="url(#${id})">${svgFragment(content)}</g>`);
   }
 }
 /** Shared smooth coordinate warp: spacing changes within and between curves. */
@@ -88,7 +115,7 @@ export function grid(
   if (horizontal)
     for (let y = -100; y < 1000; y += spacing)
       c.add(
-        line(
+        c.line(
           samples((x) => warp(x, y), -100, 1500, 12),
           color,
           0.8,
@@ -98,7 +125,7 @@ export function grid(
   if (vertical)
     for (let x = -100; x < 1500; x += spacing)
       c.add(
-        line(
+        c.line(
           samples((y) => warp(x, y), -100, 1000, 12),
           color,
           0.8,
@@ -122,7 +149,7 @@ export function waves(
 ) {
   for (let y = from; y <= to; y += spacing)
     c.add(
-      line(
+      c.line(
         samples(
           (x) => [
             x,
@@ -153,7 +180,7 @@ export function rosette(
     for (const direction of [-1, 1]) {
       const rr = r + j * 1.6;
       c.add(
-        line(
+        c.line(
           samples(
             (t) => {
               const a = (t / 180) * Math.PI,
@@ -177,7 +204,7 @@ export function rosette(
     r + (rings - 1) * 1.6 + amplitude + 4,
   ])
     c.add(
-      line(
+      c.line(
         samples(
           (t) => [
             x + rr * Math.cos((t / 180) * Math.PI),
@@ -214,25 +241,27 @@ export function ridge(
   }
   detailed.push(verts.at(-1));
   const bottom = 1000,
-    shape = polygon([...detailed, [1600, bottom], [-200, bottom]], fill);
-  c.add(`<g opacity="${opacity}">${shape}</g>`);
+    shape = c.polygon([...detailed, [1600, bottom], [-200, bottom]], fill);
+  c.add(c.withOpacity(shape, opacity));
   if (hatch) {
-    let lines = "";
+    const lines = [];
     for (let y = -100; y < 1000; y += 7)
-      lines += line(
-        samples(
-          (x) => [x, y + 20 * Math.sin(x / 120 + y / 140)],
-          -100,
-          1500,
-          12,
+      lines.push(
+        c.line(
+          samples(
+            (x) => [x, y + 20 * Math.sin(x / 120 + y / 140)],
+            -100,
+            1500,
+            12,
+          ),
+          ink,
+          0.75,
+          0.25,
         ),
-        ink,
-        0.75,
-        0.25,
       );
     c.clip(shape, lines);
   }
-  c.add(line(detailed, ink, 0.8, opacity * 0.7));
+  c.add(c.line(detailed, ink, 0.8, opacity * 0.7));
   return { vertices: detailed, silhouette: shape };
 }
 export function pine(c, x, y, size, color, opacity = 0.4) {
@@ -248,7 +277,7 @@ export function pine(c, x, y, size, color, opacity = 0.4) {
       ww = (size * 0.25 * j) / 8;
     a.push([x + ww, yy], [x + ww * 0.65, yy - size * 0.09]);
   }
-  c.add(polygon(a, color, opacity));
+  c.add(c.polygon(a, color, opacity));
 }
 export function flower(c, x, y, r, color, opacity = 0.35) {
   for (let j = 0; j < 5; j++) {
@@ -264,7 +293,7 @@ export function flower(c, x, y, r, color, opacity = 0.35) {
       a5 = p(r * 1.15, r * 0.25),
       a6 = p(r * 0.55, r * 0.55);
     c.add(
-      path(
+      c.path(
         `M${points([a1])} C${points([a2, a3, a4])} C${points([a5, a6, a1])}Z`,
         color,
         0.8,
@@ -274,10 +303,15 @@ export function flower(c, x, y, r, color, opacity = 0.35) {
     );
     for (let k = -2; k <= 2; k++)
       c.add(
-        line([p(r * 0.2, 0), p(r * 0.8, k * r * 0.065)], "#fffaf5", 0.8, 0.45),
+        c.line(
+          [p(r * 0.2, 0), p(r * 0.8, k * r * 0.065)],
+          "#fffaf5",
+          0.8,
+          0.45,
+        ),
       );
   }
-  c.add(ellipse(x, y, r * 0.14, r * 0.14, "#d7b46a", 0.7));
+  c.add(c.ellipse(x, y, r * 0.14, r * 0.14, "#d7b46a", 0.7));
 }
 /** Etched rock faces and snow patches share their peak vertex. */
 export function snow(c, x, y, w, h, color = "#f8faf6", opacity = 0.7) {
@@ -293,10 +327,10 @@ export function snow(c, x, y, w, h, color = "#f8faf6", opacity = 0.7) {
     [x + w * 0.3, y + h * 0.52],
     [x + w * 0.18, y + h * 0.27],
   ];
-  c.add(polygon(left, color, opacity));
+  c.add(c.polygon(left, color, opacity));
   for (let j = 0; j < 14; j++)
     c.add(
-      line(
+      c.line(
         [
           [x + j * 0.8, y + 12 + j * 3],
           [x + w * (0.4 + j * 0.035), y + h * (0.8 + j * 0.03)],
@@ -309,53 +343,58 @@ export function snow(c, x, y, w, h, color = "#f8faf6", opacity = 0.7) {
     );
 }
 export function tower(c, x, y, s, color) {
-  let g = "";
+  const g = [];
   for (let j = 0; j < 7; j++) {
     const w = (74 - j * 7) * s,
       top = y - (75 + j * 29) * s;
-    g += rect(x - w / 2, top, w, (75 + j * 29) * s, color, 0.035);
-    g += path(
-      `M${x - w / 2} ${y} V${top} H${x + w / 2} V${y}`,
-      color,
-      0.8,
-      0.5,
+    g.push(c.rect(x - w / 2, top, w, (75 + j * 29) * s, color, 0.035));
+    g.push(
+      c.path(`M${x - w / 2} ${y} V${top} H${x + w / 2} V${y}`, color, 0.8, 0.5),
     );
   }
   for (let j = -4; j <= 4; j++)
-    g += line(
-      [
-        [x + j * 6 * s, y - 12 * s],
-        [x + j * 6 * s, y - 200 * s],
-      ],
-      color,
-      0.7,
-      0.5,
+    g.push(
+      c.line(
+        [
+          [x + j * 6 * s, y - 12 * s],
+          [x + j * 6 * s, y - 200 * s],
+        ],
+        color,
+        0.7,
+        0.5,
+      ),
     );
   for (let j = 0; j < 32; j++)
-    g += line(
-      [
-        [x - 25 * s, y - j * 6 * s],
-        [x + 25 * s, y - j * 6 * s],
-      ],
-      color,
-      0.6,
-      0.25,
+    g.push(
+      c.line(
+        [
+          [x - 25 * s, y - j * 6 * s],
+          [x + 25 * s, y - j * 6 * s],
+        ],
+        color,
+        0.6,
+        0.25,
+      ),
     );
-  g += path(
-    `M${x - 110 * s} ${y} V${y - 45 * s} H${x + 110 * s} V${y} M${x - 120 * s} ${y + 6 * s} H${x + 120 * s}`,
-    color,
-    1.3,
-    0.5,
+  g.push(
+    c.path(
+      `M${x - 110 * s} ${y} V${y - 45 * s} H${x + 110 * s} V${y} M${x - 120 * s} ${y + 6 * s} H${x + 120 * s}`,
+      color,
+      1.3,
+      0.5,
+    ),
   );
   for (let j = -8; j <= 8; j++)
-    g += line(
-      [
-        [x + j * 12 * s, y],
-        [x + j * 12 * s, y - 40 * s],
-      ],
-      color,
-      1,
-      0.4,
+    g.push(
+      c.line(
+        [
+          [x + j * 12 * s, y],
+          [x + j * 12 * s, y - 40 * s],
+        ],
+        color,
+        1,
+        0.4,
+      ),
     );
   c.add(g);
 }
@@ -364,35 +403,37 @@ export function rockEtching(
   verts,
   { color = "#7895aa", opacity = 0.18 } = {},
 ) {
-  const shape = polygon([...verts, [1600, 950], [-100, 950]], "#fff");
-  let g = "";
+  const shape = c.polygon([...verts, [1600, 950], [-100, 950]], "#fff");
+  const g = [];
   for (let j = 0; j < 65; j++) {
     const x = 300 + j * 14;
-    g += line(
-      samples(
-        (t) => [
-          x + 95 * t + 10 * Math.sin(t * 9 + j * 0.4),
-          240 + t * 550 + 22 * Math.sin(j * 0.8),
-        ],
-        0,
-        1,
-        0.025,
+    g.push(
+      c.line(
+        samples(
+          (t) => [
+            x + 95 * t + 10 * Math.sin(t * 9 + j * 0.4),
+            240 + t * 550 + 22 * Math.sin(j * 0.8),
+          ],
+          0,
+          1,
+          0.025,
+        ),
+        color,
+        0.65,
+        opacity,
       ),
-      color,
-      0.65,
-      opacity,
     );
   }
   c.clip(shape, g);
 }
 /** Original neoclassical pavilion elevation; outlines and shading share dimensions. */
 export function engravedPavilion(c, x, y, s, color) {
-  let g = "";
+  const g = [];
   const P = (d, w = 1, o = 0.6, fill = "none") => {
-    g += path(d, color, w, o, fill);
+    g.push(c.path(d, color, w, o, fill));
   };
   const R = (a, b, w, h, o = 0.07) => {
-    g += rect(a, b, w, h, color, o);
+    g.push(c.rect(a, b, w, h, color, o));
   };
   // Coordinates are local to the pavilion baseline.
   R(-175, -145, 350, 145, 0.07);
@@ -404,7 +445,7 @@ export function engravedPavilion(c, x, y, s, color) {
   }
   P("M-192 -148 H192 M-185 -140 H185 M-181 -136 H181", 1, 0.6);
   // Pediment relief, original circular ornament.
-  g += ellipse(0, -176, 18, 12, "#95b0be", 0.15);
+  g.push(c.ellipse(0, -176, 18, 12, "#95b0be", 0.15));
   for (let j = 0; j < 4; j++)
     P(
       `M${-20 - j * 2} -175 Q0 ${-200 - j} ${20 + j * 2} -175 Q0 ${-153 + j} ${-20 - j * 2} -175`,
@@ -463,7 +504,7 @@ export function engravedPavilion(c, x, y, s, color) {
     0.65,
   );
   P("M-8 -361 V-386 M0 -361 V-386 M8 -361 V-386", 0.8, 0.55);
-  c.add(`<g transform="translate(${x} ${y}) scale(${s})">${g}</g>`);
+  c.add([c.openGroup(`translate(${x} ${y}) scale(${s})`), g, c.closeGroup()]);
 }
 
 /** Snow shares the exact jagged outline drawn by ridge(), including seeded detail. */
@@ -482,7 +523,7 @@ export function snowOnRidge(
   );
   c.clip(
     mountain.silhouette,
-    polygon(
+    c.polygon(
       [[-200, -100], [1600, -100], ...boundary.reverse()],
       color,
       opacity,

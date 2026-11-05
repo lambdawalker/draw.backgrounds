@@ -1,15 +1,13 @@
 import {
-  rect,
   waves,
   ridge,
   pine,
-  line,
   samples,
   snowOnRidge,
   rockEtching,
 } from "../geometry.js";
 export default function (c, p) {
-  c.add(rect(0, 0, 1400, 880, "#eef5f3"));
+  c.add(c.rect(0, 0, 1400, 880, "#eef5f3"));
   c.glow(440, 220, 1000, 680, "#b8dce7", 0.55);
   waves(c, {
     color: "#468ea6",
@@ -57,7 +55,7 @@ export default function (c, p) {
   pine(c, 1130, 859, 170, "#98a559", 0.56);
   for (let j = 0; j < 14; j++)
     c.add(
-      line(
+      c.line(
         samples(
           (x) => [x, 810 + j * 4 + 9 * Math.sin(x / 90 + p + j * 0.05)],
           -20,

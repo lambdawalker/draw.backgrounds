@@ -10,11 +10,6 @@ import {
   leaf,
   fan,
   palm,
-  rect,
-  path,
-  line,
-  polygon,
-  ellipse,
   samples,
 } from "./helpers.js";
 export default function (c, phase) {
@@ -39,7 +34,7 @@ export default function (c, phase) {
   c.glow(1000, 380, 440, 340, "#f5df9e", 0.28);
   for (let j = 0; j < 40; j++)
     c.add(
-      path(
+      c.path(
         `M0 ${40 + j * 18}Q650 ${200 + j * 12} 1400 ${-30 + j * 22}`,
         "#ba9aaa",
         0.7,
@@ -54,7 +49,7 @@ export default function (c, phase) {
   });
   for (let j = 0; j < 15; j++)
     c.add(
-      path(
+      c.path(
         `M0 ${690 + j * 6}Q430 ${610 + j * 8} 760 ${730 + j * 3}T1400 ${650 + j * 9}`,
         "#9c9cba",
         0.65,
@@ -63,11 +58,11 @@ export default function (c, phase) {
     );
   c.glow(340, 620, 600, 300, "#c2d5dd", 0.16);
   for (let j = 0; j < 20; j++)
-    c.add(path(`M${910 + j * 7} 585q35 30 70 0`, "#b1ab8d", 0.6, 0.15));
+    c.add(c.path(`M${910 + j * 7} 585q35 30 70 0`, "#b1ab8d", 0.6, 0.15));
   for (let j = 0; j < 9; j++)
-    c.add(path(`M${715 + j * 10} 443q-22 38 0 75`, "#82a6a3", 0.65, 0.12));
+    c.add(c.path(`M${715 + j * 10} 443q-22 38 0 75`, "#82a6a3", 0.65, 0.12));
   c.add(
-    path(
+    c.path(
       "M775 615Q980 670 1180 600 M790 622Q980 675 1162 613",
       "#a7aaa3",
       0.65,

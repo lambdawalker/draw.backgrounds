@@ -1,4 +1,4 @@
-import { path, line, samples, waves, grid, rosette } from "../../geometry.js";
+import { samples, waves, grid, rosette } from "../../geometry.js";
 import { base } from "./motifs.js";
 export default function (c, p) {
   base(c, ["#f1e9df", "#e9eee8", "#e4e7e9"]);
@@ -10,7 +10,7 @@ export default function (c, p) {
     "#b59483",
     0.18,
   );
-  c.add(`<g transform="translate(${28 * Math.sin(p)} ${15 * Math.cos(p)})">`);
+  c.add(c.openGroup(`translate(${28 * Math.sin(p)} ${15 * Math.cos(p)})`));
   rosette(c, 940, 450, 160, "#8ba0a7", {
     rings: 24,
     lobes: 17,
@@ -44,7 +44,7 @@ export default function (c, p) {
   });
   for (let j = 0; j < 16; j++)
     c.add(
-      line(
+      c.line(
         samples(
           (x) => [x, 35 + j * 4 + 14 * Math.sin(x / 22 + j * 0.4)],
           -20,
@@ -64,7 +64,7 @@ export default function (c, p) {
   });
   for (let j = 0; j < 10; j++)
     c.add(
-      path(
+      c.path(
         `M-20 ${120 + j * 4} Q700 ${180 + j * 3} 1420 ${115 + j * 5}`,
         "#ad9990",
         0.45,
@@ -73,7 +73,7 @@ export default function (c, p) {
     );
   for (let j = 0; j < 5; j++)
     c.add(
-      line(
+      c.line(
         samples(
           (a) => [
             940 + (118 + j * 3) * Math.cos(a),
@@ -88,5 +88,5 @@ export default function (c, p) {
         0.13,
       ),
     );
-  c.add("</g>");
+  c.add(c.closeGroup());
 }

@@ -1,4 +1,4 @@
-import { paper, waves, path, line } from "./helpers.js";
+import { paper, waves } from "./helpers.js";
 export default function (c, phase) {
   paper(c, "#e4eef0", "#dce1de");
   waves(c, {
@@ -9,7 +9,7 @@ export default function (c, phase) {
     from: 380,
   });
   c.add(
-    path(
+    c.path(
       "M470 280H1400 M620 390V125H650V390 M1210 390V100H1240V390 M470 170L635 125Q930 420 1225 100L1400 210",
       "#7d9ca7",
       1.8,
@@ -20,10 +20,10 @@ export default function (c, phase) {
     let t = (j + 1) / 31,
       x = 635 + 590 * t,
       y = 125 * (1 - t) * (1 - t) + 840 * (1 - t) * t + 100 * t * t;
-    c.add(path(`M${x} ${y}V280`, "#8da7b1", 0.8, 0.35));
+    c.add(c.path(`M${x} ${y}V280`, "#8da7b1", 0.8, 0.35));
   }
   c.add(
-    path(
+    c.path(
       "M850 740L1010 740L980 760H875Z M935 730V505L860 725Z M943 530L995 725H943Z",
       "#7999a4",
       1.3,
@@ -32,7 +32,7 @@ export default function (c, phase) {
     ),
   );
   c.add(
-    path(
+    c.path(
       "M470 288H1400 M620 385H650 M1210 385H1240 M858 772Q935 786 1015 767",
       "#7d9ca7",
       1.1,
@@ -41,7 +41,7 @@ export default function (c, phase) {
   );
   for (let j = 0; j < 13; j++)
     c.add(
-      path(
+      c.path(
         `M${1100 + j * 14} ${495 + (j % 3) * 6}l34 -4`,
         "#8aa5a8",
         0.75,
@@ -49,7 +49,7 @@ export default function (c, phase) {
       ),
     );
   c.add(
-    path(
+    c.path(
       "M945 550L980 710 M931 535L876 711 M875 747H985",
       "#91a9af",
       0.65,
@@ -57,12 +57,12 @@ export default function (c, phase) {
     ),
   );
   c.add(
-    path(
+    c.path(
       "M622 149H648 M1212 124H1238 M622 166H648 M1212 141H1238",
       "#7d9ca7",
       0.9,
       0.35,
     ),
   );
-  c.add(path("M470 402Q700 386 882 408T1400 395", "#8aa5a8", 0.7, 0.23));
+  c.add(c.path("M470 402Q700 386 882 408T1400 395", "#8aa5a8", 0.7, 0.23));
 }

@@ -1,14 +1,7 @@
-import {
-  rect,
-  grid,
-  engravedPavilion,
-  rosette,
-  waves,
-  ellipse,
-} from "../geometry.js";
+import { grid, engravedPavilion, rosette, waves } from "../geometry.js";
 export default function (c, p) {
   c.add(
-    rect(
+    c.rect(
       0,
       0,
       1400,
@@ -27,7 +20,7 @@ export default function (c, p) {
     amplitude: 8,
     phase: p,
   });
-  c.add(ellipse(950, 425, 285, 285, "#faf8f1", 0.28));
+  c.add(c.ellipse(950, 425, 285, 285, "#faf8f1", 0.28));
   rosette(c, 950, 425, 245, "#729cad", {
     rings: 10,
     lobes: 3,

@@ -51,7 +51,11 @@ const designs = {
   colorado,
   idaho,
 };
-export function render(state, { seed = 42, width = 1400, height = 880 } = {}) {
+export function drawState(
+  state,
+  { seed = 42, width = 1400, height = 880 },
+  createTarget,
+) {
   if (!states.includes(state))
     throw new RangeError(
       `Unknown state: ${state}. Choose ${states.join(", ")}.`,
@@ -71,8 +75,17 @@ export function render(state, { seed = 42, width = 1400, height = 880 } = {}) {
       "dimensions must be positive integers <=8192 and <=40 million pixels",
     );
   const random = rng(mixSeed(seed)),
-    c = new Canvas(random, `${state}-${seed}-`);
+    c = createTarget(random, width, height, `${state}-${seed}-`);
   designs[state](c, random() * Math.PI * 2);
   if (originalStates.includes(state)) finish(c, state);
+  return c;
+}
+
+export function render(state, { seed = 42, width = 1400, height = 880 } = {}) {
+  const c = drawState(
+    state,
+    { seed, width, height },
+    (random, _width, _height, prefix) => new Canvas(random, prefix),
+  );
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 1400 880" preserveAspectRatio="none"><defs>${c.defs.join("")}</defs><g>${c.body.join("")}</g></svg>`;
 }

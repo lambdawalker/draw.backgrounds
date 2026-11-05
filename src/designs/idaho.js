@@ -1,6 +1,6 @@
-import { rect, grid, ridge, path, line, ellipse } from "../geometry.js";
+import { grid, ridge } from "../geometry.js";
 export default function (c, p) {
-  c.add(rect(0, 0, 1400, 880, "#f5f7f2"));
+  c.add(c.rect(0, 0, 1400, 880, "#f5f7f2"));
   c.glow(300, 500, 700, 700, "#bee2e6", 0.45);
   grid(c, {
     phase: p,
@@ -30,7 +30,7 @@ export default function (c, p) {
       nx = (-dy / len) * w,
       ny = (dx / len) * w;
     c.add(
-      path(
+      c.path(
         `M${x} ${y} Q${tx + nx} ${ty + ny} ${tx} ${ty} Q${tx - nx * 0.35} ${ty - ny * 0.35} ${x} ${y}Z`,
         "#7498b6",
         0.7,
@@ -39,7 +39,7 @@ export default function (c, p) {
       ),
     );
     c.add(
-      line(
+      c.line(
         [
           [x, y],
           [tx, ty],
@@ -52,7 +52,7 @@ export default function (c, p) {
     for (let j = 3; j < 8; j++) {
       const t = j / 9;
       c.add(
-        line(
+        c.line(
           [
             [x + dx * t, y + dy * t],
             [x + dx * (t + 0.05) + nx * 0.22, y + dy * (t + 0.05) + ny * 0.22],
@@ -89,7 +89,7 @@ export default function (c, p) {
     }
   for (let j = 0; j < 6; j++) feather(885, 520, 810 + j * 10, 642 - j * 3, 11);
   c.add(
-    path(
+    c.path(
       "M883 425 C877 390 902 365 934 371 C962 376 979 409 959 438 C943 472 930 523 886 564 C852 555 858 512 870 480Z",
       "#7494ac",
       1,
@@ -98,7 +98,7 @@ export default function (c, p) {
     ),
   );
   c.add(
-    path(
+    c.path(
       "M897 446 Q913 425 939 443 Q943 488 887 546 Q872 520 897 446Z",
       "none",
       0,
@@ -106,11 +106,11 @@ export default function (c, p) {
       "#eff1e6",
     ),
   );
-  c.add(path("M963 402 L990 412 L962 420Z", "#668a9e", 0.8, 0.7, "#a7becb"));
-  c.add(ellipse(947, 397, 4, 4, "#55758a", 0.8));
+  c.add(c.path("M963 402 L990 412 L962 420Z", "#668a9e", 0.8, 0.7, "#a7becb"));
+  c.add(c.ellipse(947, 397, 4, 4, "#55758a", 0.8));
   for (let j = 0; j < 22; j++)
     c.add(
-      path(
+      c.path(
         `M${878 + j * 2} ${448 + j * 0.7} Q${904 + j} 480 ${877 + j * 0.5} ${536 - j * 0.5}`,
         "#6687a2",
         0.65,

@@ -1,9 +1,4 @@
 import {
-  rect,
-  path,
-  line,
-  polygon,
-  ellipse,
   samples,
   grid,
   waves,
@@ -16,7 +11,7 @@ import {
 export const revision = 13;
 function paper(c, a, b, phase) {
   c.add(
-    rect(
+    c.rect(
       0,
       0,
       1400,
@@ -33,7 +28,7 @@ function paper(c, a, b, phase) {
 function curve(c, color, y, amp = 45, opacity = 0.3) {
   for (let i = 0; i < 42; i++)
     c.add(
-      line(
+      c.line(
         samples(
           (x) => [x, y + i * 6 + amp * Math.sin(x / 245 + i * 0.035)],
           -20,
@@ -50,7 +45,7 @@ function leaves(c, x, y, col) {
   for (let i = 0; i < 10; i++) {
     let a = i * 0.53;
     c.add(
-      path(
+      c.path(
         `M${x} ${y} Q${x + Math.cos(a) * 80} ${y - 70 - i * 15} ${x + Math.sin(a) * 120} ${y - 130 - i * 14}`,
         col,
         0.8,
@@ -84,7 +79,9 @@ function nebraska(c, p) {
   tower(c, 1120, 840, 0.95, "#7e936f");
   for (let i = 0; i < 12; i++) {
     let x = 70 + i * 18 + c.random() * 8;
-    c.add(path(`M${x} 880 Q${x + 35} 760 ${x + 24} 650`, "#ae9a61", 0.8, 0.3));
+    c.add(
+      c.path(`M${x} 880 Q${x + 35} 760 ${x + 24} 650`, "#ae9a61", 0.8, 0.3),
+    );
   }
 }
 function nevada(c, p) {
@@ -117,7 +114,7 @@ function newHampshire(c, p) {
   paper(c, "#e8eef5", "#cfbfd3", p);
   for (let i = 0; i < 60; i++)
     c.add(
-      line(
+      c.line(
         samples(
           (t) => [
             700 + Math.cos(t) * (300 + i * 5),
@@ -153,7 +150,7 @@ function newJersey(c, p) {
   paper(c, "#f2dbe3", "#c5ddcd", p);
   curve(c, "#c48d9c", -40, 45, 0.26);
   c.add(
-    path(
+    c.path(
       "M845 0 C700 190 1100 300 915 460 S740 750 960 900",
       "#a5c4c7",
       50,
@@ -163,7 +160,7 @@ function newJersey(c, p) {
   engravedPavilion(c, 1080, 835, 0.86, "#81958a");
   for (let j = 0; j < 38; j++)
     c.add(
-      path(
+      c.path(
         `M${15 + j * 5} 900 C${-80 + j * 9} 650 ${370 + j * 4} 420 ${290 + j * 5} 150`,
         "#b788a0",
         0.6,
@@ -193,7 +190,7 @@ function newMexico(c, p) {
   );
   for (let i = 0; i < 32; i++)
     c.add(
-      path(
+      c.path(
         `M890 ${410 + i * 8} Q1130 ${360 + i * 10} 1420 ${380 + i * 10}`,
         "#ac8874",
         0.7,
@@ -204,7 +201,7 @@ function newMexico(c, p) {
   for (let j = 0; j < 9; j++) {
     let x = 1240 + j * 12;
     c.add(
-      path(
+      c.path(
         `M1280 900 Q${x - 30} 770 ${x - 85} 710 M1280 900 Q${x + 30} 770 ${x + 30} 700`,
         "#8ba594",
         1,
@@ -229,7 +226,7 @@ function newYork(c, p) {
   });
   for (let i = 0; i < 65; i++)
     c.add(
-      path(
+      c.path(
         `M${i * 22} 880 Q${300 + i * 15} 420 ${1100 + i * 6} -80`,
         "#789a9d",
         0.65,
@@ -257,7 +254,7 @@ function northCarolina(c, p) {
   );
   engravedPavilion(c, 1015, 810, 0.78, "#7e967c");
   c.add(
-    path(
+    c.path(
       "M50 205 Q165 175 290 205 L170 214Z M170 195 V228 M90 215 H240",
       "#789ba8",
       1,
@@ -287,10 +284,10 @@ function northDakota(c, p) {
   curve(c, "#b09e7f", 635, 42, 0.22);
   for (let i = 0; i < 19; i++) {
     let x = 1025 + i * 18 + c.random() * 14;
-    c.add(path(`M${x} 900 Q${x - 35} 750 ${x - 20} 560`, "#9f9e69", 1, 0.36));
+    c.add(c.path(`M${x} 900 Q${x - 35} 750 ${x - 20} 560`, "#9f9e69", 1, 0.36));
     for (let j = 0; j < 6; j++)
       c.add(
-        path(
+        c.path(
           `M${x - 20} ${570 + j * 15} l-14 -13 M${x - 20} ${570 + j * 15} l14 -13`,
           "#9f9e69",
           1,
@@ -309,7 +306,7 @@ function ohio(c, p) {
   });
   for (let i = 0; i < 50; i++)
     c.add(
-      path(
+      c.path(
         `M-20 ${650 + i * 5} C420 ${480 + i * 5} 800 ${970 + i * 3} 1450 ${600 + i * 5}`,
         "#84aaa1",
         0.8,
@@ -318,7 +315,7 @@ function ohio(c, p) {
     );
   for (let i = 0; i < 30; i++)
     c.add(
-      path(
+      c.path(
         `M${120 + i * 7} 0 Q${530 + i * 8} 300 ${500 + i * 11} 880`,
         "#adc58b",
         0.7,
@@ -332,7 +329,7 @@ function oklahoma(c, p) {
   curve(c, "#b1b59e", 740, 17, 0.14);
   for (let i = 0; i < 14; i++)
     c.add(
-      path(
+      c.path(
         `M${160 + i * 12} 880 L${240 + i * 7} ${470 + i * 3} L${380 + i * 8} 880`,
         "#bfa585",
         0.7,
@@ -370,7 +367,7 @@ function detail(c, name) {
   if (name === "nebraska")
     for (let i = 0; i < 24; i++)
       c.add(
-        path(
+        c.path(
           `M${920 + i * 2} ${180 + i * 2} L${900 + i * 4} 365 L${1000 + i * 5} 470`,
           col,
           0.65,
@@ -380,7 +377,7 @@ function detail(c, name) {
   if (name === "nevada")
     for (let i = 0; i < 18; i++)
       c.add(
-        path(
+        c.path(
           `M${820 + i * 12} 880 Q${950 + i * 7} 640 ${1280 + i * 6} 700`,
           col,
           0.7,
@@ -391,7 +388,7 @@ function detail(c, name) {
   if (name === "new-jersey")
     for (let i = 0; i < 15; i++)
       c.add(
-        path(
+        c.path(
           `M${835 + i * 3} 0 C${690 + i * 3} 190 ${1090 + i * 3} 300 ${905 + i * 3} 460 S${730 + i * 3} 750 ${950 + i * 3} 900`,
           col,
           0.7,
@@ -401,7 +398,7 @@ function detail(c, name) {
   if (name === "new-mexico")
     for (let i = 0; i < 21; i++)
       c.add(
-        path(
+        c.path(
           `M${900 + i * 22} ${390 - i * 1.8} l-9 90 l19 70 l-8 120`,
           col,
           0.6,
@@ -411,7 +408,7 @@ function detail(c, name) {
   if (name === "new-york")
     for (let i = 0; i < 26; i++)
       c.add(
-        line(
+        c.line(
           samples(
             (t) => [
               820 + Math.cos(t) * (110 + i * 3),
@@ -432,7 +429,7 @@ function detail(c, name) {
   if (name === "north-dakota")
     for (let i = 0; i < 27; i++)
       c.add(
-        path(
+        c.path(
           `M0 ${550 + i * 5} Q500 ${490 + i * 5} 1000 ${590 + i * 4} T1450 ${560 + i * 4}`,
           col,
           0.6,
@@ -442,7 +439,7 @@ function detail(c, name) {
   if (name === "ohio")
     for (let i = 0; i < 27; i++)
       c.add(
-        path(
+        c.path(
           `M${730 + i * 5} 0 Q${580 + i * 9} 420 ${1000 + i * 7} 880`,
           col,
           0.6,
@@ -451,11 +448,11 @@ function detail(c, name) {
       );
   if (name === "oklahoma")
     for (let i = 0; i < 19; i++)
-      c.add(path(`M690 ${690 + i * 7} H1310`, col, 0.6, 0.17));
+      c.add(c.path(`M690 ${690 + i * 7} H1310`, col, 0.6, 0.17));
 
   for (let i = 0; i < 20; i++)
     c.add(
-      path(
+      c.path(
         `M-20 ${810 + i * 4} Q430 ${730 + i * 4} 720 ${820 + i * 3} T1420 ${780 + i * 4}`,
         col,
         0.6,
@@ -474,9 +471,9 @@ export default Object.fromEntries(
 );
 
 function dome(c, x, y) {
-  let g = "";
+  const g = [];
   const add = (d, w = 1, o = 0.45, fill = "none") =>
-    (g += path(d, "#7b8e83", w, o, fill));
+    g.push(c.path(d, "#7b8e83", w, o, fill));
   add("M-310 0 V-165 H310 V0 Z", 1, 0.35, "#e8e9df");
   for (let j = -11; j <= 11; j++) {
     let xx = j * 25;
@@ -502,5 +499,5 @@ function dome(c, x, y) {
   add("M-22 -449 V-490 H22 V-449 M-28 -490 L0 -520 L28 -490Z M0 -520 V-540");
   for (let i = 0; i < 6; i++)
     add(`M${-325 - i * 3} ${i * 5} H${325 + i * 3}`, 0.8, 0.4);
-  c.add(`<g transform="translate(${x} ${y})">${g}</g>`);
+  c.add([c.openGroup(`translate(${x} ${y})`), g, c.closeGroup()]);
 }

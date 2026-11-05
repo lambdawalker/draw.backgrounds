@@ -1,18 +1,15 @@
 import {
-  rect,
   grid,
   ridge,
   flower,
   pine,
-  line,
   snowOnRidge,
-  path,
   waves,
   rockEtching,
 } from "../geometry.js";
 export default function (c, p) {
   c.add(
-    rect(
+    c.rect(
       0,
       0,
       1400,
@@ -76,7 +73,7 @@ export default function (c, p) {
     ],
     { fill: "#96c3af", ink: "#719e93", opacity: 0.32 },
   );
-  c.add(path("M30 900 Q100 690 55 520 T70 340", "#829e83", 1.2, 0.4));
+  c.add(c.path("M30 900 Q100 690 55 520 T70 340", "#829e83", 1.2, 0.4));
   for (let j = 0; j < 12; j++) {
     let y = 370 + j * 41,
       x = 53 + 35 * Math.sin(j * 2.2);

@@ -10,11 +10,6 @@ import {
   leaf,
   fan,
   palm,
-  rect,
-  path,
-  line,
-  polygon,
-  ellipse,
   samples,
 } from "./helpers.js";
 export default function (c, phase) {
@@ -33,7 +28,7 @@ export default function (c, phase) {
     const a = (j * Math.PI) / 12,
       b = a + 0.075;
     c.add(
-      polygon(
+      c.polygon(
         [
           [930, 390],
           [930 + 1450 * Math.cos(a), 390 + 1450 * Math.sin(a)],
@@ -47,7 +42,7 @@ export default function (c, phase) {
   for (let j = 0; j < 18; j++) {
     const a = (j * Math.PI) / 9;
     c.add(
-      path(
+      c.path(
         `M${930 + 300 * Math.cos(a)} ${390 + 300 * Math.sin(a)}L${930 + 340 * Math.cos(a)} ${390 + 340 * Math.sin(a)}`,
         "#a9a27f",
         2,
@@ -58,7 +53,7 @@ export default function (c, phase) {
   for (let j = 0; j < 18; j++) {
     const a = (j * Math.PI) / 9;
     c.add(
-      path(
+      c.path(
         `M${930 + 360 * Math.cos(a)} ${390 + 360 * Math.sin(a)}Q${930 + 380 * Math.cos(a + 0.04)} ${390 + 380 * Math.sin(a + 0.04)} ${930 + 360 * Math.cos(a + 0.08)} ${390 + 360 * Math.sin(a + 0.08)}`,
         "#b4a684",
         1,
@@ -69,7 +64,7 @@ export default function (c, phase) {
   for (let j = 0; j < 20; j++) {
     const a = (j * Math.PI) / 10;
     c.add(
-      path(
+      c.path(
         `M${930 + 260 * Math.cos(a)} ${390 + 260 * Math.sin(a)}Q${930 + 270 * Math.cos(a + 0.07)} ${390 + 270 * Math.sin(a + 0.07)} ${930 + 260 * Math.cos(a + 0.14)} ${390 + 260 * Math.sin(a + 0.14)}`,
         "#b4a684",
         0.7,
@@ -78,7 +73,7 @@ export default function (c, phase) {
     );
   }
   c.add(
-    path(
+    c.path(
       "M1075 742Q1110 665 1175 595 M1110 690q-30 -25 -48 -9 M1141 645q28 -14 43 -6",
       "#a3a68f",
       0.9,
@@ -87,7 +82,7 @@ export default function (c, phase) {
   );
   for (let j = 0; j < 8; j++)
     c.add(
-      path(
+      c.path(
         `M${1040 + j * 23} ${740 - Math.sin((j / 7) * Math.PI) * 35}q8 -16 17 -9`,
         "#a3a68f",
         0.65,
@@ -95,7 +90,7 @@ export default function (c, phase) {
       ),
     );
   c.add(
-    path(
+    c.path(
       "M1078 733Q1114 752 1141 735 M1128 714Q1150 727 1170 712",
       "#a3a68f",
       0.65,

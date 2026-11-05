@@ -1,12 +1,4 @@
-import {
-  paper,
-  field,
-  border,
-  quality,
-  leaf,
-  flourish,
-  path,
-} from "./helpers.js";
+import { paper, field, border, quality, leaf, flourish } from "./helpers.js";
 import { flower, waves } from "../../geometry.js";
 export default function (c, p) {
   paper(c, ["#e9eeee", "#e8e2d8", "#f0e8df"]);
@@ -25,7 +17,7 @@ export default function (c, p) {
     let x = 1120 + j * 57 + Math.sin(j * 2) * 17,
       y = 830 - j * 112 + Math.cos(j * 1.8) * 13;
     c.add(
-      path(
+      c.path(
         `M${x - 90} 920 Q${x + 30} ${y + 50} ${x} ${y - 130}`,
         "#789a94",
         1,
@@ -42,7 +34,7 @@ export default function (c, p) {
       flower(c, 100 + j * 95, 850 - j * 16, 29 + (j % 3) * 5, "#c4a486", 0.23);
   for (let j = 0; j < 16; j++)
     c.add(
-      path(
+      c.path(
         `M${1050 + j * 8} 820 Q${1100 + j * 7} 620 ${1190 + j * 9} 400`,
         "#b3a18c",
         0.6,
@@ -51,7 +43,7 @@ export default function (c, p) {
     );
   for (let j = 0; j < 12; j++)
     c.add(
-      path(
+      c.path(
         `M1350 ${860 - j * 3} C850 550 1380 300 1210 ${240 - j * 4} S820 420 1100 ${520 + j * 3}`,
         "#7c9b8f",
         0.7,
@@ -64,7 +56,7 @@ export default function (c, p) {
     for (let k = 0; k < 9; k++) {
       let a = (k * Math.PI * 2) / 9;
       c.add(
-        path(
+        c.path(
           `M${x} ${y} l${Math.cos(a) * 13} ${Math.sin(a) * 13}`,
           "#b89767",
           0.8,

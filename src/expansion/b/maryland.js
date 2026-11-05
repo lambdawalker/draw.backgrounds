@@ -1,4 +1,4 @@
-import { path, polygon, waves } from "../../geometry.js";
+import { waves } from "../../geometry.js";
 import { base, contours } from "./motifs.js";
 export default function (c, p) {
   base(c, ["#f7efcc", "#eee7e6", "#ece1cf"]);
@@ -10,10 +10,10 @@ export default function (c, p) {
     "#c39790",
     0.18,
   );
-  c.add(`<g transform="translate(${28 * Math.sin(p)} ${15 * Math.cos(p)})">`);
+  c.add(c.openGroup(`translate(${28 * Math.sin(p)} ${15 * Math.cos(p)})`));
   for (let j = -1; j < 6; j++) {
     c.add(
-      polygon(
+      c.polygon(
         [
           [j * 280, 0],
           [j * 280 + 130, 0],
@@ -25,7 +25,7 @@ export default function (c, p) {
       ),
     );
     c.add(
-      polygon(
+      c.polygon(
         [
           [j * 280, 440],
           [j * 280 + 140, 440],
@@ -39,7 +39,7 @@ export default function (c, p) {
   }
   contours(c, "#a99aa0", p, "vertical", 0.15);
   c.add(
-    path(
+    c.path(
       "M-100 400 L1500 810 L1500 950 L-100 540Z",
       "#eee8de",
       0.5,
@@ -58,21 +58,21 @@ export default function (c, p) {
     phase: p,
   });
   for (let j = 0; j < 100; j++)
-    c.add(path(`M${j * 15 - 90} 0 l90 95`, "#b3a185", 0.8, 0.2));
+    c.add(c.path(`M${j * 15 - 90} 0 l90 95`, "#b3a185", 0.8, 0.2));
   for (let j = 0; j < 12; j++)
     c.add(
-      path(`M-50 ${270 + j * 5} L1450 ${600 + j * 5}`, "#c6b896", 0.65, 0.17),
+      c.path(`M-50 ${270 + j * 5} L1450 ${600 + j * 5}`, "#c6b896", 0.65, 0.17),
     );
   for (let j = 0; j < 18; j++)
-    c.add(path(`M${j * 85 - 100} 880 l370 -430`, "#bfa2a2", 0.65, 0.1));
+    c.add(c.path(`M${j * 85 - 100} 880 l370 -430`, "#bfa2a2", 0.65, 0.1));
   for (let j = 0; j < 16; j++)
     c.add(
-      path(
+      c.path(
         `M${1120 + j * 10} -30 Q${1000 + j * 12} 150 ${1530 + j * 6} ${270 + j * 8}`,
         "#c39d9e",
         0.7,
         0.2,
       ),
     );
-  c.add("</g>");
+  c.add(c.closeGroup());
 }

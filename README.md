@@ -124,6 +124,28 @@ console.log(countries, jurisdictionsByCountry);
 
 Only CLI PNG export and preview generation require Sharp. `node src/cli.js --format svg` can run without installing dependencies.
 
+## US Canvas renderer and benchmark
+
+The Node Canvas 2D renderer shares the state geometry and seed handling with the SVG renderer. It returns a raster surface drawn with Skia through `@napi-rs/canvas`.
+
+```js
+import { renderCanvas } from './src/canvas.js';
+import { writeFile } from 'node:fs/promises';
+
+const canvas = renderCanvas('wyoming', { seed: 123, width: 1400, height: 880 });
+await writeFile('wyoming.png', await canvas.encode('png'));
+```
+
+```sh
+npm ci
+npm run benchmark:us -- --json us-benchmark.json
+npm run benchmark:us -- --state wyoming --samples 20 --warmup 3 --width 700 --height 440
+```
+
+The benchmark runs matching seeds and sizes for each renderer, alternating execution order after warm-up. SVG draw time includes SVG generation and Sharp rasterization to RGBA. Canvas draw time includes surface creation, drawing, and access to the RGBA buffer. Both use the same Sharp PNG encoder in a separate measurement. File writes are outside the timed sections. The JSON report includes individual samples and per-state median, mean, and p95 in milliseconds.
+
+[Full benchmark results for all 50 states](docs/US-RENDER-BENCHMARK.md).
+
 ## Organization
 
 - `src/countries/`: country catalog, Mexico regional helpers, and Canadian jurisdiction modules.

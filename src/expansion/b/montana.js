@@ -1,4 +1,4 @@
-import { path, polygon, waves, ridge, pine } from "../../geometry.js";
+import { waves, ridge, pine } from "../../geometry.js";
 import { base } from "./motifs.js";
 export default function (c, p) {
   base(c, ["#e7ecee", "#efe9d9", "#e7e3d7"]);
@@ -10,7 +10,7 @@ export default function (c, p) {
     "#8aa5ac",
     0.18,
   );
-  c.add(`<g transform="translate(${28 * Math.sin(p)} ${15 * Math.cos(p)})">`);
+  c.add(c.openGroup(`translate(${28 * Math.sin(p)} ${15 * Math.cos(p)})`));
   ridge(
     c,
     [
@@ -51,7 +51,7 @@ export default function (c, p) {
   );
   for (let j = 0; j < 18; j++)
     c.add(
-      path(
+      c.path(
         `M1100 100 L${950 + j * 13} ${300 + j * 9} L${900 + j * 10} ${480 + j * 5}`,
         "#708d97",
         0.8,
@@ -60,10 +60,10 @@ export default function (c, p) {
     );
   for (let j = 0; j < 14; j++)
     pine(c, 900 + j * 40, 890, 35 + c.random() * 65, "#8f9c82", 0.2);
-  c.add(path("M-20 800 Q450 680 690 760 T1440 660", "#7c958a", 1, 0.25));
+  c.add(c.path("M-20 800 Q450 680 690 760 T1440 660", "#7c958a", 1, 0.25));
   for (let j = 0; j < 12; j++)
     c.add(
-      path(
+      c.path(
         `M${1140 + j * 9} ${260 + j * 15} l40 24 l38 -7 l35 30`,
         "#728d94",
         0.65,
@@ -71,7 +71,7 @@ export default function (c, p) {
       ),
     );
   c.add(
-    polygon(
+    c.polygon(
       [
         [1100, 100],
         [1260, 200],
@@ -84,7 +84,7 @@ export default function (c, p) {
   );
   for (let j = 0; j < 12; j++)
     c.add(
-      path(
+      c.path(
         `M-20 ${850 + j * 4} Q420 ${760 + j * 4} 680 ${810 + j * 4} T1450 ${750 + j * 4}`,
         "#aab393",
         0.65,
@@ -93,12 +93,12 @@ export default function (c, p) {
     );
   for (let j = 0; j < 8; j++)
     c.add(
-      path(
+      c.path(
         `M${680 + j * 4} 500 Q${600 + j * 7} 630 ${730 + j * 8} 740 T${680 + j * 10} 950`,
         "#8ca5a4",
         0.65,
         0.21,
       ),
     );
-  c.add("</g>");
+  c.add(c.closeGroup());
 }

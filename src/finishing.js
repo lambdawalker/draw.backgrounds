@@ -1,4 +1,4 @@
-import { line, samples, path, ellipse } from "./geometry.js";
+import { samples } from "./geometry.js";
 const inks = {
   washington: "#6496a4",
   arkansas: "#b79a67",
@@ -16,7 +16,7 @@ export function finish(c, state) {
   // Broad, crossing engraving bands vary smoothly rather than forming a flat grid.
   for (let j = 0; j < 16; j++)
     c.add(
-      line(
+      c.line(
         samples(
           (x) => [
             x,
@@ -37,7 +37,7 @@ export function finish(c, state) {
     );
   for (let j = 0; j < 12; j++)
     c.add(
-      line(
+      c.line(
         samples(
           (x) => [
             x,
@@ -73,7 +73,7 @@ export function finish(c, state) {
       cy = 420,
       radius = 232;
     c.add(
-      path(
+      c.path(
         `M${cx + radius} ${cy} A${radius} ${radius} 0 1 1 ${cx - radius} ${cy} A${radius} ${radius} 0 1 1 ${cx + radius} ${cy}`,
         ink,
         0.7,
@@ -84,22 +84,22 @@ export function finish(c, state) {
       const a = (j * Math.PI) / 16,
         x = cx + radius * Math.cos(a),
         y = cy + radius * Math.sin(a);
-      c.add(
-        `<g transform="translate(${x} ${y}) rotate(${(a * 180) / Math.PI + 90})">` +
-          path("M0 0 Q18 -19 42 -8 Q25 9 0 0Z", ink, 0.9, 0.48, "#cbd9cc") +
-          path(
-            "M0 0 Q21 -7 42 -8 M13 -4 L18 -11 M23 -6 L30 -12",
-            ink,
-            0.55,
-            0.3,
-          ) +
-          "</g>",
-      );
+      c.add([
+        c.openGroup(`translate(${x} ${y}) rotate(${(a * 180) / Math.PI + 90})`),
+        c.path("M0 0 Q18 -19 42 -8 Q25 9 0 0Z", ink, 0.9, 0.48, "#cbd9cc"),
+        c.path(
+          "M0 0 Q21 -7 42 -8 M13 -4 L18 -11 M23 -6 L30 -12",
+          ink,
+          0.55,
+          0.3,
+        ),
+        c.closeGroup(),
+      ]);
     }
   } else {
     const [bx, by] = placements[state];
     c.add(
-      path(
+      c.path(
         `M${bx - 45} ${by + 100} Q${bx + 10} ${by} ${bx - 10} ${by - 110}`,
         ink,
         1,
@@ -112,7 +112,7 @@ export function finish(c, state) {
           y = by + 75 - j * 21,
           tip = x + side * (24 + (j % 3) * 5);
         c.add(
-          path(
+          c.path(
             `M${x} ${y} Q${tip} ${y - 3} ${tip} ${y - 26} Q${x} ${y - 23} ${x} ${y}Z`,
             ink,
             0.65,
@@ -120,7 +120,7 @@ export function finish(c, state) {
           ),
         );
         c.add(
-          line(
+          c.line(
             [
               [x, y],
               [tip, y - 26],
@@ -136,7 +136,7 @@ export function finish(c, state) {
   for (let j = 0; j < 1600; j++) {
     const x = c.random() * 1400,
       y = c.random() * 880;
-    c.add(ellipse(x, y, 0.22 + c.random() * 0.32, 0.24, ink, 0.13));
+    c.add(c.ellipse(x, y, 0.22 + c.random() * 0.32, 0.24, ink, 0.13));
   }
   // A diffuse light field improves central writing contrast without hard blank panels.
   c.glow(

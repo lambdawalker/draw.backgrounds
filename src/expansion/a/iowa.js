@@ -4,7 +4,6 @@ import {
   border,
   quality,
   dome,
-  path,
   leaf,
   flourish,
 } from "./helpers.js";
@@ -14,7 +13,7 @@ export default function (c, p) {
   dome(c, 1085, 790, 1.65, "#8f8969", "iowa");
   for (let j = 0; j < 24; j++)
     c.add(
-      path(
+      c.path(
         `M${270 + j * 4} 880 Q${400 + j * 5} 410 ${1110 + j * 4} 95`,
         "#a7ad94",
         0.8,
@@ -22,7 +21,7 @@ export default function (c, p) {
       ),
     );
   if (quality.pass >= 5) {
-    c.add(path("M780 880 Q760 680 740 500", "#8c9466", 1.1, 0.4));
+    c.add(c.path("M780 880 Q760 680 740 500", "#8c9466", 1.1, 0.4));
     for (let j = 0; j < 9; j++) {
       leaf(c, 755, 600 + j * 25, 80, 205, "#a5ad86");
       leaf(c, 755, 610 + j * 25, 75, -35, "#a5ad86");
@@ -32,7 +31,7 @@ export default function (c, p) {
   for (let j = 0; j < 8; j++) {
     let y = 515 + j * 9;
     c.add(
-      path(
+      c.path(
         `M${740 + j * 0.6} ${y} q${-15 - (j % 2) * 3} -13 -23 -28 q20 6 23 28 M${740 + j * 0.6} ${y} q18 -13 23 -28 q-20 6 -23 28`,
         "#97a074",
         0.7,

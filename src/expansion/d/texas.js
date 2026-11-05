@@ -10,11 +10,6 @@ import {
   leaf,
   fan,
   palm,
-  rect,
-  path,
-  line,
-  polygon,
-  ellipse,
   samples,
 } from "./helpers.js";
 export default function (c, phase) {
@@ -27,7 +22,7 @@ export default function (c, phase) {
     period: 350,
   });
   c.add(
-    polygon(
+    c.polygon(
       [
         [750, 270],
         [990, 270],
@@ -49,7 +44,7 @@ export default function (c, phase) {
   dome(c, 1050, 710, 0.8, "#84a6b4");
   for (let j = 0; j < 22; j++)
     c.add(
-      path(
+      c.path(
         `M${720 + j * 22} 765V${695 + Math.sin(j) * 10}`,
         "#8aadb7",
         0.8,
@@ -64,7 +59,7 @@ export default function (c, phase) {
     amplitude: 20,
   });
   c.add(
-    path(
+    c.path(
       "M970 690v-80h22v80 M1038 690v-80h22v80 M1106 690v-80h22v80",
       "#7c9caa",
       1,
@@ -72,14 +67,16 @@ export default function (c, phase) {
     ),
   );
   c.add(
-    path(
+    c.path(
       "M908 720H1192 M908 727H1192 M970 586H1130 M970 590H1130",
       "#7c9caa",
       1,
       0.35,
     ),
   );
-  c.add(path("M950 574H1150V590H950Z M950 581H1150", "#7c9caa", 0.8, 0.3));
-  c.add(path("M1034 421H1066 M1040 413H1060 M1050 406V389", "#7c9caa", 1, 0.4));
-  c.add(path("M909 733Q1050 748 1190 733", "#8aadb7", 0.8, 0.23));
+  c.add(c.path("M950 574H1150V590H950Z M950 581H1150", "#7c9caa", 0.8, 0.3));
+  c.add(
+    c.path("M1034 421H1066 M1040 413H1060 M1050 406V389", "#7c9caa", 1, 0.4),
+  );
+  c.add(c.path("M909 733Q1050 748 1190 733", "#8aadb7", 0.8, 0.23));
 }

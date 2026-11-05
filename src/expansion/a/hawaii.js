@@ -1,4 +1,4 @@
-import { paper, field, border, quality, path, leaf } from "./helpers.js";
+import { paper, field, border, quality, leaf } from "./helpers.js";
 import { flower, waves } from "../../geometry.js";
 export default function (c, p) {
   paper(c, ["#dcebea", "#e8e8df", "#f0e1d8"]);
@@ -7,7 +7,7 @@ export default function (c, p) {
   for (let j = 0; j < 5; j++)
     for (let k = 0; k < 8; k++)
       c.add(
-        path(
+        c.path(
           `M-170 ${770 + j * 19 + k * 2} Q650 ${-300 + j * 30 + k * 2} 1490 ${650 + j * 13 + k * 2}`,
           colors[j],
           1.2,
@@ -38,7 +38,7 @@ export default function (c, p) {
   if (quality.pass >= 5)
     for (let j = 0; j < 5; j++)
       c.add(
-        path(
+        c.path(
           `M${560 + j * 82 + Math.sin(j * 3) * 18} ${685 - j * 21 + Math.cos(j * 2) * 14} q${9 + j * 2} ${-12 - j * 3} ${21 + j * 5} -6 l-5 15Z`,
           "#a1b69c",
           0.7,
@@ -48,7 +48,7 @@ export default function (c, p) {
       );
   for (let j = 0; j < 12; j++)
     c.add(
-      path(
+      c.path(
         `M500 ${790 + j * 4} Q680 ${710 + j * 4} 770 ${780 + j * 4} T1100 ${790 + j * 3}`,
         "#85aeb5",
         0.7,
@@ -59,7 +59,7 @@ export default function (c, p) {
     let x = 560 + j * 82 + Math.sin(j * 3) * 18,
       y = 685 - j * 21 + Math.cos(j * 2) * 14;
     c.add(
-      path(
+      c.path(
         `M${x - 7} ${y + 12} q${13 + j * 4} -4 ${35 + j * 4} 0`,
         "#8daaa4",
         0.8,

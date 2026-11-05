@@ -1,16 +1,7 @@
-import {
-  rect,
-  waves,
-  ridge,
-  line,
-  samples,
-  ellipse,
-  polygon,
-  rockEtching,
-} from "../geometry.js";
+import { waves, ridge, samples, rockEtching } from "../geometry.js";
 export default function (c, p) {
   c.add(
-    rect(
+    c.rect(
       0,
       0,
       1400,
@@ -51,7 +42,7 @@ export default function (c, p) {
     hatch: false,
   });
   c.add(
-    polygon(
+    c.polygon(
       [
         [830, 310],
         [900, 330],
@@ -66,7 +57,7 @@ export default function (c, p) {
     ),
   );
   c.add(
-    polygon(
+    c.polygon(
       [
         [750, 380],
         [810, 350],
@@ -82,7 +73,7 @@ export default function (c, p) {
   rockEtching(c, edge, { color: "#b78679", opacity: 0.18 });
   for (let j = 0; j < 16; j++)
     c.add(
-      line(
+      c.line(
         [
           [770 + j * 8, 420 + j * 2],
           [750 + j * 7, 510],
@@ -96,7 +87,7 @@ export default function (c, p) {
     );
   for (let j = 0; j < 21; j++)
     c.add(
-      line(
+      c.line(
         edge.map(([x, y]) => [900 + (x - 900) * (1 + j * 0.013), y + j * 7]),
         "#c38679",
         0.8,
@@ -105,7 +96,7 @@ export default function (c, p) {
     );
   for (let j = 0; j < 22; j++)
     c.add(
-      line(
+      c.line(
         samples(
           (y) => [870 + j * 9 + 10 * Math.sin(y / 80 + p + j * 0.14), y],
           410,
@@ -120,6 +111,6 @@ export default function (c, p) {
   for (let y = 20; y < 880; y += 14)
     for (let x = 1190; x < 1400; x += 14)
       c.add(
-        ellipse(x + 3 * Math.sin(y / 40 + p), y, 1.1, 1.1, "#bd968f", 0.23),
+        c.ellipse(x + 3 * Math.sin(y / 40 + p), y, 1.1, 1.1, "#bd968f", 0.23),
       );
 }
