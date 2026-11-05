@@ -13,7 +13,7 @@ import {
   tower,
   engravedPavilion,
 } from "../../geometry.js";
-export const revision = 12;
+export const revision = 13;
 function paper(c, a, b, phase) {
   c.add(
     rect(
@@ -23,12 +23,12 @@ function paper(c, a, b, phase) {
       880,
       c.gradient([
         [0, a],
-        [55, "#f8f7ee"],
+        [52, "#faf9f1"],
         [100, b],
       ]),
     ),
   );
-  grid(c, { color: b, opacity: 0.2, spacing: 14, amplitude: 20, phase });
+  grid(c, { color: b, opacity: 0.18, spacing: 14, amplitude: 20, phase });
 }
 function curve(c, color, y, amp = 45, opacity = 0.3) {
   for (let i = 0; i < 42; i++)
@@ -236,7 +236,7 @@ function newYork(c, p) {
         0.17,
       ),
     );
-  curve(c, "#8aa6ae", 800, 16, 0.20);
+  curve(c, "#8aa6ae", 800, 16, 0.2);
 }
 function northCarolina(c, p) {
   paper(c, "#efdfe5", "#b9d4c8", p);
@@ -264,7 +264,7 @@ function northCarolina(c, p) {
       0.35,
     ),
   );
-  curve(c, "#b3a1bd", 750, 26, 0.20);
+  curve(c, "#b3a1bd", 750, 26, 0.2);
 }
 function northDakota(c, p) {
   paper(c, "#e9e5d7", "#ced8b7", p);
@@ -282,7 +282,7 @@ function northDakota(c, p) {
       [1200, 490],
       [1400, 460],
     ],
-    { fill: "#c9b89d", ink: "#b3987c", opacity: 0.30 },
+    { fill: "#c9b89d", ink: "#b3987c", opacity: 0.3 },
   );
   curve(c, "#b09e7f", 635, 42, 0.22);
   for (let i = 0; i < 19; i++) {

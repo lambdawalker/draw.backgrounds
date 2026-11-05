@@ -1,19 +1,5 @@
-import {
-  rect,
-  path,
-  line,
-  ellipse,
-  polygon,
-  samples,
-  waves,
-  grid,
-  rosette,
-  ridge,
-  pine,
-  flower,
-  engravedPavilion,
-} from "../../geometry.js";
-import { base, contours, wheat, dome, leaves, orbit } from "./motifs.js";
+import { path, pine } from "../../geometry.js";
+import { base, contours, leaves, orbit } from "./motifs.js";
 export default function (c, p) {
   base(c, ["#e8eddc", "#f3f0d8", "#e5e9dc"]);
   c.glow(
@@ -28,8 +14,13 @@ export default function (c, p) {
   contours(c, "#a3b295", p, "vertical");
   for (let j = 0; j < 8; j++)
     pine(c, 900 + j * 70, 880, 160 + (j % 3) * 60, "#859d79", 0.22);
-  c.add(path("M970 880 Q1120 600 1240 430", "#8c9d76", 1.5, 0.3));
-  for (let j = 0; j < 3; j++) { const t=.35+j*.18; const x=(1-t)*(1-t)*970+2*(1-t)*t*1120+t*t*1240; const y=(1-t)*(1-t)*880+2*(1-t)*t*600+t*t*430; leaves(c,x,y,27+j*2,"#9baa87"); }
+  c.add(path("M970 880 Q1120 600 1240 430", "#8c9d76", 1.2, 0.23));
+  for (let j = 0; j < 3; j++) {
+    const t = 0.35 + j * 0.18;
+    const x = (1 - t) * (1 - t) * 970 + 2 * (1 - t) * t * 1120 + t * t * 1240;
+    const y = (1 - t) * (1 - t) * 880 + 2 * (1 - t) * t * 600 + t * t * 430;
+    leaves(c, x, y, 27 + j * 2, "#9baa87");
+  }
   for (let j = 0; j < 20; j++)
     c.add(
       path(
@@ -40,6 +31,14 @@ export default function (c, p) {
       ),
     );
   orbit(c, 250, 80, 190, 90, "#b0b48b", p);
-for(let j=0;j<12;j++)c.add(path(`M${80+j*14} ${790+j*4} Q430 ${710+j*7} ${760+j*12} ${810+j*3}`,'#8fa181',.65,.2));
+  for (let j = 0; j < 12; j++)
+    c.add(
+      path(
+        `M${80 + j * 14} ${790 + j * 4} Q430 ${710 + j * 7} ${760 + j * 12} ${810 + j * 3}`,
+        "#8fa181",
+        0.65,
+        0.2,
+      ),
+    );
   c.add("</g>");
 }

@@ -1,19 +1,5 @@
-import {
-  rect,
-  path,
-  line,
-  ellipse,
-  polygon,
-  samples,
-  waves,
-  grid,
-  rosette,
-  ridge,
-  pine,
-  flower,
-  engravedPavilion,
-} from "../../geometry.js";
-import { base, contours, wheat, dome, leaves, orbit } from "./motifs.js";
+import { path, polygon, waves, ridge, pine } from "../../geometry.js";
+import { base } from "./motifs.js";
 export default function (c, p) {
   base(c, ["#e7ecee", "#efe9d9", "#e7e3d7"]);
   c.glow(
@@ -96,7 +82,23 @@ export default function (c, p) {
       0.08,
     ),
   );
-for(let j=0;j<12;j++)c.add(path(`M-20 ${850+j*4} Q420 ${760+j*4} 680 ${810+j*4} T1450 ${750+j*4}`,'#aab393',.65,.23));
-for(let j=0;j<8;j++)c.add(path(`M${680+j*4} 500 Q${600+j*7} 630 ${730+j*8} 740 T${680+j*10} 900`,'#8ca5a4',.65,.21));
+  for (let j = 0; j < 12; j++)
+    c.add(
+      path(
+        `M-20 ${850 + j * 4} Q420 ${760 + j * 4} 680 ${810 + j * 4} T1450 ${750 + j * 4}`,
+        "#aab393",
+        0.65,
+        0.23,
+      ),
+    );
+  for (let j = 0; j < 8; j++)
+    c.add(
+      path(
+        `M${680 + j * 4} 500 Q${600 + j * 7} 630 ${730 + j * 8} 740 T${680 + j * 10} 950`,
+        "#8ca5a4",
+        0.65,
+        0.21,
+      ),
+    );
   c.add("</g>");
 }

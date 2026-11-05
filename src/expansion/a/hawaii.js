@@ -28,9 +28,9 @@ export default function (c, p) {
     leaf(c, 1260, 760 - j * 85, 155, 190 + j * 15, "#79a593");
     flower(
       c,
-      1300 - j * 54+Math.sin(j*2)*14,
+      1300 - j * 54 + Math.sin(j * 2) * 14,
       700 - j * 95,
-      quality.pass >= 3 ? 51+j*5 : 43,
+      quality.pass >= 3 ? 51 + j * 5 : 43,
       "#ba8f9c",
       0.33,
     );
@@ -39,7 +39,7 @@ export default function (c, p) {
     for (let j = 0; j < 5; j++)
       c.add(
         path(
-          `M${560 + j * 82 + Math.sin(j * 3) * 18} ${685 - j * 21 + Math.cos(j * 2) * 14} q12 -20 30 -6 l-5 15Z`,
+          `M${560 + j * 82 + Math.sin(j * 3) * 18} ${685 - j * 21 + Math.cos(j * 2) * 14} q${9 + j * 2} ${-12 - j * 3} ${21 + j * 5} -6 l-5 15Z`,
           "#a1b69c",
           0.7,
           0.38,
@@ -55,6 +55,17 @@ export default function (c, p) {
         0.24,
       ),
     );
-  for(let j=0;j<5;j++){let x=560+j*82+Math.sin(j*3)*18,y=685-j*21+Math.cos(j*2)*14;c.add(path(`M${x-7} ${y+12} q${13+j*4} -4 ${35+j*4} 0`,"#8daaa4",.8,.4));}
+  for (let j = 0; j < 5; j++) {
+    let x = 560 + j * 82 + Math.sin(j * 3) * 18,
+      y = 685 - j * 21 + Math.cos(j * 2) * 14;
+    c.add(
+      path(
+        `M${x - 7} ${y + 12} q${13 + j * 4} -4 ${35 + j * 4} 0`,
+        "#8daaa4",
+        0.8,
+        0.4,
+      ),
+    );
+  }
   border(c, "#9ebabb", 1);
 }

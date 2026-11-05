@@ -1,4 +1,4 @@
-import {ellipse} from "../../geometry.js";
+import { ellipse } from "../../geometry.js";
 import {
   paper,
   field,
@@ -26,7 +26,26 @@ export default function (c, p) {
   }
   flourish(c, 1040, 720, 600, "#8faebd");
   if (quality.pass >= 5) {
-    c.add(path("M1265 870 Q1232 690 1258 560 L1263 560 Q1245 690 1277 870Z", "#90a5a0", .8, .3,"#aec3b6"));for(let j=0;j<28;j++){let t=j/28;c.add(path(`M${1256-12*Math.sin(t*3)} ${570+t*290} l${5+t*6} -3`,"#759a86",.65,.35));}
+    c.add(
+      path(
+        "M1265 870 Q1232 690 1258 560 L1263 560 Q1245 690 1277 870Z",
+        "#90a5a0",
+        0.8,
+        0.3,
+        "#aec3b6",
+      ),
+    );
+    for (let j = 0; j < 28; j++) {
+      let t = j / 28;
+      c.add(
+        path(
+          `M${1256 - 12 * Math.sin(t * 3)} ${570 + t * 290} l${5 + t * 6} -3`,
+          "#759a86",
+          0.65,
+          0.35,
+        ),
+      );
+    }
     for (let j = 0; j < 9; j++) {
       let a = j * 0.7;
       let dx = Math.cos(a) * 190,
@@ -61,6 +80,12 @@ export default function (c, p) {
         0.22,
       ),
     );
-  for(let j=0;j<3;j++)c.add(ellipse(1255+j*7,568+Math.sin(j)*8,7,9,"#8aa28b",.35));
+  for (let j = 0; j < 3; j++)
+    c.add(ellipse(1255 + j * 7, 568 + Math.sin(j) * 8, 7, 9, "#8aa28b", 0.35));
+  for (let j = 0; j < 35; j++) {
+    let x = 730 + c.random() * 440,
+      y = 760 + c.random() * 65;
+    c.add(path(`M${x} ${y} h${10 + c.random() * 26}`, "#8aaeb3", 0.6, 0.23));
+  }
   border(c, "#93b2b5", 1);
 }

@@ -1,19 +1,5 @@
-import {
-  rect,
-  path,
-  line,
-  ellipse,
-  polygon,
-  samples,
-  waves,
-  grid,
-  rosette,
-  ridge,
-  pine,
-  flower,
-  engravedPavilion,
-} from "../../geometry.js";
-import { base, contours, wheat, dome, leaves, orbit } from "./motifs.js";
+import { path } from "../../geometry.js";
+import { base, contours, dome } from "./motifs.js";
 export default function (c, p) {
   base(c, ["#e4eef0", "#f2efdc", "#e2e9e7"]);
   c.glow(
@@ -66,8 +52,19 @@ export default function (c, p) {
         0.35,
       ),
     );
-for(const x of [625,1255]){c.add(path(`M${x} 770 V584 h12 V770`,'#7899a9',1,.28));}
-c.add(path('M925 320 V289 H955 V320 M920 289 L940 276 L960 289Z','#7899a9',1,.38));
-for(let j=0;j<7;j++)c.add(path(`M625 ${577+j*3} H1255`,'#7c9cac',.55,.18));
+  for (const x of [625, 1255]) {
+    c.add(path(`M${x} 770 V584 h12 V770`, "#7899a9", 1, 0.28));
+  }
+  c.add(
+    path(
+      "M925 320 V289 H955 V320 M920 289 L940 276 L960 289Z",
+      "#7899a9",
+      1,
+      0.38,
+    ),
+  );
+  for (let j = 0; j < 7; j++)
+    c.add(path(`M625 ${577 + j * 3} H1255`, "#7c9cac", 0.55, 0.18));
+  c.add(path("M919 321 H961", "#7899a9", 0.8, 0.3));
   c.add("</g>");
 }

@@ -68,7 +68,15 @@ export function dome(c, x, y, s, ink) {
       0.9,
       0.45,
     );
-  for(let j=-5;j<=5;j++){const xx=j*26;g+=path(`M${xx-5} -35V-91Q${xx} -105 ${xx+5} -91V-35Z`,ink,.65,.27);}
+  for (let j = -5; j <= 5; j++) {
+    const xx = j * 26;
+    g += path(
+      `M${xx - 5} -35V-91Q${xx} -105 ${xx + 5} -91V-35Z`,
+      ink,
+      0.65,
+      0.27,
+    );
+  }
   for (let j = 0; j < 5; j++) g += path(`M-175 ${j * 7}H175`, ink, 1, 0.5);
   c.add(`<g transform="translate(${x} ${y}) scale(${s})">${g}</g>`);
 }

@@ -1,19 +1,5 @@
-import {
-  rect,
-  path,
-  line,
-  ellipse,
-  polygon,
-  samples,
-  waves,
-  grid,
-  rosette,
-  ridge,
-  pine,
-  flower,
-  engravedPavilion,
-} from "../../geometry.js";
-import { base, contours, wheat, dome, leaves, orbit } from "./motifs.js";
+import { path, line, samples, waves, grid, rosette } from "../../geometry.js";
+import { base } from "./motifs.js";
 export default function (c, p) {
   base(c, ["#f1e9df", "#e9eee8", "#e4e7e9"]);
   c.glow(
@@ -76,7 +62,31 @@ export default function (c, p) {
     amplitude: 18,
     opacity: 0.09,
   });
-for(let j=0;j<10;j++)c.add(path(`M-20 ${120+j*4} Q700 ${180+j*3} 1420 ${115+j*5}`,'#ad9990',.45,.18));
-for(let j=0;j<7;j++)c.add(line(samples(a=>[940+(118+j*3)*Math.cos(a),450+(118+j*3)*Math.sin(a)],0,Math.PI*2,.025),'#99aaa9',.55,.13));
+  for (let j = 0; j < 10; j++)
+    c.add(
+      path(
+        `M-20 ${120 + j * 4} Q700 ${180 + j * 3} 1420 ${115 + j * 5}`,
+        "#ad9990",
+        0.45,
+        0.18,
+      ),
+    );
+  for (let j = 0; j < 5; j++)
+    c.add(
+      line(
+        samples(
+          (a) => [
+            940 + (118 + j * 3) * Math.cos(a),
+            450 + (118 + j * 3) * Math.sin(a),
+          ],
+          0,
+          Math.PI * 2,
+          0.025,
+        ),
+        "#99aaa9",
+        0.55,
+        0.13,
+      ),
+    );
   c.add("</g>");
 }

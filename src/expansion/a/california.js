@@ -22,8 +22,8 @@ export default function (c, p) {
     opacity: 0.19,
   });
   for (let j = 0; j < 5; j++) {
-    let x = 1120 + j * 57 + Math.sin(j*2)*17,
-      y = 830 - j * 112 + Math.cos(j*1.8)*13;
+    let x = 1120 + j * 57 + Math.sin(j * 2) * 17,
+      y = 830 - j * 112 + Math.cos(j * 1.8) * 13;
     c.add(
       path(
         `M${x - 90} 920 Q${x + 30} ${y + 50} ${x} ${y - 130}`,
@@ -39,7 +39,7 @@ export default function (c, p) {
   flourish(c, 1000, 450, 380, "#7b949f");
   if (quality.pass >= 5)
     for (let j = 0; j < 5; j++)
-      flower(c, 100 + j * 95, 850 - j * 16, 35, "#c4a486", 0.23);
+      flower(c, 100 + j * 95, 850 - j * 16, 29 + (j % 3) * 5, "#c4a486", 0.23);
   for (let j = 0; j < 16; j++)
     c.add(
       path(
@@ -58,6 +58,20 @@ export default function (c, p) {
         0.2,
       ),
     );
-  for(let j=0;j<5;j++){let x=1120+j*57+Math.sin(j*2)*17,y=695-j*112+Math.cos(j*1.8)*13;for(let k=0;k<9;k++){let a=k*Math.PI*2/9;c.add(path(`M${x} ${y} l${Math.cos(a)*13} ${Math.sin(a)*13}`,"#b89767",.8,.4));}}
+  for (let j = 0; j < 5; j++) {
+    let x = 1120 + j * 57 + Math.sin(j * 2) * 17,
+      y = 695 - j * 112 + Math.cos(j * 1.8) * 13;
+    for (let k = 0; k < 9; k++) {
+      let a = (k * Math.PI * 2) / 9;
+      c.add(
+        path(
+          `M${x} ${y} l${Math.cos(a) * 13} ${Math.sin(a) * 13}`,
+          "#b89767",
+          0.8,
+          0.4,
+        ),
+      );
+    }
+  }
   border(c, "#9b9db5");
 }

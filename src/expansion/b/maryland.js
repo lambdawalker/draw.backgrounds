@@ -1,19 +1,5 @@
-import {
-  rect,
-  path,
-  line,
-  ellipse,
-  polygon,
-  samples,
-  waves,
-  grid,
-  rosette,
-  ridge,
-  pine,
-  flower,
-  engravedPavilion,
-} from "../../geometry.js";
-import { base, contours, wheat, dome, leaves, orbit } from "./motifs.js";
+import { path, polygon, waves } from "../../geometry.js";
+import { base, contours } from "./motifs.js";
 export default function (c, p) {
   base(c, ["#f7efcc", "#eee7e6", "#ece1cf"]);
   c.glow(
@@ -77,7 +63,16 @@ export default function (c, p) {
     c.add(
       path(`M-50 ${270 + j * 5} L1450 ${600 + j * 5}`, "#c6b896", 0.65, 0.17),
     );
-for(let j=0;j<18;j++)c.add(path(`M${j*85-100} 880 l370 -430`,'#bfa2a2',.65,.14));
-for(let j=0;j<16;j++)c.add(path(`M${1120+j*10} -30 Q${1000+j*12} 150 ${1530+j*6} ${270+j*8}`,'#c39d9e',.7,.2));
+  for (let j = 0; j < 18; j++)
+    c.add(path(`M${j * 85 - 100} 880 l370 -430`, "#bfa2a2", 0.65, 0.1));
+  for (let j = 0; j < 16; j++)
+    c.add(
+      path(
+        `M${1120 + j * 10} -30 Q${1000 + j * 12} 150 ${1530 + j * 6} ${270 + j * 8}`,
+        "#c39d9e",
+        0.7,
+        0.2,
+      ),
+    );
   c.add("</g>");
 }

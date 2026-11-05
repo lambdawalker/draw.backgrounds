@@ -1,19 +1,5 @@
-import {
-  rect,
-  path,
-  line,
-  ellipse,
-  polygon,
-  samples,
-  waves,
-  grid,
-  rosette,
-  ridge,
-  pine,
-  flower,
-  engravedPavilion,
-} from "../../geometry.js";
-import { base, contours, wheat, dome, leaves, orbit } from "./motifs.js";
+import { path, waves, pine } from "../../geometry.js";
+import { base } from "./motifs.js";
 export default function (c, p) {
   base(c, ["#e5eaf1", "#edf1e8", "#e3e9e7"]);
   c.glow(
@@ -46,7 +32,14 @@ export default function (c, p) {
     ),
   );
   for (let j = 0; j < 21; j++)
-    pine(c, 360 + j * 48 + (c.random() - .5) * 22, 570, 60 + c.random() * 100, "#829b99", 0.13);
+    pine(
+      c,
+      360 + j * 48 + (c.random() - 0.5) * 22,
+      570,
+      60 + c.random() * 100,
+      "#829b99",
+      0.1,
+    );
   for (let j = 0; j < 18; j++)
     c.add(
       path(
@@ -65,6 +58,14 @@ export default function (c, p) {
         0.16,
       ),
     );
-for(let j=0;j<14;j++)c.add(path(`M${760+j*5} ${690+j*8} Q900 ${684+j*8} ${1110-j*8} ${692+j*8}`,'#90abb0',.75,.2));
+  for (let j = 0; j < 14; j++)
+    c.add(
+      path(
+        `M${760 + j * 5} ${690 + j * 8} Q900 ${684 + j * 8} ${1110 - j * 8} ${692 + j * 8}`,
+        "#90abb0",
+        0.75,
+        0.2,
+      ),
+    );
   c.add("</g>");
 }
