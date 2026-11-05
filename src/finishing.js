@@ -21,7 +21,8 @@ export function finish(c, state) {
           (x) => [
             x,
             815 +
-              j * 2.3 -
+              j * 2.3 +
+              1.8 * Math.sin(j * 0.63) -
               80 * Math.sin(x / 340) +
               12 * Math.sin(x / 95 + j * 0.07),
           ],
@@ -38,7 +39,13 @@ export function finish(c, state) {
     c.add(
       line(
         samples(
-          (x) => [x, 30 + j * 3 + 20 * Math.sin(x / 220 + j * 0.04)],
+          (x) => [
+            x,
+            30 +
+              j * 3 +
+              1.5 * Math.sin(j * 0.7) +
+              20 * Math.sin(x / 220 + j * 0.04),
+          ],
           -20,
           1420,
           8,
@@ -80,7 +87,12 @@ export function finish(c, state) {
       c.add(
         `<g transform="translate(${x} ${y}) rotate(${(a * 180) / Math.PI + 90})">` +
           path("M0 0 Q18 -19 42 -8 Q25 9 0 0Z", ink, 0.9, 0.48, "#cbd9cc") +
-          path("M0 0 Q21 -7 42 -8", ink, 0.55, 0.3) +
+          path(
+            "M0 0 Q21 -7 42 -8 M13 -4 L18 -11 M23 -6 L30 -12",
+            ink,
+            0.55,
+            0.3,
+          ) +
           "</g>",
       );
     }

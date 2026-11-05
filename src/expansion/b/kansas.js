@@ -36,7 +36,7 @@ export default function (c, p) {
       ),
     );
   for (let j = 0; j < 6; j++)
-    wheat(c, 975 + j * 50, 890, 0.65 + (j % 3) * 0.19, "#919761");
+    wheat(c, 975 + j * 50, 890, 0.62 + c.random() * 0.46, "#919761");
   c.add(
     path(
       "M-20 770 Q280 640 580 710 T1450 755 L1450 900 H-20Z",

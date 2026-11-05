@@ -29,8 +29,7 @@ export default function (c, p) {
   for (let j = 0; j < 8; j++)
     pine(c, 900 + j * 70, 880, 160 + (j % 3) * 60, "#859d79", 0.22);
   c.add(path("M970 880 Q1120 600 1240 430", "#8c9d76", 1.5, 0.3));
-  for (let j = 0; j < 4; j++)
-    leaves(c, 1030 + j * 34, 720 - j * 55, 32, "#9baa87");
+  for (let j = 0; j < 4; j++) { const t=.22+j*.16; const x=(1-t)*(1-t)*970+2*(1-t)*t*1120+t*t*1240; const y=(1-t)*(1-t)*880+2*(1-t)*t*600+t*t*430; leaves(c,x,y,27+j*2,"#9baa87"); }
   for (let j = 0; j < 20; j++)
     c.add(
       path(

@@ -1,0 +1,17 @@
+{
+  "seed": 119,
+  "width": 700,
+  "height": 440,
+  "states": [
+    "washington",
+    "arkansas",
+    "illinois",
+    "tennessee",
+    "alaska",
+    "wyoming",
+    "louisiana",
+    "utah",
+    "colorado",
+    "idaho"
+  ]
+}

@@ -13,7 +13,7 @@ import {
   tower,
   engravedPavilion,
 } from "../../geometry.js";
-export const revision = 10;
+export const revision = 11;
 function paper(c, a, b, phase) {
   c.add(
     rect(
@@ -81,7 +81,7 @@ function nebraska(c, p) {
     { fill: "#d8c0a0", ink: "#a68777", opacity: 0.55 },
   );
   curve(c, "#98a379", 590, 50, 0.28);
-  tower(c, 1120, 840, 0.95, "#8e9e7d");
+  tower(c, 1120, 840, 0.95, "#7e936f");
   for (let i = 0; i < 12; i++) {
     let x = 70 + i * 18 + c.random() * 8;
     c.add(path(`M${x} 880 Q${x + 35} 760 ${x + 24} 650`, "#ae9a61", 0.8, 0.3));
@@ -101,7 +101,7 @@ function nevada(c, p) {
       [1220, 245],
       [1400, 220],
     ],
-    { fill: "#b9cbd4", ink: "#7994a3", opacity: 0.28 },
+    { fill: "#b9cbd4", ink: "#7994a3", opacity: 0.24 },
   );
   rosette(c, 1080, 425, 175, "#719a9d", {
     rings: 24,
@@ -144,7 +144,7 @@ function newHampshire(c, p) {
       [1120, 455],
       [1400, 620],
     ],
-    { fill: "#b8c7ce", ink: "#98a7b8", opacity: 0.25 },
+    { fill: "#b8c7ce", ink: "#98a7b8", opacity: 0.28 },
   );
   for (let i = 0; i < 11; i++)
     pine(c, 1030 + i * 34, 870, 70 + c.random() * 125, "#819e9e", 0.17);
@@ -160,7 +160,7 @@ function newJersey(c, p) {
       0.24,
     ),
   );
-  engravedPavilion(c, 1080, 835, 0.86, "#899b92");
+  engravedPavilion(c, 1080, 835, 0.86, "#81958a");
   for (let j = 0; j < 45; j++)
     c.add(
       path(
@@ -197,7 +197,7 @@ function newMexico(c, p) {
         `M890 ${410 + i * 8} Q1130 ${360 + i * 10} 1420 ${380 + i * 10}`,
         "#ac8874",
         0.7,
-        0.22,
+        0.27,
       ),
     );
   curve(c, "#adbb9e", 710, 35, 0.24);
@@ -222,8 +222,8 @@ function newYork(c, p) {
     opacity: 0.33,
   });
   rosette(c, 820, 505, 185, "#c09ca4", {
-    rings: 17,
-    lobes: 28,
+    rings: 15,
+    lobes: 32,
     amplitude: 13,
     opacity: 0.25,
   });
@@ -255,7 +255,7 @@ function northCarolina(c, p) {
     ],
     { fill: "#b8cbb8", ink: "#92a7a9", opacity: 0.23 },
   );
-  engravedPavilion(c, 1015, 810, 0.78, "#8f9e81");
+  engravedPavilion(c, 1015, 810, 0.78, "#7e967c");
   c.add(
     path(
       "M50 205 Q165 175 290 205 L170 214Z M170 195 V228 M90 215 H240",
@@ -282,7 +282,7 @@ function northDakota(c, p) {
       [1200, 490],
       [1400, 460],
     ],
-    { fill: "#c9b89d", ink: "#b3987c", opacity: 0.34 },
+    { fill: "#c9b89d", ink: "#b3987c", opacity: 0.30 },
   );
   curve(c, "#b09e7f", 620, 46, 0.24);
   for (let i = 0; i < 19; i++) {
@@ -301,7 +301,7 @@ function northDakota(c, p) {
 }
 function ohio(c, p) {
   paper(c, "#dcefed", "#d0dfa8", p);
-  rosette(c, 930, 400, 220, "#9caec2", {
+  rosette(c, 950, 390, 220, "#9caec2", {
     rings: 24,
     lobes: 42,
     amplitude: 7,
@@ -476,7 +476,7 @@ export default Object.fromEntries(
 function dome(c, x, y) {
   let g = "";
   const add = (d, w = 1, o = 0.45, fill = "none") =>
-    (g += path(d, "#89988e", w, o, fill));
+    (g += path(d, "#7b8e83", w, o, fill));
   add("M-310 0 V-165 H310 V0 Z", 1, 0.35, "#e8e9df");
   for (let j = -11; j <= 11; j++) {
     let xx = j * 25;

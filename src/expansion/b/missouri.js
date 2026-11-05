@@ -76,6 +76,6 @@ export default function (c, p) {
     amplitude: 18,
     opacity: 0.09,
   });
-for(let j=0;j<10;j++)c.add(path(`M-20 ${120+j*4} Q700 ${180+j*3} 1420 ${115+j*5}`,'#ad9990',.6,.18));
+for(let j=0;j<10;j++)c.add(path(`M-20 ${120+j*4} Q700 ${180+j*3} 1420 ${115+j*5}`,'#ad9990',.45,.18));
   c.add("</g>");
 }

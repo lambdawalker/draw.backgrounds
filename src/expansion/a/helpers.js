@@ -9,7 +9,7 @@ import {
   waves,
 } from "../../geometry.js";
 export { path, line, rect, ellipse, polygon, samples, grid, waves };
-export const quality = { pass: 10 };
+export const quality = { pass: 11 };
 export function paper(c, colors) {
   c.add(
     rect(
@@ -107,25 +107,8 @@ export function dome(c, x, y, s, color, kind = "round") {
   }
   c.add(`<g transform="translate(${x} ${y}) scale(${s})">${a}</g>`);
 }
-export function border(c, color, kind = 0) {
-  if (quality.pass < 2) return;
-  for (let j = 0; j < 18; j++)
-    c.add(
-      line(
-        samples(
-          (x) => [
-            x,
-            835 + j * 2 + 7 * Math.sin(x / (kind ? 25 : 42) + j * 0.35),
-          ],
-          0,
-          1400,
-          4,
-        ),
-        color,
-        0.65,
-        0.22,
-      ),
-    );
+export function border(c,color,kind=0){
+  for(let j=0;j<24;j++) for(const direction of [-1,1]) c.add(line(samples(x=>[x,844+direction*14*Math.sin(x/(kind?34:47)+j*.11)+j*.72+8*Math.sin(x/180+j*.12)],0,1400,4),color,.62,.19));
 }
 export function field(c, color, phase = 0) {
   grid(c, {

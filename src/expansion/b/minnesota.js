@@ -26,7 +26,7 @@ export default function (c, p) {
   );
   c.add(`<g transform="translate(${28 * Math.sin(p)} ${15 * Math.cos(p)})">`);
   for (let j = 0; j < 12; j++)
-    pine(c, 580 + j * 65, 590, 100 + (j % 4) * 50, "#7d9b8f", 0.22);
+    pine(c, 580 + j * 65, 590, 105 + c.random() * 145, "#7d9b8f", 0.22);
   waves(c, {
     from: 610,
     to: 900,

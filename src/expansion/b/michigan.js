@@ -76,5 +76,6 @@ export default function (c, p) {
       ),
     );
 for(let j=0;j<12;j++)c.add(path(`M-20 ${50+j*6} Q690 ${200+j*5} 1430 ${35+j*6}`,'#b0a5b2',.65,.16));
+for(let j=0;j<5;j++)c.add(line(samples(a=>[930+(320+j*4)*Math.cos(a),440+(230+j*3)*Math.sin(a)],0,Math.PI*2,.02),'#b59f8d',.7,.17));
   c.add("</g>");
 }
