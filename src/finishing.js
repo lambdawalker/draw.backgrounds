@@ -13,4 +13,6 @@ export function finish(c,state){
  c.add(path(`M${x} ${y} Q${tip} ${y-3} ${tip} ${y-26} Q${x} ${y-23} ${x} ${y}Z`,ink,.65,.25));
  c.add(line([[x,y],[tip,y-26]],ink,.5,.24));
  }
+ // Sparse seeded ink stipple creates scale-dependent texture without raster filters.
+ for(let j=0;j<1600;j++){const x=c.random()*1400,y=c.random()*880;c.add(ellipse(x,y,.22+c.random()*.32,.24,ink,.13));}
 }

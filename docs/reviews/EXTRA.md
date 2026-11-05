@@ -9,3 +9,7 @@ User requested four further evaluations after initial acceptance; the prior six-
 ## Additional pass 2
 
 [Render](extra-2.jpg). Introduced individually positioned fine botanical sprigs. Reviewed all ten: the lower-right sprigs complement Washington, Colorado and Idaho; Alaska's left cluster follows its flowers; Arkansas's tall right panel receives a subtle organic contrast; Illinois, Tennessee, Wyoming, Louisiana and Utah retain their main ornaments. The sprigs are intentionally pale; the next pass adds close-view texture rather than increasing their weight.
+
+## Additional pass 3
+
+[Render](extra-3.jpg). Added sparse seeded vector stipple. Reviewed all ten at contact-sheet scale and Arkansas panel/botanical detail enlarged: texture stays subordinate to linework and does not add dark speckling. The changes are deliberately subtle at thumbnail size. All ten retain distinct palettes. The panels and leaves are intact. Next reduce the strongest landscape fills and clear a soft central writing area.
