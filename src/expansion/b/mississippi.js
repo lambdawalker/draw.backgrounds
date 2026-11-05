@@ -6,4 +6,5 @@ c.glow(200+1000*c.random(),140+600*c.random(),700,600,'#9bab7d',.18);c.add(`<g t
  orbit(c,1030,490,125,100,'#9ea88c',p); engravedPavilion(c,1100,800,.65,'#8e9c88'); leaves(c,600,260,120,'#acb692');
 flower(c,700,285,110,'#b7b89d',.22);flower(c,530,420,77,'#bfc0a8',.22);contours(c,'#a3af9c',p,'vertical',.13);
 c.add('</g>');
+c.add(path('M490 500 Q610 410 700 285 Q740 220 815 180','#8f9e7b',1,.3));
 }
