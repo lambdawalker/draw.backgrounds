@@ -6,6 +6,28 @@
 
 All repository commands below run from the checkout root after `npm ci` on Node.js 22+. Use a new output directory to avoid overwriting previous results.
 
+## Plan a background around a photo
+
+The SVG and Node Canvas renderers replay the same recipe. The example writes SVG, PNG and recipe JSON. Run `node examples/render-composition.mjs /tmp/draw-composition`.
+
+```js
+import { createComposition, renderComposition } from '@lambdawalker/draw-backgrounds';
+import { renderCompositionCanvas } from '@lambdawalker/draw-backgrounds/canvas';
+
+const recipe = createComposition({
+  seed: 2081,
+  width: 700,
+  height: 440,
+  photoIdBoundingBox: { x: 0.06, y: 0.24, width: 0.28, height: 0.6 },
+  colorScheme: {
+    paper: '#F4F0E7', primary: '#386A73',
+    secondary: '#718A67', accent: '#B67B57',
+  },
+});
+const svg = renderComposition(recipe);
+const canvas = renderCompositionCanvas(recipe);
+```
+
 ## SVG and Canvas demonstrations
 
 | Example | Run | Expected result |

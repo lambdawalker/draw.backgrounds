@@ -279,7 +279,15 @@ export function pine(c, x, y, size, color, opacity = 0.4) {
   }
   c.add(c.polygon(a, color, opacity));
 }
-export function flower(c, x, y, r, color, opacity = 0.35) {
+export function flower(
+  c,
+  x,
+  y,
+  r,
+  color,
+  opacity = 0.35,
+  { center = "#d7b46a", highlight = "#fffaf5" } = {},
+) {
   for (let j = 0; j < 5; j++) {
     const a = (j * TAU) / 5;
     const p = (u, v) => [
@@ -305,13 +313,13 @@ export function flower(c, x, y, r, color, opacity = 0.35) {
       c.add(
         c.line(
           [p(r * 0.2, 0), p(r * 0.8, k * r * 0.065)],
-          "#fffaf5",
+          highlight,
           0.8,
           0.45,
         ),
       );
   }
-  c.add(c.ellipse(x, y, r * 0.14, r * 0.14, "#d7b46a", 0.7));
+  c.add(c.ellipse(x, y, r * 0.14, r * 0.14, center, 0.7));
 }
 /** Etched rock faces and snow patches share their peak vertex. */
 export function snow(c, x, y, w, h, color = "#f8faf6", opacity = 0.7) {

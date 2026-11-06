@@ -1,5 +1,6 @@
 import { createCanvas, Path2D } from "@napi-rs/canvas";
 import { drawJurisdiction } from "./index.js";
+import { drawComposition } from "./composition.js";
 import { H, W } from "./geometry.js";
 
 function pointPath(points, closed) {
@@ -224,6 +225,14 @@ export function renderCanvas(state, options = {}) {
   return drawJurisdiction(
     state,
     options,
+    (random, width, height) => new CanvasTarget(random, width, height),
+  ).canvas;
+}
+
+/** Replay a region-free composition on a Node Canvas 2D surface. */
+export function renderCompositionCanvas(recipe) {
+  return drawComposition(
+    recipe,
     (random, width, height) => new CanvasTarget(random, width, height),
   ).canvas;
 }

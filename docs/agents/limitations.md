@@ -8,7 +8,7 @@ No npm publication is confirmed here. A Git tag is source availability only. Use
 
 The drawings are original stylized backgrounds inspired by public references and regional studies. They are not replicas, claims of current credential formats, official seals, encoded data, or complete identity documents. Reference coverage varies; visual review does not establish OCR or detector accuracy. Evaluate datasets against held-out real images for your actual task.
 
-Only the 95 cataloged jurisdictions are supported. There is no custom country registration, plugin API, arbitrary motif editor or palette parameter. Seeds vary procedural details while preserving the principal motif and palette. No camera distortion, print process, wear, lighting or photographic augmentation is simulated.
+Jurisdiction rendering supports the 95 cataloged designs and preserves their principal motifs and palettes across seeds. The separate composition API takes color anchors and an optional photo box. It supplies a fixed set of procedural motifs and does not inspect image content or lay out text. No camera distortion, print process, wear, lighting or photographic augmentation is simulated.
 
 Node requires version 22 or later. The root ESM SVG entry is usable by browser bundlers. Canvas is Node-only and depends on a compatible optional native `@napi-rs/canvas` installation. No CommonJS entry point, browser Canvas adapter or package CLI binary is declared. Sharp belongs to repository tooling, not the public SVG runtime.
 

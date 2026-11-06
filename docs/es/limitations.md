@@ -8,7 +8,7 @@ Aquí no se confirma publicación alguna en npm. Una etiqueta Git solo confirma 
 
 Los dibujos son fondos originales estilizados inspirados en referencias públicas y estudios regionales. No son réplicas, declaraciones sobre formatos vigentes, sellos oficiales, datos codificados ni documentos de identidad completos. La cobertura de referencias varía; la revisión visual no demuestra precisión de OCR ni detectores. Evalúa los conjuntos de datos con imágenes reales reservadas para tu tarea concreta.
 
-Solo se admiten las 95 jurisdicciones del catálogo. No hay registro de países propios, API de plugins, editor arbitrario de motivos ni parámetro de paleta. Las semillas varían detalles procedimentales conservando el motivo y la paleta principales. No se simulan distorsión de cámara, procesos de impresión, desgaste, iluminación ni aumentos fotográficos.
+El renderizado por jurisdicción admite los 95 diseños del catálogo y conserva sus motivos y paletas principales al cambiar la semilla. La API de composición independiente acepta colores base y un rectángulo opcional para la foto. Incluye un conjunto fijo de motivos procedimentales y no analiza imágenes ni distribuye texto. No simula distorsión de cámara, impresión, desgaste, iluminación ni aumentos fotográficos.
 
 Node requiere versión 22 o posterior. Los empaquetadores web pueden usar la entrada SVG ESM raíz. Canvas es exclusivo de Node y depende de una instalación nativa opcional compatible de `@napi-rs/canvas`. No se declara entrada CommonJS, adaptador Canvas web ni ejecutable CLI del paquete. Sharp pertenece a las herramientas del repositorio, no al entorno público SVG.
 
