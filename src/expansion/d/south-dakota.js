@@ -10,13 +10,77 @@ import {
   leaf,
   fan,
   palm,
-  rect,
-  path,
-  line,
-  polygon,
-  ellipse,
   samples,
 } from "./helpers.js";
+function drawRockFaceHatching(c) {
+  for (let j = 0; j < 16; j++)
+    c.add(
+      c.path(
+        `M${800 + j * 35} 810L${830 + j * 35} ${590 + 50 * Math.sin(j * 0.8)}`,
+        "#8796a4",
+        1,
+        0.25,
+      ),
+    );
+}
+
+function drawForegroundStems(c) {
+  for (let j = 0; j < 23; j++)
+    c.add(c.path(`M${430 + j * 41} 880q-20 -55 -10 -95`, "#9ca68d", 0.9, 0.2));
+}
+
+function drawRockCracks(c) {
+  for (let j = 0; j < 13; j++)
+    c.add(
+      c.path(
+        `M${700 + j * 40} ${650 + 30 * Math.sin(j)}l26 22l-9 17`,
+        "#87959f",
+        0.8,
+        0.22,
+      ),
+    );
+}
+
+function drawRockLedging(c) {
+  for (let j = 0; j < 10; j++)
+    c.add(
+      c.path(
+        `M${780 + j * 36} ${720 + (j % 3) * 8}l45 13l23 -9`,
+        "#8e9ba5",
+        0.75,
+        0.2,
+      ),
+    );
+}
+
+function drawRockFissures(c) {
+  for (let j = 0; j < 8; j++)
+    c.add(
+      c.path(
+        `M${930 + j * 38} ${630 + (j % 3) * 19}l-17 58l24 28`,
+        "#9ba3a6",
+        0.8,
+        0.2,
+      ),
+    );
+}
+
+function drawGroundLine(c) {
+  c.add(c.path("M0 845Q250 790 455 832T900 817T1400 790", "#9da691", 0.7, 0.2));
+}
+
+function drawForegroundSprigs(c) {
+  for (let j = 0; j < 6; j++)
+    c.add(
+      c.path(
+        `M${830 + j * 75} 862q-10 -22 -5 -38 M${830 + j * 75} 848l-12 -8`,
+        "#9da691",
+        0.7,
+        0.2,
+      ),
+    );
+}
+
 export default function (c, phase) {
   paper(c, "#dbe8f4", "#e4d8ca");
   ridge(
@@ -43,15 +107,7 @@ export default function (c, phase) {
     to: 880,
     amplitude: 15,
   });
-  for (let j = 0; j < 16; j++)
-    c.add(
-      path(
-        `M${800 + j * 35} 810L${830 + j * 35} ${590 + 50 * Math.sin(j * 0.8)}`,
-        "#8796a4",
-        1,
-        0.25,
-      ),
-    );
+  drawRockFaceHatching(c);
   ridge(
     c,
     [
@@ -65,43 +121,10 @@ export default function (c, phase) {
     { fill: "#a1a9a2", ink: "#88998f", opacity: 0.16 },
   );
   c.glow(1000, 650, 400, 300, "#b8a69b", 0.18);
-  for (let j = 0; j < 23; j++)
-    c.add(path(`M${430 + j * 41} 880q-20 -55 -10 -95`, "#9ca68d", 0.9, 0.2));
-  for (let j = 0; j < 13; j++)
-    c.add(
-      path(
-        `M${700 + j * 40} ${650 + 30 * Math.sin(j)}l26 22l-9 17`,
-        "#87959f",
-        0.8,
-        0.22,
-      ),
-    );
-  for (let j = 0; j < 10; j++)
-    c.add(
-      path(
-        `M${780 + j * 36} ${720 + (j % 3) * 8}l45 13l23 -9`,
-        "#8e9ba5",
-        0.75,
-        0.2,
-      ),
-    );
-  for (let j = 0; j < 8; j++)
-    c.add(
-      path(
-        `M${930 + j * 38} ${630 + (j % 3) * 19}l-17 58l24 28`,
-        "#9ba3a6",
-        0.8,
-        0.2,
-      ),
-    );
-  c.add(path("M0 845Q250 790 455 832T900 817T1400 790", "#9da691", 0.7, 0.2));
-  for (let j = 0; j < 6; j++)
-    c.add(
-      path(
-        `M${830 + j * 75} 862q-10 -22 -5 -38 M${830 + j * 75} 848l-12 -8`,
-        "#9da691",
-        0.7,
-        0.2,
-      ),
-    );
+  drawForegroundStems(c);
+  drawRockCracks(c);
+  drawRockLedging(c);
+  drawRockFissures(c);
+  drawGroundLine(c);
+  drawForegroundSprigs(c);
 }

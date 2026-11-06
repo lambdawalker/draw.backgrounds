@@ -3,10 +3,6 @@ import {
   fireweed,
   trillium,
   iris,
-  path,
-  line,
-  polygon,
-  ellipse,
   samples,
   waves,
   ridge,
@@ -19,6 +15,27 @@ import {
   grasses,
   iceberg,
 } from "./helpers.js";
+function drawLighthouse(c) {
+  c.add(
+    c.path(
+      "M1025 750L1045 510H1115L1138 750Z M1035 510H1125V480H1035Z M1028 480L1080 446L1133 480Z M1080 446V425 M1060 510V480 M1100 510V480 M1067 749V705H1096V749",
+      "#718d9f",
+      2,
+      0.6,
+      "#f5f3e7",
+    ),
+  );
+  for (let j = 0; j < 7; j++)
+    c.add(
+      c.path(
+        `M${1045 - j * 2.5} ${550 + j * 27}H${1115 + j * 2.5}`,
+        "#90a1a8",
+        0.7,
+        0.32,
+      ),
+    );
+}
+
 export default function (c, p) {
   base(c, p + 2.97, "#dfeef3", "#ebe4d6", "#789faf");
   shore(c, "#7ba4b3", 640, 28);
@@ -34,23 +51,6 @@ export default function (c, p) {
     ],
     { fill: "#b9bdad", ink: "#8c9da1", opacity: 0.25 },
   );
-  c.add(
-    path(
-      "M1025 750L1045 510H1115L1138 750Z M1035 510H1125V480H1035Z M1028 480L1080 446L1133 480Z M1080 446V425 M1060 510V480 M1100 510V480 M1067 749V705H1096V749",
-      "#718d9f",
-      2,
-      0.6,
-      "#f5f3e7",
-    ),
-  );
-  for (let j = 0; j < 7; j++)
-    c.add(
-      path(
-        `M${1045 - j * 2.5} ${550 + j * 27}H${1115 + j * 2.5}`,
-        "#90a1a8",
-        0.7,
-        0.32,
-      ),
-    );
+  drawLighthouse(c);
   branch(c, 1300, 875, 0.7, "#bfa0ac");
 }

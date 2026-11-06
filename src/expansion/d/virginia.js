@@ -10,13 +10,102 @@ import {
   leaf,
   fan,
   palm,
-  rect,
-  path,
-  line,
-  polygon,
-  ellipse,
   samples,
 } from "./helpers.js";
+function drawRadialWedges(c) {
+  for (let j = 0; j < 24; j++) {
+    const a = (j * Math.PI) / 12,
+      b = a + 0.075;
+    c.add(
+      c.polygon(
+        [
+          [930, 390],
+          [930 + 1450 * Math.cos(a), 390 + 1450 * Math.sin(a)],
+          [930 + 1450 * Math.cos(b), 390 + 1450 * Math.sin(b)],
+        ],
+        j % 2 ? "#a7aa90" : "#9a9ab5",
+        0.085,
+      ),
+    );
+  }
+}
+
+function drawInnerMedallionStrokes(c) {
+  for (let j = 0; j < 18; j++) {
+    const a = (j * Math.PI) / 9;
+    c.add(
+      c.path(
+        `M${930 + 300 * Math.cos(a)} ${390 + 300 * Math.sin(a)}L${930 + 340 * Math.cos(a)} ${390 + 340 * Math.sin(a)}`,
+        "#a9a27f",
+        2,
+        0.3,
+      ),
+    );
+  }
+}
+
+function drawOuterMedallionStrokes(c) {
+  for (let j = 0; j < 18; j++) {
+    const a = (j * Math.PI) / 9;
+    c.add(
+      c.path(
+        `M${930 + 360 * Math.cos(a)} ${390 + 360 * Math.sin(a)}Q${930 + 380 * Math.cos(a + 0.04)} ${390 + 380 * Math.sin(a + 0.04)} ${930 + 360 * Math.cos(a + 0.08)} ${390 + 360 * Math.sin(a + 0.08)}`,
+        "#b4a684",
+        1,
+        0.35,
+      ),
+    );
+  }
+}
+
+function drawMedallionArcs(c) {
+  for (let j = 0; j < 20; j++) {
+    const a = (j * Math.PI) / 10;
+    c.add(
+      c.path(
+        `M${930 + 260 * Math.cos(a)} ${390 + 260 * Math.sin(a)}Q${930 + 270 * Math.cos(a + 0.07)} ${390 + 270 * Math.sin(a + 0.07)} ${930 + 260 * Math.cos(a + 0.14)} ${390 + 260 * Math.sin(a + 0.14)}`,
+        "#b4a684",
+        0.7,
+        0.22,
+      ),
+    );
+  }
+}
+
+function drawBotanicalStem(c) {
+  c.add(
+    c.path(
+      "M1075 742Q1110 665 1175 595 M1110 690q-30 -25 -48 -9 M1141 645q28 -14 43 -6",
+      "#a3a68f",
+      0.9,
+      0.24,
+    ),
+  );
+}
+
+function drawBotanicalLeaves(c) {
+  for (let j = 0; j < 8; j++)
+    c.add(
+      c.path(
+        `M${1040 + j * 23} ${740 - Math.sin((j / 7) * Math.PI) * 35}q8 -16 17 -9`,
+        "#a3a68f",
+        0.65,
+        0.2,
+      ),
+    );
+}
+
+function drawBotanicalFlourishes(c) {
+  c.add(
+    c.path(
+      "M1078 733Q1114 752 1141 735 M1128 714Q1150 727 1170 712",
+      "#a3a68f",
+      0.65,
+      0.2,
+    ),
+  );
+}
+
 export default function (c, phase) {
   paper(c, "#dfe9f0", "#ebe0dc");
   fan(c, 930, 390, "#9b8caa");
@@ -29,77 +118,11 @@ export default function (c, phase) {
     opacity: 0.24,
   });
   c.glow(940, 390, 350, 350, "#fffaf0", 0.55);
-  for (let j = 0; j < 24; j++) {
-    const a = (j * Math.PI) / 12,
-      b = a + 0.075;
-    c.add(
-      polygon(
-        [
-          [930, 390],
-          [930 + 1450 * Math.cos(a), 390 + 1450 * Math.sin(a)],
-          [930 + 1450 * Math.cos(b), 390 + 1450 * Math.sin(b)],
-        ],
-        j % 2 ? "#a7aa90" : "#9a9ab5",
-        0.085,
-      ),
-    );
-  }
-  for (let j = 0; j < 18; j++) {
-    const a = (j * Math.PI) / 9;
-    c.add(
-      path(
-        `M${930 + 300 * Math.cos(a)} ${390 + 300 * Math.sin(a)}L${930 + 340 * Math.cos(a)} ${390 + 340 * Math.sin(a)}`,
-        "#a9a27f",
-        2,
-        0.3,
-      ),
-    );
-  }
-  for (let j = 0; j < 18; j++) {
-    const a = (j * Math.PI) / 9;
-    c.add(
-      path(
-        `M${930 + 360 * Math.cos(a)} ${390 + 360 * Math.sin(a)}Q${930 + 380 * Math.cos(a + 0.04)} ${390 + 380 * Math.sin(a + 0.04)} ${930 + 360 * Math.cos(a + 0.08)} ${390 + 360 * Math.sin(a + 0.08)}`,
-        "#b4a684",
-        1,
-        0.35,
-      ),
-    );
-  }
-  for (let j = 0; j < 20; j++) {
-    const a = (j * Math.PI) / 10;
-    c.add(
-      path(
-        `M${930 + 260 * Math.cos(a)} ${390 + 260 * Math.sin(a)}Q${930 + 270 * Math.cos(a + 0.07)} ${390 + 270 * Math.sin(a + 0.07)} ${930 + 260 * Math.cos(a + 0.14)} ${390 + 260 * Math.sin(a + 0.14)}`,
-        "#b4a684",
-        0.7,
-        0.22,
-      ),
-    );
-  }
-  c.add(
-    path(
-      "M1075 742Q1110 665 1175 595 M1110 690q-30 -25 -48 -9 M1141 645q28 -14 43 -6",
-      "#a3a68f",
-      0.9,
-      0.24,
-    ),
-  );
-  for (let j = 0; j < 8; j++)
-    c.add(
-      path(
-        `M${1040 + j * 23} ${740 - Math.sin((j / 7) * Math.PI) * 35}q8 -16 17 -9`,
-        "#a3a68f",
-        0.65,
-        0.2,
-      ),
-    );
-  c.add(
-    path(
-      "M1078 733Q1114 752 1141 735 M1128 714Q1150 727 1170 712",
-      "#a3a68f",
-      0.65,
-      0.2,
-    ),
-  );
+  drawRadialWedges(c);
+  drawInnerMedallionStrokes(c);
+  drawOuterMedallionStrokes(c);
+  drawMedallionArcs(c);
+  drawBotanicalStem(c);
+  drawBotanicalLeaves(c);
+  drawBotanicalFlourishes(c);
 }

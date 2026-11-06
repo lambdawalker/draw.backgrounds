@@ -1,12 +1,9 @@
 import {
   base,
+  drawCoastalArcEngraving,
   fireweed,
   trillium,
   iris,
-  path,
-  line,
-  polygon,
-  ellipse,
   samples,
   waves,
   ridge,
@@ -19,28 +16,28 @@ import {
   grasses,
   iceberg,
 } from "./helpers.js";
-export default function (c, p) {
-  base(c, p + 2.16, "#e8edce", "#dceae7", "#8ea898");
-  shore(c, "#80a7ac", 660, 22);
+function drawWaterReflections(c) {
   for (let j = 0; j < 12; j++)
     c.add(
-      ellipse(760 + j * 53, 725 + Math.sin(j) * 26, 55, 10, "#95b7ae", 0.17),
+      c.ellipse(760 + j * 53, 725 + Math.sin(j) * 26, 55, 10, "#95b7ae", 0.17),
     );
-  grasses(c, 1070, 870, 1.4, "#b4a36f");
+}
+
+function drawWetlandReeds(c) {
   for (let j = 0; j < 5; j++) {
     let x = 880 + j * 80,
       y = 635 + Math.sin(j) * 25;
     c.add(
-      path(
+      c.path(
         `M${x} ${y + 130}Q${x - 35} ${y + 20} ${x} ${y}`,
         "#93a397",
         1,
         0.45,
       ),
     );
-    c.add(ellipse(x, y, 22, 9, "#b3a3bd", 0.4));
+    c.add(c.ellipse(x, y, 22, 9, "#b3a3bd", 0.4));
     c.add(
-      path(
+      c.path(
         `M${x} ${y + 80}q-70 -40 -55 -75q45 15 55 75 M${x} ${y + 90}q55 -35 65 -65q-40 12 -65 65`,
         "#8fa79c",
         1,
@@ -48,21 +45,13 @@ export default function (c, p) {
       ),
     );
   }
-  for (let j = 0; j < 15; j++)
-    c.add(
-      line(
-        samples(
-          (t) => [
-            1350 - 160 * Math.sin(t) + j * 4,
-            240 + 180 * Math.cos(t) + j * 2,
-          ],
-          0,
-          6.3,
-          0.04,
-        ),
-        "#a4ad96",
-        0.7,
-        0.19,
-      ),
-    );
+}
+
+export default function (c, p) {
+  base(c, p + 2.16, "#e8edce", "#dceae7", "#8ea898");
+  shore(c, "#80a7ac", 660, 22);
+  drawWaterReflections(c);
+  grasses(c, 1070, 870, 1.4, "#b4a36f");
+  drawWetlandReeds(c);
+  drawCoastalArcEngraving(c, "#a4ad96");
 }

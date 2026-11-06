@@ -1,4 +1,3 @@
-import { path } from "../../geometry.js";
 import {
   paper,
   field,
@@ -8,6 +7,10 @@ import {
   quality,
   leaf,
 } from "./helpers.js";
+function drawLeafStem(c) {
+  c.add(c.path("M1256 814 Q1220 730 1190 680", "#759587", 1, 0.4));
+}
+
 export default function (c, p) {
   paper(c, ["#f2ece5", "#e5ede9", "#e7d8da"]);
   field(c, "#7b9590", p);
@@ -17,7 +20,7 @@ export default function (c, p) {
     leaf(c, 1260, 800, 180, -105, "#6c9385");
     leaf(c, 1250, 800, 150, -155, "#6c9385");
   }
-  c.add(path("M1256 814 Q1220 730 1190 680", "#759587", 1, 0.4));
+  drawLeafStem(c);
   leaf(c, 1215, 745, 105, -210, "#7e9e8b");
   border(c, "#b2919d");
 }

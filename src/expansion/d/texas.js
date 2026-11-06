@@ -10,24 +10,11 @@ import {
   leaf,
   fan,
   palm,
-  rect,
-  path,
-  line,
-  polygon,
-  ellipse,
   samples,
 } from "./helpers.js";
-export default function (c, phase) {
-  paper(c, "#d2e6ec", "#efdbbf");
-  waves(c, {
-    phase,
-    color: "#ba8f8c",
-    opacity: 0.23,
-    amplitude: 65,
-    period: 350,
-  });
+function drawTexasSilhouette(c) {
   c.add(
-    polygon(
+    c.polygon(
       [
         [750, 270],
         [990, 270],
@@ -46,16 +33,68 @@ export default function (c, phase) {
       0.11,
     ),
   );
-  dome(c, 1050, 710, 0.8, "#84a6b4");
+}
+
+function drawForegroundHatching(c) {
   for (let j = 0; j < 22; j++)
     c.add(
-      path(
+      c.path(
         `M${720 + j * 22} 765V${695 + Math.sin(j) * 10}`,
         "#8aadb7",
         0.8,
         0.24,
       ),
     );
+}
+
+function drawCapitolColumns(c) {
+  c.add(
+    c.path(
+      "M970 690v-80h22v80 M1038 690v-80h22v80 M1106 690v-80h22v80",
+      "#7c9caa",
+      1,
+      0.25,
+    ),
+  );
+}
+
+function drawCapitolTrim(c) {
+  c.add(
+    c.path(
+      "M908 720H1192 M908 727H1192 M970 586H1130 M970 590H1130",
+      "#7c9caa",
+      1,
+      0.35,
+    ),
+  );
+}
+
+function drawDomeDrum(c) {
+  c.add(c.path("M950 574H1150V590H950Z M950 581H1150", "#7c9caa", 0.8, 0.3));
+}
+
+function drawCupolaTrim(c) {
+  c.add(
+    c.path("M1034 421H1066 M1040 413H1060 M1050 406V389", "#7c9caa", 1, 0.4),
+  );
+}
+
+function drawGroundLine(c) {
+  c.add(c.path("M909 733Q1050 748 1190 733", "#8aadb7", 0.8, 0.23));
+}
+
+export default function (c, phase) {
+  paper(c, "#d2e6ec", "#efdbbf");
+  waves(c, {
+    phase,
+    color: "#ba8f8c",
+    opacity: 0.23,
+    amplitude: 65,
+    period: 350,
+  });
+  drawTexasSilhouette(c);
+  dome(c, 1050, 710, 0.8, "#84a6b4");
+  drawForegroundHatching(c);
   grid(c, {
     phase,
     color: "#72a2b5",
@@ -63,23 +102,9 @@ export default function (c, phase) {
     spacing: 9,
     amplitude: 20,
   });
-  c.add(
-    path(
-      "M970 690v-80h22v80 M1038 690v-80h22v80 M1106 690v-80h22v80",
-      "#7c9caa",
-      1,
-      0.25,
-    ),
-  );
-  c.add(
-    path(
-      "M908 720H1192 M908 727H1192 M970 586H1130 M970 590H1130",
-      "#7c9caa",
-      1,
-      0.35,
-    ),
-  );
-  c.add(path("M950 574H1150V590H950Z M950 581H1150", "#7c9caa", 0.8, 0.3));
-  c.add(path("M1034 421H1066 M1040 413H1060 M1050 406V389", "#7c9caa", 1, 0.4));
-  c.add(path("M909 733Q1050 748 1190 733", "#8aadb7", 0.8, 0.23));
+  drawCapitolColumns(c);
+  drawCapitolTrim(c);
+  drawDomeDrum(c);
+  drawCupolaTrim(c);
+  drawGroundLine(c);
 }

@@ -1,9 +1,4 @@
 import {
-  rect,
-  path,
-  line,
-  polygon,
-  ellipse,
   samples,
   grid,
   waves,
@@ -16,7 +11,7 @@ import {
 export const revision = 13;
 function paper(c, a, b, phase) {
   c.add(
-    rect(
+    c.rect(
       0,
       0,
       1400,
@@ -33,7 +28,7 @@ function paper(c, a, b, phase) {
 function curve(c, color, y, amp = 45, opacity = 0.3) {
   for (let i = 0; i < 42; i++)
     c.add(
-      line(
+      c.line(
         samples(
           (x) => [x, y + i * 6 + amp * Math.sin(x / 245 + i * 0.035)],
           -20,
@@ -50,7 +45,7 @@ function leaves(c, x, y, col) {
   for (let i = 0; i < 10; i++) {
     let a = i * 0.53;
     c.add(
-      path(
+      c.path(
         `M${x} ${y} Q${x + Math.cos(a) * 80} ${y - 70 - i * 15} ${x + Math.sin(a) * 120} ${y - 130 - i * 14}`,
         col,
         0.8,
@@ -59,6 +54,15 @@ function leaves(c, x, y, col) {
     );
   }
 }
+function drawPrairieStems(c) {
+  for (let i = 0; i < 12; i++) {
+    let x = 70 + i * 18 + c.random() * 8;
+    c.add(
+      c.path(`M${x} 880 Q${x + 35} 760 ${x + 24} 650`, "#ae9a61", 0.8, 0.3),
+    );
+  }
+}
+
 function nebraska(c, p) {
   paper(c, "#ede8db", "#c4d39f", p);
   c.glow(1050, 185, 390, 230, "#e8b560", 0.45);
@@ -82,10 +86,7 @@ function nebraska(c, p) {
   );
   curve(c, "#98a379", 610, 45, 0.25);
   tower(c, 1120, 840, 0.95, "#7e936f");
-  for (let i = 0; i < 12; i++) {
-    let x = 70 + i * 18 + c.random() * 8;
-    c.add(path(`M${x} 880 Q${x + 35} 760 ${x + 24} 650`, "#ae9a61", 0.8, 0.3));
-  }
+  drawPrairieStems(c);
 }
 function nevada(c, p) {
   paper(c, "#e6f0f1", "#b9d1c9", p);
@@ -113,11 +114,10 @@ function nevada(c, p) {
   leaves(c, 1120, 780, "#7f9f86");
   leaves(c, 1190, 830, "#7f9f86");
 }
-function newHampshire(c, p) {
-  paper(c, "#e8eef5", "#cfbfd3", p);
+function drawOvalEngraving(c) {
   for (let i = 0; i < 60; i++)
     c.add(
-      line(
+      c.line(
         samples(
           (t) => [
             700 + Math.cos(t) * (300 + i * 5),
@@ -132,6 +132,11 @@ function newHampshire(c, p) {
         0.15,
       ),
     );
+}
+
+function newHampshire(c, p) {
+  paper(c, "#e8eef5", "#cfbfd3", p);
+  drawOvalEngraving(c);
   ridge(
     c,
     [
@@ -149,21 +154,21 @@ function newHampshire(c, p) {
   for (let i = 0; i < 11; i++)
     pine(c, 1040 + i * 32, 870, 70 + c.random() * 125, "#819e9e", 0.17);
 }
-function newJersey(c, p) {
-  paper(c, "#f2dbe3", "#c5ddcd", p);
-  curve(c, "#c48d9c", -40, 45, 0.26);
+function drawRiverSilhouette(c) {
   c.add(
-    path(
+    c.path(
       "M845 0 C700 190 1100 300 915 460 S740 750 960 900",
       "#a5c4c7",
       50,
       0.24,
     ),
   );
-  engravedPavilion(c, 1080, 835, 0.86, "#81958a");
+}
+
+function drawRiverbankContours(c) {
   for (let j = 0; j < 38; j++)
     c.add(
-      path(
+      c.path(
         `M${15 + j * 5} 900 C${-80 + j * 9} 650 ${370 + j * 4} 420 ${290 + j * 5} 150`,
         "#b788a0",
         0.6,
@@ -171,6 +176,40 @@ function newJersey(c, p) {
       ),
     );
 }
+
+function newJersey(c, p) {
+  paper(c, "#f2dbe3", "#c5ddcd", p);
+  curve(c, "#c48d9c", -40, 45, 0.26);
+  drawRiverSilhouette(c);
+  engravedPavilion(c, 1080, 835, 0.86, "#81958a");
+  drawRiverbankContours(c);
+}
+function drawMesaContours(c) {
+  for (let i = 0; i < 32; i++)
+    c.add(
+      c.path(
+        `M890 ${410 + i * 8} Q1130 ${360 + i * 10} 1420 ${380 + i * 10}`,
+        "#ac8874",
+        0.7,
+        0.27,
+      ),
+    );
+}
+
+function drawDesertStems(c) {
+  for (let j = 0; j < 9; j++) {
+    let x = 1240 + j * 12;
+    c.add(
+      c.path(
+        `M1280 900 Q${x - 30} 770 ${x - 85} 710 M1280 900 Q${x + 30} 770 ${x + 30} 700`,
+        "#8ba594",
+        1,
+        0.36,
+      ),
+    );
+  }
+}
+
 function newMexico(c, p) {
   paper(c, "#dbeef0", "#ddcaa2", p);
   c.glow(550, 270, 650, 240, "#fffdf0", 0.9);
@@ -191,28 +230,22 @@ function newMexico(c, p) {
     ],
     { fill: "#dcb3a2", ink: "#bc927e", opacity: 0.52 },
   );
-  for (let i = 0; i < 32; i++)
-    c.add(
-      path(
-        `M890 ${410 + i * 8} Q1130 ${360 + i * 10} 1420 ${380 + i * 10}`,
-        "#ac8874",
-        0.7,
-        0.27,
-      ),
-    );
+  drawMesaContours(c);
   curve(c, "#adbb9e", 730, 42, 0.25);
-  for (let j = 0; j < 9; j++) {
-    let x = 1240 + j * 12;
+  drawDesertStems(c);
+}
+function drawDiagonalEngraving(c) {
+  for (let i = 0; i < 65; i++)
     c.add(
-      path(
-        `M1280 900 Q${x - 30} 770 ${x - 85} 710 M1280 900 Q${x + 30} 770 ${x + 30} 700`,
-        "#8ba594",
-        1,
-        0.36,
+      c.path(
+        `M${i * 22} 880 Q${300 + i * 15} 420 ${1100 + i * 6} -80`,
+        "#789a9d",
+        0.65,
+        0.17,
       ),
     );
-  }
 }
+
 function newYork(c, p) {
   paper(c, "#e4eeee", "#d2c9c5", p);
   rosette(c, 820, 505, 265, "#9aa8a4", {
@@ -227,17 +260,20 @@ function newYork(c, p) {
     amplitude: 13,
     opacity: 0.25,
   });
-  for (let i = 0; i < 65; i++)
-    c.add(
-      path(
-        `M${i * 22} 880 Q${300 + i * 15} 420 ${1100 + i * 6} -80`,
-        "#789a9d",
-        0.65,
-        0.17,
-      ),
-    );
+  drawDiagonalEngraving(c);
   curve(c, "#8aa6ae", 800, 16, 0.2);
 }
+function drawAirplane(c) {
+  c.add(
+    c.path(
+      "M50 205 Q165 175 290 205 L170 214Z M170 195 V228 M90 215 H240",
+      "#789ba8",
+      1,
+      0.35,
+    ),
+  );
+}
+
 function northCarolina(c, p) {
   paper(c, "#efdfe5", "#b9d4c8", p);
   curve(c, "#9dbacf", 155, 32, 0.22);
@@ -256,16 +292,25 @@ function northCarolina(c, p) {
     { fill: "#b8cbb8", ink: "#92a7a9", opacity: 0.23 },
   );
   engravedPavilion(c, 1015, 810, 0.78, "#7e967c");
-  c.add(
-    path(
-      "M50 205 Q165 175 290 205 L170 214Z M170 195 V228 M90 215 H240",
-      "#789ba8",
-      1,
-      0.35,
-    ),
-  );
+  drawAirplane(c);
   curve(c, "#b3a1bd", 750, 26, 0.2);
 }
+function drawPrairieGrasses(c) {
+  for (let i = 0; i < 19; i++) {
+    let x = 1025 + i * 18 + c.random() * 14;
+    c.add(c.path(`M${x} 900 Q${x - 35} 750 ${x - 20} 560`, "#9f9e69", 1, 0.36));
+    for (let j = 0; j < 6; j++)
+      c.add(
+        c.path(
+          `M${x - 20} ${570 + j * 15} l-14 -13 M${x - 20} ${570 + j * 15} l14 -13`,
+          "#9f9e69",
+          1,
+          0.33,
+        ),
+      );
+  }
+}
+
 function northDakota(c, p) {
   paper(c, "#e9e5d7", "#ced8b7", p);
   ridge(
@@ -285,20 +330,32 @@ function northDakota(c, p) {
     { fill: "#c9b89d", ink: "#b3987c", opacity: 0.3 },
   );
   curve(c, "#b09e7f", 635, 42, 0.22);
-  for (let i = 0; i < 19; i++) {
-    let x = 1025 + i * 18 + c.random() * 14;
-    c.add(path(`M${x} 900 Q${x - 35} 750 ${x - 20} 560`, "#9f9e69", 1, 0.36));
-    for (let j = 0; j < 6; j++)
-      c.add(
-        path(
-          `M${x - 20} ${570 + j * 15} l-14 -13 M${x - 20} ${570 + j * 15} l14 -13`,
-          "#9f9e69",
-          1,
-          0.33,
-        ),
-      );
-  }
+  drawPrairieGrasses(c);
 }
+function drawHorizontalContours(c) {
+  for (let i = 0; i < 50; i++)
+    c.add(
+      c.path(
+        `M-20 ${650 + i * 5} C420 ${480 + i * 5} 800 ${970 + i * 3} 1450 ${600 + i * 5}`,
+        "#84aaa1",
+        0.8,
+        0.23,
+      ),
+    );
+}
+
+function drawVerticalContours(c) {
+  for (let i = 0; i < 30; i++)
+    c.add(
+      c.path(
+        `M${120 + i * 7} 0 Q${530 + i * 8} 300 ${500 + i * 11} 880`,
+        "#adc58b",
+        0.7,
+        0.2,
+      ),
+    );
+}
+
 function ohio(c, p) {
   paper(c, "#dcefed", "#d0dfa8", p);
   rosette(c, 950, 390, 220, "#9caec2", {
@@ -307,38 +364,26 @@ function ohio(c, p) {
     amplitude: 7,
     opacity: 0.3,
   });
-  for (let i = 0; i < 50; i++)
-    c.add(
-      path(
-        `M-20 ${650 + i * 5} C420 ${480 + i * 5} 800 ${970 + i * 3} 1450 ${600 + i * 5}`,
-        "#84aaa1",
-        0.8,
-        0.23,
-      ),
-    );
-  for (let i = 0; i < 30; i++)
-    c.add(
-      path(
-        `M${120 + i * 7} 0 Q${530 + i * 8} 300 ${500 + i * 11} 880`,
-        "#adc58b",
-        0.7,
-        0.2,
-      ),
-    );
+  drawHorizontalContours(c);
+  drawVerticalContours(c);
 }
-function oklahoma(c, p) {
-  paper(c, "#e0edf0", "#d1d1bd", p);
-  dome(c, 1030, 850);
-  curve(c, "#b1b59e", 740, 17, 0.14);
+function drawAngularEngraving(c) {
   for (let i = 0; i < 14; i++)
     c.add(
-      path(
+      c.path(
         `M${160 + i * 12} 880 L${240 + i * 7} ${470 + i * 3} L${380 + i * 8} 880`,
         "#bfa585",
         0.7,
         0.18,
       ),
     );
+}
+
+function oklahoma(c, p) {
+  paper(c, "#e0edf0", "#d1d1bd", p);
+  dome(c, 1030, 850);
+  curve(c, "#b1b59e", 740, 17, 0.14);
+  drawAngularEngraving(c);
 }
 const designs = {
   nebraska: nebraska,
@@ -352,6 +397,123 @@ const designs = {
   ohio: ohio,
   oklahoma: oklahoma,
 };
+
+function drawNebraskaEngraving(c, name, col) {
+  if (name === "nebraska")
+    for (let i = 0; i < 24; i++)
+      c.add(
+        c.path(
+          `M${920 + i * 2} ${180 + i * 2} L${900 + i * 4} 365 L${1000 + i * 5} 470`,
+          col,
+          0.65,
+          0.22,
+        ),
+      );
+}
+
+function drawNevadaEngraving(c, name, col) {
+  if (name === "nevada")
+    for (let i = 0; i < 18; i++)
+      c.add(
+        c.path(
+          `M${820 + i * 12} 880 Q${950 + i * 7} 640 ${1280 + i * 6} 700`,
+          col,
+          0.7,
+          0.19,
+        ),
+      );
+}
+
+function drawNewJerseyEngraving(c, name, col) {
+  if (name === "new-jersey")
+    for (let i = 0; i < 15; i++)
+      c.add(
+        c.path(
+          `M${835 + i * 3} 0 C${690 + i * 3} 190 ${1090 + i * 3} 300 ${905 + i * 3} 460 S${730 + i * 3} 750 ${950 + i * 3} 900`,
+          col,
+          0.7,
+          0.15,
+        ),
+      );
+}
+
+function drawNewMexicoEngraving(c, name, col) {
+  if (name === "new-mexico")
+    for (let i = 0; i < 21; i++)
+      c.add(
+        c.path(
+          `M${900 + i * 22} ${390 - i * 1.8} l-9 90 l19 70 l-8 120`,
+          col,
+          0.6,
+          0.19,
+        ),
+      );
+}
+
+function drawNewYorkEngraving(c, name, col) {
+  if (name === "new-york")
+    for (let i = 0; i < 26; i++)
+      c.add(
+        c.line(
+          samples(
+            (t) => [
+              820 + Math.cos(t) * (110 + i * 3),
+              505 + Math.sin(t) * (75 + i * 3),
+            ],
+            0,
+            Math.PI * 2,
+            0.025,
+          ),
+          col,
+          0.6,
+          0.16,
+        ),
+      );
+}
+
+function drawNorthDakotaEngraving(c, name, col) {
+  if (name === "north-dakota")
+    for (let i = 0; i < 27; i++)
+      c.add(
+        c.path(
+          `M0 ${550 + i * 5} Q500 ${490 + i * 5} 1000 ${590 + i * 4} T1450 ${560 + i * 4}`,
+          col,
+          0.6,
+          0.15,
+        ),
+      );
+}
+
+function drawOhioEngraving(c, name, col) {
+  if (name === "ohio")
+    for (let i = 0; i < 27; i++)
+      c.add(
+        c.path(
+          `M${730 + i * 5} 0 Q${580 + i * 9} 420 ${1000 + i * 7} 880`,
+          col,
+          0.6,
+          0.12,
+        ),
+      );
+}
+
+function drawOklahomaEngraving(c, name, col) {
+  if (name === "oklahoma")
+    for (let i = 0; i < 19; i++)
+      c.add(c.path(`M690 ${690 + i * 7} H1310`, col, 0.6, 0.17));
+}
+
+function drawLowerEngraving(c, col) {
+  for (let i = 0; i < 20; i++)
+    c.add(
+      c.path(
+        `M-20 ${810 + i * 4} Q430 ${730 + i * 4} 720 ${820 + i * 3} T1420 ${780 + i * 4}`,
+        col,
+        0.6,
+        0.17,
+      ),
+    );
+}
 
 function detail(c, name) {
   const colors = {
@@ -367,101 +529,20 @@ function detail(c, name) {
     oklahoma: "#9b9d8c",
   };
   const col = colors[name];
-  if (name === "nebraska")
-    for (let i = 0; i < 24; i++)
-      c.add(
-        path(
-          `M${920 + i * 2} ${180 + i * 2} L${900 + i * 4} 365 L${1000 + i * 5} 470`,
-          col,
-          0.65,
-          0.22,
-        ),
-      );
-  if (name === "nevada")
-    for (let i = 0; i < 18; i++)
-      c.add(
-        path(
-          `M${820 + i * 12} 880 Q${950 + i * 7} 640 ${1280 + i * 6} 700`,
-          col,
-          0.7,
-          0.19,
-        ),
-      );
+  drawNebraskaEngraving(c, name, col);
+  drawNevadaEngraving(c, name, col);
   if (name === "new-hampshire") curve(c, col, 70, 26, 0.11);
-  if (name === "new-jersey")
-    for (let i = 0; i < 15; i++)
-      c.add(
-        path(
-          `M${835 + i * 3} 0 C${690 + i * 3} 190 ${1090 + i * 3} 300 ${905 + i * 3} 460 S${730 + i * 3} 750 ${950 + i * 3} 900`,
-          col,
-          0.7,
-          0.15,
-        ),
-      );
-  if (name === "new-mexico")
-    for (let i = 0; i < 21; i++)
-      c.add(
-        path(
-          `M${900 + i * 22} ${390 - i * 1.8} l-9 90 l19 70 l-8 120`,
-          col,
-          0.6,
-          0.19,
-        ),
-      );
-  if (name === "new-york")
-    for (let i = 0; i < 26; i++)
-      c.add(
-        line(
-          samples(
-            (t) => [
-              820 + Math.cos(t) * (110 + i * 3),
-              505 + Math.sin(t) * (75 + i * 3),
-            ],
-            0,
-            Math.PI * 2,
-            0.025,
-          ),
-          col,
-          0.6,
-          0.16,
-        ),
-      );
+  drawNewJerseyEngraving(c, name, col);
+  drawNewMexicoEngraving(c, name, col);
+  drawNewYorkEngraving(c, name, col);
   if (name === "north-carolina")
     for (let i = 0; i < 8; i++)
       pine(c, 1160 + i * 26, 850, 70 + i * 9 + c.random() * 30, col, 0.16);
-  if (name === "north-dakota")
-    for (let i = 0; i < 27; i++)
-      c.add(
-        path(
-          `M0 ${550 + i * 5} Q500 ${490 + i * 5} 1000 ${590 + i * 4} T1450 ${560 + i * 4}`,
-          col,
-          0.6,
-          0.15,
-        ),
-      );
-  if (name === "ohio")
-    for (let i = 0; i < 27; i++)
-      c.add(
-        path(
-          `M${730 + i * 5} 0 Q${580 + i * 9} 420 ${1000 + i * 7} 880`,
-          col,
-          0.6,
-          0.12,
-        ),
-      );
-  if (name === "oklahoma")
-    for (let i = 0; i < 19; i++)
-      c.add(path(`M690 ${690 + i * 7} H1310`, col, 0.6, 0.17));
+  drawNorthDakotaEngraving(c, name, col);
+  drawOhioEngraving(c, name, col);
+  drawOklahomaEngraving(c, name, col);
 
-  for (let i = 0; i < 20; i++)
-    c.add(
-      path(
-        `M-20 ${810 + i * 4} Q430 ${730 + i * 4} 720 ${820 + i * 3} T1420 ${780 + i * 4}`,
-        col,
-        0.6,
-        0.17,
-      ),
-    );
+  drawLowerEngraving(c, col);
 }
 export default Object.fromEntries(
   Object.entries(designs).map(([name, fn]) => [
@@ -474,9 +555,9 @@ export default Object.fromEntries(
 );
 
 function dome(c, x, y) {
-  let g = "";
+  const g = [];
   const add = (d, w = 1, o = 0.45, fill = "none") =>
-    (g += path(d, "#7b8e83", w, o, fill));
+    g.push(c.path(d, "#7b8e83", w, o, fill));
   add("M-310 0 V-165 H310 V0 Z", 1, 0.35, "#e8e9df");
   for (let j = -11; j <= 11; j++) {
     let xx = j * 25;
@@ -502,5 +583,5 @@ function dome(c, x, y) {
   add("M-22 -449 V-490 H22 V-449 M-28 -490 L0 -520 L28 -490Z M0 -520 V-540");
   for (let i = 0; i < 6; i++)
     add(`M${-325 - i * 3} ${i * 5} H${325 + i * 3}`, 0.8, 0.4);
-  c.add(`<g transform="translate(${x} ${y})">${g}</g>`);
+  c.add([c.openGroup(`translate(${x} ${y})`), g, c.closeGroup()]);
 }

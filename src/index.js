@@ -1,4 +1,4 @@
-import { states, render as renderUS } from "./countries/us/index.js";
+import { states, drawState } from "./countries/us/index.js";
 import mexicoNorth from "./countries/mx/north/index.js";
 import mexicoCentral from "./countries/mx/central/index.js";
 import mexicoSouth from "./countries/mx/south/index.js";
@@ -20,13 +20,15 @@ export const countryNames = Object.freeze({
   mx: "Mexico",
   ca: "Canada",
 });
-export function render(
+export function drawJurisdiction(
   jurisdiction,
-  { country = "us", seed = 42, width = 1400, height = 880 } = {},
+  { country = "us", seed = 42, width = 1400, height = 880 },
+  createTarget,
 ) {
   if (!countries.includes(country))
     throw new RangeError("Unknown country: " + country);
-  if (country === "us") return renderUS(jurisdiction, { seed, width, height });
+  if (country === "us")
+    return drawState(jurisdiction, { seed, width, height }, createTarget);
   if (!jurisdictionsByCountry[country].includes(jurisdiction))
     throw new RangeError(
       "Unknown jurisdiction for " + country + ": " + jurisdiction,
@@ -46,8 +48,25 @@ export function render(
       "dimensions must be positive integers <=8192 and <=40 million pixels",
     );
   const random = rng(mixSeed(seed)),
-    c = new Canvas(random, country + "-" + jurisdiction + "-" + seed + "-");
+    c = createTarget(
+      random,
+      width,
+      height,
+      country + "-" + jurisdiction + "-" + seed + "-",
+    );
   designs[country][jurisdiction](c, random() * Math.PI * 2);
+  return c;
+}
+
+export function render(
+  jurisdiction,
+  { country = "us", seed = 42, width = 1400, height = 880 } = {},
+) {
+  const c = drawJurisdiction(
+    jurisdiction,
+    { country, seed, width, height },
+    (random, _width, _height, prefix) => new Canvas(random, prefix),
+  );
   return (
     '<svg xmlns="http://www.w3.org/2000/svg" width="' +
     width +

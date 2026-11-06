@@ -1,7 +1,7 @@
-import { rect, path, line, ellipse, polygon, samples } from "../../geometry.js";
+import { samples } from "../../geometry.js";
 export function base(c, colors) {
   c.add(
-    rect(
+    c.rect(
       0,
       0,
       1400,
@@ -13,7 +13,7 @@ export function base(c, colors) {
 export function contours(c, color, p, axis = "horizontal", opacity = 0.18) {
   for (let j = -100; j < 1500; j += 13)
     c.add(
-      line(
+      c.line(
         samples(
           (t) =>
             axis === "horizontal"
@@ -31,7 +31,7 @@ export function contours(c, color, p, axis = "horizontal", opacity = 0.18) {
 }
 export function wheat(c, x, y, s, ink) {
   c.add(
-    path(
+    c.path(
       `M${x} ${y} Q${x - 10 * s} ${y - 120 * s} ${x + 12 * s} ${y - 250 * s}`,
       ink,
       1.4,
@@ -43,7 +43,7 @@ export function wheat(c, x, y, s, ink) {
       xx = x + (i - 4) * 1.5 * s;
     for (const d of [-1, 1])
       c.add(
-        path(
+        c.path(
           `M${xx} ${yy} Q${xx + d * 38 * s} ${yy - 7 * s} ${xx + d * 24 * s} ${yy - 28 * s} Q${xx + d * 8 * s} ${yy - 27 * s} ${xx} ${yy}Z`,
           ink,
           0.7,
@@ -54,26 +54,30 @@ export function wheat(c, x, y, s, ink) {
   }
 }
 export function dome(c, x, y, s, ink) {
-  let g = "";
-  g += path(
-    "M-210 0 V-130 H210 V0 M-225 -130 H225 M-170 -150 H170 M-100 -160 V-220 Q0 -380 100 -220 V-160 M-108 -220 H108 M-100 -160 H100 M-90 -160 V-130 M90 -160 V-130 M0 -300 V-340",
-    ink,
-    2,
-    0.48,
+  const g = [];
+  g.push(
+    c.path(
+      "M-210 0 V-130 H210 V0 M-225 -130 H225 M-170 -150 H170 M-100 -160 V-220 Q0 -380 100 -220 V-160 M-108 -220 H108 M-100 -160 H100 M-90 -160 V-130 M90 -160 V-130 M0 -300 V-340",
+      ink,
+      2,
+      0.48,
+    ),
   );
   for (let k = -5; k <= 5; k++) {
-    g += path(
-      `M${k * 33 - 7} 0 V-112 H${k * 33 + 7} V0 M${k * 33 - 10} -118 H${k * 33 + 10}`,
-      ink,
-      1,
-      0.45,
+    g.push(
+      c.path(
+        `M${k * 33 - 7} 0 V-112 H${k * 33 + 7} V0 M${k * 33 - 10} -118 H${k * 33 + 10}`,
+        ink,
+        1,
+        0.45,
+      ),
     );
   }
   for (let j = 0; j < 10; j++)
-    g += path(`M-210 ${-j * 12} H210`, ink, 0.7, 0.2);
+    g.push(c.path(`M-210 ${-j * 12} H210`, ink, 0.7, 0.2));
   for (let j = -4; j <= 4; j++)
-    g += path(`M${j * 20} -220 Q${j * 12} -280 0 -300`, ink, 0.8, 0.32);
-  c.add(`<g transform="translate(${x} ${y}) scale(${s})">${g}</g>`);
+    g.push(c.path(`M${j * 20} -220 Q${j * 12} -280 0 -300`, ink, 0.8, 0.32));
+  c.add([c.openGroup(`translate(${x} ${y}) scale(${s})`), g, c.closeGroup()]);
 }
 export function leaves(c, x, y, r, ink) {
   for (let k = 0; k < 7; k++) {
@@ -81,7 +85,7 @@ export function leaves(c, x, y, r, ink) {
     const X = x + r * Math.cos(a),
       Y = y + r * Math.sin(a);
     c.add(
-      path(
+      c.path(
         `M${x} ${y} Q${X - 35} ${Y - 40} ${X} ${Y} Q${X + 30} ${Y + 35} ${x} ${y}Z`,
         ink,
         1,
@@ -90,7 +94,7 @@ export function leaves(c, x, y, r, ink) {
       ),
     );
     c.add(
-      line(
+      c.line(
         [
           [x, y],
           [X, Y],
@@ -105,7 +109,7 @@ export function leaves(c, x, y, r, ink) {
 export function orbit(c, x, y, rx, ry, ink, p) {
   for (let i = 0; i < 32; i++)
     c.add(
-      line(
+      c.line(
         samples(
           (t) => {
             const a = (t * Math.PI) / 180;

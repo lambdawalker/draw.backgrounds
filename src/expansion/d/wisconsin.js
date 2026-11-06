@@ -10,13 +10,29 @@ import {
   leaf,
   fan,
   palm,
-  rect,
-  path,
-  line,
-  polygon,
-  ellipse,
   samples,
 } from "./helpers.js";
+function drawLowerContours(c) {
+  for (let j = 0; j < 12; j++)
+    c.add(c.path(`M${150 + j * 18} 800q400 -55 700 10`, "#96a491", 0.65, 0.16));
+}
+
+function drawCapitolTrim(c) {
+  c.add(c.path("M299 754H581 M299 761H581 M340 614H540", "#95a09a", 1, 0.3));
+}
+
+function drawDomeDrum(c) {
+  c.add(c.path("M340 614H540V630H340Z M340 622H540", "#95a09a", 0.8, 0.3));
+}
+
+function drawCupolaTrim(c) {
+  c.add(c.path("M426 437H454 M431 430H449 M440 425V407", "#95a09a", 0.8, 0.35));
+}
+
+function drawGroundLine(c) {
+  c.add(c.path("M300 776Q440 787 580 776", "#95a09a", 0.75, 0.23));
+}
+
 export default function (c, phase) {
   paper(c, "#eeeecf", "#dce4e6");
   waves(c, {
@@ -36,13 +52,12 @@ export default function (c, phase) {
     spacing: 17,
     amplitude: 42,
   });
-  for (let j = 0; j < 12; j++)
-    c.add(path(`M${150 + j * 18} 800q400 -55 700 10`, "#96a491", 0.65, 0.16));
+  drawLowerContours(c);
   leaf(c, 70, 180, 0.9, "#a1ab7d");
   for (let j = 0; j < 6; j++)
     leaf(c, 1180 + j * 17, 400 + j * 35, 0.28, "#9aa77b");
-  c.add(path("M299 754H581 M299 761H581 M340 614H540", "#95a09a", 1, 0.3));
-  c.add(path("M340 614H540V630H340Z M340 622H540", "#95a09a", 0.8, 0.3));
-  c.add(path("M426 437H454 M431 430H449 M440 425V407", "#95a09a", 0.8, 0.35));
-  c.add(path("M300 776Q440 787 580 776", "#95a09a", 0.75, 0.23));
+  drawCapitolTrim(c);
+  drawDomeDrum(c);
+  drawCupolaTrim(c);
+  drawGroundLine(c);
 }

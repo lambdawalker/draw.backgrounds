@@ -1,18 +1,9 @@
-import {
-  path,
-  line,
-  rect,
-  ellipse,
-  polygon,
-  samples,
-  grid,
-  waves,
-} from "../../geometry.js";
-export { path, line, rect, ellipse, polygon, samples, grid, waves };
+import { samples, grid, waves } from "../../geometry.js";
+export { samples, grid, waves };
 export const quality = { pass: 13 };
 export function paper(c, colors) {
   c.add(
-    rect(
+    c.rect(
       0,
       0,
       1400,
@@ -22,38 +13,55 @@ export function paper(c, colors) {
   );
 }
 export function etch(c, shape, color, spacing = 7) {
-  let a = "";
+  const a = [];
   for (let y = 0; y < 1000; y += spacing)
-    a += line(
-      samples((x) => [x, y + 8 * Math.sin(x / 130 + y / 150)], -20, 1420, 9),
-      color,
-      0.65,
-      0.19,
+    a.push(
+      c.line(
+        samples((x) => [x, y + 8 * Math.sin(x / 130 + y / 150)], -20, 1420, 9),
+        color,
+        0.65,
+        0.19,
+      ),
     );
   c.clip(shape, a);
 }
 export function leaf(c, x, y, s, angle, color) {
-  let a = quality.pass >= 3 ? path(`M0 0 L${s} 0`, color, 0.9, 0.55) : "";
+  const a = [];
+  if (quality.pass >= 3) a.push(c.path(`M0 0 L${s} 0`, color, 0.9, 0.55));
   for (let k = -6; k <= 6; k++)
-    a += path(`M0 0 Q${s * 0.5} ${k * s * 0.065} ${s} 0`, color, 0.65, 0.38);
+    a.push(
+      c.path(`M0 0 Q${s * 0.5} ${k * s * 0.065} ${s} 0`, color, 0.65, 0.38),
+    );
   for (let j = 1; j < 9; j++) {
     let t = j / 10;
     for (const side of [-1, 1])
-      a += path(
-        `M${s * t} 0 Q${s * (t + 0.08)} ${side * s * 0.06} ${s * (t + 0.12)} ${side * s * 0.19 * Math.sin(t * Math.PI)}`,
-        color,
-        0.65,
-        0.42,
+      a.push(
+        c.path(
+          `M${s * t} 0 Q${s * (t + 0.08)} ${side * s * 0.06} ${s * (t + 0.12)} ${side * s * 0.19 * Math.sin(t * Math.PI)}`,
+          color,
+          0.65,
+          0.42,
+        ),
       );
   }
-  c.add(
-    `<g transform="translate(${x} ${y}) rotate(${angle})">${path(`M0 0 Q${s * 0.45} ${-s * 0.45} ${s} 0 Q${s * 0.45} ${s * 0.45} 0 0Z`, color, 0.9, 0.28, color)}${a}</g>`,
-  );
+  c.add([
+    c.openGroup(`translate(${x} ${y}) rotate(${angle})`),
+    c.path(
+      `M0 0 Q${s * 0.45} ${-s * 0.45} ${s} 0 Q${s * 0.45} ${s * 0.45} 0 0Z`,
+      color,
+      0.9,
+      0.28,
+      color,
+    ),
+    a,
+    c.closeGroup(),
+  ]);
 }
 export function dome(c, x, y, s, color, kind = "round") {
-  let a = "";
-  const P = (d, w = 0.9, o = 0.6, f = "none") => (a += path(d, color, w, o, f));
-  const R = (x, y, w, h, o = 0.1) => (a += rect(x, y, w, h, color, o));
+  const a = [];
+  const P = (d, w = 0.9, o = 0.6, f = "none") =>
+    a.push(c.path(d, color, w, o, f));
+  const R = (x, y, w, h, o = 0.1) => a.push(c.rect(x, y, w, h, color, o));
   R(-240, -140, 480, 140);
   R(-235, -120, 45, 115, 0.055);
   R(190, -120, 45, 115, 0.055);
@@ -79,7 +87,15 @@ export function dome(c, x, y, s, color, kind = "round") {
       0.5,
     );
   if (kind !== "tower") {
-    a += `<g transform="${kind === "indiana" ? "translate(0 50) scale(.72 1.25)" : kind === "iowa" ? "translate(0 35) scale(.9 1.17)" : "translate(0 0)"}">`;
+    a.push(
+      c.openGroup(
+        kind === "indiana"
+          ? "translate(0 50) scale(.72 1.25)"
+          : kind === "iowa"
+            ? "translate(0 35) scale(.9 1.17)"
+            : "translate(0 0)",
+      ),
+    );
     P("M-125 -207 Q-105 -307 0 -318 Q105 -307 125 -207Z", 1, 0.65, "#dbe2d7");
     for (let j = -5; j <= 5; j++)
       P(`M${j * 23} -209 Q${j * 18} -285 0 -318`, 0.7, 0.5);
@@ -90,7 +106,7 @@ export function dome(c, x, y, s, color, kind = "round") {
         0.4,
       );
     P("M-20 -320 V-352 Q0 -378 20 -352 V-320 M-27 -319 H27 M0 -368 V-388");
-    a += "</g>";
+    a.push(c.closeGroup());
   } else {
     P(
       "M-58 -207 V-280 H58 V-207 M-66 -280 H66 L0 -325Z M-24 -310 V-350 H24 V-310 M0 -350 V-385",
@@ -118,13 +134,13 @@ export function dome(c, x, y, s, color, kind = "round") {
       P(`M${112 + j * 5.5} ${-148 - j * 4.7} H${238 - j * 5.5}`, 0.6, 0.4);
     }
   }
-  c.add(`<g transform="translate(${x} ${y}) scale(${s})">${a}</g>`);
+  c.add([c.openGroup(`translate(${x} ${y}) scale(${s})`), a, c.closeGroup()]);
 }
 export function border(c, color, kind = 0) {
   for (let j = 0; j < 24; j++)
     for (const direction of [-1, 1])
       c.add(
-        line(
+        c.line(
           samples(
             (x) => [
               x,
@@ -155,7 +171,7 @@ export function field(c, color, phase = 0) {
 export function flourish(c, x, y, s, color) {
   for (let j = 0; j < 14; j++)
     c.add(
-      path(
+      c.path(
         `M${x - s} ${y + j * 3} C${x - s * 0.5} ${y - s * 0.6 + j * 3} ${x + s * 0.7} ${y + s * 0.5 - j * 4} ${x + s} ${y - s * 0.25 + j * 3}`,
         color,
         0.8,

@@ -3,10 +3,6 @@ import {
   fireweed,
   trillium,
   iris,
-  path,
-  line,
-  polygon,
-  ellipse,
   samples,
   waves,
   ridge,
@@ -19,12 +15,10 @@ import {
   grasses,
   iceberg,
 } from "./helpers.js";
-export default function (c, p) {
-  base(c, p + 5.67, "#dfeded", "#e6e5ce", "#78a8ad");
-  c.glow(1050, 230, 230, 210, "#e6cd88", 0.48);
+function drawAuroraBands(c, p) {
   for (let j = 0; j < 27; j++)
     c.add(
-      line(
+      c.line(
         samples(
           (x) => [
             x,
@@ -39,6 +33,12 @@ export default function (c, p) {
         0.2,
       ),
     );
+}
+
+export default function (c, p) {
+  base(c, p + 5.67, "#dfeded", "#e6e5ce", "#78a8ad");
+  c.glow(1050, 230, 230, 210, "#e6cd88", 0.48);
+  drawAuroraBands(c, p);
   ridge(
     c,
     [

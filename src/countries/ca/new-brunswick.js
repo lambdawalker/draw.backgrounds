@@ -1,12 +1,9 @@
 import {
   base,
+  drawCoastalArcEngraving,
   fireweed,
   trillium,
   iris,
-  path,
-  line,
-  polygon,
-  ellipse,
   samples,
   waves,
   ridge,
@@ -40,21 +37,5 @@ export default function (c, p) {
   );
   shore(c, "#78a7b1", 770, 19);
   branch(c, 1230, 740, 0.9, "#a7a1b9");
-  for (let j = 0; j < 15; j++)
-    c.add(
-      line(
-        samples(
-          (t) => [
-            1350 - 160 * Math.sin(t) + j * 4,
-            240 + 180 * Math.cos(t) + j * 2,
-          ],
-          0,
-          6.3,
-          0.04,
-        ),
-        "#a6a39b",
-        0.7,
-        0.19,
-      ),
-    );
+  drawCoastalArcEngraving(c, "#a6a39b");
 }

@@ -7,16 +7,21 @@
   "engines": {
     "node": ">=22"
   },
-  "exports": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./canvas": "./src/canvas.js"
+  },
   "scripts": {
     "generate": "node src/cli.js",
     "previews": "node scripts/previews.js",
     "test": "node --test",
     "select-states": "node scripts/select-states.js",
     "format": "prettier --write src scripts test",
-    "format:check": "prettier --check src scripts test"
+    "format:check": "prettier --check src scripts test",
+    "benchmark:us": "node scripts/benchmark-us.js"
   },
   "dependencies": {
+    "@napi-rs/canvas": "1.0.0",
     "sharp": "0.34.5"
   },
   "devDependencies": {
