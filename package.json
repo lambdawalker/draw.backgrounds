@@ -1,14 +1,13 @@
 {
   "name": "@lambdawalker/draw-backgrounds",
   "version": "0.1.0",
-  "private": true,
   "type": "module",
-  "description": "Seeded procedural SVG backgrounds for synthetic card datasets",
+  "description": "Seeded procedural SVG and Canvas backgrounds for synthetic card datasets",
   "engines": {
     "node": ">=22"
   },
   "exports": {
-    ".": "./src/index.js",
+    ".": "./src/public.js",
     "./canvas": "./src/canvas.js"
   },
   "scripts": {
@@ -18,13 +17,30 @@
     "select-states": "node scripts/select-states.js",
     "format": "prettier --write src scripts test",
     "format:check": "prettier --check src scripts test",
-    "benchmark:us": "node scripts/benchmark-us.js"
-  },
-  "dependencies": {
-    "@napi-rs/canvas": "1.0.0",
-    "sharp": "0.34.5"
+    "benchmark:us": "node scripts/benchmark-us.js",
+    "check:package": "node scripts/check-package.js"
   },
   "devDependencies": {
-    "prettier": "^3.6.2"
+    "prettier": "^3.6.2",
+    "sharp": "0.34.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lambdawalker/draw.backgrounds.git"
+  },
+  "homepage": "https://github.com/lambdawalker/draw.backgrounds#readme",
+  "bugs": {
+    "url": "https://github.com/lambdawalker/draw.backgrounds/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "files": [
+    "src/",
+    "!src/cli.js"
+  ],
+  "optionalDependencies": {
+    "@napi-rs/canvas": "1.0.0"
   }
 }
