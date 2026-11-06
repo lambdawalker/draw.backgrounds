@@ -6,6 +6,12 @@ Ninety-five original, code-generated card backgrounds: 50 United States, 32 Mexi
 
 Expansion previews: [states 11–20](previews/us/contact-sheet-2.jpg) · [21–30](previews/us/contact-sheet-3.jpg) · [31–40](previews/us/contact-sheet-4.jpg) · [41–50](previews/us/contact-sheet-5.jpg).
 
+## Documentation
+
+[English guides](docs/agents/index.md) · [Guías en español](docs/es/index.md) · [Agent integration](AI_INTEGRATION_GUIDE.md) · [Website maintenance](docs/DOCUMENTATION.md)
+
+The documentation website is built for [GitHub Pages](https://lambdawalker.github.io/draw.backgrounds/). It includes matching HTML and raw Markdown, reviewed artwork, and retained release scopes. Deployment becomes available after merging the documentation workflow and enabling Pages with GitHub Actions. Until an npm publication is confirmed in the catalog, the default scope is explicitly Development.
+
 ## Country collections
 
 | Country | Designs | Gallery | Reference catalog |

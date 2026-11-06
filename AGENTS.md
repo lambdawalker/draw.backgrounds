@@ -6,3 +6,4 @@
 - Render candidates separately from the reviewed gallery. Inspect affected images and update reviewed assets and their manifests together. CI validates the gallery without accepting new baselines.
 - Keep release tags immutable. New stable tags use `vX.Y.Z`, match `package.json`, and point to a commit on `main`. A source tag does not establish npm availability.
 - See [the release runbook](docs/RELEASING.md) for commands, visual review, and release recovery.
+- Maintain English and Spanish canonical guides together; update translation hashes only after reviewing the translation. Run `npm --prefix sites ci && npm --prefix sites run check` and both `examples/render-*.mjs` before documentation changes merge. See [documentation maintenance](docs/DOCUMENTATION.md) for immutable release snapshots and Pages setup.

@@ -13,7 +13,7 @@
   "scripts": {
     "generate": "node src/cli.js",
     "previews": "node scripts/previews.js",
-    "test": "node --test",
+    "test": "node --test \"test/**/*.test.js\"",
     "select-states": "node scripts/select-states.js",
     "format": "prettier --write src scripts test",
     "format:check": "prettier --check src scripts test",

@@ -1,0 +1,149 @@
+name: Documentation
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_run:
+    workflows: [Publish npm package]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: 'Optional stable tag to confirm (requires publish_run)'
+        type: string
+      publish_run:
+        description: 'Successful Publish npm package run ID for that tag'
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: documentation-${{ github.event_name == 'workflow_run' && github.event.workflow_run.id || github.event_name == 'pull_request' && github.ref || 'main' }}
+  cancel-in-progress: false
+
+jobs:
+  confirm:
+    if: >-
+      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'push' && github.event.workflow_run.head_repository.full_name == github.repository) ||
+      (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && inputs.release_tag != '')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: read
+    steps:
+      # Execute only current trusted main tooling, never scripts from the old tag/artifact.
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: Confirm exact publication
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVENT_TAG: ${{ github.event.workflow_run.head_branch }}
+          INPUT_TAG: ${{ inputs.release_tag }}
+          EVENT_RUN: ${{ github.event.workflow_run.id }}
+          INPUT_RUN: ${{ inputs.publish_run }}
+        run: |
+          TAG="${INPUT_TAG:-$EVENT_TAG}"
+          RUN="${INPUT_RUN:-$EVENT_RUN}"
+          node scripts/documentation-history.js confirm "$TAG" "$RUN"
+          echo "DOCS_TAG=$TAG" >> "$GITHUB_ENV"
+      - name: Preserve reviewable confirmation
+        uses: actions/upload-artifact@v4
+        with:
+          name: confirmed-documentation-catalog
+          path: docs/releases/catalog.json
+          if-no-files-found: error
+      - name: Propose durable catalog update
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if git diff --quiet -- docs/releases/catalog.json; then exit 0; fi
+          BRANCH="docs/confirm-$DOCS_TAG"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git checkout -b "$BRANCH"
+          git add docs/releases/catalog.json
+          git commit -m "docs: confirm $DOCS_TAG npm publication"
+          git push origin "HEAD:refs/heads/$BRANCH" --force-with-lease
+          cat > "$RUNNER_TEMP/docs-pr.md" <<'BODY'
+          Confirm the exact npm tarball against the verified artifact from a successful trusted publication run. Retain source and documentation commit identities in the tracked catalog.
+
+          Review and merge this catalog to expose the release as available documentation. The main push rebuilds all retained versions and chooses latest by semantic version. If this PR conflicts with another confirmation, rerun the Documentation workflow against current main; never discard older entries.
+
+          GitHub may suppress workflows for PRs opened with GITHUB_TOKEN. Run the Documentation workflow manually on main after merge if the merge did not trigger it, and run the documented site checks locally before approving.
+          BODY
+          if ! gh pr list --head "$BRANCH" --state open --json number --jq '.[0].number' | grep -q '[0-9]'; then
+            gh pr create --base main --head "$BRANCH" --title "docs: confirm $DOCS_TAG npm publication" --body-file "$RUNNER_TEMP/docs-pr.md"
+          fi
+
+  build:
+    permissions:
+      contents: read
+      pages: read
+    if: github.event_name != 'workflow_run' && (github.event_name == 'pull_request' || github.ref == 'refs/heads/main')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: Validate retained release identities
+        run: node scripts/documentation-history.js check
+      - name: Build and validate every documentation version
+        run: |
+          npm ci
+          node examples/render-svg.mjs
+          node examples/render-canvas.mjs
+          npm --prefix sites ci
+          npm --prefix sites run check
+      - name: Reject stale deployment source
+        if: github.event_name != 'pull_request'
+        run: |
+          git fetch origin main
+          test "$(git rev-parse HEAD)" = "$(git rev-parse origin/main)"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: documentation-preview
+          path: sites/dist
+          if-no-files-found: error
+      - name: Configure Pages
+        if: github.event_name != 'pull_request'
+        uses: actions/configure-pages@v5
+      - name: Upload complete Pages site
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: sites/dist
+
+  deploy:
+    if: github.event_name != 'pull_request' && github.event_name != 'workflow_run'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      # Main can advance while the environment is awaiting approval.
+      - name: Reject stale source before deployment
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXPECTED_SHA: ${{ github.sha }}
+        run: test "$(gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/main" --jq .object.sha)" = "$EXPECTED_SHA"
+      - id: deployment
+        uses: actions/deploy-pages@v4
