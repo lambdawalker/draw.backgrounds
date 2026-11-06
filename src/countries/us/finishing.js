@@ -1,0 +1,163 @@
+import { samples } from "../../geometry.js";
+const inks = {
+  washington: "#6496a4",
+  arkansas: "#b79a67",
+  illinois: "#899fb7",
+  tennessee: "#a58088",
+  alaska: "#8da99b",
+  wyoming: "#659e99",
+  louisiana: "#a4a475",
+  utah: "#bb968c",
+  colorado: "#929eab",
+  idaho: "#87a8b7",
+};
+function drawEngravingBands(c, ink) {
+  // Broad, crossing engraving bands vary smoothly rather than forming a flat grid.
+  for (let j = 0; j < 16; j++)
+    c.add(
+      c.line(
+        samples(
+          (x) => [
+            x,
+            815 +
+              j * 2.3 +
+              1.8 * Math.sin(j * 0.63) -
+              80 * Math.sin(x / 340) +
+              12 * Math.sin(x / 95 + j * 0.07),
+          ],
+          -20,
+          1420,
+          8,
+        ),
+        ink,
+        0.55,
+        0.17,
+      ),
+    );
+  for (let j = 0; j < 12; j++)
+    c.add(
+      c.line(
+        samples(
+          (x) => [
+            x,
+            30 +
+              j * 3 +
+              1.5 * Math.sin(j * 0.7) +
+              20 * Math.sin(x / 220 + j * 0.04),
+          ],
+          -20,
+          1420,
+          8,
+        ),
+        ink,
+        0.55,
+        0.15,
+      ),
+    );
+}
+
+const placements = {
+  washington: [1200, 760],
+  arkansas: [1300, 580],
+  illinois: [1280, 730],
+  tennessee: [1310, 730],
+  alaska: [120, 760],
+  wyoming: [1300, 730],
+  louisiana: [1260, 700],
+  utah: [1300, 740],
+  colorado: [1220, 790],
+  idaho: [1230, 740],
+};
+
+function drawCircularWreath(c, ink) {
+  // Tangential leaves sit on one continuous circular stem.
+  const cx = 900,
+    cy = 420,
+    radius = 232;
+  c.add(
+    c.path(
+      `M${cx + radius} ${cy} A${radius} ${radius} 0 1 1 ${cx - radius} ${cy} A${radius} ${radius} 0 1 1 ${cx + radius} ${cy}`,
+      ink,
+      0.7,
+      0.23,
+    ),
+  );
+  for (let j = 0; j < 32; j++) {
+    const a = (j * Math.PI) / 16,
+      x = cx + radius * Math.cos(a),
+      y = cy + radius * Math.sin(a);
+    c.add([
+      c.openGroup(`translate(${x} ${y}) rotate(${(a * 180) / Math.PI + 90})`),
+      c.path("M0 0 Q18 -19 42 -8 Q25 9 0 0Z", ink, 0.9, 0.48, "#cbd9cc"),
+      c.path("M0 0 Q21 -7 42 -8 M13 -4 L18 -11 M23 -6 L30 -12", ink, 0.55, 0.3),
+      c.closeGroup(),
+    ]);
+  }
+}
+
+function drawBotanicalSprig(c, ink, state) {
+  const [bx, by] = placements[state];
+  c.add(
+    c.path(
+      `M${bx - 45} ${by + 100} Q${bx + 10} ${by} ${bx - 10} ${by - 110}`,
+      ink,
+      1,
+      0.28,
+    ),
+  );
+  for (let j = 0; j < 9; j++)
+    for (const side of [-1, 1]) {
+      const x = bx - 15 + 15 * Math.sin(j * 0.35),
+        y = by + 75 - j * 21,
+        tip = x + side * (24 + (j % 3) * 5);
+      c.add(
+        c.path(
+          `M${x} ${y} Q${tip} ${y - 3} ${tip} ${y - 26} Q${x} ${y - 23} ${x} ${y}Z`,
+          ink,
+          0.65,
+          0.25,
+        ),
+      );
+      c.add(
+        c.line(
+          [
+            [x, y],
+            [tip, y - 26],
+          ],
+          ink,
+          0.5,
+          0.24,
+        ),
+      );
+    }
+}
+
+function drawInkStipple(c, ink) {
+  // Sparse seeded ink stipple creates scale-dependent texture without raster filters.
+  for (let j = 0; j < 1600; j++) {
+    const x = c.random() * 1400,
+      y = c.random() * 880;
+    c.add(c.ellipse(x, y, 0.22 + c.random() * 0.32, 0.24, ink, 0.13));
+  }
+}
+
+function drawWritingGlow(c, state) {
+  // A diffuse light field improves central writing contrast without hard blank panels.
+  c.glow(
+    610,
+    375,
+    680,
+    340,
+    "#fffdf7",
+    state === "colorado" || state === "alaska" ? 0.19 : 0.1,
+  );
+}
+
+export function finish(c, state) {
+  const ink = inks[state];
+  drawEngravingBands(c, ink);
+  if (state === "illinois") drawCircularWreath(c, ink);
+  else drawBotanicalSprig(c, ink, state);
+  drawInkStipple(c, ink);
+  drawWritingGlow(c, state);
+}

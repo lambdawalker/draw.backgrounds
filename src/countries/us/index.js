@@ -1,19 +1,19 @@
-import expansionA from "../../expansion/a/index.js";
-import expansionB from "../../expansion/b/index.js";
-import expansionC from "../../expansion/c/index.js";
-import expansionD from "../../expansion/d/index.js";
-import { finish } from "../../finishing.js";
+import expansionA from "./expansion/a/index.js";
+import expansionB from "./expansion/b/index.js";
+import expansionC from "./expansion/c/index.js";
+import expansionD from "./expansion/d/index.js";
+import { finish } from "./finishing.js";
 import { Canvas, rng, mixSeed } from "../../geometry.js";
-import washington from "../../designs/washington.js";
-import arkansas from "../../designs/arkansas.js";
-import illinois from "../../designs/illinois.js";
-import tennessee from "../../designs/tennessee.js";
-import alaska from "../../designs/alaska.js";
-import wyoming from "../../designs/wyoming.js";
-import louisiana from "../../designs/louisiana.js";
-import utah from "../../designs/utah.js";
-import colorado from "../../designs/colorado.js";
-import idaho from "../../designs/idaho.js";
+import washington from "./originals/washington.js";
+import arkansas from "./originals/arkansas.js";
+import illinois from "./originals/illinois.js";
+import tennessee from "./originals/tennessee.js";
+import alaska from "./originals/alaska.js";
+import wyoming from "./originals/wyoming.js";
+import louisiana from "./originals/louisiana.js";
+import utah from "./originals/utah.js";
+import colorado from "./originals/colorado.js";
+import idaho from "./originals/idaho.js";
 const originalStates = Object.freeze([
   "washington",
   "arkansas",
