@@ -1,0 +1,38 @@
+{
+  "api": {
+    "sourceHash": "c70f59bb4637833e47eb8bb593b77ebe0bee16ca185f9ddc70eff5496a31729d",
+    "locale": "es"
+  },
+  "concepts": {
+    "sourceHash": "ba8237318135388a80724c61118fd40baabc986009b26ce9d550902711405965",
+    "locale": "es"
+  },
+  "gallery": {
+    "sourceHash": "534ad35eabf4d9b2fd06129d4d0325927b2c0c50b668e54186919c5124d6a695",
+    "locale": "es"
+  },
+  "index": {
+    "sourceHash": "81330e4a4b8b0162ad34fcbc28d67e77c3c4884dc38f4007dee7437dd36fcc68",
+    "locale": "es"
+  },
+  "limitations": {
+    "sourceHash": "cb90d314ca5444a4ea3df16b195fbfa31b0eaf66585915dd152c604abe867cd6",
+    "locale": "es"
+  },
+  "migration": {
+    "sourceHash": "1985bfa527c8c3e11af1d43bffddb16c3598565117bed6662e49d858b73afe63",
+    "locale": "es"
+  },
+  "quickstart": {
+    "sourceHash": "ac8fd2d23631a64125ee33358de0e4b1be85cbc98045ca44d76c8206d73881b4",
+    "locale": "es"
+  },
+  "recipes": {
+    "sourceHash": "b744c3507f5fd86d713411b3d1b46caa6ba94c17bc6c40784b2e5946ca2016c2",
+    "locale": "es"
+  },
+  "troubleshooting": {
+    "sourceHash": "0c7bcbe4e1419d98bc849c2146445f0770c89de9ee4c3f804c805dc551819b09",
+    "locale": "es"
+  }
+}
