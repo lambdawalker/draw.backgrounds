@@ -1,0 +1,31 @@
+name: Check background renders
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - run: npm ci
+      - run: npm run format:check
+      - run: npm test
+      - name: Render gallery candidates
+        if: always() && (github.event_name == 'workflow_dispatch' || failure())
+        run: |
+          npm run previews -- "$RUNNER_TEMP/background-candidates"
+          git rev-parse HEAD > "$RUNNER_TEMP/background-candidates/source-commit.txt"
+      - uses: actions/upload-artifact@v4
+        if: always() && (github.event_name == 'workflow_dispatch' || failure())
+        with:
+          name: background-candidates
+          overwrite: true
+          path: ${{ runner.temp }}/background-candidates

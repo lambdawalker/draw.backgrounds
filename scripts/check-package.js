@@ -4,6 +4,8 @@ import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
+const destination = process.argv[2];
+if (destination) mkdirSync(destination, { recursive: true });
 const scratch = mkdtempSync(join(tmpdir(), "draw-backgrounds-package-"));
 const npm = (...args) =>
   execFileSync(process.execPath, [process.env.npm_execpath, ...args], {
@@ -12,7 +14,7 @@ const npm = (...args) =>
 
 try {
   const [packed] = JSON.parse(
-    npm("pack", "--json", "--pack-destination", scratch),
+    npm("pack", "--json", "--pack-destination", destination ?? scratch),
   );
   for (const { path } of packed.files) {
     assert.match(path, /^(src\/|README\.md$|package\.json$|LICENSE(?:\..*)?$)/);
@@ -36,7 +38,7 @@ try {
       "--no-audit",
       "--no-fund",
       ...flags,
-      join(scratch, packed.filename),
+      join(destination ?? scratch, packed.filename),
     );
     const checks = `
       import assert from "node:assert/strict";

@@ -115,7 +115,7 @@ The package exposes two ESM entry points for the same 95 jurisdictions.
 | `@lambdawalker/draw-backgrounds` | SVG rendering and jurisdiction catalogs in Node.js or browser bundlers |
 | `@lambdawalker/draw-backgrounds/canvas` | Raster rendering on Node.js through the optional native Canvas dependency |
 
-Install with `npm install @lambdawalker/draw-backgrounds` once the first npm release is available. SVG-only consumers can pass `--omit=optional` to skip the native dependency.
+See [installation](IMPORT.md) for Git tags and confirmed npm availability. See the [agent integration guide](docs/agents/index.md) for API contracts and troubleshooting.
 
 ```js
 import { render, states, countries, jurisdictionsByCountry } from '@lambdawalker/draw-backgrounds';
@@ -189,15 +189,4 @@ Five additional passes across **all fifty states** are documented in the expansi
 
 ## Publishing to npm
 
-From a clean checkout of `main`, review the version, package contents, and installed imports.
-
-```sh
-npm ci
-npm test
-npm run check:package
-npm publish --dry-run
-```
-
-For the first release, use an npm account with permission to publish under `@lambdawalker`. Confirm the intended distribution license before publishing. Run `npm login` and `npm publish --access public` from the verified checkout.
-
-For subsequent releases, configure [npm trusted publishing](https://docs.npmjs.com/trusted-publishers/) in the package settings. Set the owner to `lambdawalker`, the repository to `draw.backgrounds`, and the workflow filename to `publish-npm.yml`. Update the version and lockfile together, then run **Publish npm package** from `main` with the version in `package.json`. The workflow tests the package and uses OIDC to publish.
+Push an immutable `vX.Y.Z` tag matching the version in the tagged `package.json`. See the [release and visual review runbook](docs/RELEASING.md) for authentication, validation, and retry steps.

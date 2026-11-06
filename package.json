@@ -18,7 +18,8 @@
     "format": "prettier --write src scripts test",
     "format:check": "prettier --check src scripts test",
     "benchmark:us": "node scripts/benchmark-us.js",
-    "check:package": "node scripts/check-package.js"
+    "check:package": "node scripts/check-package.js",
+    "publish:release": "node scripts/publish-release.js"
   },
   "devDependencies": {
     "prettier": "^3.6.2",
