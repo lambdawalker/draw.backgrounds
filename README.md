@@ -108,10 +108,17 @@ Pass counts include the final seed-variation regression check. Previews use seed
 
 ## JavaScript API
 
-The SVG renderer has no dependencies and can also run in browser modules. Import it directly from the checkout (the package is not published):
+The package exposes two ESM entry points for the same 95 jurisdictions.
+
+| Import | Use |
+| --- | --- |
+| `@lambdawalker/draw-backgrounds` | SVG rendering and jurisdiction catalogs in Node.js or browser bundlers |
+| `@lambdawalker/draw-backgrounds/canvas` | Raster rendering on Node.js through the optional native Canvas dependency |
+
+Install with `npm install @lambdawalker/draw-backgrounds` once the first npm release is available. SVG-only consumers can pass `--omit=optional` to skip the native dependency.
 
 ```js
-import { render, states, countries, jurisdictionsByCountry } from './src/index.js';
+import { render, states, countries, jurisdictionsByCountry } from '@lambdawalker/draw-backgrounds';
 import { writeFile } from 'node:fs/promises';
 
 const svg = render('wyoming', { seed: 123, width: 1400, height: 880 });
@@ -122,14 +129,14 @@ console.log(states); // Legacy US catalog
 console.log(countries, jurisdictionsByCountry);
 ```
 
-Only CLI PNG export and preview generation require Sharp. `node src/cli.js --format svg` can run without installing dependencies.
+The CLI, previews, and benchmarks run from the repository checkout. Sharp is a development dependency used for repository PNG export, tests, and benchmarks.
 
 ## Canvas renderer
 
 The Node Canvas 2D renderer supports all 95 US, Mexican, and Canadian jurisdictions. Each design assembles named motif functions in layer order. Canvas and SVG share the motif geometry and seed handling. Canvas draws directly to a raster surface through `@napi-rs/canvas`.
 
 ```js
-import { renderCanvas } from './src/canvas.js';
+import { renderCanvas } from '@lambdawalker/draw-backgrounds/canvas';
 import { writeFile } from 'node:fs/promises';
 
 const canvas = renderCanvas('quebec', { country: 'ca', seed: 123, width: 1400, height: 880 });
@@ -179,3 +186,18 @@ The earlier four finishing passes are documented in [the additional review log](
 The remaining forty states have thirteen individually recorded visual passes (eight initial passes plus five further passes), with source snapshots, contact sheets, reference provenance and observations in [the expansion review](docs/reviews/EXPANSION.md). Mountain snowcaps now share the seeded ridge silhouette, so snow cannot invent peaks above the mountain edge.
 
 Five additional passes across **all fifty states** are documented in the expansion snapshots (passes9–13) and [the original-ten review](docs/reviews/original-additional/). Original-ten checks include alternate seeds and reduced output sizes; accepted geometry is retained where no further change was justified.
+
+## Publishing to npm
+
+From a clean checkout of `main`, review the version, package contents, and installed imports.
+
+```sh
+npm ci
+npm test
+npm run check:package
+npm publish --dry-run
+```
+
+For the first release, use an npm account with permission to publish under `@lambdawalker`. Confirm the intended distribution license before publishing. Run `npm login` and `npm publish --access public` from the verified checkout.
+
+For subsequent releases, configure [npm trusted publishing](https://docs.npmjs.com/trusted-publishers/) in the package settings. Set the owner to `lambdawalker`, the repository to `draw.backgrounds`, and the workflow filename to `publish-npm.yml`. Update the version and lockfile together, then run **Publish npm package** from `main` with the version in `package.json`. The workflow tests the package and uses OIDC to publish.
