@@ -6,6 +6,28 @@
 
 Todos los comandos siguientes se ejecutan desde la raíz del repositorio después de `npm ci` en Node.js 22+. Usa un directorio nuevo para evitar sobrescribir resultados anteriores.
 
+## Planear un fondo alrededor de la foto
+
+Los renderizadores SVG y Canvas para Node reproducen la misma receta. El ejemplo escribe un SVG, un PNG y la receta JSON. Ejecuta `node examples/render-composition.mjs /tmp/draw-composition`.
+
+```js
+import { createComposition, renderComposition } from '@lambdawalker/draw-backgrounds';
+import { renderCompositionCanvas } from '@lambdawalker/draw-backgrounds/canvas';
+
+const recipe = createComposition({
+  seed: 2081,
+  width: 700,
+  height: 440,
+  photoIdBoundingBox: { x: 0.06, y: 0.24, width: 0.28, height: 0.6 },
+  colorScheme: {
+    paper: '#F4F0E7', primary: '#386A73',
+    secondary: '#718A67', accent: '#B67B57',
+  },
+});
+const svg = renderComposition(recipe);
+const canvas = renderCompositionCanvas(recipe);
+```
+
 ## Demostraciones SVG y Canvas
 
 | Ejemplo | Ejecución | Resultado esperado |

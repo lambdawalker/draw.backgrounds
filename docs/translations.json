@@ -1,6 +1,6 @@
 {
   "api": {
-    "sourceHash": "c70f59bb4637833e47eb8bb593b77ebe0bee16ca185f9ddc70eff5496a31729d",
+    "sourceHash": "9a281bef3ce69cc17747d04bf3fc997d519f35f9f2a5284deaa6f8a25b84baf2",
     "locale": "es"
   },
   "concepts": {
@@ -12,11 +12,11 @@
     "locale": "es"
   },
   "index": {
-    "sourceHash": "81330e4a4b8b0162ad34fcbc28d67e77c3c4884dc38f4007dee7437dd36fcc68",
+    "sourceHash": "95e126f7a5bc73258be1c3923bf7c5a87efa040d72e37e7667f29a5c3cd071ed",
     "locale": "es"
   },
   "limitations": {
-    "sourceHash": "cb90d314ca5444a4ea3df16b195fbfa31b0eaf66585915dd152c604abe867cd6",
+    "sourceHash": "5bd3eacb460b101357b8d0d0874d87941bfe1f1cc32123511f6afd0c413f937a",
     "locale": "es"
   },
   "migration": {
@@ -28,7 +28,7 @@
     "locale": "es"
   },
   "recipes": {
-    "sourceHash": "b744c3507f5fd86d713411b3d1b46caa6ba94c17bc6c40784b2e5946ca2016c2",
+    "sourceHash": "0fe186bfd874f07adb24d6b982cc8c48583f323fe932c129fdd43db0f84d7434",
     "locale": "es"
   },
   "troubleshooting": {

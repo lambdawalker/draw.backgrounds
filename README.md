@@ -161,6 +161,12 @@ The benchmark runs matching seeds and sizes for each renderer, alternating execu
 
 [Full benchmark results for all 50 states](docs/US-RENDER-BENCHMARK.md).
 
+## Region-free backgrounds
+
+Use `createComposition()` to plan a seeded background around a normalized photo rectangle. Supply a color scheme to derive colors for textures, mountains, snow, rosettes and flowers. Save the returned recipe and replay it through either renderer.
+
+See [the composition example](docs/agents/recipes.md#plan-a-background-around-a-photo) for SVG and Canvas usage.
+
 ## Organization
 
 - `src/countries/`: jurisdiction compositions and country-specific helpers, grouped under `us`, `mx`, and `ca`. The US original designs and expansion groups follow the visual review history.

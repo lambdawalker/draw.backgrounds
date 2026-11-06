@@ -30,9 +30,17 @@ import { renderCanvas } from '@lambdawalker/draw-backgrounds/canvas';
 | `options.width` | `1400` | Integer from 1 through 8192 |
 | `options.height` | `880` | Integer from 1 through 8192 |
 
-Width × height must also be at most 40,000,000. Numbers are not coerced from strings. Omit options or pass an object; `null` is not a supported options value. Unknown properties are not customization controls. The API does not expose palette, motif, margin, font or image overlay options.
+Width × height must also be at most 40,000,000. Numbers are not coerced from strings. Omit options or pass an object; `null` is not a supported options value. Unknown properties are not customization controls. The jurisdiction renderer does not take palette, motif, margin, font or image overlay options.
 
 Unknown country, mismatched/unknown jurisdiction, invalid seed and invalid dimensions throw `RangeError` synchronously. US errors say `Unknown state`; other countries say `Unknown jurisdiction for ...`. Incorrect options shapes can raise JavaScript `TypeError`; native loading/allocation and encoding errors are not normalized by the library. Validate external data before calling and catch rendering and encoding errors separately.
+
+## Region-free compositions
+
+`createComposition(options)` synchronously returns a versioned JSON-compatible recipe. It accepts the seed and dimensions above and an optional `photoIdBoundingBox` in normalized card coordinates with a top-left origin. The rectangle must have positive dimensions and fit inside the card. Omit it or pass `null` for a layout without a photo. Optional `colorScheme` has four six-digit RGB hex anchors: `paper`, `primary`, `secondary` and `accent`. Omit it to use the built-in scheme.
+
+The seed varies textures, accent selection, placement and derived colors. Accent footprints avoid the photo rectangle, while a low-opacity base texture can continue behind it. A full-card photo leaves only the base and texture. The library does not receive or draw a photo. Save the recipe for replay with `renderComposition(recipe)` (SVG) or `renderCompositionCanvas(recipe)` (Node Canvas). Replay checks the recipe version, dimensions, colors and accent placement. Keep a compatible library version with saved recipes.
+
+The browser-compatible `@lambdawalker/draw-backgrounds/color` entry point exports `mixColors(from, to, amount)`, an RGB blend with amount from 0 to 1, plus `rgb(hex)` and `related(hex, rng, alpha)`. The HSLuv helper expects an object with `range(min, max)` and returns a CSS RGBA string.
 
 ## Catalogs
 

@@ -8,7 +8,8 @@
   },
   "exports": {
     ".": "./src/public.js",
-    "./canvas": "./src/canvas.js"
+    "./canvas": "./src/canvas.js",
+    "./color": "./src/color.js"
   },
   "scripts": {
     "generate": "node src/cli.js",
@@ -43,5 +44,8 @@
   ],
   "optionalDependencies": {
     "@napi-rs/canvas": "1.0.0"
+  },
+  "dependencies": {
+    "hsluv": "1.0.2"
   }
 }

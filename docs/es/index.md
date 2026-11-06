@@ -8,12 +8,13 @@ Genera fondos sintéticos originales para 50 estados de Estados Unidos, 32 entid
 
 | Tarea | Entrada pública | Siguiente lectura |
 | --- | --- | --- |
+| Planear y reproducir un fondo alrededor de una foto | `createComposition` y los renderizadores de composición | [Recetas](recipes.md) |
 | Producir un SVG independiente en Node o un empaquetador web | `render` del paquete raíz | [Inicio rápido](quickstart.md) |
 | Producir píxeles o PNG en Node | `renderCanvas` de `/canvas` | [Recetas](recipes.md) |
 | Descubrir claves válidas de países y jurisdicciones | Exportaciones del catálogo raíz | [API](api.md) |
 | Reproducir y comparar un resultado | Semilla y dimensiones explícitas | [Conceptos](concepts.md) |
 | Diagnosticar un fallo de integración | Validación y comprobaciones del entorno | [Solución de problemas](troubleshooting.md) |
 
-Ambos renderizadores son síncronos, usan US, semilla 42 y 1400 × 880 por defecto, y validan identificadores y límites numéricos. La codificación Canvas es asíncrona. El consumidor administra resultados, escritura de archivos, concurrencia y limpieza. `states` solo contiene estados de US; usa `jurisdictionsByCountry` para todos los países. Usa las entradas públicas del paquete, nunca módulos internos de geometría.
+Ambos renderizadores por jurisdicción son síncronos, usan US, semilla 42 y 1400 × 880 por defecto, y validan identificadores y límites numéricos. La codificación Canvas es asíncrona. El consumidor administra resultados, escritura de archivos, concurrencia y limpieza. `states` solo contiene estados de US; usa `jurisdictionsByCountry` para todos los países. Usa las entradas públicas del paquete, nunca módulos internos de geometría.
 
 [Inicio rápido](quickstart.md) · [Conceptos y propiedad](concepts.md) · [Contratos de API](api.md) · [Recetas y demostraciones](recipes.md) · [Galería](gallery.md) · [Limitaciones](limitations.md) · [Solución de problemas](troubleshooting.md) · [Migración](migration.md)
