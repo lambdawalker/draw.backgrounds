@@ -9,7 +9,7 @@ The first ten designs were merged to main before this expansion. Forty additiona
 | C | Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina, North Dakota, Ohio, Oklahoma | [Sources](../../references/us/expansion-c.json) | [Reviews](expansion-c/) |
 | D | Oregon, Pennsylvania, Rhode Island, South Carolina, South Dakota, Texas, Vermont, Virginia, West Virginia, Wisconsin | [Sources](../../references/us/expansion-d.json) | [Reviews](expansion-d/) |
 
-Each group contains `pass-1` through `pass-13`, with `contact.jpg`, `review.md`, and `source/`. Contact-sheet labels are separate from generated artwork. Source snapshots can be restored to the matching `src/expansion/<group>/` folder to reproduce a checkpoint. They deliberately retain their original formatting; production modules may be formatted after review without changing rendering.
+Each group contains `pass-1` through `pass-13`, with `contact.jpg`, `review.md`, and `source/`. Contact-sheet labels are separate from generated artwork. To reproduce a checkpoint, restore its source snapshot to the matching `src/expansion/<group>/` folder in the historical checkout. In the current tree, those groups live under `src/countries/us/expansion/`. They deliberately retain their original formatting; production modules may be formatted after review without changing rendering.
 
 The references include historical public specimens. Where only grayscale specimens were available, palettes are original artistic choices rather than inferred specimen colors. Artwork is procedural SVG: specimen pixels, credential text, portraits, seals, barcodes and machine-readable payloads are not embedded.
 

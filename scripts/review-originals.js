@@ -6,9 +6,12 @@ const pass = Number(process.argv[2]),
   width = Number(process.argv[4] || 1400),
   height = Math.round((width * 880) / 1400),
   directory = `docs/reviews/original-additional/pass-${pass}`;
-await mkdir(`${directory}/source/designs`, { recursive: true });
-await cp("src/designs", `${directory}/source/designs`, { recursive: true });
-await cp("src/finishing.js", `${directory}/source/finishing.js`);
+const snapshotUs = `${directory}/source/countries/us`;
+await mkdir(snapshotUs, { recursive: true });
+await cp("src/countries/us/originals", `${snapshotUs}/originals`, {
+  recursive: true,
+});
+await cp("src/countries/us/finishing.js", `${snapshotUs}/finishing.js`);
 await cp("src/geometry.js", `${directory}/source/geometry.js`);
 const layers = [];
 for (let i = 0; i < 10; i++) {

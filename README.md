@@ -163,11 +163,10 @@ The benchmark runs matching seeds and sizes for each renderer, alternating execu
 
 ## Organization
 
-- `src/countries/`: country catalog, Mexico regional helpers, and Canadian jurisdiction modules.
-- `src/designs/`: the original ten composition modules.
-- `src/expansion/`: forty additional compositions and reusable regional illustration helpers.
+- `src/countries/`: jurisdiction compositions and country-specific helpers, grouped under `us`, `mx`, and `ca`. The US original designs and expansion groups follow the visual review history.
 - `src/geometry.js`: shared warped grids, waves, guilloche, clipped hatching and illustrative motifs.
-- `src/index.js`: deterministic renderer and supported-state registry.
+- `src/index.js`: jurisdiction catalog, drawing dispatch and SVG renderer. `src/public.js` defines the root package exports.
+- `src/canvas.js`: Node Canvas drawing target and renderer.
 - `src/cli.js`: file export, batch seeds, input validation and manifests.
 - `scripts/previews.js`: regenerates the individual previews, country contact sheets and preview manifests.
 - `references/us/sources.json`: the ten inspected specimen image URLs, source pages, edition labels and observed cues.
